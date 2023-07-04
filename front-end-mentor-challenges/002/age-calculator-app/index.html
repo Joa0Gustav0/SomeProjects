@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Age Calculator App</title>
+</head>
+<body>
+    <div class="container">
+        <div class="inputs-section">
+            <div class="inputs">
+                <label for="day">Day</label>
+                <input type="number" name="day" id="day">
+            </div>
+            <div class="inputs">
+                <label for="month">Month</label>
+                <input type="number" name="month" id="month">
+            </div>
+            <div class="inputs">
+                <label for="year">Year</label>
+                <input type="number" name="year" id="year">
+            </div>
+            <ion-icon name="arrow-down-sharp" class="result-button" onclick="getNewValues()"></ion-icon>
+        </div>
+        <div class="result-section">
+            <div class="years-result results">
+                <span>0</span>
+                <p class="yearstxt">years</p>
+            </div>
+            <div class="months-result results">
+                <span>0</span>
+                <p class="monthtxt">months</p>
+            </div>
+            <div class="days-result results">
+                <span>0</span>
+                <p class="daystxt">days</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+</html>
