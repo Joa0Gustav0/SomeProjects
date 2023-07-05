@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Interactive rating component</title>
+</head>
+<body>
+    <div class="container container-default">
+        <img src="images/icon-star.svg">
+        <h1>How did we do?</h1>
+        <p class="container__comum-paragraph">Please let us know how we did with your support request. All feedback is appreciated to help us improve our offering!</p>
+        <div class="container__rating-area">
+            <a href="#" name="1" class="rate" onclick="setRate(this)">1</a>
+            <a href="#" name="2" class="rate" onclick="setRate(this)">2</a>
+            <a href="#" name="3" class="rate" onclick="setRate(this)">3</a>
+            <a href="#" name="4" class="rate" onclick="setRate(this)">4</a>
+            <a href="#" name="5" class="rate" onclick="setRate(this)">5</a>
+        </div>
+        <input type="button" value="Submit" class="container__button" onclick="submitRate()">
+    </div>
+    <div class="container container-submitted">
+        <img src="images/illustration-thank-you.svg">
+        <p class="container-submitted__visual-result">You selected x of 5</p>
+        <h1>Thank you!</h1>
+        <p class="container__comum-paragraph">We appreciate you taking the time to give a rating. If you ever need more support, don't hesitate to get in touch!</p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
