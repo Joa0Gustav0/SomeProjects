@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>ToDo App</title>
+</head>
+<body>
+    <header>
+        <a href="index.html">
+            <h1>ToDoIt!</h1>
+        </a>
+    </header>
+    <div class="sidebar">
+        <div class="header__side-bar-button"
+                onclick="setButtonState()">
+            <div class="line l1"></div>
+            <div class="line l2"></div>
+            <div class="line l3"></div>
+        </div>
+        <div class="sidebar__buttons">
+            <div class="sidebar__buttons__home buttons">
+                <ion-icon name="home-outline"></ion-icon>
+                <h1>Home</h1>
+            </div>
+            <div class="sidebar__buttons__todolist buttons">
+                <ion-icon name="list-outline"></ion-icon>
+                <h1>To-do List</h1>
+            </div>
+            <div class="sidebar__buttons__calculator buttons">
+                <ion-icon name="calculator-outline"></ion-icon>
+                <h1>Calculator</h1>
+            </div>
+            <div class="sidebar__buttons__notes buttons">
+                <ion-icon name="pencil-sharp"></ion-icon>
+                <h1>Notes</h1>
+            </div>
+        </div>
+    </div>
+    
+    <div class="landing-page-container container">
+        <img src="./media/landing-page-picture.png">
+        <div class="landing-page-container__welcome-text">
+            <h1>Welcome to ToDoIt!</h1>
+            <p>Be productive. Be organized. </p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+</html>
