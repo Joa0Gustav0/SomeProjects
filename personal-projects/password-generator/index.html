@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Password Generator</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Password Generator</h1>
+        <input type="range" 
+                name="plength" 
+                id="plength" 
+                class="plength"
+                min="5"
+                max="20"
+                value="20"
+                oninput="changeLength(this)">
+        <span>Password with 20 characters.</span>
+        <input type="button" 
+                value="Generate it!" 
+                class="gibutton"
+                onclick="generatePassword()">
+    </div>
+    <div class="result-container">
+        <p class="presult">...</p>
+        <ion-icon name="copy"
+                    onclick="copyPassword()">
+        </ion-icon>
+        <span>Click to copy your password!</span>
+    </div>
+
+    <script src="script.js"></script>
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+</html>

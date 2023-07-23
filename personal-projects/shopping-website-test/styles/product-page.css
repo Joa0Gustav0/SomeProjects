@@ -1,0 +1,97 @@
+main{
+    display: flex;
+    flex-direction: row;
+
+    width: 600px;
+    margin-top: 30px;
+    background-color: white;
+}
+main .current-product-img{
+    width: 300px;
+}
+main .purchase-section{
+    width: 300px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+.purchase-section__product-name{
+    font-size: 1.85em;
+}
+.purchase-section__product-price{
+    color: #AF0D1A;
+}
+
+.purchase-section__product-quantity{
+    margin: 20px 0;
+    display: flex;
+    align-items: center;
+}
+.purchase-section__product-quantity input{
+    width: 50px;
+    height: 30px;
+    margin-left: 5px;
+    text-align: center;
+}
+.purchase-section__product-quantity ion-icon{
+    transition: .25s;
+    width: 30px;
+    height: 30px;
+    margin: 0 5px;
+    border-radius: 100%;
+}
+.purchase-section__product-quantity ion-icon:hover{
+    transition: .25s;
+    cursor: pointer;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.349);
+}
+.purchase-section__product-quantity ion-icon:active{
+    box-shadow: inset 5px 5px 15px rgba(0, 0, 0, 0.349);
+}
+
+.purchase-section .cabuttons{
+    transition: .25s;
+    width: 100%;
+    height: 50px;
+    margin: 5px 0;
+    font-weight: 700;
+    border: 0;
+    outline: none;
+}
+.purchase-section .bnbutton{
+    color: white;
+    background-color: #AF0D1A;
+}
+.purchase-section .bnbutton:hover{
+    cursor: pointer;
+    color: #AF0D1A;
+    background-color: white;
+    border: 1px solid #AF0D1A;
+}
+.purchase-section .bnbutton:active{
+    background-color: rgb(233, 233, 233);
+}
+
+.purchase-section .acbutton{
+    color: white;
+    background-color: black;
+}
+.purchase-section .acbutton:hover{
+    cursor: pointer;
+    color: black;
+    background-color: white;
+    border: 1px solid black;
+}
+.purchase-section .acbutton:active{
+    background-color: rgb(233, 233, 233);
+}
+
+@media screen  and (max-width: 640px){
+    main{
+        transition: .25s;
+        width: 300px;
+        flex-direction: column;
+    }
+}

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/comum.css">
+    <link rel="stylesheet" href="styles/cart.css">
+    <title>Shopping Website | Your cart</title>
+</head>
+<body>
+    <header>
+        <a href="./index.html">
+            <h1 class="header__main-title">&#x1F3B2; Gamer Side</h1>
+        </a>
+        <a href="your-cart.html">
+            <ion-icon name="cart-outline" class="header__cart-button"></ion-icon>
+        </a>
+    </header>
+    <h1>🛒My Cart</h1>
+    <main>
+        <div class="list-container__added-items" onload="SIVerifier(this)" onchange="SIVerifier(this)">
+            <!-- <div class="item-model">
+                <img src="media/product-img.jpeg">
+                <h2>1x</h2>
+                <h2>R$0,00</h2>
+            </div>
+            <div class="item-model">
+                <img src="media/product-img2.jpg">
+                <h2>1x</h2>
+                <h2>R$0,00</h2>
+            </div>
+            <div class="item-model">
+                <img src="media/product-img3.jpg">
+                <h2>1x</h2>
+                <h2>R$0,00</h2> 
+            </div>-->
+        </div>
+        <div class="order-resume">
+            <h1>Order Resume</h1>
+            <div class="order-resume__total-box">
+                <p>Total:</p>
+                <p class="order-total">R$0,00</p>
+            </div>
+        </div>
+    </main>
+
+    <script src="cart.js"></script>
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+</html>

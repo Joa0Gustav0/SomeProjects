@@ -1,0 +1,128 @@
+@import url('https://fonts.googleapis.com/css2?family=Pangolin');
+main{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+
+    width: 100%;
+    padding: 0 20px;
+}
+body>h1{
+    font-family: 'Pangolin';
+    text-transform: uppercase;
+    color: white;
+    padding: 10px;
+}
+
+.list-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 300px;
+}
+
+.list-container__added-items{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    color: white;
+    width: 500px;
+    height: 350px;
+    margin: 0 10px;
+    overflow-y: scroll;
+}
+.list-container__added-items::-webkit-scrollbar{
+    display: none;
+}
+
+.item-model{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    width: 100%;
+    padding: 20px;
+    margin-bottom: 20px;
+    background-color: white;
+}
+.item-id{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    width: 50px;
+}
+.item-model img{
+    width: 100px;
+}
+.item-model h2{
+    font-size: 1em;
+}
+
+.order-resume{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    width: 300px;
+    height: 250px;
+    padding: 20px;
+    margin: 0 10px;
+    background-color: white;
+}
+.order-resume h1{
+    align-self: center;
+    text-transform: uppercase;
+}
+.order-resume__total-box{
+    display: flex;
+    justify-content: space-between;
+
+    padding-top: 20px;
+    border-top: 1px solid black;
+}
+.order-resume .order-total{
+    font-weight: 700;
+    color: #AF0D1A;
+}
+
+@media screen and (max-width: 830px){
+    main{
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .list-container__added-items{
+        height: 210px;
+    }
+    .order-resume{
+        width: 500px;
+        height: 150px;
+        margin-top: 20px;
+    }
+}
+@media screen and (max-width: 830px) and (orientation: landscape){
+    .order-resume{
+        width: 500px;
+    }
+}
+@media screen and (max-width: 830px) and (orientation:portrait){
+ 
+    .list-container__added-items{
+        height: 210px;
+        width: 500px;
+    }
+    .order-resume{
+        width: 500px;
+        margin-top: 20px;
+    }
+}
+@media screen and (max-width: 499px){
+    .list-container__added-items{
+        width: 300px;
+    }
+    .order-resume{
+        width: 300px;
+    }
+}

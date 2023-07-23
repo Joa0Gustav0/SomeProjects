@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/comum.css">
+    <link rel="stylesheet" href="../styles/product-page.css">
+    <title>Shopping Website | Product</title>
+</head>
+<body>
+    <header>
+        <a href="../index.html">
+            <h1 class="header__main-title">&#x1F3B2; Gamer Side</h1>
+        </a>
+        <a href="your-cart.html">
+            <ion-icon name="cart-outline" class="header__cart-button"></ion-icon>
+        </a>
+    </header>
+    <main>
+        <img src="../media/product-img4.jpg"
+            class="current-product-img">
+        <div class="purchase-section">
+            <h1 class="purchase-section__product-name">
+                Gamer Mouse
+            </h1>
+            <h2 class="purchase-section__product-price">
+                R&dollar;129,99
+            </h2>
+            <div class="purchase-section__product-quantity">
+                <label for="pquantity">Quantity:</label>
+                <ion-icon name="add"                    onclick="changeQuantity(this)"></ion-icon>
+                <input type="number" 
+                        id="pquantity"
+                        class="pquantity"
+                        min="1"
+                        value="1">
+                <ion-icon name="remove" onclick="changeQuantity(this)"></ion-icon>
+            </div>
+            <input type="button" 
+                    value="BUY NOW!"
+                    class="bnbutton cabuttons">
+            <input type="button" 
+                    value="Add to cart &#x1F6D2;"
+                    class="acbutton cabuttons">
+        </div>
+    </main>
+
+    <script src="../script.js"></script>
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+</html>

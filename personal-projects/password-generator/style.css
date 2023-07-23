@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    user-select: none;
+}
+body{
+    width: 100vw;
+    height: 100vh;
+    background-image: linear-gradient(45deg, rgb(1, 2, 73), blue
+    );
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 320px;
+    padding: 20px;
+    margin-bottom: 20px;
+    border: 1px solid white
+}
+.container h1{
+    text-align: center;
+    font-size: 1.6rem;
+    border-bottom: 1px solid white;
+    margin-bottom: 20px;
+}
+.container .plength{
+    cursor: pointer;
+    width: 100%;
+    accent-color: white;
+}
+.container .gibutton{
+    transition: .25s;
+    width: 100%;
+    padding: 10px;
+    margin-top: 20px;
+    text-transform: uppercase;
+    font-weight: 700;
+    border: 0;
+    outline: none;
+    color: blue;
+    background-color: white;
+}
+.container .gibutton:hover{
+    transition: .25s;
+    cursor: pointer;
+    color: white;
+    background-color: blue;
+}
+.result-container{
+    position: relative;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 320px;
+    padding: 20px;
+    border: 1px solid white;
+}
+.result-container .presult{
+    margin-right: 20px;
+}
+.result-container ion-icon{
+    transition: .25s;
+    width: 25px;
+    height: 25px;
+}
+.result-container ion-icon:hover{
+    transition: .25s;
+    cursor: pointer;
+    transform: scale(110%,110%);
+}
+.result-container span{
+    position: absolute;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    top: 130%;
+
+    font-size: .8em;
+
+    width: 320px;
+    text-align: center;
+}
