@@ -1,0 +1,164 @@
+/*HOME*/
+.home{
+    position: relative;
+    color: #FFF5F4;
+    height: 100vh; 
+    background: black url(../media/landing-picture.jpg) left top no-repeat;
+    background-size: contain;
+}
+.home > aside{
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    right: 0%;
+
+    width: 400px;
+}
+.home > aside h1{
+    font-size: 3em;
+    font-weight: 700;
+}
+.home > aside p{
+    font-weight: 200;
+    margin: 20px 0;
+}
+.home > aside span{
+    color: #84bf04;
+}
+
+/*ABOUT*/
+.about{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 20px;
+    height: 100vh;
+    background: #CEC6BC url(../media/about-picture.jpg) right top no-repeat;
+    background-size: contain;
+}
+.about > aside{
+    text-align: justify;
+    width: 500px;
+    margin-left: 15%;
+}
+.about > aside span{
+    color: white;
+}
+.about > aside h1{
+    font-size: 3em;
+    font-weight: 700;
+}
+
+/*SERVICES*/
+.services{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    height: 100vh;
+    padding: 20px;
+    background: #E9E5E5 url(../media/services-picture.jpg) left top no-repeat;
+    background-size: contain;
+}
+.services > h1{
+    font-size: 3em;
+}
+.services__services-catalogue{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    width: 700px;
+    padding: 20px;
+}
+.services-catalogue__service-box{
+    transition: .25s;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+
+    width: 150px;
+    height: 150px;
+    padding: 20px;
+    margin: 20px;
+
+    color: black;
+    text-decoration: none;
+    border-radius: 100%;
+    border: 2px solid black;
+}
+.services-catalogue__service-box:hover{
+    transition: .25s;
+    transform: scale(110%, 110%);
+}
+.services-catalogue__service-box img{
+    width: 50px;
+}
+.services-catalogue__service-box h1{
+    font-size: .8em;
+}
+
+/*LOCATOR*/
+.locator{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+.locator h1{
+    font-size: 2.5em;
+}
+.locator iframe{
+    margin-top: 20px;
+}
+
+/*conclusion*/
+.conclusion{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    height: 100vh;
+    color: white;
+    background: #DCD7D3 url(../media/conclusion-picture.jpg) right top no-repeat;
+    background-size: contain;
+}
+.conclusion > aside{
+    width: 400px;
+    margin-left: 15%;
+}
+.conclusion > aside h1{
+    font-size: 3em;
+}
+.conclusion > aside p{
+    color: black;
+    font-weight: 300;
+    margin-bottom: 50px;
+}
+.conclusion > aside a{
+    transition: .1s;
+    padding: 10px;
+    font-size: 2.5em;
+    font-weight: 700;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: white;
+    background-color: #84bf04;
+}
+.conclusion > aside a:hover{
+    transition: .1s;
+    color: #84bf04;
+    background-color: white;
+}
+
+/*footer*/
+footer{
+    text-align: center;
+    padding: 20px;
+    font-weight: 700;
+}

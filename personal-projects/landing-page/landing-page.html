@@ -5,63 +5,64 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="media/favicon.ico" type="image/x-icon">
     <title>SPA | Home</title>
+    <link rel="stylesheet" href="styles/default.css">
+    <link rel="stylesheet" href="styles/landing-page.css">
 </head>
 <body>
-    <header>
-        <img src="media/logo.png" 
-            alt="header__logo" 
-            class="header__logo">
-        <aside>
-            <a href="#home">Home</a>
-            <a href="#about">About</a>
-            <a href="#services">Services</a>
-            <a href="#locator">Find a spa center <ion-icon name="location-sharp"></ion-icon></a>
-        </aside>
-    </header>
     <main class="home" 
         id="home">
+        <header>
+            <a href="landing-page.html">
+                <img src="media/logo.png"
+                    alt="header__logo"
+                    class="header__logo">
+            </a>
+            <aside>
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#services">Services</a>
+                <a href="#locator">Find a spa center <ion-icon name="location-sharp"></ion-icon></a>
+            </aside>
+        </header>
         <aside>
-            <h1>For a pleasent body, mind and soul.</h1>
-            <p>SPA will guide you intendding your inner and outer peace.</p>
+            <h1>For a pleasent <span>body</span>, <span>mind</span> and <span>soul</span>.</h1>
+            <p><span>SPA</span> will guide you intendding your inner and outer peace.</p>
         </aside>
     </main>
     <section class="about" 
             id="about">
         <aside>
-            <h1>SPA works with honor, dignity and respect.</h1>
+            <h1><span>SPA</span> works with <span>honor</span>, <span>dignity</span> and <span>respect</span>.</h1>
             <p>Since 2023, SPA helps thousand of people like you for having a healthier lifestyle offering a complete, personalized and exclusive guide for a peaceful journey aiming daily stress and tensions relieving.
             </p>
         </aside>
-        <img src="media/about-picture.jpg" 
-            alt="about"
-            class="about">
     </section>
     <section class="services" 
             id="services">
         <h1>Services</h1>
         <p>SPA offer you a guide for these activities categories:</p>
         <aside class="services__services-catalogue">
-            <a href="" class="services-catalogue__service-box service-massage">
+            <a href="services-pages/massage.html" class="services-catalogue__service-box service-massage">
                 <img src="media/massage-icon.png" alt="service-icon">
                 <h1>Massage</h1>
             </a>
-            <a href="" class="services-catalogue__service-box service-yoga">
+            <a href="services-pages/yoga.html" class="services-catalogue__service-box service-yoga">
                 <img src="media/yoga-icon.png" alt="service-icon">
                 <h1>Yoga</h1>
             </a>
-            <a href="" class="services-catalogue__service-box service-sauna">
+            <a href="services-pages/sauna.html" class="services-catalogue__service-box service-sauna">
                 <img src="media/sauna-icon.png" alt="service-icon">
                 <h1>Sauna</h1>
             </a>
-            <a href="" class="services-catalogue__service-box service-mud-bath">
+            <a href="services-pages/mud-bath.html" class="services-catalogue__service-box service-mud-bath">
                 <img src="media/mud-bath-icon.png" alt="service-icon">
                 <h1>Mud Bath</h1>
             </a>
-            <a href="" class="services-catalogue__service-box service-hair-removal">
+            <a href="services-pages/hair-removal.html" class="services-catalogue__service-box service-hair-removal">
                 <img src="media/hair-removal-icon.png" alt="service-icon">
                 <h1>Hair Removal</h1>
             </a>
-            <a href="" class="services-catalogue__service-box service-mpedicure">
+            <a href="services-pages/manicure-and-pedicure.html" class="services-catalogue__service-box service-mpedicure">
                 <img src="media/mpedicure-icon.png" alt="service-icon">
                 <h1>Manicure And Pedicure</h1>
             </a>
@@ -70,13 +71,16 @@
     <section class="locator" 
             id="locator">
         <h1>Search for a spa center nearby.</h1>
-        <p>Remember choosing a trust, good and confortable spa center.</p>
-        <iframe class="services__maps" src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d31001.321676885687!2d-46.66239042606531!3d-23.544409180093503!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1scentros%20de%20spa!5e0!3m2!1spt-BR!2sbr!4v1690110094710!5m2!1spt-BR!2sbr" width="300" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <p>Remember choosing a <span>trust</span>, <span>good</span> and <span>confortable</span> spa center.</p>
+        <iframe class="services__maps" src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d31001.321676885687!2d-46.66239042606531!3d-23.544409180093503!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1scentros%20de%20spa!5e0!3m2!1spt-BR!2sbr!4v1690110094710!5m2!1spt-BR!2sbr" width="500" height="350" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </section>
-    <section class="conclusion" id="conclusion">
-        <h1>Keep calm. Take a breath. Your path starts here.</h1>
-        <p>Click on the button down bellow and start your journey guided by SPA.</p>
-        <a href="#">Let's go!</a>
+    <section class="conclusion" 
+            id="conclusion">
+        <aside>
+            <h1>Keep calm. Take a breath.</h1>
+            <p>Click on the button down bellow and start your journey guided by SPA.</p>
+            <a href="Sorry!-Nothing-to-see-here...">Let's go!</a>
+        </aside>
     </section>
     <footer>
         &circledR; 2023 SPA. All Rights Reserved.
