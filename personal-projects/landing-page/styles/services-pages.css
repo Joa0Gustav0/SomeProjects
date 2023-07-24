@@ -1,0 +1,40 @@
+body{
+    position: relative;
+    background: var(--backgroundColor) var(--backgroundImage) left top no-repeat;
+    background-size: contain;
+}
+body > aside{
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    right: 0%;
+
+    width: 400px;
+    color: var(--primaryColor);
+}
+body > aside h1{
+    color: var(--secondaryColor);
+    font-size: 3em;
+}
+body > aside p{
+    text-align: justify;
+    margin-bottom: 30px;
+}
+body > aside p span{
+    font-weight: 700;
+    color: var(--secondaryColor);
+}
+body > aside a{
+    transition: .1s;
+    font-weight: 700;
+    text-decoration: none;
+    text-transform: uppercase;
+    padding: 15px;
+    color: var(--primaryColor);
+    background-color: var(--secondaryColor);
+}
+body > aside a:hover{
+    transition: .1s;
+    color: var(--secondaryColor);
+    background-color: var(--primaryColor);
+}
