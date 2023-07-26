@@ -10,7 +10,12 @@
 </head>
 <body>
     <main class="home" 
-        id="home">
+        id="home"
+        on>
+        <aside>
+            <h1>For a pleasent <span>body</span>, <span>mind</span> and <span>soul</span>.</h1>
+            <p><span>SPA</span> will guide you intendding your inner and outer peace.</p>
+        </aside>
         <header>
             <a href="landing-page.html">
                 <img src="media/logo.png"
@@ -23,11 +28,16 @@
                 <a href="#services">Services</a>
                 <a href="#locator">Find a spa center <ion-icon name="location-sharp"></ion-icon></a>
             </aside>
+            <ion-icon name="menu-sharp"
+                    class="header__navbar-button"></ion-icon>
+            <nav class="header__navbar" 
+                id="header__navbar">
+                <a href="#home">Home <ion-icon name="home-sharp"></ion-icon></a>
+                <a href="#about">About <ion-icon name="search-sharp"></ion-icon></a>
+                <a href="#services">Services <ion-icon name="briefcase-sharp"></ion-icon></a>
+                <a href="#locator">Find a spa center <ion-icon name="location-sharp"></ion-icon></a>
+            </nav>
         </header>
-        <aside>
-            <h1>For a pleasent <span>body</span>, <span>mind</span> and <span>soul</span>.</h1>
-            <p><span>SPA</span> will guide you intendding your inner and outer peace.</p>
-        </aside>
     </main>
     <section class="about" 
             id="about">
@@ -67,6 +77,7 @@
                 <h1>Manicure And Pedicure</h1>
             </a>
         </aside>
+        <p>Click for know more about each activity.</p>
     </section>
     <section class="locator" 
             id="locator">
@@ -85,7 +96,13 @@
     <footer>
         &circledR; 2023 SPA. All Rights Reserved.
     </footer>
+    <a href="#home" 
+        class="gtbutton" 
+        id="gtbutton">
+        <ion-icon name="arrow-up-sharp"></ion-icon>
+    </a>
 
+    <script src="landing-page.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script> 
 </body>

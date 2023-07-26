@@ -8,6 +8,7 @@
     scroll-behavior: smooth;
 }
 body{
+    position: relative;
     width: 100%;
     height: 100vh;
 }
@@ -23,6 +24,7 @@ body{
 
 /*HEADER*/
 header{
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -38,6 +40,16 @@ header{
     transition: .1s;
     border: 2px solid #84BF04;
 }
+.header__navbar-button{
+    display: none;
+
+    width: 35px;
+    height: 35px;
+    transition: all .25s;
+}
+.header__navbar-button:hover{
+    transform: scale(110%, 110%);
+}
 header > aside a{
     transition: .1s;
     color: #FFF5F4;
@@ -50,4 +62,47 @@ header > aside a{
 header > aside a:hover{
     transition: .25s;
     color: #84BF04;
+}
+.header__navbar{
+    position: absolute;
+    top: 101%;
+    left: -1px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 101%;
+    background-color: rgba(0, 0, 0, 0.89);
+}
+.header__navbar a{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+    padding: 20px 0;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+.header__navbar a ion-icon{
+    margin-left: 5px;
+}
+
+/*RESPONSIVE*/
+@media screen and (max-width: 649px){
+    header{
+        justify-content: center;
+    }
+    header > aside{
+        display: none;
+    }
+    .header__navbar-button{
+        position: absolute;
+        top: 30%;
+        right: 5%;
+        display: block;
+    }
 }
