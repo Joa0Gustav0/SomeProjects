@@ -4,14 +4,18 @@ let navBar = document.querySelector('.navbar')
 let openNavBarButton = document.querySelector('.open-navbar')
 let closeNavBarButton = document.querySelector('.close-navbar')
 
-
-//makes goTopButton appear or disappear
-window.onscroll = function setVisibility(){
+window.onscroll = function onScroll(){
+    //makes goTopButton appear or disappear
     if (window.scrollY > 100){
-        console.log('WORKED')
         goTopButton.classList.add('active')
     }else{
         goTopButton.classList.remove('active')
+    }
+
+    //makes navBar close on scroll
+    if(navBar.classList.contains('open')){
+        navBar.classList.add('close')
+        navBar.classList.remove('open')
     }
 }
 
@@ -23,13 +27,6 @@ function setNavbarState(navBarButton){
     }
     if (navBarButton.name == 'close-sharp'
         || navBarButton.name == 'navbar-ancors'){
-        navBar.classList.add('close')
-        navBar.classList.remove('open')
-    }
-}
-//close navbar on scroll
-window.onscroll = function closeNavBarScrolling(){
-    if(navBar.classList.contains('open')){
         navBar.classList.add('close')
         navBar.classList.remove('open')
     }
