@@ -29,14 +29,8 @@
                 <a href="#locator">Find a spa center <ion-icon name="location-sharp"></ion-icon></a>
             </aside>
             <ion-icon name="menu-sharp"
-                    class="header__navbar-button"></ion-icon>
-            <nav class="header__navbar" 
-                id="header__navbar">
-                <a href="#home">Home <ion-icon name="home-sharp"></ion-icon></a>
-                <a href="#about">About <ion-icon name="search-sharp"></ion-icon></a>
-                <a href="#services">Services <ion-icon name="briefcase-sharp"></ion-icon></a>
-                <a href="#locator">Find a spa center <ion-icon name="location-sharp"></ion-icon></a>
-            </nav>
+                    class="header__navbar-button open-navbar"
+                    onclick="setNavbarState(this)"></ion-icon>
         </header>
     </main>
     <section class="about" 
@@ -101,8 +95,26 @@
         id="gtbutton">
         <ion-icon name="arrow-up-sharp"></ion-icon>
     </a>
+    <nav class="navbar"
+    id="navbar">
+        <ion-icon name="close-sharp"
+                class="close-navbar"
+                onclick="setNavbarState(this)"></ion-icon>
+        <a href="#home"
+            name='navbar-ancors'
+            onclick="setNavbarState(this)">Home <ion-icon name="home-sharp"></ion-icon></a>
+        <a href="#about"
+            name='navbar-ancors'
+            onclick="setNavbarState(this)">About <ion-icon name="search-sharp"></ion-icon></a>
+        <a href="#services"
+            name='navbar-ancors'
+            onclick="setNavbarState(this)">Services <ion-icon name="briefcase-sharp"></ion-icon></a>
+        <a href="#locator"
+            name='navbar-ancors'
+            onclick="setNavbarState(this)">Find a spa center <ion-icon name="location-sharp"></ion-icon></a>
+    </nav>
 
-    <script src="landing-page.js"></script>
+    <script src="default.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script> 
 </body>

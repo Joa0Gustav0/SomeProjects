@@ -29,6 +29,9 @@
             <a href="../landing-page.html#services">Services</a>
             <a href="../landing-page.html#locator">Find a spa center <ion-icon name="location-sharp"></ion-icon></a>
         </aside>
+        <ion-icon name="menu-sharp"
+                class="header__navbar-button open-navbar"
+                onclick="setNavbarState(this)"></ion-icon>
     </header>
     <aside>
         <h1>Hair Removal</h1>
@@ -36,6 +39,26 @@
         <p><span>SPA</span> can guide you through your future <span>hair removal</span> experiences.</p>
         <a href="#">Your path starts here.</a>
     </aside>
+    <nav class="navbar"
+    id="navbar">
+        <ion-icon name="close-sharp"
+                class="close-navbar"
+                onclick="setNavbarState(this)"></ion-icon>
+        <a href="../landing-page.html#home"
+            name='navbar-ancors'
+            onclick="setNavbarState(this)">Home <ion-icon name="home-sharp"></ion-icon></a>
+        <a href="../landing-page.html#about"
+            name='navbar-ancors'
+            onclick="setNavbarState(this)">About <ion-icon name="search-sharp"></ion-icon></a>
+        <a href="../landing-page.html#services"
+            name='navbar-ancors'
+            onclick="setNavbarState(this)">Services <ion-icon name="briefcase-sharp"></ion-icon></a>
+        <a href="../landing-page.html#locator"
+            name='navbar-ancors'
+            onclick="setNavbarState(this)">Find a spa center <ion-icon name="location-sharp"></ion-icon></a>
+    </nav>
+    
+    <script src="../default.js"></script>
     
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script> 
