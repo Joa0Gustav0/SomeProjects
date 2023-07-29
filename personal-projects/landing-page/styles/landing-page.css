@@ -72,7 +72,10 @@
     color: #84bf04;
     background-color: #FFF5F4;
 }
-
+.home__alt-landing-picture{
+    display: none;
+    width: 100%;
+}
 
 /*ABOUT*/
 .about{
@@ -87,7 +90,7 @@
 .about > aside{
     transition: all .5s;
     text-align: justify;
-    width: 500px;
+    width: 400px;
     margin-left: 15%;
 }
 .about > aside span{
@@ -97,6 +100,11 @@
     text-align: left;
     font-size: 3em;
     font-weight: 700;
+}
+.about__alt-picture{
+    display: none;
+    width: 100%;
+    margin-top: 40%;
 }
 
 /*SERVICES*/
@@ -162,7 +170,11 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100vh;
+    min-height: 100vh;
+}
+.locator ion-icon{
+    width: 5vw;
+    height: 5vw;
 }
 .locator h1{
     font-size: 2.5em;
@@ -181,7 +193,8 @@
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
-    height: 100vh;
+    min-height: 568px;
+    padding-bottom: 50px;
     color: white;
     background: #DCD7D3 url(../media/conclusion-picture.jpg) right top no-repeat;
     background-size: contain;
@@ -229,11 +242,17 @@ footer{
 /*RESPONSIVE*/
 @media screen and (max-width: 899px) {
     .home{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        height: 125vh;
         background-image: none;
         overflow-y: hidden;
+        overflow-x: hidden;
     }
     .home > aside{
-        top: 50%;
+        top: 350px;
         left: 50%;
         
         padding: 20px;
@@ -241,18 +260,31 @@ footer{
     .home > aside p{
         font-weight: 400;
     }
+    .home__alt-landing-picture{
+        display: block;
+    }
 
     .about{
-        justify-content: center;
+        position: relative;
+        flex-direction: column;
+
+        padding: 0px 20px;
+        padding-top: 40px;
         background-image: none;
     }
     .about > aside{
+        width: 400px;
         margin-left: 0%;
         padding: 20px;
-        font-size: 3.5vw;
+        font-size: 3vw;
+        margin-bottom: 0px;
     }
     .about > aside h1{
         font-size: 2.5em;
+    }
+    .about__alt-picture{
+        display: block;
+        width: 100vw;
     }
 
     .services{
@@ -261,8 +293,14 @@ footer{
     }
 
     .locator{
-        padding: 0 20px;
+        padding: 20px 20px;
         text-align: center;
+    }
+    
+    .locator ion-icon{
+        width: 20vw;
+        height: 20vw;
+        margin-bottom: 20px;
     }
     .conclusion{
         text-align: center;
@@ -284,6 +322,12 @@ footer{
     .conclusion{
         min-height: 568px;
     }
+
+    .services{
+        background-size: cover;
+        background-position: center bottom;
+        background-image: none;
+    }
 }
 @media screen and (max-width: 649px) {
     .gtbutton{
@@ -296,13 +340,16 @@ footer{
         width: 80%;
         font-size: 3.5vw;
     }
+    .about > aside{
+        width: 90%;
+    }
     .locator{
         text-align: center;
         font-size: 3.5vw;
     }
     .locator iframe{
-        width: 280px;
-        height: 180px;
+        width: 90%;
+        height: calc(90vw / 2);
     }
     .conclusion > aside{
         width: 80%;

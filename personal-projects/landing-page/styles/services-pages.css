@@ -2,6 +2,11 @@ body{
     position: relative;
     background: var(--backgroundColor) var(--backgroundImage) left top no-repeat;
     background-size: contain;
+    overflow-x: hidden;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 body > aside{
     position: absolute;
@@ -37,4 +42,29 @@ body > aside a:hover{
     transition: .1s;
     color: var(--secondaryColor);
     background-color: var(--primaryColor);
+}
+body .alt-landing-img{
+    display: none;
+    width: 100%;
+    margin-top: 40%;
+}
+
+@media screen and (max-width: 899px) {
+    body{
+        background-image: none;
+        min-height: 568px;
+    }
+    body > aside{
+        top: 50%;
+        left: 50%;
+    }
+    body .alt-landing-img{
+        display: block;
+    }
+}
+@media screen and (max-width: 499px) {
+    body > aside{
+        width: 80%;
+        font-size: 3.5vw;
+    }
 }
