@@ -52,7 +52,7 @@ body .alt-landing-img{
 @media screen and (max-width: 899px) {
     body{
         background-image: none;
-        min-height: 568px;
+        min-height: 844px;
     }
     body > aside{
         top: 50%;
