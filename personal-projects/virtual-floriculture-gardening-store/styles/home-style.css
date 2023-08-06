@@ -5,8 +5,8 @@ main{
     justify-content: space-around;
 
     min-height: 85dvh;
-    margin: 20px 50px;
-    margin-bottom: 50px;
+    padding: 20px 50px;
+    margin-bottom: 20px;
 }
 .main__landing-picture{
     width: 50vw;

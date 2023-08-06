@@ -19,6 +19,9 @@
             <a href="#">About <ion-icon name="search-sharp"></ion-icon></a>
             <a href="#">Store <ion-icon name="cart-sharp"></ion-icon></a>
         </nav>
+        <ion-icon name="menu-sharp"
+                class="header__alt-navbar-button"
+                onclick="navbarFunctions(this)"></ion-icon>
     </header>
     <main>
         <img src="media/gardenia-icon.png"  
@@ -33,6 +36,19 @@
         &circledR; 2023 Gardenias. All Rights Reserved.
     </footer>
 
+    <nav class="alt-navbar">
+        <ion-icon name="close-sharp"
+                onclick="navbarFunctions(this)"></ion-icon>
+        <aside>
+            <a href="home.html">Home <ion-icon name="home-sharp"></ion-icon></a>
+            <a href="#">About <ion-icon name="search-sharp"></ion-icon></a>
+            <a href="#">Store <ion-icon name="cart-sharp"></ion-icon></a>
+        </aside>
+
+        <h1><ion-icon name="flower-outline"></ion-icon>Gardenias.</h1>
+    </nav>
+
+    <script src="scripts/home.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
