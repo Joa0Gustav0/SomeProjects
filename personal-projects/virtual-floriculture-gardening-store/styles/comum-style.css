@@ -50,3 +50,12 @@ footer{
     font-family: 'Poppins';
     font-weight: 700;
 }
+
+@media screen and (max-width: 499px){
+    .header__navbar{
+        display: none;
+    }
+    header{
+        justify-content: center;
+    }
+}

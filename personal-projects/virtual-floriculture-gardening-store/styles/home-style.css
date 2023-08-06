@@ -1,20 +1,28 @@
 main{
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: space-around;
 
-    height: 85dvh;
+    min-height: 85dvh;
+    margin: 20px 50px;
+    margin-bottom: 50px;
 }
 .main__landing-picture{
-    width: 400px;
-    height: 400px;
+    width: 50vw;
+    max-width: 400px;
+    height: 50vw;
+    max-height: 400px;
+    margin: 20px;
 }
 main > aside{
+    transition: all .2s;
     font-family: 'Noto Serif', sans-serif;
+    margin: 20px;
 } 
 main > aside h1{
     color: #85B745;
-    font-size: 5rem;
+    font-size: 3em;
     font-weight: 400;
 }
 main > aside p{
@@ -40,4 +48,18 @@ main > aside a:active{
     color: rgba(255, 255, 255, 0.644);
     background-color: #85B745;
     box-shadow: -10px -10px 0px #23674C;
+}
+
+@media screen and (max-width: 972px){
+    main{
+        justify-content: center;
+        align-items: flex-start;
+    }
+    .main__landing-picture{
+        margin-bottom: 0px;
+    }
+    main > aside{
+        text-align: center;
+        margin-top: 0px;
+    }
 }
