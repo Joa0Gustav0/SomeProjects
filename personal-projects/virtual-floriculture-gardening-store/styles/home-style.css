@@ -22,10 +22,11 @@ main > aside{
 } 
 main > aside h1{
     color: #85B745;
-    font-size: 3em;
+    font-size: 3.5em;
     font-weight: 400;
 }
 main > aside p{
+    font-size: 1.3em;
     margin-bottom: 50px;
 }
 main > aside a{
