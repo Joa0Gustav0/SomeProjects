@@ -1,0 +1,49 @@
+header{
+    margin-bottom: 20px;
+}
+
+.sections{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+
+    width: 100%;
+    padding: 50px 20px;
+}
+.sections > img{
+    width: 50vw;
+    height: 50vw;
+    max-width: 350px;
+    max-height: 350px;
+    padding: 20px;
+}
+.sections > aside{
+    margin: 20px;
+    max-width: 320px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.sections > aside h1{
+    color: #85b745;
+    font-size: 3em;
+    font-weight: 400;
+}
+.sections > aside p{
+    text-align: justify;
+    font-size: 1.3em;
+}
+
+.what-do-we-offer-section{
+    box-shadow:inset 0px 0px 20px rgba(0, 0, 0, 0.055);
+}
+
+footer{
+    margin-top: 20px;
+}
+
+@media screen and (max-width: 749px){
+    .sections > aside{
+        order: 1;
+    }
+}
