@@ -1,7 +1,33 @@
+*{
+    scroll-behavior: smooth;
+}
+
 header{
     margin-bottom: 20px;
 }
+.go-top-button{
+    transition: all .3s;
+    left: 30px;
+    bottom: 30px;
+    position: fixed;
 
+    display: none;
+    align-items: center;
+    justify-content: center;
+
+    color: white;
+    padding: 10px;
+    border-radius: 100%;
+    background-color: #85b745;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
+.go-top-button.active{
+    display: flex;
+}
+.go-top-button > ion-icon{
+    width: 30px;
+    height: 30px;
+}
 .sections{
     display: flex;
     flex-wrap: wrap;
@@ -45,5 +71,9 @@ footer{
 @media screen and (max-width: 749px){
     .sections > aside{
         order: 1;
+    }
+    .go-top-button{
+        left: 50%;
+        transform: translateX(-50%);
     }
 }
