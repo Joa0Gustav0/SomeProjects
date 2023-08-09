@@ -125,9 +125,10 @@ header{
 }
 
 footer{
+    font-weight: 700;
     text-align: center;
     font-family: 'Poppins';
-    font-weight: 700;
+    background-color: white;
 }
 
 @media screen and (max-width: 499px){
