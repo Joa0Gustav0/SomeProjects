@@ -1,3 +1,26 @@
 body{
     background-color: #85B745;
 }
+body > h1{
+    padding: 10px 5px;
+    color: #85B745;
+    font-family: 'Noto Serif';
+    text-align: center;
+    background-color: white;
+    box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.05);
+}
+body > h1 span{
+    color: black;
+    font-family: 'Poppins';
+}
+
+main{
+    background-color: white;
+    padding: 5px;
+}
+main > h2,
+main > p{
+    padding: 10px 5px;
+    text-align: center;
+    font-family: 'Poppins';
+}

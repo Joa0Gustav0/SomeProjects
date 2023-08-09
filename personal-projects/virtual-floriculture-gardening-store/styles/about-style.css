@@ -1,10 +1,6 @@
 *{
     scroll-behavior: smooth;
 }
-
-header{
-    margin-bottom: 20px;
-}
 .go-top-button{
     transition: all .3s;
     left: 30px;
@@ -27,6 +23,17 @@ header{
 .go-top-button > ion-icon{
     width: 30px;
     height: 30px;
+}
+body > h1{
+    padding: 10px 5px;
+    color: #85b745;
+    text-align: center;
+    font-family: 'Noto Serif';
+    box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.05);
+}
+body > h1 span{
+    color: black;
+    font-family: 'Poppins';
 }
 .sections{
     display: flex;
