@@ -24,14 +24,57 @@
                 onclick="navbarFunctions(this)"></ion-icon>
     </header>
     <h1>Gardenias | <span>STORE</span></h1>
+    <main class="shopping-container">
+        <section class="shopping-container__shopping-tabs products-shopping-tab">
+            <input type="text" 
+                name="search-bar" 
+                id="search-bar"
+                placeholder="Search...">
+            <nav class="categories-bar">
+                <div class="categories-bar-buttons">
+                    <ion-icon name='flower-outline'></ion-icon>
+                    <h1>Flowers</h1>
+                </div>
+                <div class="categories-bar-buttons">
+                    <ion-icon name="leaf-outline"></ion-icon>
+                    <h1>Plants</h1>
+                </div>
+                <div class="categories-bar-buttons">
+                    <ion-icon name="construct-outline"></ion-icon>
+                    <h1>Tools</h1>
+                </div>
+            </nav>
+            <div class="products-list">
+                <div class="product">
+                    <picture>
+                        <img src="media/gardenia-icon.png"
+                            class="product__picture">
+                    </picture>
+                    <div class="product-info">
+                        <h1 class="product__name">
+                            Gardenia Flower
+                        </h1>
+                        <h2 class="product__price">
+                            R$34,99
+                        </h2>
+                    </div>
+                </div>
+                
+            </div>
+        </section>
+        <section class="shopping-container__shopping-tabs info-shopping-tab">
 
+        </section>
+        <section class="shopping-container__shopping-tabs cart-shopping-tab">
 
-    <main>
+        </section>
+    </main>
+    <section class="doubt-section">
         <h2><ion-icon name="sparkles-sharp"></ion-icon> Shopping at Gardenias Store is simple:</h2>
         <p>1° Choose the product. <ion-icon name="hand-right-sharp"></ion-icon></p>
         <p>2° Take a look at the choosen product. <ion-icon name="search-sharp"></ion-icon></p>
         <p>3° Add the product to the cart, and buy it! <ion-icon name="bag-handle-sharp"></ion-icon></p>
-    </main>
+    </section>
     <footer>
         &circledR; 2023 Gardenias. All Rights Reserved.
     </footer>
