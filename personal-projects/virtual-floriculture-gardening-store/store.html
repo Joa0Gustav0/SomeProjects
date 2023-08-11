@@ -31,18 +31,23 @@
                 <input type="text"
                     name="search-bar"
                     id="search-bar"
-                    placeholder="Search...">
+                    placeholder="Search..."
+                    oninput="cleanButtonState()">
+                <ion-icon class="clean-button" name="close-sharp" onclick="cleanSearchBar()"></ion-icon>
             </div>
             <nav class="categories-bar">
-                <div class="categories-bar-buttons">
+                <div name="flower-categorie" class="categories-bar-buttons"
+                onclick="SetCategoriesState(this)">
                     <ion-icon name='flower-outline'></ion-icon>
                     <h1>Flowers</h1>
                 </div>
-                <div class="categories-bar-buttons">
+                <div name="plants-categorie" class="categories-bar-buttons"
+                onclick="SetCategoriesState(this)">
                     <ion-icon name="leaf-outline"></ion-icon>
                     <h1>Plants</h1>
                 </div>
-                <div class="categories-bar-buttons">
+                <div name="tools-categorie" class="categories-bar-buttons"
+                onclick="SetCategoriesState(this)">
                     <ion-icon name="construct-outline"></ion-icon>
                     <h1>Tools</h1>
                 </div>
@@ -51,7 +56,7 @@
             <div class="products-list">
                 <div class="product">
                     <picture>
-                        <img src="media/products-pictures/red rose.png"
+                        <img src="media/products-pictures/red-rose.png"
                             class="product__picture">
                     </picture>
                     <div class="product-info">
@@ -65,7 +70,35 @@
                 </div>
                 <div class="product">
                     <picture>
-                        <img src="media/products-pictures/red rose.png"
+                        <img src="media/products-pictures/gardenia.png"
+                            class="product__picture">
+                    </picture>
+                    <div class="product-info">
+                        <h1 class="product__name">
+                            Gardenia
+                        </h1>
+                        <h2 class="product__price">
+                            R$47,99
+                        </h2>
+                    </div>
+                </div>
+                <div class="product">
+                    <picture>
+                        <img src="media/products-pictures/sunflower.png"
+                            class="product__picture">
+                    </picture>
+                    <div class="product-info">
+                        <h1 class="product__name">
+                            Sunflower
+                        </h1>
+                        <h2 class="product__price">
+                            R$39,99
+                        </h2>
+                    </div>
+                </div>
+                <div class="product">
+                    <picture>
+                        <img src="media/products-pictures/red-rose.png"
                             class="product__picture">
                     </picture>
                     <div class="product-info">
@@ -79,7 +112,7 @@
                 </div>
                 <div class="product">
                     <picture>
-                        <img src="media/products-pictures/red rose.png"
+                        <img src="media/products-pictures/red-rose.png"
                             class="product__picture">
                     </picture>
                     <div class="product-info">
@@ -93,35 +126,7 @@
                 </div>
                 <div class="product">
                     <picture>
-                        <img src="media/products-pictures/red rose.png"
-                            class="product__picture">
-                    </picture>
-                    <div class="product-info">
-                        <h1 class="product__name">
-                            Red Rose
-                        </h1>
-                        <h2 class="product__price">
-                            R$34,99
-                        </h2>
-                    </div>
-                </div>
-                <div class="product">
-                    <picture>
-                        <img src="media/products-pictures/red rose.png"
-                            class="product__picture">
-                    </picture>
-                    <div class="product-info">
-                        <h1 class="product__name">
-                            Red Rose
-                        </h1>
-                        <h2 class="product__price">
-                            R$34,99
-                        </h2>
-                    </div>
-                </div>
-                <div class="product">
-                    <picture>
-                        <img src="media/products-pictures/red rose.png"
+                        <img src="media/products-pictures/red-rose.png"
                             class="product__picture">
                     </picture>
                     <div class="product-info">

@@ -70,6 +70,14 @@ body > h1 span{
     font-weight: 700;
     font-family: 'Poppins';
 }
+.products-shopping-tab > .search-bar-container .clean-button{
+    transition: all .25s;
+    display: none;
+}
+.products-shopping-tab > .search-bar-container .clean-button:hover{
+    cursor: pointer;
+    transform: scale(115%, 115%);
+}
 
 .products-shopping-tab > .categories-bar{
     display: flex;
@@ -79,6 +87,7 @@ body > h1 span{
     margin: 20px 0;
 }
 .products-shopping-tab > .categories-bar div{
+    transition: all .25s;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
@@ -86,12 +95,24 @@ body > h1 span{
 
     padding: 5px 10px;
     margin-right: 10px;
-    border-radius: 125px;
-    border: 2px solid black;
+    border-radius: 10px;
+    background-color: #F5F5F5;
 
     font-size: .7em;
     font-family: 'Poppins';
     text-transform: uppercase;
+}
+.products-shopping-tab > .categories-bar div:hover{
+    cursor: pointer;
+    box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+.products-shopping-tab > .categories-bar div.categorie-selected{
+    color: white;
+    background-color: #85B745;
+}
+.products-shopping-tab > .categories-bar div ion-icon{
+    width: 20px;
+    height: 20px;
 }
 .products-shopping-tab > h1{
     font-family: 'Poppins';
