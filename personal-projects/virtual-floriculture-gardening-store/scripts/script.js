@@ -52,3 +52,54 @@ function cleanSearchBar(){
     searchBar.value = ''
     cleanButton.style.display = 'none'
 }
+
+//PRODUCT INFO TAB
+let productPictureSpace = document.querySelector('.selected-product-picture > img')
+let productNameSpace = document.querySelector('.selected-product-name')
+let productPriceSpace = document.querySelector('.selected-product-price')
+let productDescriptionSpace = document.querySelector('.selected-product-description')
+
+//change selected product quantity
+let quantityNumber = document.querySelector('.selected-product-price-quantity__quantity > h1')
+let quantity = 0
+
+function changeQuantity(currentQuantityButton){
+    if (productNameSpace.innerText == "---"){
+        window.alert('PLEASE, FIRSTLY, SELECT A PRODUCT.')
+    }else if (productNameSpace.innerText != "---"){
+        if (currentQuantityButton.name == 'add-outline'){
+            quantity = quantity + 1
+            quantityNumber.innerText = `${quantity}`
+        }else if (currentQuantityButton.name == 'remove-outline'){
+            if (quantity >= 1){
+                quantity = quantity - 1
+                quantityNumber.innerText = `${quantity}`
+            }
+        }
+        function calculateTotalPrice(){
+            let currentProductPrice = document.querySelector(`.selected-product-price`)
+            let productPrice = currentProductPrice.innerText
+            let numberPrice = ''
+            for (let i = 1; i < productPrice.length; i++){
+                numberPrice = numberPrice + productPrice[i]
+            }
+            let totalPrice = document.querySelector('.selected-product-total-price')
+            totalPrice.innerText = `$${(Number(numberPrice) * quantity).toFixed(2)}`
+        }
+        calculateTotalPrice()
+    }
+}
+
+
+//select product
+function selectProduct(selectedProduct){
+    let productPicture = document.querySelector(`#${selectedProduct.id} .product__picture`)
+    let productName = document.querySelector(`#${selectedProduct.id} .product__name`)
+    let productPrice = document.querySelector(`#${selectedProduct.id} .product__price`)
+    let productDescription = document.querySelector(`#${selectedProduct.id} .product__description`)
+
+    productPictureSpace.src = productPicture.src
+    productNameSpace.innerText = productName.innerText
+    productPriceSpace.innerText = productPrice.innerText
+    productDescriptionSpace.innerText = productDescription.innerText
+}

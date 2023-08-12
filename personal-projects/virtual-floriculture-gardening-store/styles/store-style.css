@@ -127,6 +127,7 @@ body > h1 span{
     padding: 10px 0;
 }
 .product{
+    transition: all .3s;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -135,8 +136,22 @@ body > h1 span{
     width: 120px;
     margin: 10px;
     padding: 10px;
+    border-radius: 60px 60px 20px 20px;
+}
+.product:hover{
+    cursor: pointer;
+    border-radius: 0px 0px 0px 0px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.089);
+}
+.product:active{
+    box-shadow: inset 5px 5px 10px rgba(0, 0, 0, 0);
+}
+.product:hover > picture{
+    background-color: #e7e7e7;
+    border-radius: 0px 0px 0px 0px;
 }
 .product > picture{
+    transition: all .3s;
     position: relative;
 
     width: 100px;
@@ -166,6 +181,10 @@ body > h1 span{
 }
 .product__price{
     color: black;
+}
+.product__description{
+    display: none;
+    visibility: hidden;
 }
 
 .info-shopping-tab{
