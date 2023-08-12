@@ -58,6 +58,7 @@ let productPictureSpace = document.querySelector('.selected-product-picture > im
 let productNameSpace = document.querySelector('.selected-product-name')
 let productPriceSpace = document.querySelector('.selected-product-price')
 let productDescriptionSpace = document.querySelector('.selected-product-description')
+let totalPrice = document.querySelector('.selected-product-total-price')
 
 //change selected product quantity
 let quantityNumber = document.querySelector('.selected-product-price-quantity__quantity > h1')
@@ -83,13 +84,11 @@ function changeQuantity(currentQuantityButton){
             for (let i = 1; i < productPrice.length; i++){
                 numberPrice = numberPrice + productPrice[i]
             }
-            let totalPrice = document.querySelector('.selected-product-total-price')
             totalPrice.innerText = `$${(Number(numberPrice) * quantity).toFixed(2)}`
         }
         calculateTotalPrice()
     }
 }
-
 
 //select product
 function selectProduct(selectedProduct){
@@ -98,8 +97,22 @@ function selectProduct(selectedProduct){
     let productPrice = document.querySelector(`#${selectedProduct.id} .product__price`)
     let productDescription = document.querySelector(`#${selectedProduct.id} .product__description`)
 
+    quantity = 0
+    quantityNumber.innerText = `${quantity}`
+    totalPrice.innerText = "$00.00"
     productPictureSpace.src = productPicture.src
     productNameSpace.innerText = productName.innerText
     productPriceSpace.innerText = productPrice.innerText
     productDescriptionSpace.innerText = productDescription.innerText
+}
+
+//clean products info tab
+function cleanProductInfoTab(){
+    productPictureSpace.src = ''
+    productNameSpace.innerText = '---'
+    productPriceSpace.innerText = '$00.00'
+    productDescriptionSpace.innerText = '...'
+    quantity = 0
+    quantityNumber.innerText = `${quantity}`
+    totalPrice.innerText = "$00.00"
 }
