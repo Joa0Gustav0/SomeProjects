@@ -212,22 +212,23 @@
         <section class="shopping-container__shopping-tabs cart-shopping-tab">
             <ion-icon class="close-cart-shopping-tab" name="close-sharp"></ion-icon>
             <h1 class="tab-title">My Cart</h1>
-            <h2 class="clear-cart-button">(Remove 0)</h2>
+            <h2 class="clear-cart-button">(Clear 0)</h2>
             <div class="cart-products">
-                <div class="cart-added-product-container">
+                <h1 class="cart-empty-sign">The cart is empty...</h1>
+                <div class="cart-added-product-container default-cart-added-product-container">
                     <input type="checkbox" name="confirm-added-product" id="confirm-added-product">
                     <div class="cart-added-product-container__product">
                         <picture>
-                            <img src="media/products-pictures/gardenia.png" class="cart-added-product-container__product-picture">
+                            <img src="" class="cart-added-product-container__product-picture">
                         </picture>
                         <aside>
                             <h1 class="cart-added-product-container__product-name">---</h1>
                             <div class="cart-added-product-container__product-price-quantity">
                                 <h1>$00.00</h1>
                                 <div class="cart-added-product-container__product-price-quantity__quantity">
-                                    <ion-icon name="close-sharp"></ion-icon>
+                                    <ion-icon name="remove-sharp"></ion-icon>
                                     <h1>0</h1>
-                                    <ion-icon name="close-sharp"></ion-icon>
+                                    <ion-icon name="add-sharp"></ion-icon>
                                 </div>
                             </div>
                         </aside>
@@ -235,8 +236,9 @@
                 </div>
             </div>
             <div class="cart-shopping-tab__promo-code-container">
-                <input type="text" name="promo-code-text" id="promo-code-text">
-                <input type="button" value="Apply">
+                <input type="text" name="promo-code-text" id="promo-code-text"
+                placeholder="Promo Code">
+                <input type="button" value="Apply" id="promo-code-button">
             </div>
             <div class="cart-shopping-tab__total-price-container">
                 <div class="cart-shopping-tab__total-price-container__products-price">
@@ -248,9 +250,11 @@
                     <h1>$00.00</h1>
                 </div>
             </div>
-            <h3>Total (0 items):</h2>
-            <h2>$00.00</h1>
-            <h1 class="cart-shopping-tab__checkout-cutton">Proceed to Checkout <ion-icon name="wallet-sharp"></ion-icon></h1>
+            <div class="cart-end-values">
+                <h3 class="cart-end-quantity">Total (0 items):</h2>
+                <h2 class="cart-end-price">$00.00</h1>
+            </div>
+            <h1 class="cart-shopping-tab__checkout-cutton">Checkout <ion-icon name="wallet-sharp"></ion-icon></h1>
         </section>
     </main>
     <section class="doubt-section">
