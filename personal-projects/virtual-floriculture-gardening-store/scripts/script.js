@@ -116,3 +116,33 @@ function cleanProductInfoTab(){
     quantityNumber.innerText = `${quantity}`
     totalPrice.innerText = "$00.00"
 }
+
+//CART
+let cartProductsList = document.querySelector('.cart-products')
+let productCartContainerModel = document.querySelector('.default-cart-added-product-container')
+/*
+let cartEmptySign = document.querySelector('.cart-empty-sign')
+//detect the presence of products inside cart
+function detectPresenceAtCart(){
+    if (cartProductsList.innerHTML != '<h1 class="cart-empty-sign">The cart is empty...</h1>' && cartProductsList.innerHTML != ''){
+
+    }
+}*/
+
+//add product to cart list
+function addProductToCart(){
+    if (productNameSpace == "---" || Number(quantityNumber.innerText) <= 0){
+        window.alert('Please, select a product adding a minimum quantity of one unit of the product.')
+    }else{
+        let productCartContainer = document.createElement('div')
+        productCartContainer.className = 'cart-added-product-container'
+        productCartContainer.innerHTML = productCartContainerModel.innerHTML
+        let productCartContainerPicture = document.querySelector(`.${productCartContainer.className} img`)
+        productCartContainerPicture.src = productPictureSpace.src
+        cartProductsList.appendChild(productCartContainer)
+    }
+}
+
+function clearCartProductsList(){
+    cartProductsList.innerHTML = '<h1 class="cart-empty-sign">The cart is empty...</h1>'
+}

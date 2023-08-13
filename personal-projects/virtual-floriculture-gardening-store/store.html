@@ -201,7 +201,8 @@
                         name="add-outline"></ion-icon>
                 </div>
             </div>
-            <div class="selected-product__add-to-cart-button">
+            <div class="selected-product__add-to-cart-button"
+            onclick="addProductToCart()">
                 <h1>Add To Cart</h1>
                 <ion-icon name="cart-sharp"></ion-icon>
             </div>
@@ -212,27 +213,27 @@
         <section class="shopping-container__shopping-tabs cart-shopping-tab">
             <ion-icon class="close-cart-shopping-tab" name="close-sharp"></ion-icon>
             <h1 class="tab-title">My Cart</h1>
-            <h2 class="clear-cart-button">(Clear 0)</h2>
+            <h2 class="clear-cart-button" onclick="clearCartProductsList()">(Clear 0)</h2>
             <div class="cart-products">
                 <h1 class="cart-empty-sign">The cart is empty...</h1>
-                <div class="cart-added-product-container default-cart-added-product-container">
-                    <input type="checkbox" name="confirm-added-product" id="confirm-added-product">
-                    <div class="cart-added-product-container__product">
-                        <picture>
-                            <img src="" class="cart-added-product-container__product-picture">
-                        </picture>
-                        <aside>
-                            <h1 class="cart-added-product-container__product-name">---</h1>
-                            <div class="cart-added-product-container__product-price-quantity">
-                                <h1>$00.00</h1>
-                                <div class="cart-added-product-container__product-price-quantity__quantity">
-                                    <ion-icon name="remove-sharp"></ion-icon>
-                                    <h1>0</h1>
-                                    <ion-icon name="add-sharp"></ion-icon>
-                                </div>
+            </div>
+            <div class="cart-added-product-container default-cart-added-product-container">
+                <input type="checkbox" name="confirm-added-product" id="confirm-added-product">
+                <div class="cart-added-product-container__product">
+                    <picture>
+                        <img src="" class="cart-added-product-container__product-picture">
+                    </picture>
+                    <aside>
+                        <h1 class="cart-added-product-container__product-name">---</h1>
+                        <div class="cart-added-product-container__product-price-quantity">
+                            <h1>$00.00</h1>
+                            <div class="cart-added-product-container__product-price-quantity__quantity">
+                                <ion-icon name="remove-sharp"></ion-icon>
+                                <h1>0</h1>
+                                <ion-icon name="add-sharp"></ion-icon>
                             </div>
-                        </aside>
-                    </div>
+                        </div>
+                    </aside>
                 </div>
             </div>
             <div class="cart-shopping-tab__promo-code-container">
