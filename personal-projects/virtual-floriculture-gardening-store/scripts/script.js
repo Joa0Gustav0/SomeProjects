@@ -119,15 +119,18 @@ function cleanProductInfoTab(){
 
 //CART
 let cartProductsList = document.querySelector('.cart-products')
-let productCartContainerModel = document.querySelector('.default-cart-added-product-container')
-/*
 let cartEmptySign = document.querySelector('.cart-empty-sign')
+let productCartContainerModel = document.querySelector('.default-cart-added-product-container')
+
 //detect the presence of products inside cart
 function detectPresenceAtCart(){
-    if (cartProductsList.innerHTML != '<h1 class="cart-empty-sign">The cart is empty...</h1>' && cartProductsList.innerHTML != ''){
-
+    if (cartProductsList.innerHTML != '<h1 class="cart-empty-sign">The cart is empty...</h1>' && cartProductsList.innerHTML == ''){
+        cartEmptySign.style.display = 'block'
     }
-}*/
+    if (cartProductsList.innerHTML.length > 53){
+        cartEmptySign.style.display = 'none'
+    }
+}
 
 //add product to cart list
 function addProductToCart(){
@@ -135,14 +138,23 @@ function addProductToCart(){
         window.alert('Please, select a product adding a minimum quantity of one unit of the product.')
     }else{
         let productCartContainer = document.createElement('div')
-        productCartContainer.className = 'cart-added-product-container'
+        productCartContainer.className = `cart-added-product-container`
         productCartContainer.innerHTML = productCartContainerModel.innerHTML
-        let productCartContainerPicture = document.querySelector(`.${productCartContainer.className} img`)
-        productCartContainerPicture.src = productPictureSpace.src
         cartProductsList.appendChild(productCartContainer)
+
+        let productCartContainerPicture = document.querySelector(`.${productCartContainer.className}:last-child img`)
+        let productCartContainerName = document.querySelector(`.${productCartContainer.className}:last-child .cart-added-product-container__product-name`)
+        let productCartContainerPrice = document.querySelector(`.${productCartContainer.className}:last-child .cart-added-product-container__product-price-quantity > h1`)
+        let productCartContainerQuantity = document.querySelector(`.${productCartContainer.className}:last-child .cart-added-product-container__product-price-quantity__quantity > h1`)
+        productCartContainerPicture.src = productPictureSpace.src
+        productCartContainerName.innerText = productNameSpace.innerText
+        productCartContainerPrice.innerText = totalPrice.innerText
+        productCartContainerQuantity.innerText = quantityNumber.innerText
+        detectPresenceAtCart()
     }
 }
 
 function clearCartProductsList(){
     cartProductsList.innerHTML = '<h1 class="cart-empty-sign">The cart is empty...</h1>'
+    console.log(cartProductsList.innerHTML.length)
 }

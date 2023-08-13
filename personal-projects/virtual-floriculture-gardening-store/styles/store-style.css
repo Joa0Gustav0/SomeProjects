@@ -437,7 +437,9 @@ body > h1 span{
 
     margin-left: 10px;
 }
-
+.cart-added-product-container__product-name{
+    color: #85B745;
+}
 .cart-shopping-tab .cart-added-product-container__product > aside .cart-added-product-container__product-price-quantity{
     display: flex;
     flex-wrap: wrap;
