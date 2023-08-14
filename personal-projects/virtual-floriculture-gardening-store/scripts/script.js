@@ -11,11 +11,14 @@ function navbarFunctions(currentButton){
 }
 
 window.onscroll = function scrolling(){
-    if (window.scrollY > 50){
-        goTopButton.classList.add('active')
-    }else{
-        goTopButton.classList.remove('active')
+    if (goTopButton != undefined){
+        if (window.scrollY > 50){
+            goTopButton.classList.add('active')
+        }else{
+            goTopButton.classList.remove('active')
+        }
     }
+    
 }
 
 //STORE
@@ -119,16 +122,12 @@ function cleanProductInfoTab(){
 
 //CART
 let cartProductsList = document.querySelector('.cart-products')
-let cartEmptySign = document.querySelector('.cart-empty-sign')
 let productCartContainerModel = document.querySelector('.default-cart-added-product-container')
 
 //detect the presence of products inside cart
 function detectPresenceAtCart(){
-    if (cartProductsList.innerHTML != '<h1 class="cart-empty-sign">The cart is empty...</h1>' && cartProductsList.innerHTML == ''){
-        cartEmptySign.style.display = 'block'
-    }
-    if (cartProductsList.innerHTML.length > 53){
-        cartEmptySign.style.display = 'none'
+    if (cartProductsList.childNodes.length > 1 && String(cartProductsList.childNodes[0].innerHTML) == 'The cart is empty...'){
+        cartProductsList.childNodes[0].remove()
     }
 }
 
@@ -150,11 +149,13 @@ function addProductToCart(){
         productCartContainerName.innerText = productNameSpace.innerText
         productCartContainerPrice.innerText = totalPrice.innerText
         productCartContainerQuantity.innerText = quantityNumber.innerText
+        console.log(cartProductsList.childNodes.length)
         detectPresenceAtCart()
     }
 }
-
+function showMeTheWay(cart){
+    console.log(String(cart.childNodes[0].innerHTML))
+}
 function clearCartProductsList(){
     cartProductsList.innerHTML = '<h1 class="cart-empty-sign">The cart is empty...</h1>'
-    console.log(cartProductsList.innerHTML.length)
 }
