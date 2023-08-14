@@ -141,16 +141,52 @@ function addProductToCart(){
         productCartContainer.innerHTML = productCartContainerModel.innerHTML
         cartProductsList.appendChild(productCartContainer)
 
-        let productCartContainerPicture = document.querySelector(`.${productCartContainer.className}:last-child img`)
-        let productCartContainerName = document.querySelector(`.${productCartContainer.className}:last-child .cart-added-product-container__product-name`)
-        let productCartContainerPrice = document.querySelector(`.${productCartContainer.className}:last-child .cart-added-product-container__product-price-quantity > h1`)
-        let productCartContainerQuantity = document.querySelector(`.${productCartContainer.className}:last-child .cart-added-product-container__product-price-quantity__quantity > h1`)
-        productCartContainerPicture.src = productPictureSpace.src
-        productCartContainerName.innerText = productNameSpace.innerText
-        productCartContainerPrice.innerText = totalPrice.innerText
-        productCartContainerQuantity.innerText = quantityNumber.innerText
-        console.log(cartProductsList.childNodes.length)
-        detectPresenceAtCart()
+        let foundSameProduct = false
+        for (let i = 0; i < cartProductsList.childNodes.length && foundSameProduct == false; i++){
+            if (cartProductsList.childNodes[i] != undefined && cartProductsList.childNodes[i].classList.contains(`${productNameSpace.innerText}`)){
+                foundSameProduct = true
+                cartProductsList.childNodes[cartProductsList.childNodes.length - 1].remove()
+                console.log('Um mesmo item já foi adicionado!')
+            }
+        }
+
+        if (foundSameProduct == false){
+            let productCartContainerPicture = document.querySelector(`.${productCartContainer.className}:last-child img`)
+            let productCartContainerName = document.querySelector(`.${productCartContainer.className}:last-child .cart-added-product-container__product-name`)
+            let productCartContainerPrice = document.querySelector(`.${productCartContainer.className}:last-child .cart-added-product-container__product-price-quantity > h1`)
+            let productCartContainerQuantity = document.querySelector(`.${productCartContainer.className}:last-child .cart-added-product-container__product-price-quantity__quantity > h1`)
+            productCartContainerPicture.src = productPictureSpace.src
+            productCartContainerName.innerText = productNameSpace.innerText
+            productCartContainerPrice.innerText = totalPrice.innerText
+            productCartContainerQuantity.innerText = quantityNumber.innerText
+            cartProductsList.childNodes[cartProductsList.childNodes.length - 1].classList.add(`${productNameSpace.innerText}`)        
+            detectPresenceAtCart()
+        }
+        if (foundSameProduct == true){
+            let productCartContainerPrice = document.querySelector(`.${productNameSpace.innerText} .cart-added-product-container__product-price-quantity > h1`)
+            let productCartContainerQuantity = document.querySelector(`.${productNameSpace.innerText} .cart-added-product-container__product-price-quantity__quantity > h1`)
+
+            function calculateValuesForCart(){
+                //calculate quantity
+                productCartContainerQuantity.innerText = (Number(quantityNumber.innerText) + Number(productCartContainerQuantity.innerText))
+
+                //calculate price
+                let totalPriceValue = ''
+                for (let i = 1; i < totalPrice.innerText.length; i++){
+                    totalPriceValue = totalPriceValue + totalPrice.innerText[i]
+                }
+                let alreadyOnCartPrice = ''
+                for (let i = 1; i < productCartContainerPrice.innerText.length; i++){
+                    alreadyOnCartPrice = alreadyOnCartPrice + productCartContainerPrice.innerText[i]
+                }
+                console.log(alreadyOnCartPrice)
+                productCartContainerPrice.innerText = `$${Number(totalPriceValue) + Number(alreadyOnCartPrice)}`
+            }
+            calculateValuesForCart()
+            //244.93
+        }
+
+        //calculateCartValues()
     }
 }
 function showMeTheWay(cart){
