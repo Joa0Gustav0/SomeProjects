@@ -180,13 +180,39 @@ function addProductToCart(){
                     alreadyOnCartPrice = alreadyOnCartPrice + productCartContainerPrice.innerText[i]
                 }
                 console.log(alreadyOnCartPrice)
-                productCartContainerPrice.innerText = `$${Number(totalPriceValue) + Number(alreadyOnCartPrice)}`
+                productCartContainerPrice.innerText = `$${(Number(totalPriceValue) + Number(alreadyOnCartPrice)).toFixed(2)}`
             }
             calculateValuesForCart()
-            //244.93
         }
 
-        //calculateCartValues()
+        /*function calculateCartValues(){
+            let cartSubTotalValue = document.querySelector('.cart-shopping-tab__total-price-container__products-price')
+        }*/
+    }
+}
+function changeQuantityAtCart(quantityPressedButton){
+    let cartProductsQuantity = document.querySelector(`.${quantityPressedButton.parentNode.className} > h1`)
+    let cartProductPrice = document.querySelector(`.${quantityPressedButton.parentNode.parentNode.className} h1`)
+
+    /*function recalculateValues(){
+        let intPriceValue = ''
+        for (let i = 1; i < cartProductPrice.innerText.length; i++){
+            intPriceValue =+ cartProductPrice.innerText[i]
+        } 
+        console.log(intPriceValue)
+        if (quantityPressedButton.name == 'remove-sharp'){
+            cartProductPrice.innerText = `$${(Number(cartProductPrice.innerText) - (Number(cartProductPrice.innerText) / Number(cartProductsQuantity.innerText + 1))).to}`
+        }
+    }*/
+    if (quantityPressedButton.name == 'remove-sharp'){
+        if (Number(cartProductsQuantity.innerText) > 1){
+            cartProductsQuantity.innerText = Number(cartProductsQuantity.innerText) - 1
+            recalculateValues()
+        }
+    }
+    if (quantityPressedButton.name == 'add-sharp'){
+        cartProductsQuantity.innerText = Number(cartProductsQuantity.innerText) + 1
+        recalculateValues()
     }
 }
 function showMeTheWay(cart){

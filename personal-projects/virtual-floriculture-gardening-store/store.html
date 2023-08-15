@@ -215,7 +215,7 @@
             <h1 class="tab-title">My Cart</h1>
             <h2 class="clear-cart-button" onclick="clearCartProductsList()">(Clear 0)</h2>
 
-            <div onclick="showMeTheWay(this)" class="cart-products"><h1 class="cart-empty-sign">The cart is empty...</h1></div>
+            <div class="cart-products"><h1 class="cart-empty-sign">The cart is empty...</h1></div>
             
             <div class="cart-added-product-container default-cart-added-product-container">
                 <input type="checkbox" name="confirm-added-product" id="confirm-added-product">
@@ -228,9 +228,9 @@
                         <div class="cart-added-product-container__product-price-quantity">
                             <h1>$00.00</h1>
                             <div class="cart-added-product-container__product-price-quantity__quantity">
-                                <ion-icon name="remove-sharp"></ion-icon>
+                                <ion-icon name="remove-sharp" onclick="changeQuantityAtCart(this)"></ion-icon>
                                 <h1>0</h1>
-                                <ion-icon name="add-sharp"></ion-icon>
+                                <ion-icon name="add-sharp" onclick="changeQuantityAtCart(this)"></ion-icon>
                             </div>
                         </div>
                     </aside>
@@ -244,10 +244,10 @@
             <div class="cart-shopping-tab__total-price-container">
                 <div class="cart-shopping-tab__total-price-container__products-price">
                     <h1>Sub Total:</h1>
-                    <h1>$00.00</h1>
+                    <h1 class="cart-shopping-tab__total-price-container__products-price__subtotal">$00.00</h1>
                 </div>
                 <div class="cart-shopping-tab__total-price-container__shipping-price">
-                    <h1>Shipping:</h1>
+                    <h1 class="cart-shopping-tab__total-price-container__products-price__shipping">Shipping:</h1>
                     <h1>$00.00</h1>
                 </div>
             </div>
