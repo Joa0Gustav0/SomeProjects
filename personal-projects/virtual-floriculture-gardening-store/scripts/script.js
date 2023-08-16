@@ -123,6 +123,7 @@ function cleanProductInfoTab(){
 //CART
 let cartProductsList = document.querySelector('.cart-products')
 let productCartContainerModel = document.querySelector('.default-cart-added-product-container')
+let cartSubTotalValue = document.querySelector('.cart-shopping-tab__total-price-container__products-price__subtotal')
 
 //detect the presence of products inside cart
 function detectPresenceAtCart(){
@@ -191,11 +192,8 @@ function addProductToCart(){
             calculateValuesForCart()
         }
 
-        /*function calculateCartEndValues(){
-            let cartSubTotalValue = document.querySelector('.cart-shopping-tab__total-price-container__products-price')
-        }*/
-
-        //calculateCartEndValues()
+        
+        calculateCartEndValues()
     }
 }
 function changeQuantityAtCart(quantityPressedButton){
@@ -205,7 +203,7 @@ function changeQuantityAtCart(quantityPressedButton){
     function recalculateValues(){
         let currentProductInitialValue = quantityPressedButton.parentNode.parentNode.parentNode.parentNode.parentNode.getAttribute('id')
         cartProductsPrice.innerText = `$${(Number(cartProductsQuantity.innerText) * Number(currentProductInitialValue)).toFixed(2)}`
-        //calculateCartEndValues()
+        calculateCartEndValues()
     }
     if (quantityPressedButton.name == 'remove-sharp'){
         if (Number(cartProductsQuantity.innerText) > 1){
@@ -217,9 +215,23 @@ function changeQuantityAtCart(quantityPressedButton){
     }
     recalculateValues()
 }
+function calculateCartEndValues(){
+    let subTotalValue = 0
+    
+    for (let ia = 0; ia < cartProductsList.childNodes.length; ia++){
+        let intCurrentProductValue = ''
+        let productValue = cartProductsList.childNodes[ia].childNodes[1].childNodes[1].childNodes[1].childNodes[0]
+        for (let ib = 1; ib < productValue.innerText.length; ib++){
+            intCurrentProductValue = intCurrentProductValue + productValue.innerText[ib]
+        }
+        subTotalValue = subTotalValue + Number(intCurrentProductValue)
+        cartSubTotalValue.innerText = `$${subTotalValue.toFixed(2)}`
+    }
+}
 function showMeTheWay(currentProduct){
     console.log(String(currentProduct.getAttribute('id')))
 }
 function clearCartProductsList(){
     cartProductsList.innerHTML = '<h1 class="cart-empty-sign">The cart is empty...</h1>'
+    cartSubTotalValue.innerText = '$00.00'
 }
