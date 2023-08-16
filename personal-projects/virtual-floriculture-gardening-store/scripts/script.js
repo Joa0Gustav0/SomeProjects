@@ -159,7 +159,15 @@ function addProductToCart(){
             productCartContainerName.innerText = productNameSpace.innerText
             productCartContainerPrice.innerText = totalPrice.innerText
             productCartContainerQuantity.innerText = quantityNumber.innerText
-            cartProductsList.childNodes[cartProductsList.childNodes.length - 1].classList.add(`${productNameSpace.innerText}`)        
+            cartProductsList.childNodes[cartProductsList.childNodes.length - 1].classList.add(`${productNameSpace.innerText}`)
+            cartProductsList.childNodes[cartProductsList.childNodes.length - 1].setAttribute('id', `${productPriceSpace.innerText}`)
+            let productId = cartProductsList.childNodes[cartProductsList.childNodes.length - 1].getAttribute('id').toString()
+            let productIdNumber = ''
+            for (let i = 1; i < productId.length; i++){
+                productIdNumber = productIdNumber + productId[i]
+            }
+            cartProductsList.childNodes[cartProductsList.childNodes.length - 1].setAttribute('id', `${productIdNumber}`)
+                 
             detectPresenceAtCart()
         }
         if (foundSameProduct == true){
@@ -167,10 +175,8 @@ function addProductToCart(){
             let productCartContainerQuantity = document.querySelector(`.${productNameSpace.innerText} .cart-added-product-container__product-price-quantity__quantity > h1`)
 
             function calculateValuesForCart(){
-                //calculate quantity
                 productCartContainerQuantity.innerText = (Number(quantityNumber.innerText) + Number(productCartContainerQuantity.innerText))
 
-                //calculate price
                 let totalPriceValue = ''
                 for (let i = 1; i < totalPrice.innerText.length; i++){
                     totalPriceValue = totalPriceValue + totalPrice.innerText[i]
@@ -185,38 +191,34 @@ function addProductToCart(){
             calculateValuesForCart()
         }
 
-        /*function calculateCartValues(){
+        /*function calculateCartEndValues(){
             let cartSubTotalValue = document.querySelector('.cart-shopping-tab__total-price-container__products-price')
         }*/
+
+        //calculateCartEndValues()
     }
 }
 function changeQuantityAtCart(quantityPressedButton){
-    let cartProductsQuantity = document.querySelector(`.${quantityPressedButton.parentNode.className} > h1`)
-    let cartProductPrice = document.querySelector(`.${quantityPressedButton.parentNode.parentNode.className} h1`)
+    let cartProductsQuantity = quantityPressedButton.parentNode.childNodes[1]
+    let cartProductsPrice = quantityPressedButton.parentNode.parentNode.childNodes[0]
 
-    /*function recalculateValues(){
-        let intPriceValue = ''
-        for (let i = 1; i < cartProductPrice.innerText.length; i++){
-            intPriceValue =+ cartProductPrice.innerText[i]
-        } 
-        console.log(intPriceValue)
-        if (quantityPressedButton.name == 'remove-sharp'){
-            cartProductPrice.innerText = `$${(Number(cartProductPrice.innerText) - (Number(cartProductPrice.innerText) / Number(cartProductsQuantity.innerText + 1))).to}`
-        }
-    }*/
+    function recalculateValues(){
+        let currentProductInitialValue = quantityPressedButton.parentNode.parentNode.parentNode.parentNode.parentNode.getAttribute('id')
+        cartProductsPrice.innerText = `$${(Number(cartProductsQuantity.innerText) * Number(currentProductInitialValue)).toFixed(2)}`
+        //calculateCartEndValues()
+    }
     if (quantityPressedButton.name == 'remove-sharp'){
         if (Number(cartProductsQuantity.innerText) > 1){
             cartProductsQuantity.innerText = Number(cartProductsQuantity.innerText) - 1
-            recalculateValues()
         }
     }
     if (quantityPressedButton.name == 'add-sharp'){
         cartProductsQuantity.innerText = Number(cartProductsQuantity.innerText) + 1
-        recalculateValues()
     }
+    recalculateValues()
 }
-function showMeTheWay(cart){
-    console.log(String(cart.childNodes[0].innerHTML))
+function showMeTheWay(currentProduct){
+    console.log(String(currentProduct.getAttribute('id')))
 }
 function clearCartProductsList(){
     cartProductsList.innerHTML = '<h1 class="cart-empty-sign">The cart is empty...</h1>'
