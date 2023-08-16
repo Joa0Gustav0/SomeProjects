@@ -124,12 +124,18 @@ function cleanProductInfoTab(){
 let cartProductsList = document.querySelector('.cart-products')
 let productCartContainerModel = document.querySelector('.default-cart-added-product-container')
 let cartSubTotalValue = document.querySelector('.cart-shopping-tab__total-price-container__products-price__subtotal')
+let cartClearButton = document.querySelector('.clear-cart-button')
+
 
 //detect the presence of products inside cart
 function detectPresenceAtCart(){
     if (cartProductsList.childNodes.length > 1 && String(cartProductsList.childNodes[0].innerHTML) == 'The cart is empty...'){
         cartProductsList.childNodes[0].remove()
     }
+}
+
+function setClearCartButtonInfo(){
+    cartClearButton.innerText = `(Clear ${cartProductsList.childNodes.length})`
 }
 
 //add product to cart list
@@ -192,7 +198,7 @@ function addProductToCart(){
             calculateValuesForCart()
         }
 
-        
+        setClearCartButtonInfo()
         calculateCartEndValues()
     }
 }
@@ -233,5 +239,6 @@ function showMeTheWay(currentProduct){
 }
 function clearCartProductsList(){
     cartProductsList.innerHTML = '<h1 class="cart-empty-sign">The cart is empty...</h1>'
+    cartClearButton.innerText = `(Clear 0)`
     cartSubTotalValue.innerText = '$00.00'
 }
