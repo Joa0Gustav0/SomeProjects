@@ -398,10 +398,13 @@ body > h1 span{
     overflow-y: scroll;
 }
 .cart-shopping-tab .cart-added-product-container{
+    position: relative;
+
     display: flex;
     flex-wrap: nowrap;
     align-items: center;
     justify-content: space-between;
+    background-image: linear-gradient(45deg, transparent 80%, #F5F5F5);
 }
 .cart-shopping-tab .default-cart-added-product-container{
     display: none;
@@ -457,6 +460,24 @@ body > h1 span{
     align-items: center;
     justify-content: center;
 }
+.cart-added-product-container__delete-button{
+    transition: all .1s;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+
+    background-color: white;
+    border-radius: 100%;
+    width: 20px;
+    height: 20px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.103);
+
+}
+.cart-added-product-container__delete-button:hover{
+    cursor: pointer;
+    color: #e00148;
+}
+
 .cart-shopping-tab .cart-added-product-container__product > aside .cart-added-product-container__product-price-quantity__quantity h1{
     margin: 0 5px;
 }

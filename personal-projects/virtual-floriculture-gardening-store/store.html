@@ -32,7 +32,7 @@
                     name="search-bar"
                     id="search-bar"
                     placeholder="Search..."
-                    oninput="cleanButtonState()">
+                    oninput="searchBarFunction()">
                 <ion-icon class="clean-button" name="close-sharp" onclick="cleanSearchBar()"></ion-icon>
             </div>
             <nav class="categories-bar">
@@ -53,8 +53,8 @@
                 </div>
             </nav>
             <h1>Products</h1>
-            <div class="products-list">
-                <div class="product"
+            <div class="products-list"><!--
+             --><div class="product product-flower-type"
                     id="red-rose"
                     onclick="selectProduct(this)">
                     <picture>
@@ -74,8 +74,7 @@
                             Roses can be seen very much in gardens. Sometimes they can be in vineyards as well. In a big vineyard, a bush of roses are planted at the end of each row of vines. As long as the roses stay healthy, the vine growers can see that their vines are healthy as well.
                         </p>
                     </div>
-                </div>
-                <div class="product"
+                </div><div class="product product-flower-type"
                     id="gardenia"
                     onclick="selectProduct(this)">
                     <picture>
@@ -93,8 +92,7 @@
                             Gardenia taitensis, also called Tahitian gardenia or tiaré flower, is a species of plant in the family Rubiaceae. It is an evergreen tropical shrub that grows to 4 m (10 ft) tall and has glossy dark green leaves that are 5 to 16 cm long and are oppositely arranged along the stem. The flower is creamy white and pinwheel-shaped with 5 to 9 lobes, each 2 to 4 cm long and fragrant. Native to the highland shores of the South Pacific, it has the distinction of being one of the few cultivated plants native to Polynesia. It is the national flower of French Polynesia and the Cook Islands.
                         </p>
                     </div>
-                </div>
-                <div class="product"
+                </div><div class="product product-flower-type"
                     id="sunflower"
                     onclick="selectProduct(this)">
                     <picture>
@@ -112,8 +110,7 @@
                             The plant flowers in summer. What is often called the "flower" of the sunflower is actually a "flower head" (pseudanthium), 7.5 to 12.5 centimetres wide, of numerous small individual five-petaled flowers ("florets"). The outer flowers, which resemble petals, are called ray flowers. Each "petal" consists of a ligule composed of fused petals of an asymmetrical ray flower. They are sexually sterile and may be yellow, red, orange, or other colors. The spirally arranged flowers in the center of the head are called disk flowers. These mature into fruit (sunflower "seeds").
                         </p>
                     </div>
-                </div>
-                <div class="product"
+                </div><div class="product product-flower-type"
                     id="carnation"
                     onclick="selectProduct(this)">
                     <picture>
@@ -131,8 +128,7 @@
                             Carnation is a herbaceous perennial plant growing up to 80 cm tall. The leaves are glaucous greyish green to blue-green, slender, up to 15 cm (6 in) long. The flowers are produced singly or up to five together in a cyme; they are around 3 and 5 cm diameter, and sweetly scented; the original natural flower color is bright pinkish-purple, but cultivars of other colors, including red, pink, yellow, white, and green have been developed. While sometimes dyed blue for cut bouquets, there are no known carnation cultivars that produce a true blue flower.
                         </p>
                     </div>
-                </div>
-                <div class="product"
+                </div><div class="product product-flower-type"
                     id="desert-rose"
                     onclick="selectProduct(this)">
                     <picture>
@@ -153,8 +149,7 @@
                             Because seed-grown plants are not genetically identical to the mother plant, desirable varieties are commonly propagated by grafting. Genetically identical plants can also be propagated by cutting. Cutting-grown plants do not tend to develop a desirable thick caudex as quickly as seed-grown plants.
                         </p>
                     </div>
-                </div>
-                <div class="product"
+                </div><div class="product product-flower-type"
                     id="red-rose"
                     onclick="selectProduct(this)">
                     <picture>
@@ -174,8 +169,8 @@
                             Roses can be seen very much in gardens. Sometimes they can be in vineyards as well. In a big vineyard, a bush of roses are planted at the end of each row of vines. As long as the roses stay healthy, the vine growers can see that their vines are healthy as well.
                         </p>
                     </div>
-                </div>
-            </div>
+                </div><!--
+         --></div>
         </section>
         <section class="shopping-container__shopping-tabs info-shopping-tab">
             <picture class="selected-product-picture">
@@ -226,6 +221,7 @@
                         </div>
                     </aside>
                 </div>
+                <ion-icon name="close-sharp" class="cart-added-product-container__delete-button" onclick="deleteThisCartItem(this)"></ion-icon>
             </div>
             <div class="cart-shopping-tab__promo-code-container">
                 <input type="text" name="promo-code-text" id="promo-code-text"

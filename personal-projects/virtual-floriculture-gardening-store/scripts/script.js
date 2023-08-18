@@ -24,11 +24,18 @@ window.onscroll = function scrolling(){
 //STORE
 let searchBar = document.querySelector('#search-bar')
 let cleanButton = document.querySelector('.clean-button')
+let storeProductsList = document.querySelector('.products-list')
+
+function searchBarFunction(){
+    cleanButtonState()
+}
 
 //Select products categories
+let categoriesSelected = false
 function SetCategoriesState(currentButton){
     if (currentButton.classList.contains('categorie-selected')){
         currentButton.classList.remove('categorie-selected')
+        categoriesSelected = false
     }else{
         let allButtons = document.getElementsByClassName('categories-bar-buttons')
         for (let i = 0; i < allButtons.length; i++){
@@ -37,8 +44,39 @@ function SetCategoriesState(currentButton){
             }
         }
         currentButton.classList.add('categorie-selected')
+        categoriesSelected = true
     }
-    
+    function organizeProductsByCategories(){
+        for (let i = 1; i < storeProductsList.childNodes.length - 1; i++){
+            if (currentButton.getAttribute('name').toString() == 'flower-categorie'){
+                if (storeProductsList.childNodes[i].className == 'product product-flower-type'){
+                    storeProductsList.childNodes[i].style.display = 'flex'
+                }else{
+                    storeProductsList.childNodes[i].style.display = 'none'
+                }
+            }
+            if (currentButton.getAttribute('name').toString() == 'plants-categorie'){
+                if (storeProductsList.childNodes[i].className == 'product product-plants-type'){
+                    storeProductsList.childNodes[i].style.display = 'flex'
+                }else{
+                    storeProductsList.childNodes[i].style.display = 'none'
+                }
+            }
+            if (currentButton.getAttribute('name').toString() == 'tools-categorie'){
+                if (storeProductsList.childNodes[i].className == 'product product-tools-type'){
+                    storeProductsList.childNodes[i].style.display = 'flex'
+                }else{
+                    storeProductsList.childNodes[i].style.display = 'none'
+                }
+            }
+        }
+    }
+    organizeProductsByCategories()
+    if (categoriesSelected == false){
+        for (let i = 1; i < storeProductsList.childNodes.length - 1; i++){
+            storeProductsList.childNodes[i].style.display = 'flex'
+        }
+    }
 }
 
 //clean search bar button appears and disappears
@@ -220,6 +258,16 @@ function changeQuantityAtCart(quantityPressedButton){
         cartProductsQuantity.innerText = Number(cartProductsQuantity.innerText) + 1
     }
     recalculateValues()
+}
+function deleteThisCartItem(deleteButtonOfCurrentProduct){
+    deleteButtonOfCurrentProduct.parentNode.remove()
+    setClearCartButtonInfo()
+    calculateCartEndValues()
+    if (cartProductsList.childNodes.length == 0){
+        cartProductsList.innerHTML = '<h1 class="cart-empty-sign">The cart is empty...</h1>'
+        cartClearButton.innerText = `(Clear 0)`
+        cartSubTotalValue.innerText = '$00.00'
+    }
 }
 function calculateCartEndValues(){
     let subTotalValue = 0
