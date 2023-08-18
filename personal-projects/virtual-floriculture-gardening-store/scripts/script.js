@@ -191,7 +191,6 @@ function addProductToCart(){
             if (cartProductsList.childNodes[i] != undefined && cartProductsList.childNodes[i].classList.contains(`${productNameSpace.innerText}`)){
                 foundSameProduct = true
                 cartProductsList.childNodes[cartProductsList.childNodes.length - 1].remove()
-                console.log('Um mesmo item já foi adicionado!')
             }
         }
 
@@ -230,7 +229,6 @@ function addProductToCart(){
                 for (let i = 1; i < productCartContainerPrice.innerText.length; i++){
                     alreadyOnCartPrice = alreadyOnCartPrice + productCartContainerPrice.innerText[i]
                 }
-                console.log(alreadyOnCartPrice)
                 productCartContainerPrice.innerText = `$${(Number(totalPriceValue) + Number(alreadyOnCartPrice)).toFixed(2)}`
             }
             calculateValuesForCart()
