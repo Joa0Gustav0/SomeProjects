@@ -28,6 +28,47 @@ let storeProductsList = document.querySelector('.products-list')
 
 function searchBarFunction(){
     cleanButtonState()
+    function MatchResults(){
+        /*if (searchBar.value[searchBar.value.length - 1] == ' '){
+            searchBar.value[searchBar.value.length - 1] = 'a'
+        }
+        if (searchBar.value == ''){
+            for (let i = 1; i < storeProductsList.childNodes.length - 1; i++){
+                storeProductsList.childNodes[i].style.display = 'flex'
+            }
+        }else{
+            let userSearch = searchBar.value.toUpperCase()
+            for (let i = 1; i < storeProductsList.childNodes.length - 1; i++){
+                for (let ib = 0; ib < userSearch.length; ib++){
+                    let currentChar = storeProductsList.childNodes[i].id.toUpperCase()
+                    if (currentChar[ib] == userSearch[ib]){
+                        storeProductsList.childNodes[i].style.display = 'flex'
+                    }else{
+                        storeProductsList.childNodes[i].style.display = 'none'
+                    }
+                }
+            }
+        }*/
+        let userSearch = searchBar.value.toUpperCase()
+        //let storeProductsList
+        let products = document.querySelectorAll(".product")
+        let productsName = document.querySelectorAll(".product__name")
+
+        for (let i = 0; i < productsName.length; i++){
+            let match = products[i].getElementsByTagName('h1')[0]
+
+            if (match){
+                let textValue = match.textContent || match.innerHTML
+
+                if (textValue.toUpperCase().indexOf(userSearch) > -1){
+                    products[i].style.display = ''
+                }else{
+                    products[i].style.display = 'none'
+                }
+            }
+        }
+    }
+    MatchResults()
 }
 
 //Select products categories
@@ -92,6 +133,9 @@ function cleanButtonState(){
 function cleanSearchBar(){
     searchBar.value = ''
     cleanButton.style.display = 'none'
+    for (let i = 1; i < storeProductsList.childNodes.length - 1; i++){
+        storeProductsList.childNodes[i].style.display = 'flex'
+    }
 }
 
 //PRODUCT INFO TAB
@@ -203,7 +247,17 @@ function addProductToCart(){
             productCartContainerName.innerText = productNameSpace.innerText
             productCartContainerPrice.innerText = totalPrice.innerText
             productCartContainerQuantity.innerText = quantityNumber.innerText
-            cartProductsList.childNodes[cartProductsList.childNodes.length - 1].classList.add(`${productNameSpace.innerText}`)
+            let preparedClassName = ''
+            for (let i = 0; i < productNameSpace.innerText.length; i++){
+                if (productNameSpace.innerText[i] != ' '){
+                    preparedClassName =+ productNameSpace.innerText[i]
+                }
+                if (productNameSpace.innerText[i] == ' '){
+                    preparedClassName =+ '_'
+                }
+                
+            }
+            cartProductsList.childNodes[cartProductsList.childNodes.length - 1].classList.add(`${preparedClassName}`)
             cartProductsList.childNodes[cartProductsList.childNodes.length - 1].setAttribute('id', `${productPriceSpace.innerText}`)
             let productId = cartProductsList.childNodes[cartProductsList.childNodes.length - 1].getAttribute('id').toString()
             let productIdNumber = ''
