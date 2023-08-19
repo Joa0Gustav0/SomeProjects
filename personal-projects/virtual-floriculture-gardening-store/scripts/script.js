@@ -21,6 +21,10 @@ window.onscroll = function scrolling(){
     
 }
 
+//TABS
+let cartTab = document.querySelector('.cart-shopping-tab')
+let infoTab = document.querySelector('.info-shopping-tab')
+
 //STORE
 let searchBar = document.querySelector('#search-bar')
 let cleanButton = document.querySelector('.clean-button')
@@ -117,7 +121,9 @@ function SetCategoriesState(currentButton){
         for (let i = 1; i < storeProductsList.childNodes.length - 1; i++){
             storeProductsList.childNodes[i].style.display = 'flex'
         }
+        searchBarFunction()
     }
+    
 }
 
 //clean search bar button appears and disappears
@@ -189,6 +195,22 @@ function selectProduct(selectedProduct){
     productNameSpace.innerText = productName.innerText
     productPriceSpace.innerText = productPrice.innerText
     productDescriptionSpace.innerText = productDescription.innerText
+
+    if (window.matchMedia("screen and (max-width: 1039px)").matches){
+        unshowCartTab()
+    }
+    showInfoTab()
+}
+
+function showInfoTab(){
+    if (infoTab.classList.contains('info-opened') == false){
+        infoTab.classList.add('info-opened')
+    }
+}
+function unshowInfoTab(){
+    if (infoTab.classList.contains('info-opened')){
+        infoTab.classList.remove('info-opened')
+    }
 }
 
 //clean products info tab
@@ -200,6 +222,8 @@ function cleanProductInfoTab(){
     quantity = 0
     quantityNumber.innerText = `${quantity}`
     totalPrice.innerText = "$00.00"
+
+    unshowInfoTab()
 }
 
 //CART
@@ -232,7 +256,16 @@ function addProductToCart(){
 
         let foundSameProduct = false
         for (let i = 0; i < cartProductsList.childNodes.length && foundSameProduct == false; i++){
-            if (cartProductsList.childNodes[i] != undefined && cartProductsList.childNodes[i].classList.contains(`${productNameSpace.innerText}`)){
+            let preparedClassName = ''
+            for (let i = 0; i < productNameSpace.innerText.length; i++){
+                if (productNameSpace.innerText[i] != ' '){
+                    preparedClassName = preparedClassName + productNameSpace.innerText[i].toString()
+                }
+                if (productNameSpace.innerText[i] == ' '){
+                    preparedClassName = preparedClassName + '-'
+                }  
+            }
+            if (cartProductsList.childNodes[i] != undefined && cartProductsList.childNodes[i].classList.contains(`${preparedClassName}`)){
                 foundSameProduct = true
                 cartProductsList.childNodes[cartProductsList.childNodes.length - 1].remove()
             }
@@ -250,12 +283,11 @@ function addProductToCart(){
             let preparedClassName = ''
             for (let i = 0; i < productNameSpace.innerText.length; i++){
                 if (productNameSpace.innerText[i] != ' '){
-                    preparedClassName =+ productNameSpace.innerText[i]
+                    preparedClassName = preparedClassName + productNameSpace.innerText[i].toString()
                 }
                 if (productNameSpace.innerText[i] == ' '){
-                    preparedClassName =+ '_'
-                }
-                
+                    preparedClassName = preparedClassName + '-'
+                }  
             }
             cartProductsList.childNodes[cartProductsList.childNodes.length - 1].classList.add(`${preparedClassName}`)
             cartProductsList.childNodes[cartProductsList.childNodes.length - 1].setAttribute('id', `${productPriceSpace.innerText}`)
@@ -269,8 +301,17 @@ function addProductToCart(){
             detectPresenceAtCart()
         }
         if (foundSameProduct == true){
-            let productCartContainerPrice = document.querySelector(`.${productNameSpace.innerText} .cart-added-product-container__product-price-quantity > h1`)
-            let productCartContainerQuantity = document.querySelector(`.${productNameSpace.innerText} .cart-added-product-container__product-price-quantity__quantity > h1`)
+            let preparedName = ''
+            for (let i = 0; i < productNameSpace.innerText.length; i++){
+                if (productNameSpace.innerText[i] != ' '){
+                    preparedName = preparedName + productNameSpace.innerText[i].toString()
+                }
+                if (productNameSpace.innerText[i] == ' '){
+                    preparedName = preparedName + '-'
+                }  
+            }
+            let productCartContainerPrice = document.querySelector(`.${preparedName} .cart-added-product-container__product-price-quantity > h1`)
+            let productCartContainerQuantity = document.querySelector(`.${preparedName} .cart-added-product-container__product-price-quantity__quantity > h1`)
 
             function calculateValuesForCart(){
                 productCartContainerQuantity.innerText = (Number(quantityNumber.innerText) + Number(productCartContainerQuantity.innerText))
@@ -290,8 +331,23 @@ function addProductToCart(){
 
         setClearCartButtonInfo()
         calculateCartEndValues()
+        if (window.matchMedia("screen and (max-width: 1039px)").matches){
+            //cart tab appears on screen
+            showCartTab()
+        }
     }
 }
+function showCartTab(){ 
+    if (cartTab.classList.contains('cart-opened') == false){
+        cartTab.classList.add('cart-opened')
+    }
+}
+function unshowCartTab(){
+    if (cartTab.classList.contains('cart-opened')){
+        cartTab.classList.remove('cart-opened')
+    }  
+}
+
 function changeQuantityAtCart(quantityPressedButton){
     let cartProductsQuantity = quantityPressedButton.parentNode.childNodes[1]
     let cartProductsPrice = quantityPressedButton.parentNode.parentNode.childNodes[0]
