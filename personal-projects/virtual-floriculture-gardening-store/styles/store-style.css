@@ -1,5 +1,6 @@
 body{
     background-color: #F5F5F5;
+    overflow-x: hidden;
 }
 body > h1{
     padding: 10px 5px;
