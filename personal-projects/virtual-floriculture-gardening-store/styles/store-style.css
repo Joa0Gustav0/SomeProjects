@@ -28,6 +28,7 @@ body > h1 span{
 
 .shopping-container{
     position: relative;
+    overflow-x: hidden;
 
     display: flex;
     flex-direction: row;
