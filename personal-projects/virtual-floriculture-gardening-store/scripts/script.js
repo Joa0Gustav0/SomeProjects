@@ -198,7 +198,6 @@ function selectProduct(selectedProduct){
     productDescriptionSpace.innerText = productDescription.innerText
 
     showInfoTab()
-    unshowCartTab()
 }
 
 function showInfoTab(){
@@ -332,7 +331,6 @@ function addProductToCart(){
         calculateCartEndValues()
         if (window.matchMedia("screen and (max-width: 1039px)").matches){
             showCartTab()
-            unshowInfoTab()
         }
     }
 }
