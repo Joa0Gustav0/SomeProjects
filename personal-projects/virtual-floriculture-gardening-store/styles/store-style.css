@@ -2,17 +2,87 @@ body{
     background-color: #F5F5F5;
     overflow-x: hidden;
 }
-body > h1{
+.store-navbar{
+    position: relative;
+
     padding: 10px 5px;
-    color: #85B745;
-    font-family: 'Noto Serif';
-    text-align: center;
     background-color: white;
     box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.05);
 }
-body > h1 span{
+.store-navbar > h1{
+    color: #85B745;
+    font-family: 'Noto Serif';
+    text-align: center;
+    font-size: 2em;
+}
+.store-navbar > h1 span{
     color: black;
     font-family: 'Poppins';
+}
+.store-navbar__buttons{
+    transition: all .3s;
+    position: absolute;
+    transform: translateY(-50%);
+    right: 45px;
+    top: 50%;
+
+    display: none;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+}
+.store-navbar__buttons > h2{
+    font-family: 'Poppins';
+    text-transform: uppercase;
+    font-size: 1em;
+    font-weight: 600;
+}
+.store-navbar__buttons ion-icon{
+    width: 20px;
+    height: 20px;
+    padding: 5px;
+    border-radius: 100%;
+}
+.store-navbar__buttons:hover{
+    cursor: pointer;
+    color: #85B745;
+}
+
+.alt-store-navbar{
+    display: none;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+
+    max-width: 100%;
+    padding: 10px;
+    font-family: 'Poppins';
+}
+.alt-store-navbar__path-index{
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.alt-store-navbar h1{
+    transition: all .1s;
+    font-size: 1em;
+}
+.alt-store-navbar__path-index:hover h1{
+    cursor: pointer;
+    color: #85B745;
+}
+.alt-store-navbar__path-index:active h1{
+    text-decoration: underline;
+}
+.alt-store-navbar h2{
+    color: #85B745;
+}
+.path-index-selected h1{
+    color: #85B745;
 }
 
 .doubt-section{
@@ -400,7 +470,7 @@ body > h1 span{
     align-items: center;
     width: 100%;
     margin: 10px 0;
-    height: calc(80/100 * 780px - 425px);
+    height: calc(80/100 * 780px - 400px);
 
     overflow-y: scroll;
 }
@@ -617,6 +687,10 @@ body > h1 span{
 }
 
 @media screen and (max-width: 1039px){
+    .store-navbar__buttons{
+        display: flex;
+    }
+
     .cart-shopping-tab{
         transition: all .3s;
 
@@ -635,6 +709,13 @@ body > h1 span{
     }
 }
 @media screen and (max-width: 699px){
+    .store-navbar__buttons{
+        display: none;
+    }
+    .alt-store-navbar{
+        display: flex;
+    }
+
     .info-shopping-tab{
         transition: all .3s;
 

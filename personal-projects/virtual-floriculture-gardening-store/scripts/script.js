@@ -24,6 +24,7 @@ window.onscroll = function scrolling(){
 //TABS
 let cartTab = document.querySelector('.cart-shopping-tab')
 let infoTab = document.querySelector('.info-shopping-tab')
+let pathIndex = document.getElementsByClassName('alt-store-navbar__path-index')
 
 //STORE
 let searchBar = document.querySelector('#search-bar')
@@ -196,10 +197,8 @@ function selectProduct(selectedProduct){
     productPriceSpace.innerText = productPrice.innerText
     productDescriptionSpace.innerText = productDescription.innerText
 
-    if (window.matchMedia("screen and (max-width: 1039px)").matches){
-        unshowCartTab()
-    }
     showInfoTab()
+    unshowCartTab()
 }
 
 function showInfoTab(){
@@ -332,8 +331,8 @@ function addProductToCart(){
         setClearCartButtonInfo()
         calculateCartEndValues()
         if (window.matchMedia("screen and (max-width: 1039px)").matches){
-            //cart tab appears on screen
             showCartTab()
+            unshowInfoTab()
         }
     }
 }
