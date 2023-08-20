@@ -228,8 +228,10 @@ function cleanProductInfoTab(){
 let cartProductsList = document.querySelector('.cart-products')
 let productCartContainerModel = document.querySelector('.default-cart-added-product-container')
 let cartSubTotalValue = document.querySelector('.cart-shopping-tab__total-price-container__products-price__subtotal')
+let cartShippingValue = document.querySelector(".cart-shopping-tab__total-price-container__products-price__shipping")
 let cartClearButton = document.querySelector('.clear-cart-button')
-
+let cartPreCheckoutQuantity = document.querySelector(".cart-end-quantity")
+let cartPreCheckoutPrice = document.querySelector(".cart-end-price")
 
 //detect the presence of products inside cart
 function detectPresenceAtCart(){
@@ -376,16 +378,44 @@ function deleteThisCartItem(deleteButtonOfCurrentProduct){
 }
 function calculateCartEndValues(){
     let subTotalValue = 0
+    cartSubTotalValue.innerText = `$00.00`
+    let cartPreCheckoutQuantityNumber = 0
     
     for (let ia = 0; ia < cartProductsList.childNodes.length; ia++){
-        let intCurrentProductValue = ''
-        let productValue = cartProductsList.childNodes[ia].childNodes[1].childNodes[1].childNodes[1].childNodes[0]
-        for (let ib = 1; ib < productValue.innerText.length; ib++){
-            intCurrentProductValue = intCurrentProductValue + productValue.innerText[ib]
+        if (cartProductsList.childNodes[ia].childNodes[0].checked){
+            cartPreCheckoutQuantityNumber = cartPreCheckoutQuantityNumber + 1
+            let intCurrentProductValue = ''
+            let productValue = cartProductsList.childNodes[ia].childNodes[1].childNodes[1].childNodes[1].childNodes[0]
+            for (let ib = 1; ib < productValue.innerText.length; ib++){
+                intCurrentProductValue = intCurrentProductValue + productValue.innerText[ib]
+            }
+            subTotalValue = subTotalValue + Number(intCurrentProductValue)
+            cartSubTotalValue.innerText = `$${subTotalValue.toFixed(2)}` 
         }
-        subTotalValue = subTotalValue + Number(intCurrentProductValue)
-        cartSubTotalValue.innerText = `$${subTotalValue.toFixed(2)}`
+        
     }
+
+    calculatePreCheckoutValues(cartPreCheckoutQuantityNumber)
+}
+function calculatePreCheckoutValues(totalQuantity){
+    let treatedcartSubTotalValue = ''
+    for (let i = 1; i < cartSubTotalValue.innerText.length; i++){
+        treatedcartSubTotalValue = treatedcartSubTotalValue + cartSubTotalValue.innerText[i]
+    }
+
+    cartShippingValue.innerText = `$${(1/100 * Number(treatedcartSubTotalValue)).toFixed(2)}`
+    if (cartShippingValue.innerText.length < 6){
+        cartShippingValue.innerText = `$0${(1/100 * Number(treatedcartSubTotalValue)).toFixed(2)}`
+    }
+
+    let treatedcartShippingValue = ''
+    for (let i = 1; i < cartShippingValue.innerText.length; i++){
+        treatedcartShippingValue = treatedcartShippingValue + cartShippingValue.innerText[i]
+    }
+
+
+    cartPreCheckoutQuantity.innerText = `Total (${totalQuantity} items):`
+    cartPreCheckoutPrice.innerText = `$${(Number(treatedcartSubTotalValue) + Number(treatedcartShippingValue)).toFixed(2)}`
 }
 function showMeTheWay(currentProduct){
     console.log(String(currentProduct.getAttribute('id')))
@@ -394,4 +424,5 @@ function clearCartProductsList(){
     cartProductsList.innerHTML = '<h1 class="cart-empty-sign">The cart is empty...</h1>'
     cartClearButton.innerText = `(Clear 0)`
     cartSubTotalValue.innerText = '$00.00'
+    cartShippingValue.innerText = '$00.00'
 }
