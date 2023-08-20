@@ -248,7 +248,7 @@
             <div class="cart-shopping-tab__promo-code-container">
                 <input type="text" name="promo-code-text" id="promo-code-text"
                 placeholder="Promo Code">
-                <input type="button" value="Apply" id="promo-code-button">
+                <input type="button" value="Apply" id="promo-code-button" onclick="SetPromoCode()">
             </div>
             <div class="cart-shopping-tab__total-price-container">
                 <div class="cart-shopping-tab__total-price-container__products-price">
@@ -258,6 +258,10 @@
                 <div class="cart-shopping-tab__total-price-container__shipping-price">
                     <h1>Shipping:</h1>
                     <h1 class="cart-shopping-tab__total-price-container__products-price__shipping">$00.00</h1>
+                </div>
+                <div class="cart-shopping-tab__total-price-container__discount-price">
+                    <h1>Promo Discount:</h1>
+                    <h1 class="cart-shopping-tab__total-price-container__products-price__discount">0%</h1>
                 </div>
             </div>
             <div class="cart-end-values">

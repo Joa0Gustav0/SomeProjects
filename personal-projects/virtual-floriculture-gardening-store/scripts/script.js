@@ -229,9 +229,11 @@ let cartProductsList = document.querySelector('.cart-products')
 let productCartContainerModel = document.querySelector('.default-cart-added-product-container')
 let cartSubTotalValue = document.querySelector('.cart-shopping-tab__total-price-container__products-price__subtotal')
 let cartShippingValue = document.querySelector(".cart-shopping-tab__total-price-container__products-price__shipping")
+let cartDiscountValue = document.querySelector('.cart-shopping-tab__total-price-container__products-price__discount')
 let cartClearButton = document.querySelector('.clear-cart-button')
 let cartPreCheckoutQuantity = document.querySelector(".cart-end-quantity")
 let cartPreCheckoutPrice = document.querySelector(".cart-end-price")
+let promoCodeInput = document.querySelector('#promo-code-text')
 
 //detect the presence of products inside cart
 function detectPresenceAtCart(){
@@ -376,6 +378,32 @@ function deleteThisCartItem(deleteButtonOfCurrentProduct){
         cartSubTotalValue.innerText = '$00.00'
     }
 }
+
+const availablePromoCodes = [{code:'GARDENIAS100', discount: 100},{code: 'GARDENING25', discount: 25},{code: 'FLOWERFUL15', discount: 15}]
+function SetPromoCode(){
+    let promoCodeIsAvailable = false
+    let availablePromoCodeIndex = undefined
+    if (promoCodeInput.value.toUpperCase() == ''){
+        window.alert('Please, insert a valid promo code.')
+    }
+    if (promoCodeInput.value.toUpperCase() != ''){
+        for (let i = 0; i < availablePromoCodes.length; i++){
+            if (promoCodeInput.value.toUpperCase() == availablePromoCodes[i].code){
+                promoCodeIsAvailable = true
+                availablePromoCodeIndex = i
+            }
+        }
+        if (promoCodeIsAvailable == false){
+            window.alert('Inavailable promo code.')
+        }
+        if (promoCodeIsAvailable == true){
+            cartDiscountValue.innerText = `${availablePromoCodes[availablePromoCodeIndex].discount}%`
+            window.alert(`Congratulations! A ${availablePromoCodes[availablePromoCodeIndex].discount}% discount promo was applied to your cart.`)
+        }
+
+        calculatePreCheckoutValues()
+    }
+}
 function calculateCartEndValues(){
     let subTotalValue = 0
     cartSubTotalValue.innerText = `$00.00`
@@ -413,9 +441,18 @@ function calculatePreCheckoutValues(totalQuantity){
         treatedcartShippingValue = treatedcartShippingValue + cartShippingValue.innerText[i]
     }
 
+    let treatedCartDiscountValue = ''
+    for (let i = 0; i < cartDiscountValue.innerText.length - 1; i++){
+        treatedCartDiscountValue = treatedCartDiscountValue + cartDiscountValue.innerText[i]
+    }
 
-    cartPreCheckoutQuantity.innerText = `Total (${totalQuantity} items):`
-    cartPreCheckoutPrice.innerText = `$${(Number(treatedcartSubTotalValue) + Number(treatedcartShippingValue)).toFixed(2)}`
+    if (totalQuantity != null || totalQuantity != undefined){
+        cartPreCheckoutQuantity.innerText = `Total (${totalQuantity} items):`
+    }
+    cartPreCheckoutPrice.innerText = `$${ ((Number(treatedcartSubTotalValue) + Number(treatedcartShippingValue)) -(treatedCartDiscountValue / 100 * (Number(treatedcartSubTotalValue) + Number(treatedcartShippingValue)))).toFixed(2)}`
+    if (cartPreCheckoutPrice.innerText.length < 6){
+        cartPreCheckoutPrice.innerText = `$0${ ((Number(treatedcartSubTotalValue) + Number(treatedcartShippingValue)) -(treatedCartDiscountValue / 100 * (Number(treatedcartSubTotalValue) + Number(treatedcartShippingValue)))).toFixed(2)}`
+    }
 }
 function showMeTheWay(currentProduct){
     console.log(String(currentProduct.getAttribute('id')))
@@ -425,4 +462,5 @@ function clearCartProductsList(){
     cartClearButton.innerText = `(Clear 0)`
     cartSubTotalValue.innerText = '$00.00'
     cartShippingValue.innerText = '$00.00'
+    cartPreCheckoutPrice.innerText = '$00.00'
 }

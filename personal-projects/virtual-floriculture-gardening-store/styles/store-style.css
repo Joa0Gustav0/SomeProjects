@@ -636,7 +636,8 @@ body{
     border-bottom: 1px solid black;
 }
 .cart-shopping-tab__total-price-container__products-price,
-.cart-shopping-tab__total-price-container__shipping-price{
+.cart-shopping-tab__total-price-container__shipping-price,
+.cart-shopping-tab__total-price-container__discount-price{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -645,7 +646,8 @@ body{
     font-size: .8em;
 }
 .cart-shopping-tab__total-price-container__products-price h1,
-.cart-shopping-tab__total-price-container__shipping-price h1{
+.cart-shopping-tab__total-price-container__shipping-price h1,
+.cart-shopping-tab__total-price-container__discount-price h1{
     font-weight: 600;
 }
 .cart-end-price{
