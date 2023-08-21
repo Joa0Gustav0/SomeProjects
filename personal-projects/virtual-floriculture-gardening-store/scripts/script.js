@@ -62,13 +62,28 @@ function searchBarFunction(){
         for (let i = 0; i < productsName.length; i++){
             let match = products[i].getElementsByTagName('h1')[0]
 
-            if (match){
-                let textValue = match.textContent || match.innerHTML
-
-                if (textValue.toUpperCase().indexOf(userSearch) > -1){
-                    products[i].style.display = 'flex'
-                }else{
-                    products[i].style.display = 'none'
+            if (categoriesSelected == false){
+                if (match){
+                    let textValue = match.textContent || match.innerHTML
+    
+                    if (textValue.toUpperCase().indexOf(userSearch) > -1){
+                        products[i].style.display = 'flex'
+                    }else{
+                        products[i].style.display = 'none'
+                    }
+                }
+            }
+            if (categoriesSelected == true){
+                if (match){
+                    let textValue = match.textContent || match.innerHTML
+    
+                    if (textValue.toUpperCase().indexOf(userSearch) > -1){
+                        if (products[i].classList.contains('current-categorie-selected')){
+                            products[i].style.display = 'flex'
+                        }
+                    }else{
+                        products[i].style.display = 'none'
+                    }
                 }
             }
         }
@@ -95,24 +110,36 @@ function SetCategoriesState(currentButton){
     function organizeProductsByCategories(){
         for (let i = 1; i < storeProductsList.childNodes.length - 1; i++){
             if (currentButton.getAttribute('name').toString() == 'flower-categorie'){
-                if (storeProductsList.childNodes[i].className == 'product product-flower-type'){
+                if (storeProductsList.childNodes[i].classList.contains('product-flower-type')){
                     storeProductsList.childNodes[i].style.display = 'flex'
+                    storeProductsList.childNodes[i].classList.add('current-categorie-selected')
                 }else{
                     storeProductsList.childNodes[i].style.display = 'none'
+                    if (storeProductsList.childNodes[i].classList.contains('current-categorie-selected')){
+                        storeProductsList.childNodes[i].classList.remove('current-categorie-selected')
+                    }
                 }
             }
             if (currentButton.getAttribute('name').toString() == 'plants-categorie'){
-                if (storeProductsList.childNodes[i].className == 'product product-plants-type'){
+                if (storeProductsList.childNodes[i].classList.contains('product-plants-type')){
                     storeProductsList.childNodes[i].style.display = 'flex'
+                    storeProductsList.childNodes[i].classList.add('current-categorie-selected')
                 }else{
                     storeProductsList.childNodes[i].style.display = 'none'
+                    if (storeProductsList.childNodes[i].classList.contains('current-categorie-selected')){
+                        storeProductsList.childNodes[i].classList.remove('current-categorie-selected')
+                    }
                 }
             }
             if (currentButton.getAttribute('name').toString() == 'tools-categorie'){
-                if (storeProductsList.childNodes[i].className == 'product product-tools-type'){
+                if (storeProductsList.childNodes[i].classList.contains('product-tools-type')){
                     storeProductsList.childNodes[i].style.display = 'flex'
+                    storeProductsList.childNodes[i].classList.add('current-categorie-selected')
                 }else{
                     storeProductsList.childNodes[i].style.display = 'none'
+                    if (storeProductsList.childNodes[i].classList.contains('current-categorie-selected')){
+                        storeProductsList.childNodes[i].classList.remove('current-categorie-selected')
+                    }
                 }
             }
         }
@@ -121,11 +148,12 @@ function SetCategoriesState(currentButton){
     organizeProductsByCategories()
     if (categoriesSelected == false){
         for (let i = 1; i < storeProductsList.childNodes.length - 1; i++){
-            storeProductsList.childNodes[i].style.display = 'flex'
-        }
-        searchBarFunction()
+            if (storeProductsList.childNodes[i].classList.contains('current-categorie-selected')){
+                storeProductsList.childNodes[i].classList.remove('current-categorie-selected')
+            }
+        } 
     }
-    
+    searchBarFunction()
 }
 
 //clean search bar button appears and disappears
@@ -141,9 +169,7 @@ function cleanButtonState(){
 function cleanSearchBar(){
     searchBar.value = ''
     cleanButton.style.display = 'none'
-    for (let i = 1; i < storeProductsList.childNodes.length - 1; i++){
-        storeProductsList.childNodes[i].style.display = 'flex'
-    }
+    searchBarFunction()
 }
 
 //PRODUCT INFO TAB
