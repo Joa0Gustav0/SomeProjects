@@ -242,6 +242,11 @@ body{
 
     width: 80px;
 }
+.product-tools-type .product__picture,
+.product-plants-type .product__picture{
+    width: 90px;
+    top: -30%;
+}
 .product-info{
     font-family: 'Poppins';
 }
