@@ -188,6 +188,13 @@ body{
 .products-shopping-tab > h1{
     font-family: 'Poppins';
 }
+.products-list-title{
+    width: 100%;
+}
+.products-list-title > span{
+    color: #85B745;
+    font-size: .5em;
+}
 .products-list{
     display: flex;
     flex-wrap: wrap;

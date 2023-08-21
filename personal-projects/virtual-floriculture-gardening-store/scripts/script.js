@@ -30,6 +30,8 @@ let pathIndex = document.getElementsByClassName('alt-store-navbar__path-index')
 let searchBar = document.querySelector('#search-bar')
 let cleanButton = document.querySelector('.clean-button')
 let storeProductsList = document.querySelector('.products-list')
+let productsListTitle = document.querySelector('.products-list-title > span')
+let anyProductsSearchFilters = false
 
 function searchBarFunction(){
     cleanButtonState()
@@ -87,8 +89,15 @@ function searchBarFunction(){
                 }
             }
         }
+        if (categoriesSelected == true || userSearch != ''){
+            anyProductsSearchFilters = true
+        }
+        if (categoriesSelected == false && userSearch == ''){
+            anyProductsSearchFilters = false
+        }
     }
     MatchResults()
+    setProductsListTitle()
 }
 
 //Select products categories
@@ -106,6 +115,7 @@ function SetCategoriesState(currentButton){
         }
         currentButton.classList.add('categorie-selected')
         categoriesSelected = true
+        anyProductsSearchFilters = true
     }
     function organizeProductsByCategories(){
         for (let i = 1; i < storeProductsList.childNodes.length - 1; i++){
@@ -147,6 +157,7 @@ function SetCategoriesState(currentButton){
     }
     organizeProductsByCategories()
     if (categoriesSelected == false){
+        anyProductsSearchFilters = false
         for (let i = 1; i < storeProductsList.childNodes.length - 1; i++){
             if (storeProductsList.childNodes[i].classList.contains('current-categorie-selected')){
                 storeProductsList.childNodes[i].classList.remove('current-categorie-selected')
@@ -154,6 +165,21 @@ function SetCategoriesState(currentButton){
         } 
     }
     searchBarFunction()
+}
+
+function setProductsListTitle(){
+    console.log(anyProductsSearchFilters)
+    if (anyProductsSearchFilters == false){
+        productsListTitle.innerText = ''
+    }else if (anyProductsSearchFilters == true){
+        let FoundResults = 0
+        for (let i = 1; i < storeProductsList.childNodes.length - 1; i++){
+            if (storeProductsList.childNodes[i].style.display != 'none'){
+                FoundResults = FoundResults + 1
+            }
+        }
+        productsListTitle.innerText = `(${FoundResults} Found)`
+    }
 }
 
 //clean search bar button appears and disappears
