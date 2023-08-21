@@ -66,7 +66,7 @@ function searchBarFunction(){
                 let textValue = match.textContent || match.innerHTML
 
                 if (textValue.toUpperCase().indexOf(userSearch) > -1){
-                    products[i].style.display = ''
+                    products[i].style.display = 'flex'
                 }else{
                     products[i].style.display = 'none'
                 }
@@ -96,27 +96,21 @@ function SetCategoriesState(currentButton){
         for (let i = 1; i < storeProductsList.childNodes.length - 1; i++){
             if (currentButton.getAttribute('name').toString() == 'flower-categorie'){
                 if (storeProductsList.childNodes[i].className == 'product product-flower-type'){
-                    if (storeProductsList.childNodes[i].style.display != 'none'){
-                        storeProductsList.childNodes[i].style.display = 'flex'
-                    }
+                    storeProductsList.childNodes[i].style.display = 'flex'
                 }else{
                     storeProductsList.childNodes[i].style.display = 'none'
                 }
             }
             if (currentButton.getAttribute('name').toString() == 'plants-categorie'){
                 if (storeProductsList.childNodes[i].className == 'product product-plants-type'){
-                    if (storeProductsList.childNodes[i].style.display != 'none'){
-                        storeProductsList.childNodes[i].style.display = 'flex'
-                    }
+                    storeProductsList.childNodes[i].style.display = 'flex'
                 }else{
                     storeProductsList.childNodes[i].style.display = 'none'
                 }
             }
             if (currentButton.getAttribute('name').toString() == 'tools-categorie'){
                 if (storeProductsList.childNodes[i].className == 'product product-tools-type'){
-                    if (storeProductsList.childNodes[i].style.display != 'none'){
-                        storeProductsList.childNodes[i].style.display = 'flex'
-                    }
+                    storeProductsList.childNodes[i].style.display = 'flex'
                 }else{
                     storeProductsList.childNodes[i].style.display = 'none'
                 }
