@@ -1,53 +1,84 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>ToDo App</title>
+    <title>ClassY | HOME</title>
 </head>
 <body>
-    <header>
-        <a href="index.html">
-            <h1>ToDoIt!</h1>
-        </a>
+    <header id="page-top">
+        <img src="media/classy-logo.png">
+        <div class="header__ancors">
+            <a href="#page-top">Home</a>
+            <a href="#about-section">About</a>
+            <a href="#">Login</a>
+        </div>
     </header>
-    <div class="sidebar">
-        <div class="header__side-bar-button"
-                onclick="setButtonState()">
-            <div class="line l1"></div>
-            <div class="line l2"></div>
-            <div class="line l3"></div>
+    <main class="home" id="home">
+        <aside>
+            <h1 class="home__aside__headline">
+                Be organized.<br>
+                Be productive.
+            </h1>
+            <p class="main__aside__subheadline">
+                Whether you are a teacher or a student, ClassY will help you with your organization and productivity.
+            </p>
+            <a href="" class="main__aside__cabutton">
+                Let's go!
+            </a>
+        </aside>
+        <picture>
+            <img class="home__picture__landing-picture" src="media/landing-page-picture.jpg">
+        </picture>
+    </main>
+    <section class="about-section" id="about-section">
+        <section class="who-are-we-section about-section__section">
+            <aside>
+                <h1 class="about-section__section__headline">
+                    What is ClassY?
+                </h1>
+                <p class="about-section__section__subheadline">
+                    ClassY is the cleanest, best and most classy organizer aimed at increasing your productivity and organization. whether you are a teacher or a student, ClassY will help you on your academic journey.
+                </p>
+            </aside>
+            <picture>
+                <img src="media/who-are-we-section-picture.jpg" class="about-section__section__picture__landing-picture">
+            </picture>
+        </section>
+        <section class="what-do-we-offer-section about-section__section">
+            <aside>
+                <h1 class="about-section__section__headline">
+                    What does ClassY offers to you?
+                </h1>
+                <p class="about-section__section__subheadline">
+                    ClassY offers you 
+                </p>
+            </aside>
+            <picture>
+                <img src="media/what-do-we-offer-section-picture.jpg" class="about-section__section__picture__landing-picture">
+            </picture>
+        </section>
+        <section class="what-is-our-mission-section about-section__section">
+            <aside>
+                <h1 class="about-section__section__headline">
+                    What is our mission?
+                </h1>
+                <p class="about-section__section__subheadline">
+                    ClassY's mission is to be a great ally of those involved in academic path and also to help spread knowledge around the world.
+                </p>
+            </aside>
+            <picture>
+                <img src="media/what-is-our-mission-section-picture.jpg" class="about-section__section__picture__landing-picture">
+            </picture>
+        </section>
+        <ion-icon name="chevron-back-sharp" class="about-section__previous-slide-button"></ion-icon>
+        <ion-icon name="chevron-forward-sharp" class="about-section__previous-slide-button"></ion-icon>
+        <div class="about-section__slide-index">
+            <ion-icon name="ellipse-sharp" class="about-section__slide-index__index"></ion-icon>
+            <ion-icon name="ellipse-sharp" class="about-section__slide-index__index"></ion-icon>
+            <ion-icon name="ellipse-sharp" class="about-section__slide-index__index"></ion-icon>
         </div>
-        <div class="sidebar__buttons">
-            <div class="sidebar__buttons__home buttons">
-                <ion-icon name="home-outline"></ion-icon>
-                <h1>Home</h1>
-            </div>
-            <div class="sidebar__buttons__todolist buttons">
-                <ion-icon name="list-outline"></ion-icon>
-                <h1>To-do List</h1>
-            </div>
-            <div class="sidebar__buttons__calculator buttons">
-                <ion-icon name="calculator-outline"></ion-icon>
-                <h1>Calculator</h1>
-            </div>
-            <div class="sidebar__buttons__notes buttons">
-                <ion-icon name="pencil-sharp"></ion-icon>
-                <h1>Notes</h1>
-            </div>
-        </div>
-    </div>
-    
-    <div class="landing-page-container container">
-        <img src="./media/landing-page-picture.png">
-        <div class="landing-page-container__welcome-text">
-            <h1>Welcome to ToDoIt!</h1>
-            <p>Be productive. Be organized. </p>
-        </div>
-    </div>
-
-    <script src="script.js"></script>
+    </section>
 
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
