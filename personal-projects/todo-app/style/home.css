@@ -1,0 +1,124 @@
+header{
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    
+    height: 75px;
+}
+
+header > img{
+    width: 45px;
+    margin: 15px 30px;
+}
+.header__ancors{
+    margin-right: 15px;
+}
+.header__ancors > a{
+    transition: all .25s;
+    color: black;
+    text-decoration: none;
+    text-transform: uppercase;
+
+    font-weight: 500;
+    padding: 5px;
+    margin: 0 10px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0);
+}
+.header__ancors > a:hover{
+    cursor: pointer;
+    border-bottom: 1px solid black;
+}
+
+.home{
+    position: relative;
+
+    width: 100%;
+    min-height: 568px;
+    height: calc(100vh - 75px);
+    background-color: #ffffff;
+
+    overflow: hidden;
+}
+.home > aside{
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+}
+.home__aside__headline{
+    font-size: 3em;
+}
+.home__aside__subheadline{
+    margin-bottom: 40px;
+}
+.home__aside__cabutton{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-decoration: none;
+    border-radius: 10px;
+
+    width: 150px;
+    padding: 10px;
+    color: white;
+    background-color: #1A6ED8;
+}
+.home-landing-picture-bg{
+    position: absolute;
+    bottom: -400px;
+    right: -400px;
+
+    width: 800px;
+    height: 800px;
+    border-radius: 100%;
+    background-color: #1A6ED8;
+}
+
+.about-section{
+    position: relative;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+
+    width: 100%;
+    min-height: 568px;
+    height: calc(100vh - 75px);
+}
+.about-section__section{
+    display: none;
+}
+.slide-button{
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    width: 35px;
+    height: 35px;
+    border-radius: 100%;
+    border: 1px solid red;
+}
+.about-section__previous-slide-button{
+    left: 20px;
+}
+.about-section__next-slide-button{
+    right: 20px;
+}
+.about-section__slide-index{
+    position: absolute;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    bottom: 20px;
+}
+.about-section__slide-index__index{
+    color: #1a6fd875;
+    width: 15px;
+    height: 15px;
+    margin: 0 5px;
+}
