@@ -1,76 +1,49 @@
-header{
+.hero-section{
     display: flex;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    
-    height: 75px;
-}
-
-header > img{
-    width: 45px;
-    margin: 15px 30px;
-}
-.header__ancors{
-    margin-right: 15px;
-}
-.header__ancors > a{
-    transition: all .25s;
-    color: black;
-    text-decoration: none;
-    text-transform: uppercase;
-
-    font-weight: 500;
-    padding: 5px;
-    margin: 0 10px;
-    border-bottom: 2px solid rgba(0, 0, 0, 0);
-}
-.header__ancors > a:hover{
-    cursor: pointer;
-    border-bottom: 2px solid #4D3D87;
-}
-
-.home{
-    position: relative;
 
     width: 100%;
-    min-height: 568px;
-    height: calc(100vh - 75px);
-    background-color: #ffffff;
-
-    overflow: hidden;
+    height: 100%;
+    padding: 15px 30px;
 }
-.home > aside{
+
+.hero-section__classy-logo{
+    position: absolute;
+    top: 15px;
+    left: 30px;
+    
+    width: 50px;
+}
+.hero-section__sidebar-button{
+    position: absolute;
+    top: 15px;
+    right: 30px;
+
+    width: 30px;
+    height: 30px;
+    padding: 5px;
+    color: white;
+    border-radius: 100%;
+    background-color: #4D3D87;
+}
+
+.hero-section__hero-picture{
     position: absolute;
     transform: translate(-50%, -50%);
     top: 50%;
     left: 50%;
-    min-width: 260px;
-}
-.home__aside__headline{
-    font-size: 2em;
-}
-.home__aside__subheadline{
-    margin-bottom: 40px;
-}
-.home__aside__cabutton{
-    display: flex;
-    align-items: center;
-    justify-content: center;
 
-    text-decoration: none;
-    border-radius: 10px;
-
-    width: 150px;
-    padding: 10px;
-    color: white;
-    background-color: #4D3D87;
+    width: 100%;
+    max-width: 550px;
 }
-.home-landing-picture-bg{
+.hero-section__hero-picture-bg{
     position: absolute;
-    bottom: -400px;
-    right: -400px;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    bottom: 10px;
 
     width: 800px;
     height: 800px;
@@ -78,51 +51,6 @@ header > img{
     background-color: #4D3D87;
 }
 
-.about-section{
-    position: relative;
-    display: flex;
-    flex-wrap: nowrap;
-    flex-direction: row;
-
-    width: 100%;
-    min-height: 568px;
-    height: 100vh;
-}
-.about-section__section{
-    display: none;
-}
-.about-section__previous-slide-button,
-.about-section__next-slide-button{
-    position: absolute;
-    transform: translateY(-50%);
-    top: 50%;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    
-    width: 30px;
-    height: 30px;
-    padding: 5px;
-    color: #4D3D87;
-    border-radius: 100%;
-    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.445);
-}
-.about-section__previous-slide-button{
-    left: 30px;
-}
-.about-section__next-slide-button{
-    right: 30px;
-}
-.about-section__slide-index{
-    position: absolute;
-    transform: translate(-50%, -50%);
-    left: 50%;
-    bottom: 20px;
-}
-.about-section__slide-index__index{
-    color: #4d3d8780;
-    width: 15px;
-    height: 15px;
-    margin: 0 5px;
+.hero-section h1{
+    font-size: 3em;
 }
