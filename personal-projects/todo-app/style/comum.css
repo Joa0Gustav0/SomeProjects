@@ -6,6 +6,7 @@
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
     user-select: none;
+    scroll-behavior: smooth;
 }
 
 body{
@@ -13,7 +14,6 @@ body{
     min-height: 568px;
     height: 100vh;
 }
-
 ::-webkit-scrollbar{
     display: none;
 }
