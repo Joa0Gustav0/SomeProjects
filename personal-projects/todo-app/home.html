@@ -62,8 +62,12 @@
                 </aside>
             </section>
         </section>
-        <ion-icon name="arrow-back-sharp" class="about-section__slide-button about-section__left-slide-button"></ion-icon>
-        <ion-icon name="arrow-forward-sharp" class="about-section__slide-button about-section__right-slide-button"></ion-icon>
+        <ion-icon name="arrow-back-sharp" 
+                class="about-section__slide-button about-section__left-slide-button back-slide"
+                onclick="setSlidePos(this)"></ion-icon>
+        <ion-icon name="arrow-forward-sharp" 
+                class="about-section__slide-button about-section__right-slide-button forward-slide"
+                onclick="setSlidePos(this)"></ion-icon>
         <div class="about-section__sections-index">
             <ion-icon name="ellipse" class="about-section__sections-index__index"></ion-icon>
             <ion-icon name="ellipse" class="about-section__sections-index__index"></ion-icon>
@@ -93,6 +97,8 @@
             <p>&circledR; 2023 CLASSY. All Rights Reserved.</p>
         </section>
     </footer>
+
+    <script src="scripts/home.js"></script>
 
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script> 
