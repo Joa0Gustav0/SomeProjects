@@ -14,11 +14,19 @@
 }
 
 .hero-section__classy-logo{
+    transition: all .1s;
     position: absolute;
     top: 15px;
     left: 30px;
     
     width: 50px;
+    height: 50px;
+}
+.hero-section__classy-logo > img{
+    width: 100%;
+}
+.hero-section__classy-logo:hover{
+    transform: scale(110%, 110%);
 }
 .hero-section__sidebar-button{
     position: absolute;
@@ -83,6 +91,8 @@
 
     width: 100%;
     min-height: 100vh;
+    overflow-x: hidden;
+    border-top: 2px solid #4D3D87;
 }
 .about-section__slide-button{
     position: absolute;
@@ -94,6 +104,7 @@
     padding: 5px;
     color: #4D3D87;
     border-radius: 100%;
+    background-color: white;
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.25);
 }
 .about-section__left-slide-button{
@@ -105,7 +116,7 @@
 .about-section__sections-index{
     position: absolute;
     transform: translateX(-50%);
-    bottom: 40px;
+    bottom: 15px;
     left: 50%;
 
     display: flex;
@@ -117,12 +128,49 @@
     color: #4d3d8750;
     margin: 5px;
 }
+.about-section__slide{
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+}
+.about-section__slide__section{
+    position: relative;
 
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 100vw;
+    min-height: 100vh;
+    padding: 15px 30px;
+}
+.about-section__slide__section img{
+    width: 100%;
+    max-width: 500px;
+    margin: 0 30px;
+}
+.about-section__slide__section aside{
+    max-width: 320px;
+    margin: 0 30px;
+}
+.about-section__slide__section aside h1{
+    font-size: 2.2em;
+    color: #4D3D87;
+}
+.about-section__slide__section aside p{
+    text-align: justify;
+}
+.about-section__slide__section aside span{
+    color: #4D3D87;
+    font-weight: 500;
+}
+
+/*RESPOSIVINESS*/
 @media screen and (max-width: 1169px) {
     .hero-section{
         padding: 75px 30px;
-
-        display: block;
     }
 
     .hero-section > aside{
@@ -153,10 +201,23 @@
     }
 }
 
+@media screen and (max-width: 1159px) {
+    .about-section__slide__section{
+        flex-direction: column;
+    }
+    .about-section__slide__section img{
+        margin: 0px;
+        margin-bottom: 60px;
+    }
+    .about-section__slide__section aside{
+        margin: 0px;
+    }
+}
+
 @media screen and (max-width: 819px) {
     .hero-section{
         overflow: visible;
-        padding-bottom: 0;
+        padding-bottom: 0px;
     }
     .hero-section > aside{
         margin: auto;
@@ -167,8 +228,7 @@
         margin: auto;
         
         width: 100%;
-        max-width: 560px;
-        inset: 0;
+        max-width: 100%;
     }
 }
 
