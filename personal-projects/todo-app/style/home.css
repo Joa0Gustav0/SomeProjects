@@ -1,4 +1,6 @@
 .hero-section{
+    position: relative;
+
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
@@ -8,6 +10,7 @@
     width: 100%;
     height: 100%;
     padding: 15px 30px;
+    overflow: hidden;
 }
 
 .hero-section__classy-logo{
@@ -32,25 +35,98 @@
 
 .hero-section__hero-picture{
     position: absolute;
-    transform: translate(-50%, -50%);
-    top: 50%;
-    left: 50%;
+    transform: translateX(50%);
+    bottom: 0px;
+    right: 50%;
 
     width: 100%;
     max-width: 550px;
 }
-.hero-section__hero-picture-bg{
-    position: absolute;
-    transform: translate(-50%, -50%);
-    left: 50%;
-    bottom: 10px;
-
-    width: 800px;
-    height: 800px;
-    border-radius: 100%;
-    background-color: #4D3D87;
+.hero-section h1,
+.hero-section p{
+    max-width: 320px;
+}
+.hero-section h1{
+    color: black;
+    font-size: 2.2em;
+}
+.hero-section h1 > span{
+    color: #4D3D87;
+}
+.hero-section p{
+    text-align: justify;
+}
+.hero-section__headline,
+.hero-section__subheadline{
+    margin-bottom: 20px;
 }
 
-.hero-section h1{
-    font-size: 3em;
+.hero-section__cabutton{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    width: 50%;
+    padding: 5px 0;
+    border-radius: 10px;
+    background-color: #4D3D87;
+
+    color: white;
+    font-size: 1.5em;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+
+@media screen and (max-width: 1169px) {
+    .hero-section{
+        padding: 75px 30px;
+
+        display: block;
+    }
+
+    .hero-section > aside{
+        width: calc(100% - 500px);
+        min-width: 260px;
+    }
+
+    .hero-section__title{
+        text-align: center;
+        margin-bottom: 40px;
+    }
+    
+    .hero-section__cabutton{
+        width: 100%;
+        padding: 10px 0;
+        margin: 0 auto;
+    }
+    .hero-section h1,
+    .hero-section p{
+        width: 100%;
+        max-width: none;
+    }
+
+    .hero-section__hero-picture{
+        right: 0px;
+        max-width: 515px;
+        transform: translateX(0);
+    }
+}
+
+@media screen and (max-width: 819px) {
+    .hero-section{
+        overflow: visible;
+    }
+    .hero-section > aside{
+        margin: auto;
+    }
+    .hero-section__hero-picture{
+        position: initial;
+        display: block;
+        margin: auto;
+        
+        width: 100%;
+        max-width: 560px;
+        inset: 0;
+    }
 }
