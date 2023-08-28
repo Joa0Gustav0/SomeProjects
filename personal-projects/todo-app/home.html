@@ -8,7 +8,7 @@
     <title>ClassY | HOME</title>
 </head>
 <body>
-    <main class="hero-section" id="#home">
+    <main class="hero-section" id="home">
         <h1 class="hero-section__title hero-section__titles hero-section__text-containers">Welcome to <span>ClassY</span>.</h1>
         <img src="media/hero-picture.gif" alt="hero-picture" class="hero-section__hero-picture">
         <aside class="hero-section__aside hero-section__text-containers">
@@ -24,15 +24,24 @@
             </a>
         </aside>
 
-        <a href="home.html" class="hero-section__logo">
-            <img src="media/classy-logo.png" alt="classy-logo">
-        </a>
         <div class="hero-section__screen-saver"></div>
         <div class="hero-section__sidebar">
             <a href="#home" class="hero-section__sidebar__links">
-                
+                <ion-icon name="home-sharp"></ion-icon>
+                Home
+            </a>
+            <a href="#about" class="hero-section__sidebar__links">
+                <ion-icon name="search"></ion-icon>
+                About
+            </a>
+            <a href="#" class="hero-section__sidebar__links">
+                <ion-icon name="person-sharp"></ion-icon>
+                Login
             </a>
         </div>
+        <a href="home.html" class="hero-section__logo">
+            <img src="media/classy-logo.png" alt="classy-logo">
+        </a>
         <div class="hero-section__menu-button" 
             onclick="setSideBarState()">
             <div class="hero-section__menu-button__line hero-section__menu-button__line1"></div>
@@ -40,7 +49,7 @@
             <div class="hero-section__menu-button__line hero-section__menu-button__line3"></div>
         </div>
     </main>
-    <section class="about-section">
+    <section class="about-section" id="about">
         <section class="about-section__waw-section">
             <img src="" alt="picture" class="about-section__section__picture">
             <aside class="about-section__section__aside">
@@ -78,5 +87,7 @@
     </section>
 
     <script src="scripts/home.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
 </html>

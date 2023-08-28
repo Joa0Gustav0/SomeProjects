@@ -70,7 +70,7 @@
 .hero-section__menu-button.opened > .hero-section__menu-button__line1{
     top: calc(50% - 1px);
     left: calc(50% - 11.25px);
-    transform: rotate(45deg);
+    transform: rotateZ(45deg);
 } 
 .hero-section__menu-button.opened > .hero-section__menu-button__line2{
     display: none;
@@ -78,7 +78,7 @@
 .hero-section__menu-button.opened > .hero-section__menu-button__line3{
     top: calc(50% - 1px);
     left: calc(50% - 11.25px);
-    transform: rotate(-45deg);
+    transform: rotateZ(-45deg);
 } 
 
 .hero-section__screen-saver{
@@ -150,6 +150,47 @@
 
 .hero-section__text-containers{
     max-width: 320px;
+}
+
+.hero-section__sidebar{
+    transition: all .5s;
+    position: absolute;
+    top: 0px;
+    right: -350px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 300px;
+    height: 100vh;
+    padding: 30px;
+    padding-top: 100px;
+
+    background-color: #4D3D87;
+}
+.hero-section__sidebar.opened{
+    right: 0%;
+}
+.hero-section__sidebar__links{
+    transition: all .25s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    color: black;
+    text-align: center;
+    text-decoration: none;
+    background-color: white;
+}
+.hero-section__sidebar__links:hover{
+    transform: scale(110%, 110%);
+}
+.hero-section__sidebar__links > ion-icon{
+    margin-right: 10px;
 }
 
 @media screen and (max-width: 1199px){
