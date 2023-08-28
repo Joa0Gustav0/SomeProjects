@@ -81,17 +81,6 @@
     transform: rotateZ(-45deg);
 } 
 
-.hero-section__screen-saver{
-    display: none;
-    position: absolute;
-    top: 0;
-    left: 0;
-
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.25);
-}
-
 .hero-section__hero-picture{
     width: 100%;
     max-width: 500px;
@@ -154,9 +143,9 @@
 
 .hero-section__sidebar{
     transition: all .5s;
-    position: absolute;
+    position: fixed;
     top: 0px;
-    right: -350px;
+    right: calc(-350px + (-100vh/2));
 
     display: flex;
     flex-direction: column;
@@ -168,6 +157,13 @@
     padding-top: 100px;
 
     background-color: #4D3D87;
+}
+.hero-section__sidebar__border{
+    position: absolute;
+    top: 0%;
+    left: calc(-100vh / 2);
+
+    height: 100vh;
 }
 .hero-section__sidebar.opened{
     right: 0%;
@@ -191,6 +187,17 @@
 }
 .hero-section__sidebar__links > ion-icon{
     margin-right: 10px;
+}
+
+.hero-section__screen-saver{
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.25);
 }
 
 @media screen and (max-width: 1199px){

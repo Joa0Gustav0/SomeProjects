@@ -12,13 +12,24 @@ function setSideBarState(){
             sideBarButton.classList.add('opened')
         }
         setTimeout(endProcess, 250)
-    }else{
+    }else{ 
         sideBar.classList.remove('opened')
-        sideBarButton.classList.remove('opened')
+        if (sideBarButton.classList.contains('opened')){
+            sideBarButton.classList.remove('opened')
+        }
         function endProcess(){
-            sideBarButton.classList.remove('semi-opened')
+            if (sideBarButton.classList.contains('semi-opened')){
+                sideBarButton.classList.remove('semi-opened')
+            }
         }
         setTimeout(endProcess, 250)
         screenSaver.style.display = 'none'
+    }
+}
+
+//actions when scrolls
+window.onscroll = function actionsWhenScrolling(){
+    if (sideBar.classList.contains('opened')){
+        setSideBarState()
     }
 }
