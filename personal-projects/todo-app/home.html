@@ -8,7 +8,7 @@
     <title>ClassY | HOME</title>
 </head>
 <body>
-    <main class="hero-section">
+    <main class="hero-section" id="#home">
         <h1 class="hero-section__title hero-section__titles hero-section__text-containers">Welcome to <span>ClassY</span>.</h1>
         <img src="media/hero-picture.gif" alt="hero-picture" class="hero-section__hero-picture">
         <aside class="hero-section__aside hero-section__text-containers">
@@ -27,7 +27,14 @@
         <a href="home.html" class="hero-section__logo">
             <img src="media/classy-logo.png" alt="classy-logo">
         </a>
-        <div class="hero-section__menu-button">
+        <div class="hero-section__screen-saver"></div>
+        <div class="hero-section__sidebar">
+            <a href="#home" class="hero-section__sidebar__links">
+                
+            </a>
+        </div>
+        <div class="hero-section__menu-button" 
+            onclick="setSideBarState()">
             <div class="hero-section__menu-button__line hero-section__menu-button__line1"></div>
             <div class="hero-section__menu-button__line hero-section__menu-button__line2"></div>
             <div class="hero-section__menu-button__line hero-section__menu-button__line3"></div>
@@ -69,5 +76,7 @@
             </aside>
         </section>
     </section>
+
+    <script src="scripts/home.js"></script>
 </body>
 </html>
