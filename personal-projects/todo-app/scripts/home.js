@@ -81,12 +81,6 @@ function changeAboutSection(currentSlideButton){
             correctPosition = i
         }
     }
-    //reset sections positions
-    for (var i = 0; i < aboutSections.length; i++){
-        if (aboutSections[i].classList.contains('current-about-section')){
-            aboutSections[i].classList.remove('current-about-section')
-        }
-    }
     //set correct section
     if (correctPosition == 0){
         aboutSections[0].style.right = '0px'
@@ -103,9 +97,4 @@ function changeAboutSection(currentSlideButton){
         aboutSections[1].style.right = '100vw'
         aboutSections[2].style.right = '0px'
     }
-    /*for (var i = 0; i < aboutSections.length; i++){
-        if (i == correctPosition){
-            aboutSections[i].classList.add('current-about-section')
-        }
-    }*/
 }
