@@ -17,8 +17,8 @@
     flex-wrap: nowrap;
     flex-direction: column;
 
-    min-width: 320px;
-    max-width: 100%;
+    width: 100%;
+    max-width: 260px;
     margin: 30px;
     color: white;
 }
@@ -83,6 +83,7 @@
 @media screen and (max-width: 666px){
     .footer__main{
         flex-direction: column;
+        align-items: center;
     }
     .footer__main__sections:not(:last-child){
         margin-bottom: 0;
