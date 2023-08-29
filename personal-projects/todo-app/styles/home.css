@@ -210,7 +210,7 @@
     flex-direction: row;
 
     width: 100%;
-    min-height: 1000px;
+    min-height: 100vh;
     overflow-x: hidden;
 }
 
@@ -242,7 +242,7 @@
 .about-section__sections-index{
     position: absolute;
     left: 50%;
-    bottom: 10px;
+    bottom: 30px;
     transform: translateX(-50%);
 }
 .about-section__sections-index__index{
