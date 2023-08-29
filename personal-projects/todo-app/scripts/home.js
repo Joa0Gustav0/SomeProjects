@@ -83,18 +83,18 @@ function changeAboutSection(currentSlideButton){
     }
     //set correct section
     if (correctPosition == 0){
-        aboutSections[0].style.right = '0px'
-        aboutSections[1].style.right = '-100vw'
-        aboutSections[2].style.right = '100vw'
+        aboutSections[0].style.order = '0'
+        aboutSections[1].style.order = '1'
+        aboutSections[2].style.order = '2'
     }
     if (correctPosition == 1){
-        aboutSections[0].style.right = '100vw'
-        aboutSections[1].style.right = '0px'
-        aboutSections[2].style.right = '-100vw'
+        aboutSections[0].style.order = '1'
+        aboutSections[1].style.order = '0'
+        aboutSections[2].style.order = '2'
     }
     if (correctPosition == 2){
-        aboutSections[0].style.right = '-100vw'
-        aboutSections[1].style.right = '100vw'
-        aboutSections[2].style.right = '0px'
+        aboutSections[0].style.order = '2'
+        aboutSections[1].style.order = '1'
+        aboutSections[2].style.order = '0'
     }
 }
