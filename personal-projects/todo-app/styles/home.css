@@ -285,6 +285,29 @@
     text-align: justify;
 }
 
+.go-top-button{
+    transition: all .5s;
+    position: fixed;
+    top: -150%;
+    left: 5px;
+}
+.go-top-button__bg{
+    width: 85px;
+}
+.go-top-button__icon{
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 40%;
+    left: 50%;
+
+    width: 35px;
+    height: 35px;
+    color: white;
+}
+.go-top-button.active{
+    top: -1px;
+}
+
 @media screen and (max-width: 1199px){
     .hero-section{
         justify-content: space-around;

@@ -45,12 +45,22 @@ function setSideBarState(){
 
 //actions when scrolls
 window.onscroll = function actionsWhenScrolling(){
+    //close sidebar on scroll
     if (sideBar.classList.contains('opened')){
         setSideBarState()
     }
+
+    //set a go top button on scroll;
+    const goTopButton = document.querySelector('.go-top-button')
+
+    if (window.scrollY > 20){
+        goTopButton.classList.add('active')
+    }else{
+        goTopButton.classList.remove('active')
+    }
 }
 
-//about section "slide"
+//about section "slider"
 function changeAboutSection(currentSlideButton){
     //identifie current section by index(remove this index)
     let currentIndex = undefined
