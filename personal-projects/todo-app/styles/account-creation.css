@@ -71,6 +71,14 @@
     border: 0;
     outline: none;
 }
+.create-account-section__aside__password-container__eye-icon{
+    display: none;
+    margin-right: 0;
+    margin-left: 10px;
+}
+.create-account-section__aside__password-container__eye-icon:hover{
+    cursor: pointer;
+}
 
 .create-account-section__aside__account-type-container{
     display: flex;
