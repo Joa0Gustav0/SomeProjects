@@ -45,11 +45,13 @@
             <div class="create-account-section__aside__account-type-container">
                 <h1>I am:</h1>
                 <div class="create-account-section__aside__account-type-container__choose-boxes-container">
-                    <div class="create-account-section__aside__account-type-container__choose-boxes">
+                    <div id="teacher" class="create-account-section__aside__account-type-container__choose-boxes"
+                        onclick="setAccountType(this)">
                         <ion-icon name="glasses-outline" class="create-account-section__aside__account-type-container__choose-boxes__icons"></ion-icon>
                         <h1>A teacher</h1>
                     </div>
-                    <div class="create-account-section__aside__account-type-container__choose-boxes">
+                    <div id="student" class="create-account-section__aside__account-type-container__choose-boxes"
+                        onclick="setAccountType(this)">
                         <ion-icon name="school" class="create-account-section__aside__account-type-container__choose-boxes__icons"></ion-icon>
                         <h1>A student</h1>
                     </div>
