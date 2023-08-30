@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en" translate="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/comum.css">
+    <link rel="stylesheet" href="styles/account-creation.css">
+    <link rel="stylesheet" href="styles/footer.css">
+    <link rel="shortcut icon" href="media/favicon.ico" type="image/x-icon">
+    <title>ClassY | REGISTER</title>
+</head>
+<body>
+    <main name="account-creation-section" class="create-account-section window-section">
+        <a href="home.html" class="classy-logo">
+            <img src="media/classy-logo.png">
+        </a>
+        <aside class="create-account-section__aside">
+            <h1 class="create-account-section__aside__title">
+                Local Account Creation. 
+            </h1>
+            <p class="create-account-section__aside__instructions">
+                Enter the informations below to create your <span>local account</span>.
+            </p>
+            <h1 class="create-account-section__aside__container-title">
+                Username
+            </h1>
+            <label for="username-input" class="create-account-section__aside__username-container create-account-section__aside__containers">
+                <ion-icon name="person" class="create-account-section__aside__containers__inputs-icons"></ion-icon>
+                <input type="text" id="username-input" class="create-account-section__aside__username-container__username-input create-account-section__aside__containers__inputs" placeholder="Enter username..." maxlength="20" autocomplete="off">
+            </label>
+            <h1 class="create-account-section__aside__container-title">
+                Password
+            </h1>
+            <label for="password-input" class="create-account-section__aside__password-container create-account-section__aside__containers">
+                <ion-icon name="lock-closed" class="create-account-section__aside__containers__inputs-icons"></ion-icon>
+                <input type="password" id="password-input" class="create-account-section__aside__username-container__password-input create-account-section__aside__containers__inputs" placeholder="Enter password..." autocomplete="off">
+            </label>
+            <h1 class="create-account-section__aside__container-title confirm-password">
+                Confirm Password
+            </h1>
+            <label for="confirm-password-input" class="create-account-section__aside__password-container create-account-section__aside__containers confirm-password">
+                
+                <input type="password" id="confirm-password-input" class="create-account-section__aside__username-container__password-input create-account-section__aside__containers__inputs" placeholder="Enter password..." autocomplete="off">
+            </label>
+            <div class="create-account-section__aside__account-type-container">
+                <h1>I am:</h1>
+                <div class="create-account-section__aside__account-type-container__choose-boxes-container">
+                    <div class="create-account-section__aside__account-type-container__choose-boxes">
+                        <ion-icon name="glasses-outline" class="create-account-section__aside__account-type-container__choose-boxes__icons"></ion-icon>
+                        <h1>A teacher</h1>
+                    </div>
+                    <div class="create-account-section__aside__account-type-container__choose-boxes">
+                        <ion-icon name="school" class="create-account-section__aside__account-type-container__choose-boxes__icons"></ion-icon>
+                        <h1>A student</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="create-account-section__aside__cabutton">
+                <h1>Create it!</h1>
+            </div>
+            <a href="login-page.html" class="create-account-section__aside__altbutton button__landing-login-page">
+                I already have a local account.
+            </a>
+        </aside>
+        <img src="media/account-creation-section.gif" class="create-account-section__picture">
+    </main>
+    <footer class="footer">
+        <main class="footer__main">
+            <section class="footer__main__website footer__main__sections">
+                <img src="media/classy-logo.png" class="footer__main__website__logo">
+                <p class="footer__main__website__slogan">
+                    Be organized. Be productive.
+                </p>
+            </section>
+            <section class="footer__main__author footer__main__sections">
+                <h1 class="footer__main__author__name">
+                    João Gustavo
+                </h1>
+                <div class="footer__main__author__socials">
+                    <a href="https://github.com/Joa0Gustav0" class="footer__main__author__socials__ancors" target="_blank" rel="external">
+                        <ion-icon name="logo-github"></ion-icon>
+                    </a>
+                    <a href="https://www.instagram.com/joao.gustavo_ff0050/" class="footer__main__author__socials__ancors" target="_blank" rel="external">
+                        <ion-icon name="logo-instagram"></ion-icon>
+                    </a>
+                </div>
+            </section>
+            <section class="footer__main__links footer__main__sections">
+                <h1>Links</h1>
+                <a href="#home" class="footer__main__links__a">
+                    Home
+                </a>
+                <a href="#about" class="footer__main__links__a">
+                    About
+                </a>
+                <a href="#" class="footer__main__links__a">
+                    Login
+                </a>
+            </section>
+        </main>
+        <section class="footer__rights">
+            &circledR; 2023 CLASSY. All Rights Reserved.
+        </section>
+    </footer>
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+</html>
