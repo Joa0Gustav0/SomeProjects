@@ -13,7 +13,6 @@ function setVisibility(passwordInput){
 }
 
 //set password visibility button and input state 
-const passwordInput = document.querySelector('#password-input')
 
 function setPasswordVisibilityState(){
     if (passwordVisibilityButton.getAttribute('name') == 'eye'){
@@ -29,7 +28,6 @@ function setPasswordVisibilityState(){
 const confirmPasswordBox = document.getElementsByClassName('confirm-password')
 
 function confirmPasswordBoxStateSet(passwordInput){
-    console.log("adasdasdasdssa")
     if (passwordInput.value == ''){
         for (var i = 0; i < confirmPasswordBox.length; i++){
             confirmPasswordBox[i].style.display = 'none'
@@ -43,11 +41,10 @@ function confirmPasswordBoxStateSet(passwordInput){
 }
 
 //set account type
-accountTypeButtons = document.getElementsByClassName('create-account-section__aside__account-type-container__choose-boxes')
-
 function setAccountType(currentTypeButton){
     if (currentTypeButton.classList.contains('type-selected')){
         currentTypeButton.classList.remove('type-selected')
+        newAccountInformations.accountType = null
     }else{
         for (var i = 0; i < accountTypeButtons.length; i++){
             if (accountTypeButtons[i].classList.contains('type-selected')){
@@ -58,6 +55,43 @@ function setAccountType(currentTypeButton){
 
         //set new account informations: type
         newAccountInformations.accountType = currentTypeButton.id.toString()
-        console.log(newAccountInformations.accountType)
+    }
+}
+
+//CREATE A NEW ACCOUNT!important
+const usernameInput = document.querySelector('#username-input')
+const passwordInput = document.querySelector('#password-input')
+const confirmPasswordInput = document.querySelector('#confirm-password-input')
+const accountTypeButtons = document.getElementsByClassName('create-account-section__aside__account-type-container__choose-boxes')
+
+function createNewAccount(){
+    //errors
+    if (usernameInput.value == '' ||
+    passwordInput.value == '' ||
+    newAccountInformations.accountType == null ||
+    newAccountInformations.accountType == undefined||
+    newAccountInformations.accountType == ''){
+        window.alert('Please, all fields need to be filled before creating an account.')
+    }
+    else if (passwordInput.value != confirmPasswordInput.value){
+        window.alert('The entered passwords do not match. Review and try again.')
+    }
+    else{
+        if (usernameInput.value.length < 8){
+            window.alert('The entered username is not valid. A valid username should contain at least 8 characters.')
+        }else{
+            const uppercaseChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+            let containUpperChar = false
+
+            for (var i = 0; i < usernameInput.value.length; i++){
+                if (usernameInput.value.toString()[i].indexOf(uppercaseChars) > -1){
+                    containUpperChar = true
+                }
+            }
+            if (containUpperChar == false){
+                window.alert('The entered username is not valid. A valid username should contain at least one uppercase character.')
+            }
+        }
+
     }
 }
