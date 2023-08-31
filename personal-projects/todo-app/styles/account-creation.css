@@ -99,13 +99,12 @@
     position: relative;
 
     display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-start;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
 
     width: 100%;
-    margin-bottom: 40px;
 }
 .create-account-section__aside__account-type-container > h1{
     color: black;
@@ -158,7 +157,8 @@
     width: 100%;
     padding: 5px;
     color: white;
-    margin-bottom: 10px;
+    margin-top: 40px;
+    margin-bottom: 5px;
     border-radius: 10px;
     box-shadow: 0px 0px 0px #392d63;
     background-color: #4D3D87;

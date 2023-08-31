@@ -62,7 +62,7 @@ function setAccountType(currentTypeButton){
 const usernameInput = document.querySelector('#username-input')
 const passwordInput = document.querySelector('#password-input')
 const confirmPasswordInput = document.querySelector('#confirm-password-input')
-const accountTypeInput = document.querySelector('.create-account-section__aside__account-type-container__choose-boxes-container')
+const accountTypeInput = document.getElementsByClassName('create-account-section__aside__account-type-container__choose-boxes')[0]
 const accountTypeButtons = document.getElementsByClassName('create-account-section__aside__account-type-container__choose-boxes')
 
 let anyErrorFound = null
