@@ -27,6 +27,9 @@
             <label for="username-input" class="create-account-section__aside__username-container create-account-section__aside__containers">
                 <ion-icon name="person" class="create-account-section__aside__containers__inputs-icons"></ion-icon>
                 <input type="text" id="username-input" class="create-account-section__aside__username-container__username-input create-account-section__aside__containers__inputs" placeholder="Enter username..." maxlength="20" autocomplete="off">
+                <p class="create-account-section__aside__username-input-error-text create-account-section__aside__inputs-error-text">
+                    Username is required.
+                </p>
             </label>
             <h1 class="create-account-section__aside__container-title">
                 Password
@@ -35,12 +38,18 @@
                 <ion-icon name="lock-closed" class="create-account-section__aside__containers__inputs-icons"></ion-icon>
                 <input type="password" id="password-input" class="create-account-section__aside__username-container__password-input create-account-section__aside__containers__inputs" placeholder="Enter password..." maxlength="20" autocomplete="off" oninput="setVisibility(this); confirmPasswordBoxStateSet(this)">
                 <ion-icon name="eye" class="create-account-section__aside__containers__inputs-icons create-account-section__aside__password-container__eye-icon" onclick="setPasswordVisibilityState()"></ion-icon>
+                <p class="create-account-section__aside__password-input-error-text create-account-section__aside__inputs-error-text">
+                    Password is required.
+                </p>
             </label>
             <h1 class="create-account-section__aside__container-title confirm-password">
                 Confirm Password
             </h1>
             <label for="confirm-password-input" class="create-account-section__aside__password-container create-account-section__aside__containers confirm-password">
                 <input type="password" id="confirm-password-input" class="create-account-section__aside__username-container__password-input create-account-section__aside__containers__inputs confirm-password" placeholder="Enter password..." maxlength="20" autocomplete="off">
+                <p class="create-account-section__aside__confirm-password-input-error-text create-account-section__aside__inputs-error-text confirm-password">
+                    Password confirmation is required.
+                </p>
             </label>
             <div class="create-account-section__aside__account-type-container">
                 <h1>I am:</h1>
@@ -56,6 +65,9 @@
                         <h1>A student</h1>
                     </div>
                 </div>
+                <p class="create-account-section__aside__account-type-input-error-text create-account-section__aside__inputs-error-text">
+                    Account type is required.
+                </p>
             </div>
             <div class="create-account-section__aside__cabutton"
             onclick="createNewAccount()">

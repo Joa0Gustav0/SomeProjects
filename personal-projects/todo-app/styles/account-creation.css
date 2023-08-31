@@ -29,6 +29,10 @@
     min-height: 100vh;
 }
 .create-account-section__aside{
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    
     max-width: 500px;
 }
 .create-account-section__aside span{
@@ -48,6 +52,8 @@
     font-weight: 500;
 }
 .create-account-section__aside__containers{
+    position: relative;
+
     display: flex;
     flex-wrap: nowrap;
     align-items: center;
@@ -57,6 +63,19 @@
     padding: 10px;
     margin-bottom: 20px;
     border: 1px solid black;
+}
+.create-account-section__aside__inputs-error-text{
+    position: absolute;
+    bottom: -20px;
+    left: 0px;
+
+    display: none;
+
+    color: #ff0050;
+    font-size: .8em;
+}
+.create-account-section__aside__inputs-error-text.on-error{
+    display: block;
 }
 .confirm-password{
     display: none;
@@ -81,6 +100,8 @@
 }
 
 .create-account-section__aside__account-type-container{
+    position: relative;
+
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
@@ -132,6 +153,11 @@
     margin-right: 10px;
 }
 
+.input-error{
+    border: 1px solid #ff0050;
+    margin-bottom: 25px;    
+}
+
 .create-account-section__aside__cabutton{
     transition: all .25s;
     display: flex;
@@ -160,6 +186,7 @@
     font-weight: 400;
 }
 .create-account-section__aside__altbutton{
+    align-self: center;
     color: black;
     text-decoration: underline;
 }

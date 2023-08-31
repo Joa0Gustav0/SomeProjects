@@ -62,36 +62,128 @@ function setAccountType(currentTypeButton){
 const usernameInput = document.querySelector('#username-input')
 const passwordInput = document.querySelector('#password-input')
 const confirmPasswordInput = document.querySelector('#confirm-password-input')
+const accountTypeInput = document.querySelector('.create-account-section__aside__account-type-container__choose-boxes-container')
 const accountTypeButtons = document.getElementsByClassName('create-account-section__aside__account-type-container__choose-boxes')
 
-function createNewAccount(){
-    //errors
-    if (usernameInput.value == '' ||
-    passwordInput.value == '' ||
-    newAccountInformations.accountType == null ||
-    newAccountInformations.accountType == undefined||
-    newAccountInformations.accountType == ''){
-        window.alert('Please, all fields need to be filled before creating an account.')
-    }
-    else if (passwordInput.value != confirmPasswordInput.value){
-        window.alert('The entered passwords do not match. Review and try again.')
-    }
-    else{
-        if (usernameInput.value.length < 8){
-            window.alert('The entered username is not valid. A valid username should contain at least 8 characters.')
-        }else{
-            const uppercaseChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
-            let containUpperChar = false
+let anyErrorFound = null
 
-            for (var i = 0; i < usernameInput.value.length; i++){
-                if (usernameInput.value.toString()[i].indexOf(uppercaseChars) > -1){
-                    containUpperChar = true
-                }
-            }
-            if (containUpperChar == false){
-                window.alert('The entered username is not valid. A valid username should contain at least one uppercase character.')
-            }
+const setInputState = (currentInput, errorMessage) => {
+    /*const usernameInputErrorMessage = document.querySelector('.create-account-section__aside__username-input-error-text')
+    const passwordInputErrorMessage = document.querySelector('.create-account-section__aside__password-input-error-text')
+    const confirmPasswordInputErrorMessage = document.querySelector('.create-account-section__aside__confirm-password-input-error-text')
+    const accountTypeInputErrorMessage = document.querySelector('.create-account-section__aside__confirm-password-input-error-text')*/
+
+    //set input on error state
+    if (anyErrorFound == true){
+        if (currentInput.parentNode.classList.contains('input-error') == false){
+            currentInput.parentNode.classList.add('input-error')
         }
+
+        //set input error message
+        if (currentInput.)
+    }
+    
+    //set input on valid state 
+    if (anyErrorFound == false){
+        if (currentInput.parentNode.classList.contains('input-error') == true){
+            currentInput.parentNode.classList.remove('input-error')
+        }
+        if (currentInput.parentNode.classList.contains('input-valid') == false){
+            currentInput.parentNode.classList.add('input-valid')
+        }
+    }
+}
+
+function findError(){
+    //username
+    if (usernameInput.value == ""){
+        anyErrorFound = true
+        setInputState(usernameInput, 'Username is required.')
+    }
+    if (usernameInput.value != "" && usernameInput.value.length < 8){
+        anyErrorFound = true
+        setInputState(usernameInput, 'Username should contain at least 8 characters.')
+    }
+    let uppercaseChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    let containUpperChar = false
+    for (var i = 0; i < usernameInput.value.length && containUpperChar == false; i++){
+        if (uppercaseChars.includes(usernameInput.value[i]) == true){
+            containUpperChar = true
+        }
+    }
+    if (usernameInput.value != "" && usernameInput.value.length >= 8 && containUpperChar == false){
+        anyErrorFound = true
+        setInputState(usernameInput, 'Username should contain at least one uppercase character.')
+    }
+    if (usernameInput.value != "" && usernameInput.value.length >= 8 && containUpperChar == true){
+        anyErrorFound = false
+        setInputState(usernameInput)
+    }
+
+    //password
+    if (passwordInput.value == ""){
+        anyErrorFound = true
+        setInputState(passwordInput, 'Password is required.')
+    }
+    if (passwordInput.value != "" && passwordInput.value.length < 8){
+        anyErrorFound = true
+        setInputState(passwordInput, 'Password should contain at least 8 characters.')
+    }
+    let passwordContainNumber = false
+    let passwordContainLetter = false
+    let passwordContainSpecialChar = false
+
+    const number = "0123456789"
+    const lettersChars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    const specialChars = "!@#$%&*()-_=+?"
+
+    for (var i = 0; i < passwordInput.value.length; i++){
+        if (number.includes(passwordInput.value[i])){
+            passwordContainNumber = true
+        }
+        if (lettersChars.includes(passwordInput.value[i])){
+            passwordContainLetter = true
+        }
+        if (specialChars.includes(passwordInput.value[i])){
+            passwordContainSpecialChar = true
+        }
+    }
+    if (passwordInput.value != "" && passwordInput.value.length >= 8 && (passwordContainNumber == false || passwordContainLetter == false || passwordContainSpecialChar == false)){
+        anyErrorFound = true
+        setInputState(passwordInput, 'Password should contain at least a number, a letter and a special character.')
+    }
+    if (passwordInput.value != "" && passwordInput.value.length >= 8 && passwordContainNumber == true && passwordContainLetter == true && passwordContainSpecialChar == true){
+        anyErrorFound = false
+        setInputState(passwordInput)
+    }
+
+    //confirm-password
+    if (passwordInput.value != ""){
+        if (confirmPasswordInput.value == ""){
+            anyErrorFound = true
+            setInputState(confirmPasswordInput, 'Password confirmation is required.')
+        }
+        if (confirmPasswordInput.value != "" && confirmPasswordInput.value != passwordInput.value){
+            anyErrorFound = true
+            setInputState(confirmPasswordInput, 'Passwords do not match.')
+        }
+        if (confirmPasswordInput.value != "" && confirmPasswordInput.value == passwordInput.value){
+            anyErrorFound = false
+            setInputState(confirmPasswordInput)
+        }
+    }
+
+    //account-type
+    if (newAccountInformations.accountType == null){
+        anyErrorFound = true
+        setInputState(accountTypeInput, 'Account type is required.')
+    }
+}
+
+function createNewAccount(){
+    findError()
+
+    if (anyErrorFound == false){
 
     }
 }
