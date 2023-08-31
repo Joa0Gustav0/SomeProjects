@@ -1,5 +1,5 @@
 //variables
-var newAccountInformations = {username: null, passwordt: null, accountType: null}
+var newAccountInformations = {username: null, password: null, accountType: null}
 
 //permission for password visibility
 passwordVisibilityButton = document.querySelector('.create-account-section__aside__password-container__eye-icon')
@@ -207,6 +207,7 @@ function createNewAccount(){
     findError()
 
     if (anyErrorFound == false){
-
+        newAccountInformations.username = usernameInput.value
+        newAccountInformations.password = passwordInput.value
     }
 }
