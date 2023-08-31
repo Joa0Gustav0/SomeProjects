@@ -90,7 +90,8 @@ const resetInputState = () => {
 }
 
 const setInputState = (currentInput, errorMessage) => {
-    let currentInputErrorMessage = document.querySelector(`.${currentInput.parentNode.classList[0]} > .create-account-section__aside__inputs-error-text`)
+    let currentInputErrorMessage = document.querySelector(`.${currentInput.parentNode.classList[0]}__error-text`)
+    console.log()
 
     //set input on error state
     if (anyErrorFound == true){

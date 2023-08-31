@@ -65,10 +65,6 @@
     border: 1px solid black;
 }
 .create-account-section__aside__inputs-error-text{
-    position: absolute;
-    bottom: -20px;
-    left: 0px;
-
     display: none;
 
     color: #ff0050;
@@ -99,11 +95,6 @@
     cursor: pointer;
 }
 
-.input-error{
-    border: 1px solid #ff0050;
-    margin-bottom: 25px;    
-}
-
 .create-account-section__aside__account-type-container{
     position: relative;
 
@@ -115,10 +106,6 @@
 
     width: 100%;
     margin-bottom: 40px;
-}
-.create-account-section__aside__account-type-container.input-error{
-    border: 1px solid #ff0050;
-    margin-bottom: 45px; 
 }
 .create-account-section__aside__account-type-container > h1{
     color: black;
@@ -204,6 +191,11 @@
 .create-account-section__picture{
     width: 100%;
     max-width: 500px;
+}
+
+.input-error{
+    margin-bottom: 0;
+    border: 1px solid #ff0050;   
 }
 
 @media screen and (max-width: 1024px){
