@@ -99,6 +99,11 @@
     cursor: pointer;
 }
 
+.input-error{
+    border: 1px solid #ff0050;
+    margin-bottom: 25px;    
+}
+
 .create-account-section__aside__account-type-container{
     position: relative;
 
@@ -110,6 +115,10 @@
 
     width: 100%;
     margin-bottom: 40px;
+}
+.create-account-section__aside__account-type-container.input-error{
+    border: 1px solid #ff0050;
+    margin-bottom: 45px; 
 }
 .create-account-section__aside__account-type-container > h1{
     color: black;
@@ -151,11 +160,6 @@
     width: 20px;
     height: 20px;
     margin-right: 10px;
-}
-
-.input-error{
-    border: 1px solid #ff0050;
-    margin-bottom: 25px;    
 }
 
 .create-account-section__aside__cabutton{

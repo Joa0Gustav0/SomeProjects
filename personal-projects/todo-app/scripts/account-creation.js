@@ -67,11 +67,30 @@ const accountTypeButtons = document.getElementsByClassName('create-account-secti
 
 let anyErrorFound = null
 
+const resetInputState = () => {
+    if (usernameInput.parentNode.classList.contains('input-error')){
+        usernameInput.parentNode.classList.remove('input-error')
+    }
+    if (passwordInput.parentNode.classList.contains('input-error')){
+        passwordInput.parentNode.classList.remove('input-error')
+    }
+    if (confirmPasswordInput.parentNode.classList.contains('input-error')){
+        confirmPasswordInput.parentNode.classList.remove('input-error')
+    }
+    if (accountTypeInput.parentNode.classList.contains('input-error')){
+        accountTypeInput.parentNode.classList.remove('input-error')
+    }
+
+    const InputsErrorMessages = document.getElementsByClassName('create-account-section__aside__inputs-error-text')
+    for (var i = 0; i < InputsErrorMessages.length; i++){
+        if (InputsErrorMessages[i].classList.contains('on-error')){
+            InputsErrorMessages[i].classList.remove('on-error')
+        }
+    }
+}
+
 const setInputState = (currentInput, errorMessage) => {
-    /*const usernameInputErrorMessage = document.querySelector('.create-account-section__aside__username-input-error-text')
-    const passwordInputErrorMessage = document.querySelector('.create-account-section__aside__password-input-error-text')
-    const confirmPasswordInputErrorMessage = document.querySelector('.create-account-section__aside__confirm-password-input-error-text')
-    const accountTypeInputErrorMessage = document.querySelector('.create-account-section__aside__confirm-password-input-error-text')*/
+    let currentInputErrorMessage = document.querySelector(`.${currentInput.parentNode.classList[0]} > .create-account-section__aside__inputs-error-text`)
 
     //set input on error state
     if (anyErrorFound == true){
@@ -80,7 +99,10 @@ const setInputState = (currentInput, errorMessage) => {
         }
 
         //set input error message
-        if (currentInput.)
+        currentInputErrorMessage.innerText = errorMessage
+        if (currentInputErrorMessage.classList.contains('on-error') == false){
+            currentInputErrorMessage.classList.add('on-error')
+        }
     }
     
     //set input on valid state 
