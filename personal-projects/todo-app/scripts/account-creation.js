@@ -65,8 +65,6 @@ const confirmPasswordInput = document.querySelector('#confirm-password-input')
 const accountTypeInput = document.getElementsByClassName('create-account-section__aside__account-type-container__choose-boxes')[0]
 const accountTypeButtons = document.getElementsByClassName('create-account-section__aside__account-type-container__choose-boxes')
 
-let anyErrorFound = null
-
 const resetInputState = () => {
     if (usernameInput.parentNode.classList.contains('input-error')){
         usernameInput.parentNode.classList.remove('input-error')
@@ -89,12 +87,11 @@ const resetInputState = () => {
     }
 }
 
-const setInputState = (currentInput, errorMessage) => {
+const setInputState = (currentInput, errorMessage, onError) => {
     let currentInputErrorMessage = document.querySelector(`.${currentInput.parentNode.classList[0]}__error-text`)
-    console.log()
 
     //set input on error state
-    if (anyErrorFound == true){
+    if (onError == true){
         if (currentInput.parentNode.classList.contains('input-error') == false){
             currentInput.parentNode.classList.add('input-error')
         }
@@ -107,7 +104,7 @@ const setInputState = (currentInput, errorMessage) => {
     }
     
     //set input on valid state 
-    if (anyErrorFound == false){
+    if (onError == false){
         if (currentInput.parentNode.classList.contains('input-error') == true){
             currentInput.parentNode.classList.remove('input-error')
         }
@@ -120,12 +117,10 @@ const setInputState = (currentInput, errorMessage) => {
 function findError(){
     //username
     if (usernameInput.value == ""){
-        anyErrorFound = true
-        setInputState(usernameInput, 'Username is required.')
+        setInputState(usernameInput, 'Username is required.', true)
     }
     if (usernameInput.value != "" && usernameInput.value.length < 8){
-        anyErrorFound = true
-        setInputState(usernameInput, 'Username should contain at least 8 characters.')
+        setInputState(usernameInput, 'Username should contain at least 8 characters.', true)
     }
     let uppercaseChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
     let containUpperChar = false
@@ -135,22 +130,18 @@ function findError(){
         }
     }
     if (usernameInput.value != "" && usernameInput.value.length >= 8 && containUpperChar == false){
-        anyErrorFound = true
-        setInputState(usernameInput, 'Username should contain at least one uppercase character.')
+        setInputState(usernameInput, 'Username should contain at least one uppercase character.', true)
     }
     if (usernameInput.value != "" && usernameInput.value.length >= 8 && containUpperChar == true){
-        anyErrorFound = false
-        setInputState(usernameInput)
+        setInputState(usernameInput, undefined, false)
     }
 
     //password
     if (passwordInput.value == ""){
-        anyErrorFound = true
-        setInputState(passwordInput, 'Password is required.')
+        setInputState(passwordInput, 'Password is required.', true)
     }
     if (passwordInput.value != "" && passwordInput.value.length < 8){
-        anyErrorFound = true
-        setInputState(passwordInput, 'Password should contain at least 8 characters.')
+        setInputState(passwordInput, 'Password should contain at least 8 characters.', true)
     }
     let passwordContainNumber = false
     let passwordContainLetter = false
@@ -172,42 +163,38 @@ function findError(){
         }
     }
     if (passwordInput.value != "" && passwordInput.value.length >= 8 && (passwordContainNumber == false || passwordContainLetter == false || passwordContainSpecialChar == false)){
-        anyErrorFound = true
-        setInputState(passwordInput, 'Password should contain at least a number, a letter and a special character.')
+        setInputState(passwordInput, 'Password should contain at least a number, a letter and a special character.', true)
     }
     if (passwordInput.value != "" && passwordInput.value.length >= 8 && passwordContainNumber == true && passwordContainLetter == true && passwordContainSpecialChar == true){
-        anyErrorFound = false
-        setInputState(passwordInput)
+        setInputState(passwordInput, undefined, false)
     }
 
     //confirm-password
     if (passwordInput.value != ""){
         if (confirmPasswordInput.value == ""){
-            anyErrorFound = true
-            setInputState(confirmPasswordInput, 'Password confirmation is required.')
+            setInputState(confirmPasswordInput, 'Password confirmation is required.', true)
         }
         if (confirmPasswordInput.value != "" && confirmPasswordInput.value != passwordInput.value){
-            anyErrorFound = true
-            setInputState(confirmPasswordInput, 'Passwords do not match.')
+            setInputState(confirmPasswordInput, 'Passwords do not match.', true)
         }
         if (confirmPasswordInput.value != "" && confirmPasswordInput.value == passwordInput.value){
-            anyErrorFound = false
-            setInputState(confirmPasswordInput)
+            setInputState(confirmPasswordInput, undefined, false)
         }
     }
 
     //account-type
     if (newAccountInformations.accountType == null){
-        anyErrorFound = true
-        setInputState(accountTypeInput, 'Account type is required.')
+        setInputState(accountTypeInput, 'Account type is required.', true)
     }
 }
 
 function createNewAccount(){
     findError()
 
-    if (anyErrorFound == false){
+    let inputsOnError = document.getElementsByClassName('input-error')
+    if (inputsOnError.length <= 0){
         newAccountInformations.username = usernameInput.value
         newAccountInformations.password = passwordInput.value
+        console.log(newAccountInformations)
     }
 }
