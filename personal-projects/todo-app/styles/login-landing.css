@@ -90,6 +90,7 @@
 }
 
 .landing-login-section__aside__altbutton{
+    color: black;
     text-decoration: underline;
 }
 .landing-login-section__aside__altbutton:hover{
