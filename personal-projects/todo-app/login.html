@@ -3,10 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/comum.css">
+    <link rel="stylesheet" href="styles/login.css">
     <link rel="shortcut icon" href="media/favicon.ico" type="image/x-icon">
     <title>ClassY | LOGIN</title>
 </head>
 <body>
-    
+    <section class="quick-access-section">
+        <h1 class="quick-access-section__title">
+            Quick Access
+        </h1>
+        <p class="quick-access-section__instructions-text">
+            Select a previously connected account, and just enter the password.
+        </p>
+        <div class="quick-access-section__users-list">
+
+        </div>
+    </section>
+    <section class="login-section">
+        <img src="media/classy-logo.png" class="login-section__classy-logo">
+        <div class="login-section__inputs-container">
+            <ion-icon name="person" class="login-section__inputs-container__input-icon"></ion-icon>
+            <input type="text" id="username-input" class="login-section__username-input">
+        </div>
+        <div class="login-section__inputs-container">
+            <ion-icon name="lock-closed" class="login-section__inputs-container__input-icon"></ion-icon>
+            <input type="password" id="password-input" class="login-section__password-input">
+            <ion-icon name="eye" class="login-section__inputs-container__input-icon login-section__inputs-container__input-eye-icon"></ion-icon>
+        </div>
+        <a href="#" class="login-section__forgot-password">Forgot password?</a>
+        <div class="login-section__login-button">
+            Login!
+        </div>
+    </section>
+    <img src="media/classy-logo.png" class="classy-logo">
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
 </html>
