@@ -14,21 +14,32 @@
             Quick Access
         </h1>
         <p class="quick-access-section__instructions-text">
-            Select a previously connected account, and just enter the password.
+            Select a <span>previously connected account</span>, and just <span>enter the password</span>.
         </p>
         <div class="quick-access-section__users-list">
-
+            <h1 class="quick-access-section__no-users-sign">
+                There are no previously connected accounts...
+            </h1>
+            <div class="quick-access-section__users-list__user-container user-container-model">
+                <ion-icon name="person-circle" class="quick-access-section__users-list__user-container__icon"></ion-icon>
+                <h1 class="quick-access-section__users-list__user-container__username">
+                    JoaoGustavoSilvaLima
+                </h1>
+                <ion-icon name="school" class="quick-access-section__users-list__user-container__type-icon"></ion-icon>
+                <ion-icon name="person-remove" class="quick-access-section__users-list__user-container__remove-button"></ion-icon>
+            </div>
         </div>
     </section>
     <section class="login-section">
+        <h1 class="login-section__title">Login</h1>
         <img src="media/classy-logo.png" class="login-section__classy-logo">
         <div class="login-section__inputs-container">
             <ion-icon name="person" class="login-section__inputs-container__input-icon"></ion-icon>
-            <input type="text" id="username-input" class="login-section__username-input">
+            <input type="text" id="username-input" class="login-section__inputs-container__username-input login-section__inputs-container__inputs" placeholder="Enter username..." maxlength="20">
         </div>
         <div class="login-section__inputs-container">
             <ion-icon name="lock-closed" class="login-section__inputs-container__input-icon"></ion-icon>
-            <input type="password" id="password-input" class="login-section__password-input">
+            <input type="password" id="password-input" class="login-section__inputs-container__password-input login-section__inputs-container__inputs" placeholder="Enter password..." maxlength="20">
             <ion-icon name="eye" class="login-section__inputs-container__input-icon login-section__inputs-container__input-eye-icon"></ion-icon>
         </div>
         <a href="#" class="login-section__forgot-password">Forgot password?</a>
@@ -36,7 +47,7 @@
             Login!
         </div>
     </section>
-    <img src="media/classy-logo.png" class="classy-logo">
+    <a href="home.html" class="classy-logo"><img src="media/classy-logo.png"></a>
 
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>

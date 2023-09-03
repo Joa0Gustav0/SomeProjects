@@ -1,20 +1,30 @@
 .classy-logo{
     position: absolute;
-    top: 30px;
     left: 30px;
+    top: 30px;
 
     width: 50px;
     height: 50px;
+}
+.classy-logo > img{
+    transition: all .2s;
+    width: 100%;
+}
+.classy-logo:hover > img{
+    transform: scale(110%, 110%);
+}
+.classy-logo:active > img{
+    transform: scale(0);
 }
 
 body{
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
-    align-items: flex-start;
-    justify-content: space-between;
+    align-items: center;
+    justify-content: center;
 
-    padding: 95px 30px;
+    padding: 95px 0;
 }
 
 section{
@@ -27,9 +37,144 @@ section{
     width: 100%;
     max-width: 50%;
     min-width: 400px;
-    min-height: 100vh;
+    min-height: calc(100vh - 190px);
+    padding: 0 30px;
 }
 
 .quick-access-section__title{
     font-size: 2em;
+    color: #4D3D87;
+}
+.quick-access-section__instructions-text{
+    text-align: center;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #4D3D87;
+}
+.quick-access-section span{
+    color: #4D3D87;
+    font-weight: 600;
+}
+.quick-access-section__users-list{
+    width: 100%;
+    padding: 10px 20px;
+    padding-top: 25px;
+    overflow-y: scroll;
+    height: calc(100vh - 280px);
+}
+.quick-access-section__no-users-sign{
+    color: rgba(0, 0, 0, 0.5);
+    font-size: 1em;
+    font-weight: 400;
+    text-align: center;
+}
+.quick-access-section__users-list__user-container{
+    position: relative;
+
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 25px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.25);
+}
+.quick-access-section__users-list__user-container__icon{
+    width: 30px;
+    height: 30px;
+}
+.quick-access-section__users-list__user-container__username{
+    color: black;
+    font-size: .8em;
+}
+.quick-access-section__users-list__user-container__type-icon{
+    width: 20px;
+    height: 20px;
+    color: rgba(0, 0, 0, 0.473);
+}
+.quick-access-section__users-list__user-container__remove-button{
+    position: absolute;
+    transform: translate(50%, -50%);
+    right: 0px;
+    top: 0px;
+
+    width: 20px;
+    height: 20px;
+    padding: 5px;
+    border-radius: 100%;
+    background-color: white;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+}
+.quick-access-section__users-list__user-container__remove-button:hover{
+    cursor: pointer;
+    color: #ff0050;
+}
+.quick-access-section__users-list__user-container__remove-button:active{
+    transform: scale(0);
+}
+.user-container-model{
+    display: none;
+}
+
+.login-section__title{
+    color: #4D3D87;
+    font-size: 2em;
+}
+.login-section__classy-logo{
+    width: 50px;
+    height: 50px;
+    margin-bottom: 40px;
+}
+.login-section__inputs-container{
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid black;
+}
+.login-section__inputs-container__inputs{
+    width: 100%;
+    border: 0;
+    outline: none;
+    margin: 0 10px;
+}
+.login-section__inputs-container__input-icon{
+    width: 20px;
+    height: 20px;
+}
+.login-section__forgot-password{
+    color: #4D3D87;
+    margin-bottom: 40px;
+    align-self: flex-start;
+}
+.login-section__login-button{
+    transition: all .25s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    padding: 10px;
+    color: white;
+    max-width: 320px;
+    font-weight: 400;
+    border-radius: 10px;
+    background-color: #4D3D87;
+}
+.login-section__login-button:hover{
+    cursor: pointer;
+    transform: translateY(-10px);
+    box-shadow: 0px 10px 0px #392d63;
+}
+.login-section__login-button:active{
+    transform: translateY(0px);
+    box-shadow: none;
+    background-color: #392d63;
 }
