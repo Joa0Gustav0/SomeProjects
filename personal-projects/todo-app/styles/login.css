@@ -213,6 +213,23 @@ section{
     right: 28px;
     border-radius: 25px 5px 0px 0px;
 }
+.sections-divisor{
+    position: absolute;
+    top: 0px;
+    left: calc(50% - 1px);
+    height: 100vh;
+    border-left: 1px solid rgba(0, 0, 0, 0.5);
+}
+.sections-divisor h1{
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+
+    font-size: 1em;
+    background-color: white;
+    color: rgba(0, 0, 0, 0.5);
+}
 
 /*RESPOSIVINESS*/
 @media screen and (max-width: 799px){
@@ -232,5 +249,8 @@ section{
     }
     .quick-access-section{
         border-radius: 0px 5px 5px 5px;
+    }
+    .sections-divisor{
+        display: none;
     }
 }
