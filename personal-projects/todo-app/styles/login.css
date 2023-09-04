@@ -17,17 +17,21 @@
     transform: scale(0);
 }
 
-body{
+.login-paths-main{
+    position: relative;
+
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
 
+    width: 100%;
+    min-height: calc(100vh - 190px);
     padding: 95px 0;
 }
 
-section{
+.login-paths__sections{
     display: flex;
     flex-wrap: nowrap;
     align-items: center;
@@ -37,7 +41,7 @@ section{
     width: 100%;
     max-width: 50%;
     min-width: 400px;
-    height: calc(100vh - 190px);
+    min-height: calc(100vh - 190px);
     padding: 0 30px;
 }
 
@@ -121,6 +125,7 @@ section{
 .login-section__title{
     color: #4D3D87;
     font-size: 2em;
+    margin-bottom: 20px;
 }
 .login-section__classy-logo{
     width: 50px;
@@ -217,7 +222,7 @@ section{
     position: absolute;
     top: 0px;
     left: calc(50% - 1px);
-    height: 100vh;
+    height: 100%;
     border-left: 1px solid rgba(0, 0, 0, 0.5);
 }
 .sections-divisor h1{
@@ -233,21 +238,17 @@ section{
 
 /*RESPOSIVINESS*/
 @media screen and (max-width: 799px){
-    section{
-        position: absolute;
-        transform: translate(-50%, 0%);
-        top: calc(50% + 45px);
-        left: 50%;
-        padding: 20px 30px;
-
+    .login-paths__sections{
         background-color: white;
         max-width: 500px;
         min-width: 0px;
+        min-height: calc(100vh - 190px);
     }
     .login-section{
         border-radius: 5px 0px 5px 5px;
     }
     .quick-access-section{
+        display: none;
         border-radius: 0px 5px 5px 5px;
     }
     .sections-divisor{
