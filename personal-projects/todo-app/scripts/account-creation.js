@@ -195,6 +195,7 @@ function createNewAccount(){
     if (inputsOnError.length <= 0){
         newAccountInformations.username = usernameInput.value
         newAccountInformations.password = passwordInput.value
-        console.log(newAccountInformations)
+        console.log(newAccountInformations)   
+        window.open('login.html', '_self')
     }
 }

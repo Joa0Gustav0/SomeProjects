@@ -118,9 +118,6 @@
 .quick-access-section__users-list__user-container__remove-button:active{
     transform: scale(0);
 }
-.user-container-model{
-    display: none;
-}
 
 .login-section__title{
     color: #4D3D87;
@@ -144,6 +141,10 @@
     margin-bottom: 20px;
     border: 1px solid black;
 }
+.login-section__inputs-container.on-error{
+    margin-bottom: 0;
+    border: 1px solid red;
+}
 .login-section__inputs-container__inputs{
     width: 100%;
     border: 0;
@@ -153,6 +154,23 @@
 .login-section__inputs-container__input-icon{
     width: 20px;
     height: 20px;
+}
+.login-section__inputs-container__input-eye-icon{
+    display: none;
+}
+.login-section__inputs-container__input-eye-icon:hover{
+    cursor: pointer;
+}
+.login-section__fields-error-text{
+    display: none;
+
+    color: #ff0050;
+    font-size: .8em;
+    align-self: flex-start;
+    margin-bottom: 20px;
+}
+.login-section__fields-error-text.show-error-message{
+    display: block;
 }
 .login-section__forgot-password{
     color: #4D3D87;
@@ -234,6 +252,14 @@
     font-size: 1em;
     background-color: white;
     color: rgba(0, 0, 0, 0.5);
+}
+.button-pseudo-sign{
+    color: rgba(0, 0, 0, 0.3);
+    width: 100%;
+    margin-top: 40px;
+    max-width: 320px;
+    font-weight: 400;
+    text-align: center;
 }
 
 /*RESPOSIVINESS*/
