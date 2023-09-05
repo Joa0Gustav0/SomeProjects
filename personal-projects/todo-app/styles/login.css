@@ -253,6 +253,11 @@
     background-color: white;
     color: rgba(0, 0, 0, 0.5);
 }
+.login-section__account-creation-link{
+    color: black;
+    margin-top: 5px;
+    text-decoration: underline;
+}
 .button-pseudo-sign{
     color: rgba(0, 0, 0, 0.3);
     width: 100%;
