@@ -8,6 +8,110 @@
     <title>ClassY</title>
 </head>
 <body>
-    
+    <header>
+        <a href="home.html" class="classy-logo">
+            <img src="media/classy-logo.png">
+        </a>
+        <div class="header__menu-button" 
+            onclick="setSideBarState()">
+            <div class="header__menu-button__line header__menu-button__line1"></div>
+            <div class="header__menu-button__line header__menu-button__line2"></div>
+            <div class="header__menu-button__line header__menu-button__line3"></div>
+        </div>
+    </header>
+    <section class="to-do-section">
+        <div class="to-do-section__to-do-categorie-container to-do-section__categorie-containers">
+            <h1 class="to-do-section__categorie-containers__title">
+                📌 To do
+            </h1>
+            <div class="to-do-section__categorie-containers__cards-list">
+                <div class="to-do-section__categorie-containers__cards-list__card">
+                    <div class="to-do-section__categorie-containers__cards-list__card__actions-buttons-container">
+                        <ion-icon name="triangle" class="to-do-section__categorie-containers__cards-list__card__actions-buttons-container__actions-button 
+                        to-do-section__categorie-containers__cards-list__card__actions-buttons-container__go-up-card-button"></ion-icon>
+                        <ion-icon name="albums-sharp" class="to-do-section__categorie-containers__cards-list__card__actions-buttons-container__actions-button 
+                        to-do-section__categorie-containers__cards-list__card__actions-buttons-container__change-card-categorie-button"></ion-icon>
+                        <ion-icon name="trash-sharp" class="to-do-section__categorie-containers__cards-list__card__actions-buttons-container__actions-button 
+                        to-do-section__categorie-containers__cards-list__card__actions-buttons-container__delete-card-button"></ion-icon>
+                    </div>
+                    <h1 class="to-do-section__categorie-containers__cards-list__card__task-text">
+                        Random task...
+                    </h1>
+                </div>
+            </div>
+            <h1 class="to-do-section__categorie-containers__add-card-button">
+                <ion-icon name="add"></ion-icon>
+                Add a new card
+            </h1>
+            <div class="to-do-section__categories-container__colors-container">
+                <div class="to-do-section__categories-container__colors-container__color-buttons
+                to-do-section__categories-container__colors-container__yellow-color-button"></div>
+                <div class="to-do-section__categories-container__colors-container__color-buttons
+                to-do-section__categories-container__colors-container__green-color-button"></div>
+                <div class="to-do-section__categories-container__colors-container__color-buttons
+                to-do-section__categories-container__colors-container__pink-color-button"></div>
+                <div class="to-do-section__categories-container__colors-container__color-buttons
+                to-do-section__categories-container__colors-container__purple-color-button"></div>
+                <div class="to-do-section__categories-container__colors-container__color-buttons
+                to-do-section__categories-container__colors-container__blue-color-buttons"></div>
+            </div>
+        </div>
+        <div class="to-do-section__doing-categorie-container to-do-section__categorie-containers">
+            <h1 class="to-do-section__categorie-containers__title">
+                ⏰ Doing
+            </h1>
+            <div class="to-do-section__categorie-containers__cards-list">
+                
+            </div>
+            <h1 class="to-do-section__categorie-containers__add-card-button">
+                <ion-icon name="add"></ion-icon>
+                Add a new card
+            </h1>
+            <div class="to-do-section__categories-container__colors-container">
+                <div class="to-do-section__categories-container__colors-container__color-buttons
+                to-do-section__categories-container__colors-container__yellow-color-button"></div>
+                <div class="to-do-section__categories-container__colors-container__color-buttons
+                to-do-section__categories-container__colors-container__green-color-button"></div>
+                <div class="to-do-section__categories-container__colors-container__color-buttons
+                to-do-section__categories-container__colors-container__pink-color-button"></div>
+                <div class="to-do-section__categories-container__colors-container__color-buttons
+                to-do-section__categories-container__colors-container__purple-color-button"></div>
+                <div class="to-do-section__categories-container__colors-container__color-buttons
+                to-do-section__categories-container__colors-container__blue-color-buttons"></div>
+            </div>
+        </div>
+        <div class="to-do-section__done-categorie-container to-do-section__categorie-containers">
+            <h1 class="to-do-section__categorie-containers__title">
+                ✔ Done
+            </h1>
+            <div class="to-do-section__categorie-containers__cards-list">
+                
+            </div>
+            <h1 class="to-do-section__categorie-containers__add-card-button">
+                <ion-icon name="add"></ion-icon>
+                Add a new card
+            </h1>
+            <div class="to-do-section__categories-container__colors-container">
+                <div class="to-do-section__categories-container__colors-container__color-buttons
+                to-do-section__categories-container__colors-container__yellow-color-button"></div>
+                <div class="to-do-section__categories-container__colors-container__color-buttons
+                to-do-section__categories-container__colors-container__green-color-button"></div>
+                <div class="to-do-section__categories-container__colors-container__color-buttons
+                to-do-section__categories-container__colors-container__pink-color-button"></div>
+                <div class="to-do-section__categories-container__colors-container__color-buttons
+                to-do-section__categories-container__colors-container__purple-color-button"></div>
+                <div class="to-do-section__categories-container__colors-container__color-buttons
+                to-do-section__categories-container__colors-container__blue-color-buttons"></div>
+            </div>
+        </div>
+
+        <ion-icon name="add" class="to-do-section__add-categorie-button"></ion-icon>
+        <h1 class="to-do-section__generate-classic-list">
+            Generate a classic ToDo list.
+        </h1>
+    </section>
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
 </html>
