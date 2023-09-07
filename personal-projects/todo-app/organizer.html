@@ -22,6 +22,20 @@
     </header>
     <section class="to-do-section">
         <img src="media/to-do-section-picture.png" class="to-do-section__background-picture">
+        <nav class="to-do-section__alt-categories-tabs-container">
+            <div id="to-do-tab" class="to-do-section__alt-categories-tabs-container__to-do-categories-tab">
+                <ion-icon name="pin"></ion-icon>
+                <h1>To do</h1>
+            </div>
+            <div id="doing-tab" class="to-do-section__alt-categories-tabs-container__to-do-categories-tab">
+                <ion-icon name="alarm"></ion-icon>
+                <h1>Doing</h1>
+            </div>
+            <div id="done-tab"  class="to-do-section__alt-categories-tabs-container__to-do-categories-tab">
+                <ion-icon name="checkmark-sharp"></ion-icon>
+                <h1>Done</h1>
+            </div>
+        </nav>
         <div class="to-do-section__to-do-categorie-container to-do-section__categorie-containers">
             <h1 class="to-do-section__categorie-containers__title">
                 <ion-icon name="pin"></ion-icon> To do
@@ -70,18 +84,6 @@
                 <ion-icon name="add"></ion-icon>
                 Add a new card
             </h1>
-            <div class="to-do-section__categories-container__colors-container">
-                <div class="to-do-section__categories-container__colors-container__color-buttons
-                to-do-section__categories-container__colors-container__yellow-color-button"></div>
-                <div class="to-do-section__categories-container__colors-container__color-buttons
-                to-do-section__categories-container__colors-container__green-color-button"></div>
-                <div class="to-do-section__categories-container__colors-container__color-buttons
-                to-do-section__categories-container__colors-container__pink-color-button"></div>
-                <div class="to-do-section__categories-container__colors-container__color-buttons
-                to-do-section__categories-container__colors-container__purple-color-button"></div>
-                <div class="to-do-section__categories-container__colors-container__color-buttons
-                to-do-section__categories-container__colors-container__blue-color-button"></div>
-            </div>
         </div>
         <div class="to-do-section__doing-categorie-container to-do-section__categorie-containers">
             <h1 class="to-do-section__categorie-containers__title">
@@ -94,18 +96,6 @@
                 <ion-icon name="add"></ion-icon>
                 Add a new card
             </h1>
-            <div class="to-do-section__categories-container__colors-container">
-                <div class="to-do-section__categories-container__colors-container__color-buttons
-                to-do-section__categories-container__colors-container__yellow-color-button"></div>
-                <div class="to-do-section__categories-container__colors-container__color-buttons
-                to-do-section__categories-container__colors-container__green-color-button"></div>
-                <div class="to-do-section__categories-container__colors-container__color-buttons
-                to-do-section__categories-container__colors-container__pink-color-button"></div>
-                <div class="to-do-section__categories-container__colors-container__color-buttons
-                to-do-section__categories-container__colors-container__purple-color-button"></div>
-                <div class="to-do-section__categories-container__colors-container__color-buttons
-                to-do-section__categories-container__colors-container__blue-color-button"></div>
-            </div>
         </div>
         <div class="to-do-section__done-categorie-container to-do-section__categorie-containers">
             <h1 class="to-do-section__categorie-containers__title">
@@ -118,18 +108,19 @@
                 <ion-icon name="add"></ion-icon>
                 Add a new card
             </h1>
-            <div class="to-do-section__categories-container__colors-container">
-                <div class="to-do-section__categories-container__colors-container__color-buttons
-                to-do-section__categories-container__colors-container__yellow-color-button"></div>
-                <div class="to-do-section__categories-container__colors-container__color-buttons
-                to-do-section__categories-container__colors-container__green-color-button"></div>
-                <div class="to-do-section__categories-container__colors-container__color-buttons
-                to-do-section__categories-container__colors-container__pink-color-button"></div>
-                <div class="to-do-section__categories-container__colors-container__color-buttons
-                to-do-section__categories-container__colors-container__purple-color-button"></div>
-                <div class="to-do-section__categories-container__colors-container__color-buttons
-                to-do-section__categories-container__colors-container__blue-color-button"></div>
+        </div>
+        <div class="to-do-section__categorie-containers to-do-section__other-categorie-containers-model to-do-section__other-categorie-containers-model-example">
+            <h1 class="to-do-section__categorie-containers__title">
+                <ion-icon name="book"></ion-icon> Other 1
+            </h1>
+            <div class="to-do-section__categorie-containers__cards-list">
+                
             </div>
+            <h1 class="to-do-section__categorie-containers__add-card-button">
+                <ion-icon name="add"></ion-icon>
+                Add a new card
+            </h1>
+            <ion-icon name="close-circle-outline" class="to-do-section__categorie-containers__delete-categorie-button"></ion-icon>
         </div>
 
         <abbr title="Add a new categorie">
