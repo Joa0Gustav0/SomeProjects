@@ -3,13 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="styles/comum.css">
+    <link rel="stylesheet" href="styles/organizer.css">
     <link rel="shortcut icon" href="media/favicon.ico" type="image/x-icon">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ClassY</title>
 </head>
 <body>
     <header>
-        <a href="home.html" class="classy-logo">
+        <a href="home.html" class="header__classy-logo">
             <img src="media/classy-logo.png">
         </a>
         <div class="header__menu-button" 
@@ -20,6 +21,7 @@
         </div>
     </header>
     <section class="to-do-section">
+        <img src="media/to-do-section-picture.png" class="to-do-section__background-picture">
         <div class="to-do-section__to-do-categorie-container to-do-section__categorie-containers">
             <h1 class="to-do-section__categorie-containers__title">
                 <ion-icon name="pin"></ion-icon> To do
@@ -27,15 +29,40 @@
             <div class="to-do-section__categorie-containers__cards-list">
                 <div class="to-do-section__categorie-containers__cards-list__card">
                     <div class="to-do-section__categorie-containers__cards-list__card__actions-buttons-container">
-                        <ion-icon name="triangle" class="to-do-section__categorie-containers__cards-list__card__actions-buttons-container__actions-button 
-                        to-do-section__categorie-containers__cards-list__card__actions-buttons-container__go-up-card-button"></ion-icon>
-                        <ion-icon name="albums-sharp" class="to-do-section__categorie-containers__cards-list__card__actions-buttons-container__actions-button 
-                        to-do-section__categorie-containers__cards-list__card__actions-buttons-container__change-card-categorie-button"></ion-icon>
-                        <ion-icon name="trash-sharp" class="to-do-section__categorie-containers__cards-list__card__actions-buttons-container__actions-button 
-                        to-do-section__categorie-containers__cards-list__card__actions-buttons-container__delete-card-button"></ion-icon>
+                        <abbr title="Send to the top">
+                            <ion-icon name="triangle" class="to-do-section__categorie-containers__cards-list__card__actions-buttons-container__actions-button
+                            to-do-section__categorie-containers__cards-list__card__actions-buttons-container__go-up-card-button"></ion-icon>
+                        </abbr>
+                        <abbr title="Change categorie">
+                            <ion-icon name="albums-sharp" class="to-do-section__categorie-containers__cards-list__card__actions-buttons-container__actions-button
+                            to-do-section__categorie-containers__cards-list__card__actions-buttons-container__change-card-categorie-button"></ion-icon>
+                        </abbr>
+                        <abbr title="Delete">
+                            <ion-icon name="trash-sharp" class="to-do-section__categorie-containers__cards-list__card__actions-buttons-container__actions-button
+                            to-do-section__categorie-containers__cards-list__card__actions-buttons-container__delete-card-button"></ion-icon>
+                        </abbr>
                     </div>
                     <h1 class="to-do-section__categorie-containers__cards-list__card__task-text">
-                        Random task...
+                        Do the math review, and do the test on wednesday.
+                    </h1>
+                </div>
+                <div class="to-do-section__categorie-containers__cards-list__card">
+                    <div class="to-do-section__categorie-containers__cards-list__card__actions-buttons-container">
+                        <abbr title="Send to the top">
+                            <ion-icon name="triangle" class="to-do-section__categorie-containers__cards-list__card__actions-buttons-container__actions-button
+                            to-do-section__categorie-containers__cards-list__card__actions-buttons-container__go-up-card-button"></ion-icon>
+                        </abbr>
+                        <abbr title="Change categorie">
+                            <ion-icon name="albums-sharp" class="to-do-section__categorie-containers__cards-list__card__actions-buttons-container__actions-button
+                            to-do-section__categorie-containers__cards-list__card__actions-buttons-container__change-card-categorie-button"></ion-icon>
+                        </abbr>
+                        <abbr title="Delete">
+                            <ion-icon name="trash-sharp" class="to-do-section__categorie-containers__cards-list__card__actions-buttons-container__actions-button
+                            to-do-section__categorie-containers__cards-list__card__actions-buttons-container__delete-card-button"></ion-icon>
+                        </abbr>
+                    </div>
+                    <h1 class="to-do-section__categorie-containers__cards-list__card__task-text">
+                        Do the math review, and do the test on wednesday.
                     </h1>
                 </div>
             </div>
@@ -53,7 +80,7 @@
                 <div class="to-do-section__categories-container__colors-container__color-buttons
                 to-do-section__categories-container__colors-container__purple-color-button"></div>
                 <div class="to-do-section__categories-container__colors-container__color-buttons
-                to-do-section__categories-container__colors-container__blue-color-buttons"></div>
+                to-do-section__categories-container__colors-container__blue-color-button"></div>
             </div>
         </div>
         <div class="to-do-section__doing-categorie-container to-do-section__categorie-containers">
@@ -77,7 +104,7 @@
                 <div class="to-do-section__categories-container__colors-container__color-buttons
                 to-do-section__categories-container__colors-container__purple-color-button"></div>
                 <div class="to-do-section__categories-container__colors-container__color-buttons
-                to-do-section__categories-container__colors-container__blue-color-buttons"></div>
+                to-do-section__categories-container__colors-container__blue-color-button"></div>
             </div>
         </div>
         <div class="to-do-section__done-categorie-container to-do-section__categorie-containers">
@@ -101,13 +128,15 @@
                 <div class="to-do-section__categories-container__colors-container__color-buttons
                 to-do-section__categories-container__colors-container__purple-color-button"></div>
                 <div class="to-do-section__categories-container__colors-container__color-buttons
-                to-do-section__categories-container__colors-container__blue-color-buttons"></div>
+                to-do-section__categories-container__colors-container__blue-color-button"></div>
             </div>
         </div>
 
-        <ion-icon name="add" class="to-do-section__add-categorie-button"></ion-icon>
+        <abbr title="Add a new categorie">
+            <ion-icon name="add" class="to-do-section__add-categorie-button"></ion-icon>
+        </abbr>
         <h1 class="to-do-section__generate-classic-list">
-            Generate a classic ToDo list.
+            <span>&#x1F4C3;</span> Generate a classic ToDo list.
         </h1>
     </section>
 
