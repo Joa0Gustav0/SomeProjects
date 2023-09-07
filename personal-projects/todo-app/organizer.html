@@ -41,26 +41,7 @@
                 <ion-icon name="pin"></ion-icon> To do
             </h1>
             <div class="to-do-section__categorie-containers__cards-list">
-                <div class="to-do-section__categorie-containers__cards-list__card">
-                    <div class="to-do-section__categorie-containers__cards-list__card__actions-buttons-container">
-                        <abbr title="Send to the top">
-                            <ion-icon name="triangle" class="to-do-section__categorie-containers__cards-list__card__actions-buttons-container__actions-button
-                            to-do-section__categorie-containers__cards-list__card__actions-buttons-container__go-up-card-button"></ion-icon>
-                        </abbr>
-                        <abbr title="Change categorie">
-                            <ion-icon name="albums-sharp" class="to-do-section__categorie-containers__cards-list__card__actions-buttons-container__actions-button
-                            to-do-section__categorie-containers__cards-list__card__actions-buttons-container__change-card-categorie-button"></ion-icon>
-                        </abbr>
-                        <abbr title="Delete">
-                            <ion-icon name="trash-sharp" class="to-do-section__categorie-containers__cards-list__card__actions-buttons-container__actions-button
-                            to-do-section__categorie-containers__cards-list__card__actions-buttons-container__delete-card-button"></ion-icon>
-                        </abbr>
-                    </div>
-                    <h1 class="to-do-section__categorie-containers__cards-list__card__task-text">
-                        Do the math review, and do the test on wednesday.
-                    </h1>
-                </div>
-                <div class="to-do-section__categorie-containers__cards-list__card">
+                <div class="to-do-section__categorie-containers__cards-list__card-model">
                     <div class="to-do-section__categorie-containers__cards-list__card__actions-buttons-container">
                         <abbr title="Send to the top">
                             <ion-icon name="triangle" class="to-do-section__categorie-containers__cards-list__card__actions-buttons-container__actions-button
@@ -109,8 +90,8 @@
                 Add a new card
             </h1>
         </div>
-        <div class="to-do-section__categorie-containers to-do-section__other-categorie-containers-model to-do-section__other-categorie-containers-model-example">
-            <h1 class="to-do-section__categorie-containers__title">
+        <div class="to-do-section__categorie-containers to-do-section__other-categorie-containers-model to-do-section__other-categorie-containers-model-example"><!--
+         --><h1 id="title" class="to-do-section__categorie-containers__title">
                 <ion-icon name="book"></ion-icon> Other 1
             </h1>
             <div class="to-do-section__categorie-containers__cards-list">
@@ -131,6 +112,7 @@
         </h1>
     </section>
 
+    <script src="scripts/organizer.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
