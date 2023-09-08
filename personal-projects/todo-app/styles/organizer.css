@@ -134,11 +134,12 @@ header{
     display: none;
     flex-wrap: nowrap;
     flex-direction: row;
+    align-self: flex-start;
 
-    width: 100%;
+    width: calc(100% - 100px);
     padding: 20px 30px;
     overflow-x: scroll;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
 }
 .to-do-section__alt-categories-tabs-container__to-do-categories-tab{
     transition: all .25s;
@@ -149,7 +150,7 @@ header{
     justify-content: center;
 
     gap: 5px;
-    width: 125px;
+    min-width: 100px;
     height: 35px;
     color: white;
     margin-right: 10px;
@@ -176,7 +177,8 @@ header{
     align-items: flex-start;
     justify-content: space-between;
 
-    width: 320px;
+    width: 100%;
+    max-width: 320px;
     height: 320px;
     padding: 10px;
     margin: 0 30px;
@@ -325,5 +327,8 @@ header{
     }
     .to-do-section__alt-categories-tabs-container{
         display: flex;
+    }
+    .to-do-section__categorie-containers{
+        display: none;
     }
 }

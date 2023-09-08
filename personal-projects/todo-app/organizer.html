@@ -23,15 +23,15 @@
     <section class="to-do-section">
         <img src="media/to-do-section-picture.png" class="to-do-section__background-picture">
         <nav class="to-do-section__alt-categories-tabs-container">
-            <div id="to-do-tab" class="to-do-section__alt-categories-tabs-container__to-do-categories-tab">
+            <div id="to-do" class="to-do-section__alt-categories-tabs-container__to-do-categories-tab" onclick="setCurrentContainerVisible(this)">
                 <ion-icon name="pin"></ion-icon>
                 <h1>To do</h1>
             </div>
-            <div id="doing-tab" class="to-do-section__alt-categories-tabs-container__to-do-categories-tab">
+            <div id="doing" class="to-do-section__alt-categories-tabs-container__to-do-categories-tab" onclick="setCurrentContainerVisible(this)">
                 <ion-icon name="alarm"></ion-icon>
                 <h1>Doing</h1>
             </div>
-            <div id="done-tab"  class="to-do-section__alt-categories-tabs-container__to-do-categories-tab">
+            <div id="done"  class="to-do-section__alt-categories-tabs-container__to-do-categories-tab" onclick="setCurrentContainerVisible(this)">
                 <ion-icon name="checkmark-sharp"></ion-icon>
                 <h1>Done</h1>
             </div>
@@ -90,7 +90,7 @@
                 Add a new card
             </h1>
         </div>
-        <div class="to-do-section__categorie-containers to-do-section__other-categorie-containers-model to-do-section__other-categorie-containers-model-example"><!--
+        <div class="to-do-section__other-categorie-containers-model to-do-section__other-categorie-containers-model-example"><!--
          --><h1 id="title" class="to-do-section__categorie-containers__title">
                 <ion-icon name="book"></ion-icon> Other 1
             </h1>
@@ -101,7 +101,9 @@
                 <ion-icon name="add"></ion-icon>
                 Add a new card
             </h1>
-            <ion-icon name="close-circle-outline" class="to-do-section__categorie-containers__delete-categorie-button"></ion-icon>
+            <ion-icon name="close-circle-outline" 
+                    class="to-do-section__categorie-containers__delete-categorie-button"
+                    onmousedown="removeCurrentContainer(this)"></ion-icon>
         </div>
 
         <abbr title="Add a new categorie">
