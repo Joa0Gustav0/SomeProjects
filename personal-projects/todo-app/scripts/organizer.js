@@ -44,6 +44,7 @@ addCategoriesButton.addEventListener('click', () => {
 //Remove containers
 const removeCurrentContainer = (currentButton) =>{
     currentButton.parentNode.remove()
+    console.log(currentButton.parentNode.childNodes[1].innerText)
     reorganizeCreatedContainers()
 }
 
@@ -56,7 +57,12 @@ const reorganizeCreatedContainers = () => {
         otherContainers[i].childNodes[1].innerHTML = `<ion-icon name="book"></ion-icon> Other ${i + 1}`
     }
 
-    const otherTabs = document.getElementsByClassName('')
+    const otherTabs = document.getElementsByClassName('to-do-section__alt-categories-tabs-container__other-categories-tab')
+
+    for (var i = 0; i < otherTabs.length; i++){
+        otherTabs[i].className = `to-do-section__alt-categories-tabs-container__to-do-categories-tab to-do-section__alt-categories-tabs-container__other-categories-tab to-do-section__alt-categories-tabs-container__other${i + 1}-categories-tab`
+        otherTabs[i].id = `other${i + 1}`
+    }
 }
 
 /*RESPONSIVINESS*/
