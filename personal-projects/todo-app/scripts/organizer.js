@@ -16,8 +16,6 @@ addCategoriesButton.addEventListener('click', () => {
 
     const newCategorieContainerName = newCategorieContainer.childNodes[1]
     newCategorieContainerName.innerHTML = `<ion-icon name="book"></ion-icon> Other ${otherCategoriesContainers.length}`
-
-    reorganizeCreatedContainers()
     
     //create container tab
     const categorieTabModel = document.querySelector('.to-do-section__alt-categories-tabs-container__to-do-categories-tab')
@@ -27,9 +25,20 @@ addCategoriesButton.addEventListener('click', () => {
     newCategorieTab.className = `to-do-section__alt-categories-tabs-container__to-do-categories-tab to-do-section__alt-categories-tabs-container__other-categories-tab to-do-section__alt-categories-tabs-container__other${otherCategoriesContainers.length}-categories-tab`
     newCategorieTab.id = `other${otherCategoriesContainers.length}`
     newCategorieTab.childNodes[3].innerText = `Other ${otherCategoriesContainers.length}`
+    newCategorieTab.addEventListener('click', () => {
+        console.log(newCategorieTab.id)
+        const currentCategorie = document.querySelector(`.to-do-section__${newCategorieTab.id}-categorie-containers`)
+
+        for (var i = 0; i < allContainers.length; i++){
+            allContainers[i].style.display = 'none'
+        }
+        currentCategorie.style.display = 'flex'
+    })
 
     const categoriesTabsContainer = document.querySelector('.to-do-section__alt-categories-tabs-container')
     categoriesTabsContainer.appendChild(newCategorieTab)
+
+    reorganizeCreatedContainers()
 })
 
 //Remove containers
@@ -46,6 +55,8 @@ const reorganizeCreatedContainers = () => {
         otherContainers[i].className = `to-do-section__categorie-containers to-do-section__other-categorie-containers to-do-section__other${i + 1}-categorie-containers`
         otherContainers[i].childNodes[1].innerHTML = `<ion-icon name="book"></ion-icon> Other ${i + 1}`
     }
+
+    const otherTabs = document.getElementsByClassName('')
 }
 
 /*RESPONSIVINESS*/
@@ -91,7 +102,7 @@ window.addEventListener('resize', () => {
 
 //navigate through containers using the tabs
 const setCurrentContainerVisible = (currentTab) => {
-    const currentCategorie = document.querySelector(`.to-do-section__${currentTab.id}-categorie-container`)
+    const currentCategorie = document.querySelector(`.to-do-section__other${currentTab.id}-categorie-containers`)
 
     for (var i = 0; i < allContainers.length; i++){
         allContainers[i].style.display = 'none'
