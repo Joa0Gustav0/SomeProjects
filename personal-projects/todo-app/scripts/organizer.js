@@ -12,7 +12,7 @@ addCategoriesButton.addEventListener('click', () => {
     toDoSection.appendChild(newCategorieContainer)
 
     let otherCategoriesContainers = document.getElementsByClassName('to-do-section__other-categorie-containers')
-    newCategorieContainer.className = `to-do-section__categorie-containers to-do-section__other-categorie-containers to-do-section__other${otherCategoriesContainers.length + 1}-categorie-containers`
+    newCategorieContainer.className = `to-do-section__categorie-containers to-do-section__other-categorie-containers to-do-section__other${otherCategoriesContainers.length + 1}-categorie-container other${otherCategoriesContainers.length + 1}`
 
     const newCategorieContainerName = newCategorieContainer.childNodes[1]
     newCategorieContainerName.innerHTML = `<ion-icon name="book"></ion-icon> Other ${otherCategoriesContainers.length}`
@@ -26,8 +26,7 @@ addCategoriesButton.addEventListener('click', () => {
     newCategorieTab.id = `other${otherCategoriesContainers.length}`
     newCategorieTab.childNodes[3].innerText = `Other ${otherCategoriesContainers.length}`
     newCategorieTab.addEventListener('click', () => {
-        console.log(newCategorieTab.id)
-        const currentCategorie = document.querySelector(`.to-do-section__${newCategorieTab.id}-categorie-containers`)
+        const currentCategorie = document.querySelector(`.to-do-section__${newCategorieTab.id}-categorie-container`)
 
         for (var i = 0; i < allContainers.length; i++){
             allContainers[i].style.display = 'none'
@@ -44,7 +43,10 @@ addCategoriesButton.addEventListener('click', () => {
 //Remove containers
 const removeCurrentContainer = (currentButton) =>{
     currentButton.parentNode.remove()
-    console.log(currentButton.parentNode.childNodes[1].innerText)
+
+    const currentTab = document.querySelector(`#${currentButton.parentNode.classList[3]}`)
+    currentTab.remove()
+
     reorganizeCreatedContainers()
 }
 
@@ -53,7 +55,7 @@ const reorganizeCreatedContainers = () => {
     const otherContainers = document.getElementsByClassName('to-do-section__other-categorie-containers')
 
     for (var i = 0; i < otherContainers.length; i++){
-        otherContainers[i].className = `to-do-section__categorie-containers to-do-section__other-categorie-containers to-do-section__other${i + 1}-categorie-containers`
+        otherContainers[i].className = `to-do-section__categorie-containers to-do-section__other-categorie-containers to-do-section__other${i + 1}-categorie-container other${i + 1}`
         otherContainers[i].childNodes[1].innerHTML = `<ion-icon name="book"></ion-icon> Other ${i + 1}`
     }
 
@@ -62,6 +64,7 @@ const reorganizeCreatedContainers = () => {
     for (var i = 0; i < otherTabs.length; i++){
         otherTabs[i].className = `to-do-section__alt-categories-tabs-container__to-do-categories-tab to-do-section__alt-categories-tabs-container__other-categories-tab to-do-section__alt-categories-tabs-container__other${i + 1}-categories-tab`
         otherTabs[i].id = `other${i + 1}`
+        otherTabs[i].childNodes[3].innerText = `Other ${i + 1}`
     }
 }
 
@@ -108,7 +111,7 @@ window.addEventListener('resize', () => {
 
 //navigate through containers using the tabs
 const setCurrentContainerVisible = (currentTab) => {
-    const currentCategorie = document.querySelector(`.to-do-section__other${currentTab.id}-categorie-containers`)
+    const currentCategorie = document.querySelector(`.to-do-section__${currentTab.id}-categorie-container`)
 
     for (var i = 0; i < allContainers.length; i++){
         allContainers[i].style.display = 'none'

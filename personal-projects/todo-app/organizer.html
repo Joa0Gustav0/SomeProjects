@@ -23,15 +23,18 @@
     <section class="to-do-section">
         <img src="media/to-do-section-picture.png" class="to-do-section__background-picture">
         <nav class="to-do-section__alt-categories-tabs-container">
-            <div id="to-do" class="to-do-section__alt-categories-tabs-container__to-do-categories-tab">
+            <div id="to-do" class="to-do-section__alt-categories-tabs-container__to-do-categories-tab"
+                onclick="setCurrentContainerVisible(this)">
                 <ion-icon name="pin"></ion-icon>
                 <h1>To do</h1>
             </div>
-            <div id="doing" class="to-do-section__alt-categories-tabs-container__to-do-categories-tab">
+            <div id="doing" class="to-do-section__alt-categories-tabs-container__to-do-categories-tab"
+                onclick="setCurrentContainerVisible(this)">
                 <ion-icon name="alarm"></ion-icon>
                 <h1>Doing</h1>
             </div>
-            <div id="done"  class="to-do-section__alt-categories-tabs-container__to-do-categories-tab">
+            <div id="done"  class="to-do-section__alt-categories-tabs-container__to-do-categories-tab"
+                onclick="setCurrentContainerVisible(this)">
                 <ion-icon name="checkmark-sharp"></ion-icon>
                 <h1>Done</h1>
             </div>
