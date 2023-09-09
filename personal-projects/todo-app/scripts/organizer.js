@@ -42,12 +42,28 @@ addCategoriesButton.addEventListener('click', () => {
 
 //Remove containers
 const removeCurrentContainer = (currentButton) =>{
+    //set main to do container visible when the removed container is the displayed one
+    let currentContainer = null
+
+    for (var i = 0; i < allContainers.length; i++){
+        if (allContainers[i].style.display == 'flex'){
+            currentContainer = allContainers[i].classList[3]
+        }
+    }
+    
     currentButton.parentNode.remove()
 
     const currentTab = document.querySelector(`#${currentButton.parentNode.classList[3]}`)
     currentTab.remove()
 
     reorganizeCreatedContainers()
+
+    if (currentContainer != null){
+        for (var i = 0; i < allContainers.length; i++){
+            allContainers[i].style.display = 'none'
+        }
+        allContainers[allContainers.length - 1].style.display = 'flex'
+    }
 }
 
 //rename other's containers
