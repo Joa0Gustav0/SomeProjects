@@ -39,10 +39,12 @@ addCategoriesButton.addEventListener('click', () => {
 
     reorganizeCreatedContainers()
 
-    for (var i = 0; i < allContainers.length; i++){
-        allContainers[i].style.display = 'none'
+    if (window.matchMedia('(max-width: 759px)').matches){
+        for (var i = 0; i < allContainers.length; i++){
+            allContainers[i].style.display = 'none'
+        }
+        newCategorieContainer.style.display = 'flex'
     }
-    newCategorieContainer.style.display = 'flex'
 })
 
 //Remove containers
