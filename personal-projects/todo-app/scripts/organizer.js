@@ -65,11 +65,13 @@ const removeCurrentContainer = (currentButton) =>{
 
     reorganizeCreatedContainers()
 
-    if (currentContainer != null){
-        for (var i = 0; i < allContainers.length; i++){
-            allContainers[i].style.display = 'none'
+    if (window.matchMedia('(max-width: 759px)').matches){
+        if (currentContainer != null){
+            for (var i = 0; i < allContainers.length; i++){
+                allContainers[i].style.display = 'none'
+            }
+            allContainers[allContainers.length - 1].style.display = 'flex'
         }
-        allContainers[allContainers.length - 1].style.display = 'flex'
     }
 }
 
