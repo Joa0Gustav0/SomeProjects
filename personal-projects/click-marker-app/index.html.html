@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body{
+            width: 100%;
+            height: 100vh;
+        }
+        .actions-buttons-container{
+            position: fixed;
+            top: 15px;
+            right: 15px;
+        }
+        .actions-buttons{
+            transition: all .1s;
+            border: 0;
+            margin: 0 2.5px;
+            width: 30px;
+            height: 30px;
+            outline: none;
+            box-shadow: 0px 0px 0px #cecece;
+        }
+        .actions-buttons:hover{
+            cursor: pointer;
+            transform: translateY(-5px);
+            box-shadow: 0px 5px 0px #cecece;
+        }
+        .actions-buttons:active{
+            transform: translateY(0px);
+            box-shadow: 0px 0px 0px #cecece;
+        }
+
+        .click-point{
+            position: absolute;
+            transform: translate(-50%, -50%);
+
+            width: 20px;
+            height: 20px;
+            border-radius: 100%;
+            background-color: #ff0050;
+        }
+    </style>
+    <title>Click Maker App</title>
+</head>
+<body>
+    <div class="actions-buttons-container">
+        <input type="button" value="&larr;" class="undo-button actions-buttons">
+        <input type="button" value="&rarr;" class="redo-button actions-buttons">
+    </div>
+
+    <script>
+        let axisX = 0
+        let axisY = 0
+        let lastPoint = undefined
+        allPointsArray = []
+        allPoints = document.getElementsByClassName('click-point')
+        
+        const actionsButtons = document.querySelector('.actions-buttons-container')
+        const undoButton = document.querySelector('.undo-button')
+        const redoButton = document.querySelector('.redo-button')
+
+        window.addEventListener('mousemove', (e) => {
+            axisX = e.clientX
+            axisY = e.clientY
+        })
+
+        let canMark = true
+        actionsButtons.addEventListener('mouseenter', () => {
+            canMark = false
+        })
+        actionsButtons.addEventListener('mouseleave', () => {
+            canMark = true
+        })
+
+        window.addEventListener('click', () => {
+            if (canMark == true){
+                let newPointMark = document.createElement('div')
+                newPointMark.className = 'click-point'
+                newPointMark.style.left = `${axisX}px`
+                newPointMark.style.top = `${axisY}px`
+
+                document.body.appendChild(newPointMark)
+                allPointsArray = []
+                for (var i = 0; i < allPoints.length; i++){
+                    allPointsArray.push(allPoints[i])
+                }
+                console.log(allPointsArray)
+                lastPoint = allPointsArray
+            }
+
+        })
+
+
+        undoButton.addEventListener('click', () => {
+            if (lastPoint != undefined){
+                if (allPoints.length > 0){
+                    allPoints[allPoints.length - 1].remove()
+                }
+            }
+        })
+        redoButton.addEventListener('click', () => {
+            if (lastPoint != undefined){
+                if (allPoints.length < allPointsArray.length){
+                    let recreatedPoint = document.createElement('div')
+                    recreatedPoint = allPointsArray[allPoints.length]
+                    document.body.appendChild(recreatedPoint)
+                } 
+            }
+        })
+    </script>
+</body>
+</html>
