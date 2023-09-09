@@ -38,6 +38,11 @@ addCategoriesButton.addEventListener('click', () => {
     categoriesTabsContainer.appendChild(newCategorieTab)
 
     reorganizeCreatedContainers()
+
+    for (var i = 0; i < allContainers.length; i++){
+        allContainers[i].style.display = 'none'
+    }
+    newCategorieContainer.style.display = 'flex'
 })
 
 //Remove containers
