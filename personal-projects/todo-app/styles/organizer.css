@@ -327,6 +327,9 @@ header{
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
 }
+.screen-saver.active{
+    display: block;
+}
 .to-do-section__screen-saver__add-card-tab{
     position: absolute;
     top: 50%;
@@ -343,6 +346,9 @@ header{
     padding: 20px;
     width: calc(100% - 60px);
     background-color: white;
+}
+.to-do-section__screen-saver__add-card-tab.active-tab{
+    display: flex;
 }
 .to-do-section__screen-saver__add-card-tab__title{
     display: flex;

@@ -93,6 +93,33 @@ const reorganizeCreatedContainers = () => {
     }
 }
 
+const addNewCardButton = document.getElementsByClassName('to-do-section__categorie-containers__add-card-button')
+const screenSaver = document.querySelector('.screen-saver')
+const addNewCardTab = document.querySelector('.to-do-section__screen-saver__add-card-tab')
+const cancelTabButton = document.querySelector('#add-card-tab-cancel-button')
+
+//open screen saver and add card tab
+for (var i = 0; i < addNewCardButton.length; i++){
+    addNewCardButton[i].addEventListener('click', () => {
+        if (screenSaver.classList.contains('active') == false){
+            screenSaver.classList.add('active')
+        }
+        if (addNewCardTab.classList.contains('active-tab') == false){
+            addNewCardTab.classList.add('active-tab')
+        }
+    })
+}
+
+//close add card tab and screen saver
+cancelTabButton.addEventListener('click', () => {
+    if (addNewCardTab.classList.contains('active-tab')){
+        addNewCardTab.classList.remove('active-tab')
+    }
+    if (screenSaver.classList.contains('active')){
+        screenSaver.classList.remove('active')
+    }
+})
+
 /*RESPONSIVINESS*/
 const allContainers = document.getElementsByClassName('to-do-section__categorie-containers')
 const allOtherContainers = document.getElementsByClassName('to-do-section__other-categorie-containers')
