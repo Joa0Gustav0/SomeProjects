@@ -112,6 +112,8 @@ for (var i = 0; i < addNewCardButton.length; i++){
 
 //close add card tab and screen saver
 cancelTabButton.addEventListener('click', () => {
+    cardTabInput.value = ''
+    resetCardTabInputState()
     if (addNewCardTab.classList.contains('active-tab')){
         addNewCardTab.classList.remove('active-tab')
     }
@@ -119,6 +121,52 @@ cancelTabButton.addEventListener('click', () => {
         screenSaver.classList.remove('active')
     }
 })
+
+//add card
+const cardTabAddButton = document.querySelector('#add-card-tab-add-button')
+const cardTabInput = document.querySelector('#card-text-input')
+const cardTabInputErrorText = document.querySelector('.to-do-section__screen-saver__add-card-tab__input-error-text')
+
+cardTabAddButton.addEventListener('click', () => {
+    let taskText = cardTabInput.value
+    if (taskText == ''){
+        if (cardTabInput.classList.contains('input-error') == false){
+            cardTabInput.classList.add('input-error')
+        }
+        if (cardTabInputErrorText.classList.contains('error-text-active') == false){
+            cardTabInputErrorText.classList.add('error-text-active')
+        }
+    }else{
+        cardTabInput.value = ''
+        resetCardTabInputState()
+        if (addNewCardTab.classList.contains('active-tab')){
+            addNewCardTab.classList.remove('active-tab')
+        }
+        if (screenSaver.classList.contains('active')){
+            screenSaver.classList.remove('active')
+        }
+
+        
+    }
+})
+//reset input state
+cardTabInput.addEventListener('input', () => {
+    if (cardTabInput.classList.contains('input-error')){
+        cardTabInput.classList.remove('input-error')
+    }
+    if (cardTabInputErrorText.classList.contains('error-text-active')){
+        cardTabInputErrorText.classList.remove('error-text-active')
+    }
+})
+
+const resetCardTabInputState = () => {
+    if (cardTabInput.classList.contains('input-error')){
+        cardTabInput.classList.remove('input-error')
+    }
+    if (cardTabInputErrorText.classList.contains('error-text-active')){
+        cardTabInputErrorText.classList.remove('error-text-active')
+    }
+}
 
 /*RESPONSIVINESS*/
 const allContainers = document.getElementsByClassName('to-do-section__categorie-containers')
