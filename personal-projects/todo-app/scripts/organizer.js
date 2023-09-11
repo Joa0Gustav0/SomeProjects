@@ -192,6 +192,11 @@ const resetCardTabInputState = () => {
     }
 }
 
+//cards delete button
+function deleteCard(currentDeleteButton){
+    currentDeleteButton.parentNode.parentNode.parentNode.remove()
+}
+
 /*RESPONSIVINESS*/
 const allContainers = document.getElementsByClassName('to-do-section__categorie-containers')
 const allOtherContainers = document.getElementsByClassName('to-do-section__other-categorie-containers')
