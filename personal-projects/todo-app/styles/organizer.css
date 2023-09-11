@@ -266,8 +266,9 @@ header{
     box-shadow: none;
 }
 .to-do-section__categorie-containers__cards-list__card__task-text{
-    font-size: 1em;
+    width: 100%;
     padding: 10px;
+    font-size: 1em;
     font-weight: 400;
     text-align: justify;
 }

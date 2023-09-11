@@ -16,6 +16,16 @@ addCategoriesButton.addEventListener('click', () => {
 
     const newCategorieContainerName = newCategorieContainer.childNodes[1]
     newCategorieContainerName.innerHTML = `<ion-icon name="book"></ion-icon> Other ${otherCategoriesContainers.length}`
+    for (var i = 0; i < addNewCardButton.length; i++){
+        addNewCardButton[i].addEventListener('click', () => {
+            if (screenSaver.classList.contains('active') == false){
+                screenSaver.classList.add('active')
+            }
+            if (addNewCardTab.classList.contains('active-tab') == false){
+                addNewCardTab.classList.add('active-tab')
+            }
+        })
+    }
     
     //create container tab
     const categorieTabModel = document.querySelector('.to-do-section__alt-categories-tabs-container__to-do-categories-tab')
@@ -97,6 +107,12 @@ const addNewCardButton = document.getElementsByClassName('to-do-section__categor
 const screenSaver = document.querySelector('.screen-saver')
 const addNewCardTab = document.querySelector('.to-do-section__screen-saver__add-card-tab')
 const cancelTabButton = document.querySelector('#add-card-tab-cancel-button')
+let containerToAdd = undefined
+
+//get current container to add
+function getCurrentContainer(currentAddButton){
+    containerToAdd = currentAddButton.parentNode
+}
 
 //open screen saver and add card tab
 for (var i = 0; i < addNewCardButton.length; i++){
@@ -127,7 +143,7 @@ const cardTabAddButton = document.querySelector('#add-card-tab-add-button')
 const cardTabInput = document.querySelector('#card-text-input')
 const cardTabInputErrorText = document.querySelector('.to-do-section__screen-saver__add-card-tab__input-error-text')
 
-cardTabAddButton.addEventListener('click', () => {
+cardTabAddButton.addEventListener('click', (c) => {
     let taskText = cardTabInput.value
     if (taskText == ''){
         if (cardTabInput.classList.contains('input-error') == false){
@@ -145,8 +161,16 @@ cardTabAddButton.addEventListener('click', () => {
         if (screenSaver.classList.contains('active')){
             screenSaver.classList.remove('active')
         }
-
         
+        //create card
+        const cardModel = document.querySelector('.to-do-section__categorie-containers__cards-list__card-model')
+        let newCard = document.createElement('div')
+        newCard.className = 'to-do-section__categorie-containers__cards-list__card'
+        newCard.innerHTML = cardModel.innerHTML
+        newCard.childNodes[3].innerText = taskText
+
+        containerToAdd.childNodes[3].appendChild(newCard)
+        containerToAdd.childNodes[3].scrollTo(newCard)
     }
 })
 //reset input state
