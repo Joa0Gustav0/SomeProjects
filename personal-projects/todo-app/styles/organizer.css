@@ -76,7 +76,7 @@ header{
 }
 
 .to-do-section__background-picture{
-    position: fixed;
+    position: absolute;
     bottom: -20px;
     right: -20px;
     width: 100%;
@@ -178,8 +178,8 @@ header{
     align-items: flex-start;
     justify-content: space-between;
 
-    width: 100%;
     max-width: 320px;
+    width: calc(100vw - 60px);
     height: 320px;
     padding: 10px;
     margin: 0 30px;
