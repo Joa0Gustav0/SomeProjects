@@ -32,6 +32,7 @@ addCategoriesButton.addEventListener('click', () => {
 
     let newCategorieTab = document.createElement('div')
     newCategorieTab.innerHTML = categorieTabModel.innerHTML
+    newCategorieTab.childNodes[1].name = 'book'
     newCategorieTab.className = `to-do-section__alt-categories-tabs-container__to-do-categories-tab to-do-section__alt-categories-tabs-container__other-categories-tab to-do-section__alt-categories-tabs-container__other${otherCategoriesContainers.length}-categories-tab`
     newCategorieTab.id = `other${otherCategoriesContainers.length}`
     newCategorieTab.childNodes[3].innerText = `Other ${otherCategoriesContainers.length}`
@@ -230,15 +231,44 @@ deleteCardTabYesButton.addEventListener('click', () => {
 
 //open screen saver and change categorie tab
 const changeCategorieTab = document.querySelector('.to-do-section__screen-saver__change-categorie-tab')
+const availableCategoriesList = document.querySelector('.to-do-section__screen-saver__change-categorie-tab__available-categories')
+const availableCategoriesButtonsModel = document.querySelector('.available-categories-categories-button-model')
+const categoriesTabs = document.getElementsByClassName('to-do-section__alt-categories-tabs-container__to-do-categories-tab')
+let cardToSetCategorie = null
 
-function openDeleteTab(currentDeleteButton){
-    currentDeletingContainer = currentDeleteButton.parentNode.parentNode.parentNode
+function openChangeCategorieTab(currentButton){
+    cardToSetCategorie = currentButton.parentNode.parentNode.parentNode
     if (screenSaver.classList.contains('active') == false){
         screenSaver.classList.add('active')
     }
-    if (deleteCardTab.classList.contains('active-tab') == false){
-        deleteCardTab.classList.add('active-tab')
+
+    availableCategoriesList.innerHTML = ''
+    for (var i = 0; i < categoriesTabs.length; i++){
+        let newAvailableCategorieButton = document.createElement('div')
+        newAvailableCategorieButton.id = categoriesTabs[i].id
+        newAvailableCategorieButton.className = 'to-do-section__screen-saver__change-categorie-tab__available-categories-categories-button'
+        newAvailableCategorieButton.innerHTML = availableCategoriesButtonsModel.innerHTML
+        newAvailableCategorieButton.innerHTML = categoriesTabs[i].innerHTML
+        newAvailableCategorieButton.setAttribute('onclick', 'changeCardCategorie(this)')
+
+        availableCategoriesList.appendChild(newAvailableCategorieButton)
     }
+
+    changeCategorieTab.classList.add('active-tab')
+}
+function changeCardCategorie(choosenCategorieButton){
+    let choosenCategorie = document.querySelector(`.to-do-section__${choosenCategorieButton.id}-categorie-container > .to-do-section__categorie-containers__cards-list`)
+    choosenCategorie.appendChild(cardToSetCategorie)
+    if (screenSaver.classList.contains('active')){
+        screenSaver.classList.remove('active')
+    }
+    if (changeCategorieTab.classList.contains('active-tab')){
+        changeCategorieTab.classList.remove('active-tab')
+    }
+    for (var i = 0; i < allContainers.length; i++){
+        allContainers[i].style.display = 'none'
+    }
+    choosenCategorie.parentNode.style.display = 'flex'
 }
 
 /*RESPONSIVINESS*/

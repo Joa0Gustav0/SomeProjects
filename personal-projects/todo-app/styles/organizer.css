@@ -351,7 +351,7 @@ header{
     background-color: white;
 }
 .to-do-section__screen-saver__add-card-tab.active-tab, 
-.to-do-section__screen-saver__delete-card-alert-tab.active-tab
+.to-do-section__screen-saver__delete-card-alert-tab.active-tab, 
 .to-do-section__screen-saver__change-categorie-tab.active-tab{
     display: flex;
 }
@@ -425,6 +425,7 @@ header{
     align-items: flex-start;
     justify-content: flex-start;
 
+    gap: 10px;
     width: 100%;
     min-height: 100px;
 }
@@ -440,9 +441,12 @@ header{
     height: 35px;
     color: white;
     min-width: 100px;
-    font-size: .8em;
-    margin-right: 10px;
+    font-size: .7em;
     background-color: #4D3D87;
+}
+.to-do-section__screen-saver__change-categorie-tab__available-categories-categories-button > ion-icon{
+    width: 15px;
+    height: 15px;
 }
 .to-do-section__screen-saver__change-categorie-tab__available-categories-categories-button:hover{
     cursor: pointer;
