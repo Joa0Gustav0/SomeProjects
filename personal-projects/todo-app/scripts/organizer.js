@@ -192,9 +192,17 @@ const resetCardTabInputState = () => {
     }
 }
 
-//cards delete button
-function deleteCard(currentDeleteButton){
-    currentDeleteButton.parentNode.parentNode.parentNode.remove()
+//open screen saver and delete card tab
+let currentDeletingContainer = undefined
+
+function openDeleteTab(currentDeleteButton){
+    currentDeletingContainer = currentDeleteButton.parentNode.parentNode.parentNode
+    if (screenSaver.classList.contains('active') == false){
+        screenSaver.classList.add('active')
+    }
+    if (addNewCardTab.classList.contains('active-tab') == false){
+        addNewCardTab.classList.add('active-tab')
+    }
 }
 
 /*RESPONSIVINESS*/

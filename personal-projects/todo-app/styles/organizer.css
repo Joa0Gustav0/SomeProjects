@@ -331,7 +331,8 @@ header{
 .screen-saver.active{
     display: block;
 }
-.to-do-section__screen-saver__add-card-tab{
+.to-do-section__screen-saver__add-card-tab,
+.to-do-section__screen-saver__delete-card-alert-tab{
     position: absolute;
     top: 50%;
     left: 50%;
@@ -351,7 +352,8 @@ header{
 .to-do-section__screen-saver__add-card-tab.active-tab{
     display: flex;
 }
-.to-do-section__screen-saver__add-card-tab__title{
+.to-do-section__screen-saver__add-card-tab__title,
+.to-do-section__screen-saver__delete-card-alert-tab__title{
     display: flex;
     flex-wrap: nowrap;
     flex-direction: row;
@@ -390,7 +392,8 @@ header{
     width: 100%;
     text-align: right;
 }
-.to-do-section__screen-saver__add-card-tab__actions-buttons-container > input{
+.to-do-section__screen-saver__add-card-tab__actions-buttons-container > input,
+.to-do-section__screen-saver__delete-card-alert-tab__answer-buttons > input{
     border: 0;
     width: 80px;
     outline: none;
@@ -400,11 +403,17 @@ header{
     text-transform: uppercase;
     background-color: transparent;
 }
-.to-do-section__screen-saver__add-card-tab__actions-buttons-container > input:hover{
+.to-do-section__screen-saver__add-card-tab__actions-buttons-container > input:hover,
+.to-do-section__screen-saver__delete-card-alert-tab__answer-buttons > input:hover{
     cursor: pointer;
     background-color: rgba(0, 0, 0, 0.089);
 }
 
+.to-do-section__screen-saver__delete-card-alert-tab__text{
+    width: 100%;
+    text-align: center;
+    margin-bottom: 20px;
+}
 @media screen and (max-width: 759px){
     .to-do-section{
         padding-top: 0;
@@ -416,9 +425,6 @@ header{
     }
     .to-do-section__alt-categories-tabs-container{
         display: flex;
-    }
-    .to-do-section__categorie-containers{
-        display: none;
     }
 }
 
