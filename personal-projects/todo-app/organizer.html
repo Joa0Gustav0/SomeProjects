@@ -106,7 +106,8 @@
             </h1>
             <ion-icon name="close-circle-outline" 
                     class="to-do-section__categorie-containers__delete-categorie-button"
-                    onmousedown="removeCurrentContainer(this)"></ion-icon>
+                    onmousedown="removeCurrentContainer(this)">
+            </ion-icon>
         </div>
 
         <abbr title="Add a new categorie">
@@ -154,6 +155,7 @@
                     <h1>Done</h1>
                 </div>
             </div>
+            <input type="button" id="change-categorie-cancel" value="Cancel" onclick="closeChangeCategorieTab()">
         </section>
     </span>
     <script src="scripts/organizer.js"></script>

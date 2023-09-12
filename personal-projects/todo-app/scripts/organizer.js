@@ -265,10 +265,22 @@ function changeCardCategorie(choosenCategorieButton){
     if (changeCategorieTab.classList.contains('active-tab')){
         changeCategorieTab.classList.remove('active-tab')
     }
-    for (var i = 0; i < allContainers.length; i++){
-        allContainers[i].style.display = 'none'
+    if (window.matchMedia('(max-width: 759px)').matches){
+        for (var i = 0; i < allContainers.length; i++){
+            allContainers[i].style.display = 'none'
+        }
+        choosenCategorie.parentNode.style.display = 'flex'
     }
-    choosenCategorie.parentNode.style.display = 'flex'
+}
+
+//close change card categorie tab and screen saver
+function closeChangeCategorieTab(){
+    if (screenSaver.classList.contains('active')){
+        screenSaver.classList.remove('active')
+    }
+    if (changeCategorieTab.classList.contains('active-tab')){
+        changeCategorieTab.classList.remove('active-tab')
+    }
 }
 
 /*RESPONSIVINESS*/
