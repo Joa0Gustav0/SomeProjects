@@ -1,7 +1,7 @@
+//Create new containers
 const addCategoriesButton = document.querySelector('.to-do-section__add-categorie-button')
 const removeCategorieButton = document.querySelectorAll('.to-do-section__categorie-containers__delete-categorie-button')
 
-//Create new containers
 addCategoriesButton.addEventListener('click', () => {
     //create container
     const categorieContainerModel = document.querySelector('.to-do-section__other-categorie-containers-model-example')
@@ -171,7 +171,6 @@ cardTabAddButton.addEventListener('click', (c) => {
         newCard.childNodes[3].innerText = taskText
 
         containerToAdd.childNodes[3].appendChild(newCard)
-        containerToAdd.childNodes[3].scrollTo(newCard)
     }
 })
 //reset input state
