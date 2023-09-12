@@ -193,6 +193,7 @@ const resetCardTabInputState = () => {
 }
 
 //open screen saver and delete card tab
+const deleteCardTab = document.querySelector('.to-do-section__screen-saver__delete-card-alert-tab')
 let currentDeletingContainer = undefined
 
 function openDeleteTab(currentDeleteButton){
@@ -200,10 +201,32 @@ function openDeleteTab(currentDeleteButton){
     if (screenSaver.classList.contains('active') == false){
         screenSaver.classList.add('active')
     }
-    if (addNewCardTab.classList.contains('active-tab') == false){
-        addNewCardTab.classList.add('active-tab')
+    if (deleteCardTab.classList.contains('active-tab') == false){
+        deleteCardTab.classList.add('active-tab')
     }
 }
+
+//delete card cancel or delete and close delete card tab and screen saver
+const deleteCardTabYesButton = document.querySelector('#yes-delete-input-button')
+const deleteCardTabNoButton = document.querySelector('#no-delete-input-button')
+
+deleteCardTabNoButton.addEventListener('click', () => {
+    if (deleteCardTab.classList.contains('active-tab')){
+        deleteCardTab.classList.remove('active-tab')
+    }
+    if (screenSaver.classList.contains('active')){
+        screenSaver.classList.remove('active')
+    }
+})
+deleteCardTabYesButton.addEventListener('click', () => {
+    currentDeletingContainer.remove()
+    if (deleteCardTab.classList.contains('active-tab')){
+        deleteCardTab.classList.remove('active-tab')
+    }
+    if (screenSaver.classList.contains('active')){
+        screenSaver.classList.remove('active')
+    }
+})
 
 /*RESPONSIVINESS*/
 const allContainers = document.getElementsByClassName('to-do-section__categorie-containers')

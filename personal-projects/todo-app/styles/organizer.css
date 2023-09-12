@@ -349,7 +349,8 @@ header{
     width: calc(100% - 60px);
     background-color: white;
 }
-.to-do-section__screen-saver__add-card-tab.active-tab{
+.to-do-section__screen-saver__add-card-tab.active-tab, 
+.to-do-section__screen-saver__delete-card-alert-tab.active-tab{
     display: flex;
 }
 .to-do-section__screen-saver__add-card-tab__title,
