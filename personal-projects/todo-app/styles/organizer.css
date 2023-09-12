@@ -332,7 +332,8 @@ header{
     display: block;
 }
 .to-do-section__screen-saver__add-card-tab,
-.to-do-section__screen-saver__delete-card-alert-tab{
+.to-do-section__screen-saver__delete-card-alert-tab,
+.to-do-section__screen-saver__change-categorie-tab{
     position: absolute;
     top: 50%;
     left: 50%;
@@ -350,11 +351,12 @@ header{
     background-color: white;
 }
 .to-do-section__screen-saver__add-card-tab.active-tab, 
-.to-do-section__screen-saver__delete-card-alert-tab.active-tab{
+.to-do-section__screen-saver__delete-card-alert-tab.active-tab
+.to-do-section__screen-saver__change-categorie-tab.active-tab{
     display: flex;
 }
 .to-do-section__screen-saver__add-card-tab__title,
-.to-do-section__screen-saver__delete-card-alert-tab__title{
+.to-do-section__screen-saver__delete-card-alert-tab__title,.to-do-section__screen-saver__change-categorie-tab__title{
     display: flex;
     flex-wrap: nowrap;
     flex-direction: row;
@@ -415,6 +417,46 @@ header{
     text-align: center;
     margin-bottom: 20px;
 }
+
+.to-do-section__screen-saver__change-categorie-tab__available-categories{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+
+    width: 100%;
+    min-height: 100px;
+}
+.to-do-section__screen-saver__change-categorie-tab__available-categories-categories-button{
+    transition: all .1s;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    gap: 5px;
+    height: 35px;
+    color: white;
+    min-width: 100px;
+    font-size: .8em;
+    margin-right: 10px;
+    background-color: #4D3D87;
+}
+.to-do-section__screen-saver__change-categorie-tab__available-categories-categories-button:hover{
+    cursor: pointer;
+    box-shadow: 0px 0px 10px rgba(62, 49, 107, 0.5);
+}
+.to-do-section__screen-saver__change-categorie-tab__available-categories-categories-button:active{
+    color: #4D3D87;
+    background-color: white;
+    box-shadow: none;
+}
+.available-categories-categories-button-model{
+    display: none;
+}
+
 @media screen and (max-width: 759px){
     .to-do-section{
         padding-top: 0;

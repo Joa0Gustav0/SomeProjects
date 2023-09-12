@@ -228,6 +228,19 @@ deleteCardTabYesButton.addEventListener('click', () => {
     }
 })
 
+//open screen saver and change categorie tab
+const changeCategorieTab = document.querySelector('.to-do-section__screen-saver__change-categorie-tab')
+
+function openDeleteTab(currentDeleteButton){
+    currentDeletingContainer = currentDeleteButton.parentNode.parentNode.parentNode
+    if (screenSaver.classList.contains('active') == false){
+        screenSaver.classList.add('active')
+    }
+    if (deleteCardTab.classList.contains('active-tab') == false){
+        deleteCardTab.classList.add('active-tab')
+    }
+}
+
 /*RESPONSIVINESS*/
 const allContainers = document.getElementsByClassName('to-do-section__categorie-containers')
 const allOtherContainers = document.getElementsByClassName('to-do-section__other-categorie-containers')
