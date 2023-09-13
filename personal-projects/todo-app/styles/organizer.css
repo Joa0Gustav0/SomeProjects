@@ -273,6 +273,10 @@ header{
     text-align: justify;
     word-wrap: break-word;
 }
+.to-do-section__categorie-containers__cards-list__card__task-text:hover{
+    cursor: pointer;
+    box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.05);
+}
 
 .to-do-section__categorie-containers__add-card-button{
     display: flex;
