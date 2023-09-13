@@ -324,7 +324,7 @@ header{
 }
 
 .screen-saver{
-    display: block;
+    display: none;
     position: fixed;
     top: 0px;
     left: 0px;
@@ -418,6 +418,12 @@ header{
     text-transform: uppercase;
     background-color: transparent;
 }
+.to-do-section__screen-saver__edit-card-text-tab__actions-buttons > #edit-card-confirm-button{
+    color: rgba(77, 61, 135, 0.5);
+}
+#edit-card-confirm-button.available-button{
+    color: rgba(77, 61, 135, 1);
+}
 .to-do-section__screen-saver__add-card-tab__actions-buttons-container > input:hover,
 .to-do-section__screen-saver__delete-card-alert-tab__answer-buttons > input:hover,
 .to-do-section__screen-saver__change-categorie-tab > input:hover,
@@ -473,10 +479,6 @@ header{
 }
 .available-categories-categories-button-model{
     display: none;
-}
-
-.to-do-section__screen-saver__edit-card-text-tab{
-    display: flex;
 }
 
 @media screen and (max-width: 759px){

@@ -282,6 +282,59 @@ function closeChangeCategorieTab(){
     }
 }
 
+//open screen saver and edit card text tab
+const editCardTextTab = document.querySelector('.to-do-section__screen-saver__edit-card-text-tab')
+const editCardTextTabInput = document.querySelector('#edit-card-text-input')
+const editCardTextCancelButton = document.querySelector('#edit-card-cancel-button')
+const editCardTextConfirmButton = document.querySelector('#edit-card-confirm-button')
+let currentCardText = undefined
+
+function openEditCardTextTab(currentText){
+    currentCardText = currentText
+    editCardTextTabInput.value = currentCardText.innerText
+    if (screenSaver.classList.contains('active') == false){
+        screenSaver.classList.add('active')
+    }
+    if (editCardTextTab.classList.contains('active-tab') == false){
+        editCardTextTab.classList.add('active-tab')
+    }
+}
+
+//edit card text tab cancel button
+editCardTextCancelButton.addEventListener('click', () => {
+    editCardTextTabInput.value = ''
+    if (editCardTextTab.classList.contains('active-tab')){
+        editCardTextTab.classList.remove('active-tab')
+    }
+    if (screenSaver.classList.contains('active')){
+        screenSaver.classList.remove('active')
+    }
+})
+
+//edit card text tab confirm button
+editCardTextConfirmButton.addEventListener('click', () => {
+    if (editCardTextTabInput.value != '' && editCardTextTabInput.value != currentCardText.innerText){
+        currentCardText.innerText = editCardTextTabInput.value
+        if (editCardTextTab.classList.contains('active-tab')){
+            editCardTextTab.classList.remove('active-tab')
+        }
+        if (screenSaver.classList.contains('active')){
+            screenSaver.classList.remove('active')
+        }
+    }
+})
+
+//change edit card text confirm button's style
+editCardTextTabInput.addEventListener('input', () => {
+    if (editCardTextTabInput.value != '' && editCardTextTabInput.value != currentCardText.innerText){
+        console.log('jsadhaa')
+        editCardTextConfirmButton.classList.add('available-button')
+    }
+    if (editCardTextTabInput.value == '' || editCardTextTabInput.value == currentCardText.innerText){
+        editCardTextConfirmButton.classList.remove('available-button')
+    }
+})
+
 /*RESPONSIVINESS*/
 const allContainers = document.getElementsByClassName('to-do-section__categorie-containers')
 const allOtherContainers = document.getElementsByClassName('to-do-section__other-categorie-containers')
