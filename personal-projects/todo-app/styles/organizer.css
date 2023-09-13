@@ -324,7 +324,7 @@ header{
 }
 
 .screen-saver{
-    display: none;
+    display: block;
     position: fixed;
     top: 0px;
     left: 0px;
@@ -338,7 +338,8 @@ header{
 }
 .to-do-section__screen-saver__add-card-tab,
 .to-do-section__screen-saver__delete-card-alert-tab,
-.to-do-section__screen-saver__change-categorie-tab{
+.to-do-section__screen-saver__change-categorie-tab, 
+.to-do-section__screen-saver__edit-card-text-tab{
     position: absolute;
     top: 50%;
     left: 50%;
@@ -357,11 +358,13 @@ header{
 }
 .to-do-section__screen-saver__add-card-tab.active-tab, 
 .to-do-section__screen-saver__delete-card-alert-tab.active-tab, 
-.to-do-section__screen-saver__change-categorie-tab.active-tab{
+.to-do-section__screen-saver__change-categorie-tab.active-tab, 
+.to-do-section__screen-saver__edit-card-text-tab.active-tab{
     display: flex;
 }
 .to-do-section__screen-saver__add-card-tab__title,
-.to-do-section__screen-saver__delete-card-alert-tab__title,.to-do-section__screen-saver__change-categorie-tab__title{
+.to-do-section__screen-saver__delete-card-alert-tab__title,.to-do-section__screen-saver__change-categorie-tab__title, 
+.to-do-section__screen-saver__edit-card-text-tab__title{
     display: flex;
     flex-wrap: nowrap;
     flex-direction: row;
@@ -373,7 +376,8 @@ header{
     color: #4D3D87;
     margin-bottom: 20px;
 }
-.to-do-section__screen-saver__add-card-tab__card-text-input{
+.to-do-section__screen-saver__add-card-tab__card-text-input,
+.to-do-section__screen-saver__edit-card-text-tab > input{
     border: 0;
     width: 100%;
     outline: none;
@@ -396,13 +400,15 @@ header{
     display: block;
 }
 
-.to-do-section__screen-saver__add-card-tab__actions-buttons-container{
+.to-do-section__screen-saver__add-card-tab__actions-buttons-container,
+.to-do-section__screen-saver__edit-card-text-tab__actions-buttons{
     width: 100%;
     text-align: right;
 }
 .to-do-section__screen-saver__add-card-tab__actions-buttons-container > input,
 .to-do-section__screen-saver__delete-card-alert-tab__answer-buttons > input,
-.to-do-section__screen-saver__change-categorie-tab > input{
+.to-do-section__screen-saver__change-categorie-tab > input,
+.to-do-section__screen-saver__edit-card-text-tab__actions-buttons > input{
     border: 0;
     width: 80px;
     outline: none;
@@ -414,7 +420,8 @@ header{
 }
 .to-do-section__screen-saver__add-card-tab__actions-buttons-container > input:hover,
 .to-do-section__screen-saver__delete-card-alert-tab__answer-buttons > input:hover,
-.to-do-section__screen-saver__change-categorie-tab > input:hover{
+.to-do-section__screen-saver__change-categorie-tab > input:hover,
+.to-do-section__screen-saver__edit-card-text-tab__actions-buttons > input:hover{
     cursor: pointer;
     background-color: rgba(0, 0, 0, 0.089);
 }
@@ -466,6 +473,10 @@ header{
 }
 .available-categories-categories-button-model{
     display: none;
+}
+
+.to-do-section__screen-saver__edit-card-text-tab{
+    display: flex;
 }
 
 @media screen and (max-width: 759px){
