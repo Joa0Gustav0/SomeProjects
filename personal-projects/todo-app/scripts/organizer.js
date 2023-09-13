@@ -327,13 +327,26 @@ editCardTextConfirmButton.addEventListener('click', () => {
 //change edit card text confirm button's style
 editCardTextTabInput.addEventListener('input', () => {
     if (editCardTextTabInput.value != '' && editCardTextTabInput.value != currentCardText.innerText){
-        console.log('jsadhaa')
         editCardTextConfirmButton.classList.add('available-button')
     }
     if (editCardTextTabInput.value == '' || editCardTextTabInput.value == currentCardText.innerText){
         editCardTextConfirmButton.classList.remove('available-button')
     }
 })
+
+//send card to the top button
+function sendCardToTop(currentButton){
+    let currentCard = currentButton.parentNode.parentNode.parentNode
+    let currentContainerCardsList = currentCard.parentNode
+    console.log(currentContainerCardsList.parentNode.childNodes[1].innerText)
+    let currentContainerAllCards = document.querySelectorAll(`.${currentContainerCardsList.parentNode.classList[2]} .to-do-section__categorie-containers__cards-list__card`)
+    if (currentContainerCardsList.parentNode.childNodes[1].innerText == 'To do' ||
+    currentContainerCardsList.parentNode.childNodes[1].innerText == 'Doing' ||
+    currentContainerCardsList.parentNode.childNodes[1].innerText == 'Done'){
+        currentContainerAllCards = document.querySelectorAll(`.${currentContainerCardsList.parentNode.classList[0]} .to-do-section__categorie-containers__cards-list__card`)
+    }
+    currentContainerCardsList.insertBefore(currentCard, currentContainerAllCards[0])
+}
 
 /*RESPONSIVINESS*/
 const allContainers = document.getElementsByClassName('to-do-section__categorie-containers')
