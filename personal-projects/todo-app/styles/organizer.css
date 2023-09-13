@@ -220,7 +220,7 @@ header{
     display: flex;
     flex-wrap: nowrap;
     align-items: flex-start;
-    flex-direction: row-reverse;
+    flex-direction: column;
 
     width: 100%;
     color: black;
@@ -233,13 +233,13 @@ header{
 .to-do-section__categorie-containers__cards-list__card__actions-buttons-container{
     display: flex;
     flex-wrap: nowrap;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-end;
 
     gap: 20px;
-    padding: 10px;
-    border-left: 1px solid black;
+    width: 100%;
+    padding: 5px 10px;
 }
 .to-do-section__categorie-containers__cards-list__card__actions-buttons-container__actions-button{
     width: 15px;
@@ -247,7 +247,7 @@ header{
     padding: 10px;
     color: #4D3D87;
     border-radius: 100%;
-    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.25);
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.125);
 } 
 .to-do-section__categorie-containers__cards-list__card__actions-buttons-container__actions-button:hover{
     cursor: pointer;
@@ -267,10 +267,11 @@ header{
 }
 .to-do-section__categorie-containers__cards-list__card__task-text{
     width: 100%;
-    padding: 10px;
     font-size: 1em;
     font-weight: 400;
+    padding: 5px 10px;
     text-align: justify;
+    word-wrap: break-word;
 }
 
 .to-do-section__categorie-containers__add-card-button{
