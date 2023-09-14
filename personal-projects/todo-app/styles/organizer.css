@@ -585,6 +585,9 @@ header{
     .to-do-section__alt-categories-tabs-container{
         display: flex;
     }
+    .to-do-section__categorie-containers{
+        width: calc(100vw - 90px);
+    }
 }
 
 @media screen and (max-height: 550px){
