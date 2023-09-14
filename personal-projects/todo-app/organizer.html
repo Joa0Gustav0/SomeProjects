@@ -40,7 +40,7 @@
                 <h1>Done</h1>
             </div>
         </nav>
-        <div class="to-do-section__to-do-categorie-container to-do-section__categorie-containers">
+        <div class="to-do-section__to-do-categorie-container to-do-section__categorie-containers c-purple">
             <h1 class="to-do-section__categorie-containers__title">
                 <ion-icon name="pin"></ion-icon> To do
             </h1>
@@ -70,8 +70,15 @@
                 <ion-icon name="add"></ion-icon>
                 Add a new card
             </h1>
+            <div class="to-do-section__categorie-containers__color-containers" onclick="setColorsContainerState(this)">
+                <div class="to-do-section__categorie-containers__color-containers__color-button purple-color" onclick="setContainerColor(this)"></div>
+                <div class="to-do-section__categorie-containers__color-containers__color-button blue-color" onclick="setContainerColor(this)"></div>
+                <div class="to-do-section__categorie-containers__color-containers__color-button green-color" onclick="setContainerColor(this)"></div>
+                <div class="to-do-section__categorie-containers__color-containers__color-button yellow-color" onclick="setContainerColor(this)"></div>
+                <div class="to-do-section__categorie-containers__color-containers__color-button pink-color" onclick="setContainerColor(this)"></div>
+            </div>
         </div>
-        <div class="to-do-section__doing-categorie-container to-do-section__categorie-containers">
+        <div class="to-do-section__doing-categorie-container to-do-section__categorie-containers c-purple">
             <h1 class="to-do-section__categorie-containers__title">
                 <ion-icon name="alarm"></ion-icon> Doing
             </h1>
@@ -83,7 +90,7 @@
                 Add a new card
             </h1>
         </div>
-        <div class="to-do-section__done-categorie-container to-do-section__categorie-containers">
+        <div class="to-do-section__done-categorie-container to-do-section__categorie-containers c-purple">
             <h1 class="to-do-section__categorie-containers__title">
                 <ion-icon name="checkmark-sharp"></ion-icon> Done
             </h1>
@@ -95,7 +102,7 @@
                 Add a new card
             </h1>
         </div>
-        <div class="to-do-section__other-categorie-containers-model to-do-section__other-categorie-containers-model-example"><!--
+        <div class="to-do-section__other-categorie-containers-model to-do-section__other-categorie-containers-model-example c-purple"><!--
          --><h1 id="title" class="to-do-section__categorie-containers__title">
                 <ion-icon name="book"></ion-icon> Other 1
             </h1>
@@ -110,6 +117,13 @@
                     class="to-do-section__categorie-containers__delete-categorie-button"
                     onmousedown="removeCurrentContainer(this)">
             </ion-icon>
+            <div class="to-do-section__categorie-containers__color-containers" onclick="setColorsContainerState(this)">
+                <div class="to-do-section__categorie-containers__color-containers__color-button purple-color" onclick="setContainerColor(this)"></div>
+                <div class="to-do-section__categorie-containers__color-containers__color-button blue-color" onclick="setContainerColor(this)"></div>
+                <div class="to-do-section__categorie-containers__color-containers__color-button green-color" onclick="setContainerColor(this)"></div>
+                <div class="to-do-section__categorie-containers__color-containers__color-button yellow-color" onclick="setContainerColor(this)"></div>
+                <div class="to-do-section__categorie-containers__color-containers__color-button pink-color" onclick="setContainerColor(this)"></div>
+            </div>
         </div>
 
         <abbr title="Add a new categorie">

@@ -12,7 +12,7 @@ addCategoriesButton.addEventListener('click', () => {
     toDoSection.appendChild(newCategorieContainer)
 
     let otherCategoriesContainers = document.getElementsByClassName('to-do-section__other-categorie-containers')
-    newCategorieContainer.className = `to-do-section__categorie-containers to-do-section__other-categorie-containers to-do-section__other${otherCategoriesContainers.length + 1}-categorie-container other${otherCategoriesContainers.length + 1}`
+    newCategorieContainer.className = `to-do-section__categorie-containers to-do-section__other-categorie-containers to-do-section__other${otherCategoriesContainers.length + 1}-categorie-container other${otherCategoriesContainers.length + 1} c-purple`
 
     const newCategorieContainerName = newCategorieContainer.childNodes[1]
     newCategorieContainerName.innerHTML = `<ion-icon name="book"></ion-icon> Other ${otherCategoriesContainers.length}`
@@ -91,7 +91,7 @@ const reorganizeCreatedContainers = () => {
     const otherContainers = document.getElementsByClassName('to-do-section__other-categorie-containers')
 
     for (var i = 0; i < otherContainers.length; i++){
-        otherContainers[i].className = `to-do-section__categorie-containers to-do-section__other-categorie-containers to-do-section__other${i + 1}-categorie-container other${i + 1}`
+        otherContainers[i].className = `to-do-section__categorie-containers to-do-section__other-categorie-containers to-do-section__other${i + 1}-categorie-container other${i + 1} ${otherContainers[i].classList[otherContainers[i].classList.length - 1]}`
         otherContainers[i].childNodes[1].innerHTML = `<ion-icon name="book"></ion-icon> Other ${i + 1}`
     }
 
@@ -101,6 +101,48 @@ const reorganizeCreatedContainers = () => {
         otherTabs[i].className = `to-do-section__alt-categories-tabs-container__to-do-categories-tab to-do-section__alt-categories-tabs-container__other-categories-tab to-do-section__alt-categories-tabs-container__other${i + 1}-categories-tab`
         otherTabs[i].id = `other${i + 1}`
         otherTabs[i].childNodes[3].innerText = `Other ${i + 1}`
+    }
+}
+
+//open and close color set containers
+function setColorsContainerState(colorsContainer){
+    if (colorsContainer.classList.contains('set-color-active') == false){
+        colorsContainer.classList.add('set-color-active')   
+    }else{
+        colorsContainer.classList.remove('set-color-active')
+    }
+}
+
+function setContainerColor(currentColorButton){
+    const currentColorsContainer = currentColorButton.parentNode
+    const currentContainer = currentColorsContainer.parentNode
+
+    if (currentColorsContainer.clientHeight == '200'){
+        console.log(currentContainer.classList[currentContainer.classList.length - 1])
+        if (currentContainer.classList[currentContainer.classList.length - 1][0] == 'c'){
+            currentContainer.classList.remove(`${currentContainer.classList[currentContainer.classList.length - 1]}`)
+            if (currentColorButton.classList[1] == 'purple-color'){
+                currentContainer.classList.add('c-purple')
+                console.log('classList.added(c-purple)')
+            }
+            if (currentColorButton.classList[1] == 'blue-color'){
+                currentContainer.classList.add('c-blue')
+                console.log('classList.added(c-blue)')
+            }
+            if (currentColorButton.classList[1] == 'green-color'){
+                currentContainer.classList.add('c-green')
+                console.log('classList.added(c-green)')
+            }
+            if (currentColorButton.classList[1] == 'yellow-color'){
+                currentContainer.classList.add('c-yellow')
+                console.log('classList.added(c-yellow)')
+            }
+            if (currentColorButton.classList[1] == 'pink-color'){
+                currentContainer.classList.add('c-pink')
+                console.log('classList.added(c-pink)')
+            }
+        }
+        currentColorsContainer.insertBefore(currentColorButton, currentColorsContainer.childNodes[0])
     }
 }
 

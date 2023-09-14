@@ -170,6 +170,7 @@ header{
 }
 
 .to-do-section__categorie-containers{
+    transition: all .5s;
     position: relative;
 
     display: flex;
@@ -189,6 +190,51 @@ header{
     box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.125);
     border-top: 10px solid #4D3D87;
 }
+.to-do-section__categorie-containers.c-purple{
+    border-top: 10px solid #4D3D87;
+}
+.to-do-section__categorie-containers.c-purple > .to-do-section__categorie-containers__title > ion-icon{
+    color: #4D3D87;
+}
+.to-do-section__categorie-containers.c-purple .to-do-section__categorie-containers__cards-list__card__actions-buttons-container__actions-button{
+    color: #4D3D87;
+}
+.to-do-section__categorie-containers.c-blue{
+    border-top: 10px solid #1A6ED8;
+}
+.to-do-section__categorie-containers.c-blue > .to-do-section__categorie-containers__title > ion-icon{
+    color: #1A6ED8;
+}
+.to-do-section__categorie-containers.c-blue .to-do-section__categorie-containers__cards-list__card__actions-buttons-container__actions-button{
+    color: #1A6ED8;
+}
+.to-do-section__categorie-containers.c-green{
+    border-top: 10px solid #88be46;
+}
+.to-do-section__categorie-containers.c-green > .to-do-section__categorie-containers__title > ion-icon{
+    color: #88be46;
+}
+.to-do-section__categorie-containers.c-green .to-do-section__categorie-containers__cards-list__card__actions-buttons-container__actions-button{
+    color: #88be46;
+}
+.to-do-section__categorie-containers.c-yellow{
+    border-top: 10px solid #f1c733;
+}
+.to-do-section__categorie-containers.c-yellow > .to-do-section__categorie-containers__title > ion-icon{
+    color: #f1c733;
+}
+.to-do-section__categorie-containers.c-yellow .to-do-section__categorie-containers__cards-list__card__actions-buttons-container__actions-button{
+    color: #f1c733;
+}
+.to-do-section__categorie-containers.c-pink{
+    border-top: 10px solid #fda1c6;
+}
+.to-do-section__categorie-containers.c-pink > .to-do-section__categorie-containers__title > ion-icon{
+    color: #fda1c6;
+}
+.to-do-section__categorie-containers.c-pink .to-do-section__categorie-containers__cards-list__card__actions-buttons-container__actions-button{
+    color: #fda1c6;
+}
 .to-do-section__categorie-containers__title{
     display: flex;
     flex-wrap: nowrap;
@@ -204,6 +250,7 @@ header{
     border-bottom: 1px solid rgba(255, 255, 255, 0.5);
 }
 .to-do-section__categorie-containers__title > ion-icon{
+    transition: all .5s;
     color: #4D3D87;
     margin-right: 5px;
 }
@@ -242,6 +289,7 @@ header{
     padding: 5px 10px;
 }
 .to-do-section__categorie-containers__cards-list__card__actions-buttons-container__actions-button{
+    transition: all .5s;
     width: 15px;
     height: 15px;
     padding: 10px;
@@ -301,6 +349,50 @@ header{
     width: 25px;
     height: 25px;
     margin-right: 5px;
+}
+.to-do-section__categorie-containers__color-containers{
+    transition: all .5s;
+    position: absolute;
+    top: -10px;
+    right: -37.5px;
+
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    flex-direction: column;
+    justify-content: flex-start;
+
+    gap: 15px;
+    width: 30px;
+    height: 30px;
+    overflow: hidden;
+}
+.to-do-section__categorie-containers__color-containers.set-color-active{
+    height: 200px;
+}
+.to-do-section__categorie-containers__color-containers__color-button{
+    min-width: 25px;
+    min-height: 25px;
+    border-radius: 100%;
+    background-color: black;
+}
+.to-do-section__categorie-containers__color-containers__color-button:hover{
+    cursor: pointer;
+}
+.purple-color{
+    background-color: #4D3D87;
+}
+.yellow-color{
+    background-color: #f1c733;
+}
+.pink-color{
+    background-color: #fda1c6;
+}
+.blue-color{
+    background-color: #1a6ed8;
+}
+.green-color{
+    background-color: #88be46;
 }
 
 .to-do-section__categorie-containers__delete-categorie-button{
