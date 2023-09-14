@@ -390,6 +390,41 @@ function sendCardToTop(currentButton){
     currentContainerCardsList.insertBefore(currentCard, currentContainerAllCards[0])
 }
 
+//open generate classic to do list
+const generateClassicSideBar = document.querySelector('.to-do-section__screen-saver__classic-todo-list-sidebar')
+
+function setGenerateButtonState(generateButton){
+    let generateButtonStyle = getComputedStyle(generateButton)
+    console.log(generateButtonStyle.getPropertyValue('right'))
+    if (generateButtonStyle.getPropertyValue('right') == '0px'){
+        adjustClassicTodoList()
+        if (screenSaver.classList.contains('active') == false){
+            screenSaver.classList.add('active')
+        }
+        if (generateClassicSideBar.classList.contains('sidebar-active') == false){
+            generateClassicSideBar.classList.add('sidebar-active')
+        }
+    }
+}
+
+const adjustClassicTodoList = () =>{
+    for (var i = 0; i < allContainers.length; i++){
+       
+    }
+}
+
+//close generate classic to do list
+const generateClassicCloseButton = document.querySelector('.to-do-section__screen-saver__classic-todo-list-sidebar__close-button')
+
+generateClassicCloseButton.addEventListener('mousedown', () => {
+    if (generateClassicSideBar.classList.contains('sidebar-active')){
+        generateClassicSideBar.classList.remove('sidebar-active')
+    }
+    if (screenSaver.classList.contains('active')){
+        screenSaver.classList.remove('active')
+    }
+})
+
 /*RESPONSIVINESS*/
 const allContainers = document.getElementsByClassName('to-do-section__categorie-containers')
 const allOtherContainers = document.getElementsByClassName('to-do-section__other-categorie-containers')

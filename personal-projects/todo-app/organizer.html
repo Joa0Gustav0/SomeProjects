@@ -14,12 +14,6 @@
         <a href="home.html" class="header__classy-logo">
             <img src="media/classy-logo.png">
         </a>
-        <div class="header__menu-button" 
-            onclick="setSideBarState()">
-            <div class="header__menu-button__line header__menu-button__line1"></div>
-            <div class="header__menu-button__line header__menu-button__line2"></div>
-            <div class="header__menu-button__line header__menu-button__line3"></div>
-        </div>
     </header>
     <section class="to-do-section">
         <img src="media/to-do-section-picture.png" class="to-do-section__background-picture">
@@ -122,7 +116,7 @@
         <abbr title="Add a new categorie">
             <ion-icon name="add" class="to-do-section__add-categorie-button"></ion-icon>
         </abbr>
-        <h1 class="to-do-section__generate-classic-list">
+        <h1 class="to-do-section__generate-classic-list" onclick="setGenerateButtonState(this)">
             <span>&#x1F4C3;</span> Generate a classic ToDo list.
         </h1>
     </section>
@@ -215,6 +209,10 @@
             </div>
         </section>
     </span>
+    <section class="to-do-section__screen-saver__classic-todo-list-sidebar">
+
+        <ion-icon name="close" class="to-do-section__screen-saver__classic-todo-list-sidebar__close-button"></ion-icon>
+    </section>
     <script src="scripts/organizer.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
