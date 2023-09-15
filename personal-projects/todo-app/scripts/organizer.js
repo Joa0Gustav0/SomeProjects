@@ -449,8 +449,20 @@ function closeGenerateClassicSideBar(){
 
 //print generate classic to do list
 const sideBarCloseButton = document.querySelector('.to-do-section__screen-saver__classic-todo-list-sidebar__close-button')
+const header = document.querySelector('header')
+const todoSection = document.querySelector('.to-do-section')
+const footer = document.querySelector('.footer')
 
 function printClassicList(){
+    if (header.classList.contains('print-state') == false){
+        header.classList.add('print-state')
+    }
+    if (todoSection.classList.contains('print-state') == false){
+        todoSection.classList.add('print-state')
+    }
+    if (footer.classList.contains('print-state') == false){
+        footer.classList.add('print-state')
+    }
     if (sideBarCloseButton.classList.contains('print-state') == false){
         sideBarCloseButton.classList.add('print-state')
     }
@@ -458,6 +470,15 @@ function printClassicList(){
         generateClassicSideBar.classList.add('print-state')
     }
     window.print()
+    if (header.classList.contains('print-state')){
+        header.classList.remove('print-state')
+    }
+    if (todoSection.classList.contains('print-state')){
+        todoSection.classList.remove('print-state')
+    }
+    if (footer.classList.contains('print-state')){
+        footer.classList.remove('print-state')
+    }
     if (generateClassicSideBar.classList.contains('print-state')){
         generateClassicSideBar.classList.remove('print-state')
     }

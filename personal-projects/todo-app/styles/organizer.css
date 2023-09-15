@@ -568,6 +568,12 @@ header{
     max-width: none;
     box-shadow: none;
 }
+header.print-state,
+.to-do-section.print-state,
+.footer.print-state{
+    display: none;
+}
+
 .to-do-section__screen-saver__classic-todo-list-sidebar h1{
     display: flex;
     flex-wrap: nowrap;
