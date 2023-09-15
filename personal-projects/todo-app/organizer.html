@@ -39,30 +39,30 @@
                 <ion-icon name="pin"></ion-icon> To do
             </h1>
             <div class="to-do-section__categorie-containers__cards-list">
-                <div class="to-do-section__categorie-containers__cards-list__card-model">
-                    <div class="to-do-section__categorie-containers__cards-list__card__actions-buttons-container">
-                        <abbr title="Send to the top">
-                            <ion-icon name="triangle" class="to-do-section__categorie-containers__cards-list__card__actions-buttons-container__actions-button
-                            to-do-section__categorie-containers__cards-list__card__actions-buttons-container__go-up-card-button" 
-                            onclick="sendCardToTop(this)"></ion-icon>
-                        </abbr>
-                        <abbr title="Change categorie">
-                            <ion-icon name="albums-sharp" class="to-do-section__categorie-containers__cards-list__card__actions-buttons-container__actions-button
-                            to-do-section__categorie-containers__cards-list__card__actions-buttons-container__change-card-categorie-button" onclick="openChangeCategorieTab(this)"></ion-icon>
-                        </abbr>
-                        <abbr title="Delete">
-                            <ion-icon name="trash-sharp" class="to-do-section__categorie-containers__cards-list__card__actions-buttons-container__actions-button
-                            to-do-section__categorie-containers__cards-list__card__actions-buttons-container__delete-card-button" onclick="openDeleteTab(this)"></ion-icon>
-                        </abbr>
-                    </div>
-                    <h1 class="to-do-section__categorie-containers__cards-list__card__task-text" onclick="openEditCardTextTab(this)">
-                        Do the math review, and do the test on wednesday.
-                    </h1>
-                </div>
             </div>
             <h1 class="to-do-section__categorie-containers__add-card-button" onmousedown="getCurrentContainer(this)">
                 <ion-icon name="add"></ion-icon>
                 Add a new card
+            </h1>
+        </div>
+        <div class="to-do-section__categorie-containers__cards-list__card-model">
+            <div class="to-do-section__categorie-containers__cards-list__card__actions-buttons-container">
+                <abbr title="Send to the top">
+                    <ion-icon name="triangle" class="to-do-section__categorie-containers__cards-list__card__actions-buttons-container__actions-button
+                    to-do-section__categorie-containers__cards-list__card__actions-buttons-container__go-up-card-button" 
+                    onclick="sendCardToTop(this)"></ion-icon>
+                </abbr>
+                <abbr title="Change categorie">
+                    <ion-icon name="albums-sharp" class="to-do-section__categorie-containers__cards-list__card__actions-buttons-container__actions-button
+                    to-do-section__categorie-containers__cards-list__card__actions-buttons-container__change-card-categorie-button" onclick="openChangeCategorieTab(this)"></ion-icon>
+                </abbr>
+                <abbr title="Delete">
+                    <ion-icon name="trash-sharp" class="to-do-section__categorie-containers__cards-list__card__actions-buttons-container__actions-button
+                    to-do-section__categorie-containers__cards-list__card__actions-buttons-container__delete-card-button" onclick="openDeleteTab(this)"></ion-icon>
+                </abbr>
+            </div>
+            <h1 class="to-do-section__categorie-containers__cards-list__card__task-text" onclick="openEditCardTextTab(this)">
+                Do the math review, and do the test on wednesday.
             </h1>
         </div>
         <div class="to-do-section__doing-categorie-container to-do-section__categorie-containers c-purple">
@@ -211,7 +211,8 @@
     </span>
     <section class="to-do-section__screen-saver__classic-todo-list-sidebar">
 
-        <ion-icon name="close" class="to-do-section__screen-saver__classic-todo-list-sidebar__close-button"></ion-icon>
+        <ion-icon name="print" class="to-do-section__screen-saver__classic-todo-list-sidebar__print-button" onmousedown="printClassicList()"></ion-icon>
+        <ion-icon name="close" class="to-do-section__screen-saver__classic-todo-list-sidebar__close-button" onmousedown="closeGenerateClassicSideBar()"></ion-icon>
     </section>
     <script src="scripts/organizer.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>

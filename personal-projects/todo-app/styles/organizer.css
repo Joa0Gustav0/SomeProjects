@@ -563,6 +563,11 @@ header{
 .to-do-section__screen-saver__classic-todo-list-sidebar.sidebar-active{
     right: 0px;
 }
+.to-do-section__screen-saver__classic-todo-list-sidebar.print-state{
+    width: 100vw;
+    max-width: none;
+    box-shadow: none;
+}
 .to-do-section__screen-saver__classic-todo-list-sidebar h1{
     display: flex;
     flex-wrap: nowrap;
@@ -572,11 +577,32 @@ header{
     color: #4D3D87;
     margin-bottom: 10px;
 }
+.to-do-section__screen-saver__classic-todo-list-sidebar p{
+    color: rgba(0, 0, 0, 0.5);
+}
 .to-do-section__screen-saver__classic-todo-list-sidebar ul{
     padding-left: 40px;
     margin-bottom: 20px;
     padding-bottom: 20px;
     border-bottom: 1px solid black;
+}
+.to-do-section__screen-saver__classic-todo-list-sidebar__print-button{
+    transition: all .25s;
+    position: absolute;
+    top: 15px;
+    left: 15px;
+
+    width: 30px;
+    height: 30px;
+    padding: 5px;
+}
+.to-do-section__screen-saver__classic-todo-list-sidebar__print-button:hover{
+    cursor: pointer;
+    color: #4D3D87;
+    transform: scale(110%, 110%);
+}
+.to-do-section__screen-saver__classic-todo-list-sidebar__print-button:active{
+    transform: scale(0%);
 }
 .to-do-section__screen-saver__classic-todo-list-sidebar__close-button{
     transition: all .25s;
@@ -594,6 +620,9 @@ header{
 }
 .to-do-section__screen-saver__classic-todo-list-sidebar__close-button:active{
     transform: scale(0%);
+}
+.to-do-section__screen-saver__classic-todo-list-sidebar__close-button.print-state{
+    display: none;
 }
 
 @media screen and (max-width: 759px){

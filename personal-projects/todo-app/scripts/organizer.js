@@ -395,7 +395,6 @@ const generateClassicSideBar = document.querySelector('.to-do-section__screen-sa
 
 function setGenerateButtonState(generateButton){
     let generateButtonStyle = getComputedStyle(generateButton)
-    console.log(generateButtonStyle.getPropertyValue('right'))
     if (generateButtonStyle.getPropertyValue('right') == '0px'){
         adjustClassicTodoList()
         if (screenSaver.classList.contains('active') == false){
@@ -408,22 +407,70 @@ function setGenerateButtonState(generateButton){
 }
 
 const adjustClassicTodoList = () =>{
+    generateClassicSideBar.innerHTML = '<ion-icon name="print" class="to-do-section__screen-saver__classic-todo-list-sidebar__print-button" onmousedown="printClassicList()"></ion-icon> <ion-icon name="close" class="to-do-section__screen-saver__classic-todo-list-sidebar__close-button" onmousedown="closeGenerateClassicSideBar()"></ion-icon>'
     for (var i = 0; i < allContainers.length; i++){
-       
+       //get containers title and write
+       let containerTitle = allContainers[i].childNodes[1]
+       let newListTitle = document.createElement('h1')
+       newListTitle.innerHTML = containerTitle.innerHTML
+       generateClassicSideBar.appendChild(newListTitle)
+
+       //create ul for list
+       let newListTasksContainer = document.createElement('ul')
+       generateClassicSideBar.appendChild(newListTasksContainer)
+        
+        //get containers task cards and write at created ul
+        let containerTaskTexts
+        if (i < 3){
+            containerTaskTexts = document.querySelectorAll(`.${allContainers[i].classList[0]} .to-do-section__categorie-containers__cards-list__card__task-text`)
+        }else if (i >= 3){
+            containerTaskTexts = document.querySelectorAll(`.${allContainers[i].classList[2]} .to-do-section__categorie-containers__cards-list__card__task-text`)
+        }
+        for (var i_b = 0; i_b < containerTaskTexts.length; i_b++){
+            let newListItem = document.createElement('li')
+            newListItem.innerText = containerTaskTexts[i_b].innerText
+            newListTasksContainer.appendChild(newListItem)
+        }
+        if (newListTasksContainer.innerHTML == ''){
+            newListTasksContainer.innerHTML = '<p>There are no tasks for this categorie.</p>'
+        }
     }
 }
 
 //close generate classic to do list
-const generateClassicCloseButton = document.querySelector('.to-do-section__screen-saver__classic-todo-list-sidebar__close-button')
-
-generateClassicCloseButton.addEventListener('mousedown', () => {
+function closeGenerateClassicSideBar(){
     if (generateClassicSideBar.classList.contains('sidebar-active')){
         generateClassicSideBar.classList.remove('sidebar-active')
     }
     if (screenSaver.classList.contains('active')){
         screenSaver.classList.remove('active')
     }
-})
+}
+
+//print generate classic to do list
+const sideBarCloseButton = document.querySelector('.to-do-section__screen-saver__classic-todo-list-sidebar__close-button')
+
+function printClassicList(){
+    if (sideBarCloseButton.classList.contains('print-state') == false){
+        sideBarCloseButton.classList.add('print-state')
+    }
+    if (generateClassicSideBar.classList.contains('print-state') == false){
+        generateClassicSideBar.classList.add('print-state')
+    }
+    window.print()
+    if (generateClassicSideBar.classList.contains('print-state')){
+        generateClassicSideBar.classList.remove('print-state')
+    }
+    if (sideBarCloseButton.classList.contains('print-state')){
+        sideBarCloseButton.classList.remove('print-state')
+    }
+    if (generateClassicSideBar.classList.contains('sidebar-active')){
+        generateClassicSideBar.classList.remove('sidebar-active')
+    }
+    if (screenSaver.classList.contains('active')){
+        screenSaver.classList.remove('active')
+    }
+}
 
 /*RESPONSIVINESS*/
 const allContainers = document.getElementsByClassName('to-do-section__categorie-containers')
