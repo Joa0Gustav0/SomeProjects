@@ -6,9 +6,11 @@ const APIurl = "https://api.openweathermap.org/data/2.5/weather?units=metric"
 var userInput
 const submitButton = document.querySelector('.search-container__submit-button')
 submitButton.addEventListener('click', () => {
+    submitButton.name = "hourglass-outline"
     userInput = document.querySelector('#search-input').value.toLowerCase()
     if (userInput == ""){
         alert('City name is required for research.')
+        submitButton.name = "arrow-forward"
     }else{
         getData()
     }
@@ -20,6 +22,7 @@ async function getData(){
     var response = await fetch(APIurl + `&q=${userInput}` + `&appid=${APIAuthKey}`)
     if (response.ok == true){
         var data = await response.json()
+        submitButton.name = "arrow-forward"
         console.log(data)
         //insert data into html
         function dataUsage(){
@@ -33,6 +36,7 @@ async function getData(){
         dataUsage()
         setTabsState("active")
     }else{
+        submitButton.name = "arrow-forward"
         alert('City not found. | Error 404 (Not Found)')
     }
 }
@@ -60,6 +64,32 @@ const setTabsState = (setState) => {
 const returnButton = document.querySelector(".results-container__close-tab-button")
 returnButton.addEventListener("click", () => {
     setTabsState("deactive")
+})
+
+//addEventListener(eventHandler:onclick) change page mode button
+const elemModeChangeable = document.getElementsByClassName("mode-changeable")
+const logos = document.getElementsByClassName('logos')
+
+const changePageModeButton = document.querySelector(".page-mode-button")
+changePageModeButton.addEventListener("click", () => {
+    if (changePageModeButton.classList.contains("light-mode") == false){
+        changePageModeButton.classList.add("light-mode")
+        for (var i = 0; i < logos.length; i++){
+            logos[i].src = "media/logo-picture-alt.png"
+        }
+    }else{
+        changePageModeButton.classList.remove("light-mode")
+        for (var i = 0; i < logos.length; i++){
+            logos[i].src = "media/logo-picture.png"
+        }
+    }
+    for (var i = 0; i < elemModeChangeable.length; i++){
+        if (elemModeChangeable[i].classList.contains("light-mode") == false){
+            elemModeChangeable[i].classList.add("light-mode")
+        }else{
+            elemModeChangeable[i].classList.remove("light-mode")
+        }
+    }
 })
 
 const cityNameElem = document.querySelector('.results-container__main__city-name')
