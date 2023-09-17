@@ -25,8 +25,8 @@ async function getData(){
         function dataUsage(){
             cityNameElem.innerText = data.name
             cityTempElem.InnerText = data.main.temp + "°C"
-            cityMinTempElem.innerText = data.main.temp_min + "°C"
-            cityMaxTempElem.innerText = data.main.temp_max + "°C"
+            cityMinTempElem.innerHTML = `<ion-icon name="arrow-down"></ion-icon>` + data.main.temp_min + "°C"
+            cityMaxTempElem.innerHTML = `<ion-icon name="arrow-down"></ion-icon>` + data.main.temp_max + "°C"
             cityWindSpeedElem.innerText = data.wind.speed + "Km/h"
             cityHumidityElem.innerText = data.main.humidity + "%"
         }
