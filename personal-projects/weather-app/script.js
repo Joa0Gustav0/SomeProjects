@@ -32,6 +32,42 @@ async function getData(){
             cityMaxTempElem.innerHTML = `<ion-icon name="arrow-up"></ion-icon>` + data.main.temp_max + "°C"
             cityWindSpeedElem.innerText = data.wind.speed + "Km/h"
             cityHumidityElem.innerText = data.main.humidity + "%"
+            var currentWeatherId = data.weather[0].id
+            var weatherDescription = undefined
+            if (Number(currentWeatherId) >= 200 &&
+            Number(currentWeatherId) <= 232){
+                weatherDescription = "thunderstorm"
+            }else if (Number(currentWeatherId) >= 300 && 
+            Number(currentWeatherId) <= 321){
+                weatherDescription = "shower-rain"
+            }else if (Number(currentWeatherId) >= 500 && 
+            Number(currentWeatherId) <= 531){
+                weatherDescription = "rain"
+            }else if (Number(currentWeatherId) >= 600 && 
+            Number(currentWeatherId) <= 622){
+                weatherDescription = "snow"
+            }else if (Number(currentWeatherId) >= 700 && 
+            Number(currentWeatherId) <= 781){
+                weatherDescription = "mist"
+            }else if (Number(currentWeatherId) == 800){
+                weatherDescription = "clean-sky"
+                if (data.weather[0].icon[data.weather[0].icon.length - 1] == "n"){
+                    weatherDescription = weatherDescription + "-night"
+                }
+            }
+            else if (Number(currentWeatherId) == 801){
+                weatherDescription = "few-clouds"
+                if (data.weather[0].icon[data.weather[0].icon.length - 1] == "n"){
+                    weatherDescription = weatherDescription + "-night"
+                }
+            }
+            else if (Number(currentWeatherId) == 802){
+                weatherDescription = "scattered-clouds"
+            }else if (Number(currentWeatherId) == 803 ||
+            Number(currentWeatherId) == 804){
+                weatherDescription = "broken-clouds"
+            }
+            cityWeatherElem.style.backgroundImage = `url(../media/${weatherDescription}.jpg)`
         }
         dataUsage()
         setTabsState("active")
@@ -98,3 +134,4 @@ const cityMinTempElem = document.querySelector('.results-container__main__alt-te
 const cityMaxTempElem = document.querySelector('.results-container__main__alt-temperatures__max-temp')
 const cityWindSpeedElem = document.querySelector('.results-container__main__add-wind-speed-container__info__data')
 const cityHumidityElem = document.querySelector('.results-container__main__add-informations__humidity-container__info__data')
+const cityWeatherElem = document.querySelector(".results-container")
