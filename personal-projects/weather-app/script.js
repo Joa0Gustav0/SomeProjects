@@ -16,6 +16,7 @@ submitButton.addEventListener('click', () => {
 
 //function for getting API data
 async function getData(){
+    setTabsState("deactive")
     var response = await fetch(APIurl + `&q=${userInput}` + `&appid=${APIAuthKey}`)
     if (response.ok == true){
         var data = await response.json()
@@ -33,6 +34,25 @@ async function getData(){
         setTabsState("active")
     }else{
         alert('City not found. | Error 404 (Not Found)')
+    }
+}
+
+//Set tabs state function
+const tabs = document.getElementsByClassName("containers")
+
+const setTabsState = (setState) => {
+    if (setState == "active"){
+        for (var i = 0; i < tabs.length; i++){
+            if (tabs[i].classList.contains("active-tab") == false){
+                tabs[i].classList.add("active-tab")
+            }
+        }
+    }else if (setState == "deactive"){
+        for (var i = 0; i < tabs.length; i++){
+            if (tabs[i].classList.contains("active-tab")){
+                tabs[i].classList.remove("active-tab")
+            }
+        }
     }
 }
 

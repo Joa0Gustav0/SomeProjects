@@ -98,18 +98,21 @@ label{
 }
 
 .results-container{
+    transition: all .25s;
     position: absolute;
-    transform: translate(-50%, -50%);
+    transform: translate(50%, -50%);
     top: 50%;
-    left: 50%;
+    right: 50%;
 
-    display: none;
-    height: 400px;
+    height: 398px;
     padding: 10px;
     width: fit-content;
     border-radius: 10px;
     background-image: url(../media/pexels-pixabay-531756.jpg);
     background-size: cover;
+}
+.results-container.active-tab{
+    transform: translateX(calc(100% - 5px));
 }
 .results-container__main{
     display: flex;
