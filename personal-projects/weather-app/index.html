@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/comum.css">
+    <link rel="stylesheet" href="styles/index.css">
+    <title>Weather Together | Weather Forecast App</title>
+</head>
+<body>
+    <section class="results-container">
+        <main class="results-container__main">
+            <img src="media/logo-picture.png" alt="weather-together-logo" class="results-container__main__logo-picture">
+            <div class="results-container__main__main-info">
+                <h1 class="results-container__main__city-name">
+                    Aracaju
+                </h1>
+                <h2 class="results-container__main__main-temperature">
+                    24.7°C
+                </h2>
+                <div class="results-container__main__alt-temperatures">
+                    <h3 class="results-container__main__alt-temperatures__max-temp"><ion-icon name="arrow-up"></ion-icon>31.9°C</h3>
+                    <h3 class="results-container__main__alt-temperatures__min-temp"><ion-icon name="arrow-down"></ion-icon>22.1°C</h3>
+                </div>
+            </div>
+            <div class="results-container__main__add-informations">
+                <div class="results-container__main__add-informations__humidity-container">
+                    <ion-icon name="water-outline"></ion-icon>
+                    <span class="results-container__main__add-informations__humidity-container__info">
+                        <h1 class="results-container__main__add-informations__humidity-container__info__data">40%</h1>
+                        <h2 class="results-container__main__add-informations__humidity-container__info__title">Humidity</h2>
+                    </span>
+                </div>
+                <div class="results-container__main__add-informations__wind-speed-container">
+                    <ion-icon name="leaf-outline"></ion-icon>
+                    <span class="results-container__main__add-wind-speed-container__info">
+                        <h1 class="results-container__main__add-wind-speed-container__info__data">17km/h</h1>
+                        <h2 class="results-container__main__add-wind-speed-container__info__title">wind</h2>
+                    </span>
+                </div>
+            </div>
+        </main>
+    </section>
+    <main class="search-container">
+        <h1 class="search-container__title">Weather <br>Together!</h1>
+        <img src="media/logo-picture.png" alt="weather-together-logo" class="search-container__logo-picture">
+        <p class="search-container__instructions">Search for a city.</p>
+        <div class="search-container__search-bar">
+            <label for="search-input">
+                <ion-icon name="search"></ion-icon>
+            </label>
+            <input type="text" name="" id="search-input" placeholder="Enter a city name...">
+        </div>
+        <ion-icon name="arrow-forward" class="search-container__submit-button"></ion-icon>
+    </main>
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+</html>
