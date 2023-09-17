@@ -24,9 +24,9 @@ async function getData(){
         //insert data into html
         function dataUsage(){
             cityNameElem.innerText = data.name
-            cityTempElem.InnerText = data.main.temp + "°C"
+            cityTempElem.innerText = data.main.temp + "°C"
             cityMinTempElem.innerHTML = `<ion-icon name="arrow-down"></ion-icon>` + data.main.temp_min + "°C"
-            cityMaxTempElem.innerHTML = `<ion-icon name="arrow-down"></ion-icon>` + data.main.temp_max + "°C"
+            cityMaxTempElem.innerHTML = `<ion-icon name="arrow-up"></ion-icon>` + data.main.temp_max + "°C"
             cityWindSpeedElem.innerText = data.wind.speed + "Km/h"
             cityHumidityElem.innerText = data.main.humidity + "%"
         }
@@ -55,6 +55,12 @@ const setTabsState = (setState) => {
         }
     }
 }
+
+//addEventListener(eventHandler:onclick) to return results tab button
+const returnButton = document.querySelector(".results-container__close-tab-button")
+returnButton.addEventListener("click", () => {
+    setTabsState("deactive")
+})
 
 const cityNameElem = document.querySelector('.results-container__main__city-name')
 const cityTempElem = document.querySelector('.results-container__main__main-temperature')

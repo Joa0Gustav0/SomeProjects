@@ -15,7 +15,7 @@ body{
     top: 50%;
     left: 50%;
 
-    display: none;
+    display: flex;
     flex-wrap: nowrap;
     flex-direction: column;
     justify-content: center;
@@ -152,7 +152,6 @@ label{
     color: white;
     width: fit-content;
     border-radius: 10px;
-    backdrop-filter: blur(1px);
     background-color: rgba(25, 25, 25, 0.5);
 }
 .results-container__main__logo-picture{
