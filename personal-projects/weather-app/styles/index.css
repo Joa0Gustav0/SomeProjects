@@ -17,6 +17,12 @@ body.light-mode{
     background-color: rgb(245, 245, 245);
 }
 
+.container{
+    width: 100vw;
+    height: 100vh;
+    min-height: 490px;
+}
+
 .page-mode-button{
     transition: all .5s;
     position: absolute;

@@ -67,7 +67,7 @@ async function getData(){
             Number(currentWeatherId) == 804){
                 weatherDescription = "broken-clouds"
             }
-            cityWeatherElem.style.backgroundImage = `url(../media/${weatherDescription}.jpg)`
+            cityWeatherElem.style.backgroundImage = `url(media/${weatherDescription}.jpg)`
         }
         dataUsage()
         setTabsState("active")
