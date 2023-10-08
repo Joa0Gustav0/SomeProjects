@@ -3,6 +3,13 @@ main {
     top: 0;
     left: 0;
 
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+
+    gap: 30px;
     width: 100%;
     padding: 30px;
     min-height: 100vh;

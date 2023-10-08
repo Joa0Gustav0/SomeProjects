@@ -1,0 +1,8 @@
+.resultsContainer{
+    position: relative;
+
+    width: 100%;
+    padding: 10px;
+    border-radius: 15px;
+    height: calc(100vh - 60px);
+}
