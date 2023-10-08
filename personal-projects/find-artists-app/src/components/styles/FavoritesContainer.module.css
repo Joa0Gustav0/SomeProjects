@@ -1,0 +1,44 @@
+.favcontainer{
+    width: 100%;
+    padding: 10px;
+    max-width: 400px;
+    border-radius: 15px;
+    height: calc(100vh - 60px);
+    background-color: rgb(30, 30, 30);
+}
+.favTitle{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+
+    gap: 5px;
+    color: white;
+}
+.favTitle > ion-icon{
+    color: #1877f2;
+}
+
+.favList{
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+
+    width: 100%;
+    height: calc(100% - 60px);
+}
+
+.nofavImage{
+    width: 150px;
+    opacity: 0.15;
+    margin-bottom: 20px;
+}
+.nofavText{
+    font-size: 1em;
+    font-weight: 400;
+    width: 200px;
+    color: rgba(255, 255, 255, 0.25);
+    text-align: center;
+}
