@@ -18,7 +18,7 @@ section {
     background-color: rgb(15, 15, 15);
 }
 section.deactivatedTab{
-    left: -100vw
+    left: -150vw
 }
 
 .lights{

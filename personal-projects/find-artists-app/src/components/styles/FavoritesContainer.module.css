@@ -3,6 +3,7 @@
     padding: 10px;
     max-width: 400px;
     border-radius: 15px;
+    overflow-x: hidden;
     height: calc(100vh - 60px);
     background-color: rgb(30, 30, 30);
 }
@@ -41,4 +42,13 @@
     width: 200px;
     color: rgba(255, 255, 255, 0.25);
     text-align: center;
+}
+
+@media screen and (max-width: 899px){
+    .favcontainer{
+        position: absolute;
+        transform: translateY(-50%);
+        top: 50%;
+        left: 100vw;
+    }
 }

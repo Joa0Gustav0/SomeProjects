@@ -2,7 +2,7 @@ main {
     transition: all .5s;
     position: absolute;
     top: 0;
-    left: 100vw;
+    left: 150vw;
 
     display: flex;
     flex-wrap: nowrap;

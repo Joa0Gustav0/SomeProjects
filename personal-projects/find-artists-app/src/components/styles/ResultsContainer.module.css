@@ -5,4 +5,5 @@
     padding: 10px;
     border-radius: 15px;
     height: calc(100vh - 60px);
+    border: 1px solid red;
 }

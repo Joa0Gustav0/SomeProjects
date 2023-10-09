@@ -1,5 +1,5 @@
 .SearchBarContainer{
-    transition: all .25s;
+    transition: all 1s;
     position: absolute;
     top: 50%;
     right: 50%;
@@ -20,6 +20,10 @@
 .SearchBarContainer:focus-within{
     background-color: rgb(35, 35, 35);
 }
+.SearchBarContainer:focus-within,
+.SearchBarContainer.onSearch{
+    top: 30px;
+}
 .SearchBarContainer:hover ::placeholder,
 .SearchBarContainer:focus-within ::placeholder{
     text-shadow: 0px 0px 1px rgba(255, 255, 255, 0.25);
@@ -39,4 +43,12 @@
     outline: none;
     color: white;
     background-color: transparent;
+}
+
+@media screen and (max-width: 399px){
+    .SearchBarContainer:focus-within,
+    .SearchBarContainer.onSearch{
+        right: 100%;
+        transform: translate(100%, -50%);
+    }
 }
