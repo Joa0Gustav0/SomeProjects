@@ -18,14 +18,39 @@ main {
 main.activeTab{
     left: 0vw;
 }
-
 .headerLogo{
     position: absolute;
     top: 30px;
-    right: 25px;
+    right: 20px;
     
     width: 50px;
 }
 .headerLogo:hover{
     cursor: pointer;
 }
+main > ion-icon{
+    transition: .25s;
+    position: absolute;
+    bottom: 35px;
+    right: 27px;
+
+    display: none;
+
+    width: 35px;
+    height: 35px;
+    color: #1877f2;
+}
+main > ion-icon:hover{
+    cursor: pointer;
+    transform: scale(110%, 110%);
+}
+main > ion-icon:active{
+    color: #1FC5A8;
+}
+
+@media screen and (max-width: 899px){
+    main > ion-icon{
+        display: block;
+    }
+}
+

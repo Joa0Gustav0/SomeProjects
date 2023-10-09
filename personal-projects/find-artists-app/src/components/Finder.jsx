@@ -5,14 +5,28 @@ import styles from './styles/Finder.module.css'
 import { useState } from 'react'
 
 export default function Finder({mainState, event}){
-    const [favorites, setFavorites] = useState([])
 
-    var current = ''
+    const [favBarState, setFavBarState] = useState("")
+
+    window.onresize = () => {
+        if (window.matchMedia("(min-width: 900px)").matches){
+            setFavBarState("")
+        }
+    }
+
+    const [favorites, setFavorites] = useState([])
 
     return (
         <main className={mainState}>
-            <FavoritesContainer favoritesArray={favorites}/>
+            <FavoritesContainer favoritesArray={favorites} favTabState={favBarState} closeEvent={() => {
+                setFavBarState("")
+            }}/>
             <ResultsContainer />
+
+            <ion-icon className={styles.favButton} name="heart" onClick={() => {
+                setFavBarState("FavoritesContainer_openedContainer__k6V0o")
+            }}>
+            </ion-icon>
 
             <img src={logo} alt="aurora-logo" className={styles.headerLogo} onClick={event}/>
         </main>
