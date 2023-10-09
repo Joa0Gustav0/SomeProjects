@@ -2,7 +2,15 @@
     position: relative;
 
     width: 100%;
-    padding: 10px;
+    padding: 10px 0;
     border-radius: 15px;
     height: calc(100vh - 60px);
+}
+
+.results{
+    width: 100%;
+    margin-top: 50px;
+    border-radius: 15px;
+    height: calc(100% - 50px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
 }

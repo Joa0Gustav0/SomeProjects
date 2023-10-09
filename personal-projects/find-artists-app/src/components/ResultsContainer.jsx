@@ -5,6 +5,7 @@ export default function ResultsContainer(){
     return(
         <div className={styles.resultsContainer}>
             <SearchBar />
+            <div className={styles.results}></div>
         </div>
     )
 }
