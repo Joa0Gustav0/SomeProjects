@@ -1,7 +1,8 @@
 main {
+    transition: all .5s;
     position: absolute;
     top: 0;
-    left: 0;
+    left: 100vw;
 
     display: flex;
     flex-wrap: nowrap;
@@ -13,4 +14,18 @@ main {
     width: 100%;
     padding: 30px;
     min-height: 100vh;
+}
+main.activeTab{
+    left: 0vw;
+}
+
+.headerLogo{
+    position: absolute;
+    top: 30px;
+    right: 25px;
+    
+    width: 50px;
+}
+.headerLogo:hover{
+    cursor: pointer;
 }
