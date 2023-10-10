@@ -10,7 +10,7 @@ export default function SearchBar(){
             <label htmlFor="search-bar">
                 <ion-icon name="search"></ion-icon>
             </label>
-            <input type="text" id="search-bar" placeholder='Let Aurora guide you...' onChange={(e) => {
+            <input type="text" id="search-bar" placeholder='Let Aurora guide you...' autoComplete='off' onChange={(e) => {
                 if (e.target.value !== ""){
                     setDivClass(`${styles.SearchBarContainer} ${styles.onSearch}`)
                 }else{
