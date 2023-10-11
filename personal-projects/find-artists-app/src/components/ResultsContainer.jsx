@@ -1,5 +1,6 @@
 import styles from './styles/ResultsContainer.module.css'
 import SearchBar from './SearchBar'
+import noArtistPicture from '../media/no-artist-img.png'
 import { useState } from 'react'
 
 export default function ResultsContainer(){
@@ -38,13 +39,19 @@ export default function ResultsContainer(){
             })
             .then(resp =>  resp.json())
             .then((data) => {
-                if (data.artists !== undefined || null){
-                    setResultsArr(data.artists.items)
+                if (inputValue !== ""){
+                    if (data.artists !== undefined || null){
+                        setResultsArr(data.artists.items)
+                    }
                 }
             })
 
         }
-        search()
+        if (inputValue !== ""){
+            search()
+        }else if (inputValue === ""){
+            setResultsArr([])
+        }
     }
 
     const [resultsArr, setResultsArr] = useState([])
@@ -56,7 +63,7 @@ export default function ResultsContainer(){
                 {   
                     resultsArr.map((currentArtist, i) => (
                         <div className={styles.artistContainer} key={`artist${i}`}>
-                            <img className={styles.artistPicture} src={currentArtist.images[0].url || ""} alt="artist-pic" />
+                            <img className={styles.artistPicture} src={currentArtist.images[0]?.url || noArtistPicture} alt="artist-pic" />
                             <h1 className={styles.artistName}>{currentArtist.name}</h1>
                             <h1 className={styles.artistCategorie}>Artist</h1>
                         </div>
