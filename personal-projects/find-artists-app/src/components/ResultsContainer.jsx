@@ -37,7 +37,12 @@ export default function ResultsContainer(){
                 }
             })
             .then(resp =>  resp.json())
-            .then(data => console.log(data))
+            .then((data) => {
+                if (data.artists !== undefined || null){
+                    setResultsArr(data.artists.items)
+                }
+            })
+
         }
         search()
     }
@@ -48,12 +53,10 @@ export default function ResultsContainer(){
         <div className={styles.resultsContainer}>
             <SearchBar searchEvent={apiFunctions}/>
             <div className={styles.results}>
-                {
-                    resultsArr.length > 0 && (
-                        resultsArr.map((currentArtist) => {
-                            
-                        })
-                    )
+                {   
+                    resultsArr.map((currentArtist, i) => (
+                        <h1 key={i}>{currentArtist.name}</h1>
+                    ))
                 }
             </div>
         </div>
