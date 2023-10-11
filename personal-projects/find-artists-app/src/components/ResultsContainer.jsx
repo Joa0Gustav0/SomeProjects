@@ -55,7 +55,11 @@ export default function ResultsContainer(){
             <div className={styles.results}>
                 {   
                     resultsArr.map((currentArtist, i) => (
-                        <h1 key={i}>{currentArtist.name}</h1>
+                        <div className={styles.artistContainer} key={`artist${i}`}>
+                            <img className={styles.artistPicture} src={currentArtist.images[0].url || ""} alt="artist-pic" />
+                            <h1 className={styles.artistName}>{currentArtist.name}</h1>
+                            <h1 className={styles.artistCategorie}>Artist</h1>
+                        </div>
                     ))
                 }
             </div>
