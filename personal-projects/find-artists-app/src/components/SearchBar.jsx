@@ -1,7 +1,7 @@
 import styles from './styles/SearchBar.module.css'
 import { useState } from 'react'
 
-export default function SearchBar(){
+export default function SearchBar({searchEvent}){
 
     const [divClass, setDivClass] = useState(styles.SearchBarContainer)
 
@@ -16,6 +16,7 @@ export default function SearchBar(){
                 }else{
                     setDivClass(styles.SearchBarContainer)
                 }
+                searchEvent(e.target.value)
             }}/>
         </div>
     )
