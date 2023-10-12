@@ -4,7 +4,6 @@
     padding: 10px;
     max-width: 400px;
     border-radius: 15px;
-    overflow-x: hidden;
     height: calc(100vh - 60px);
     background-color: rgb(30, 30, 30);
 }
@@ -26,9 +25,11 @@
     flex-wrap: nowrap;
     align-items: center;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
 
+    gap: 10px;
     width: 100%;
+    overflow-y: scroll;
     height: calc(100% - 60px);
 }
 
@@ -64,6 +65,40 @@
 .favcontainer > ion-icon:active{
     cursor: pointer;
     color: #1FC5A8;
+}
+.favArtistContainer{
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+
+    gap: 10px;
+    width: 100%;
+    padding: 15px;
+    border-radius: 15px;
+    background-color: rgb(35, 35, 35);
+}
+.favArtistPicture{
+    width: 100px;
+    height: 100px;
+    border-radius: 15px;
+}
+.favArtistInfos{
+    max-width: 100%;
+    overflow-x: hidden;
+}
+.favArtistName{
+    color: white;
+    font-size: 1.5em;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    text-wrap: nowrap;
+}
+.favArtistCategorie{
+    color: gray;
+    font-size: 1em;
+    font-weight: 400;
 }
 
 @media screen and (max-width: 899px){

@@ -47,12 +47,6 @@ export default function ResultsContainer({favoriteEvent, favArr}){
             })
 
         }
-        /* if (inputValue !== ""){
-            search()
-        }else if (inputValue === ""){
-            setResultsArr([])
-            console.log(resultsArr)
-        } */
         inputValue.length > 0 ? search() : setResultsArr([])
     }
 
@@ -71,7 +65,7 @@ export default function ResultsContainer({favoriteEvent, favArr}){
                             </abbr>
                             <h1 className={styles.artistCategorie}>Artist</h1>
                             <ion-icon name={favArr.includes(currentArtist.id) ? "heart" : "heart-outline"} id={currentArtist.id} onClick={(e) => {
-                                favoriteEvent(e.target)
+                                favoriteEvent({id: currentArtist.id, name: currentArtist.name, img: currentArtist.images[0]?.url || noArtistPicture})
                             }}></ion-icon>
                         </div>
                     ))

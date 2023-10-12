@@ -16,9 +16,18 @@ export default function Finder({mainState, event}){
 
     const [favorites, setFavorites] = useState([])
 
-    const addFavorite = (target) => {
-        if (favorites.includes(target.id) === false){
-            setFavorites([...favorites, target.id])
+    const addFavorite = (artistInfo) => {
+        var detected =  false
+        favorites.map((elem) => {
+            if (elem.name === artistInfo.name){
+                detected = true
+            }
+        })
+        if (detected === false){
+            setFavorites([...favorites, artistInfo])
+            if (window.matchMedia("(max-width: 899px)").matches){
+                setFavBarState("FavoritesContainer_openedContainer__k6V0o")
+            }
         }
     }
 
