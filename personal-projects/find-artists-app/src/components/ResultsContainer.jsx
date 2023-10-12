@@ -3,7 +3,7 @@ import SearchBar from './SearchBar'
 import noArtistPicture from '../media/no-artist-img.png'
 import { useState } from 'react'
 
-export default function ResultsContainer(){
+export default function ResultsContainer({favoriteEvent}){
 
     const [accessToken, setAccessToken] = useState("")
 
@@ -64,13 +64,15 @@ export default function ResultsContainer(){
             <div className={styles.results}>
                 {   
                     resultsArr.length === 0 ? null : resultsArr.map((currentArtist, i) => (
-                        <div className={styles.artistContainer} key={`artist${i}`}>
+                        <div className={styles.artistContainer} key={currentArtist.id}>
                             <img className={styles.artistPicture} src={currentArtist.images[0]?.url || noArtistPicture} alt="artist-pic" />
                             <abbr className={styles.abbr} title={currentArtist.name}>
                                 <h1 className={styles.artistName}>{currentArtist.name}</h1>
                             </abbr>
                             <h1 className={styles.artistCategorie}>Artist</h1>
-                            <ion-icon name="heart"></ion-icon>
+                            <ion-icon name="heart" id={currentArtist.id} onClick={(e) => {
+                                favoriteEvent(e.target)
+                            }}></ion-icon>
                         </div>
                     ))
                 }

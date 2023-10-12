@@ -16,12 +16,18 @@ export default function Finder({mainState, event}){
 
     const [favorites, setFavorites] = useState([])
 
+    const addFavorite = (target) => {
+        if (favorites.includes(target.id) === false){
+            setFavorites([...favorites, target.id])
+        }
+    }
+
     return (
         <main className={mainState}>
             <FavoritesContainer favoritesArray={favorites} favTabState={favBarState} closeEvent={() => {
                 setFavBarState("")
             }}/>
-            <ResultsContainer />
+            <ResultsContainer favoriteEvent={addFavorite} />
 
             <ion-icon className={styles.favButton} name="heart" onClick={() => {
                 setFavBarState("FavoritesContainer_openedContainer__k6V0o")
