@@ -40,7 +40,7 @@ export default function FavoritesContainer({favoritesArray, favTabState, closeEv
     return (
         <div className={`${styles.favcontainer} ${favTabState}`}>
             <h1 className={styles.favTitle}><ion-icon name="heart"></ion-icon>Favorites:</h1>
-            <div className={`favoritesList ${styles.favList}`}>
+            <div className={`favoritesList ${styles.favList}`} style={favoritesArray.length === 0 ? {justifyContent: 'center'} : {justifyContent: 'flex-start'}}>
                 {favoritesArray.length === 0 ? <>
                         <img className={styles.nofavImage} src={whiteLogo} alt="aurora-logo"/>
                         <h1 className={styles.nofavText}>It seens you do not have any favorites...</h1>
