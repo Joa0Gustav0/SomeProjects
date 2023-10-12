@@ -24,6 +24,9 @@
     overflow-y: scroll;
 }
 .artistContainer{
+    transition: all .1s;
+    position: relative;
+
     display: flex;
     flex-wrap: nowrap;
     align-items: center;
@@ -36,20 +39,66 @@
     border-radius: 15px;
     background-color: rgb(30, 30, 30);
 }
+.artistContainer:hover {
+    cursor: pointer;
+    background-color: rgb(35, 35, 35);
+}
+.artistContainer:active{
+    background-color: rgb(25, 25, 25);
+}
 .artistPicture{
+    transition: all .1s;
     width: 100px;
     height: 100px;
     margin-bottom: 10px;
     border-radius: 100%;
 }
+.abbr{
+    width: 100%;
+    text-decoration: none;
+}
 .artistName{
-    font-size: .9em;
+    transition: all .1s;
     color: white;
+    font-size: .9em;
+    width: 100%;
+    text-wrap: nowrap;
     align-self: flex-start;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+.artistContainer:active .artistName{
+    color: gray;
 }
 .artistCategorie{
     font-size: .8em;
     font-weight: 400;
     color: grey;
     align-self: flex-start;
+}
+.artistContainer ion-icon{
+    transition: all .25s;
+    position: absolute;
+    top: -5px;
+    right: -5px;
+
+    opacity: 0;
+
+    color: #1877f2;
+    width: 20px;
+    height: 20px;
+    padding: 5px;
+    border-radius: 100%;
+    background-color: rgb(25, 25, 25)
+}
+.artistContainer ion-icon:hover{
+    transform: scale(105%, 105%);
+}
+.artistContainer ion-icon:active{
+    color: #1FC5A8;
+}
+.artistContainer:hover ion-icon{
+    opacity: 1;
+    top: -8px;
+    right: -8px;
 }

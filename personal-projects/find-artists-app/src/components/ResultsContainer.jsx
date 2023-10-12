@@ -47,11 +47,13 @@ export default function ResultsContainer(){
             })
 
         }
-        if (inputValue !== ""){
+        /* if (inputValue !== ""){
             search()
         }else if (inputValue === ""){
             setResultsArr([])
-        }
+            console.log(resultsArr)
+        } */
+        inputValue.length > 0 ? search() : setResultsArr([])
     }
 
     const [resultsArr, setResultsArr] = useState([])
@@ -61,11 +63,14 @@ export default function ResultsContainer(){
             <SearchBar searchEvent={apiFunctions}/>
             <div className={styles.results}>
                 {   
-                    resultsArr.map((currentArtist, i) => (
+                    resultsArr.length === 0 ? null : resultsArr.map((currentArtist, i) => (
                         <div className={styles.artistContainer} key={`artist${i}`}>
                             <img className={styles.artistPicture} src={currentArtist.images[0]?.url || noArtistPicture} alt="artist-pic" />
-                            <h1 className={styles.artistName}>{currentArtist.name}</h1>
+                            <abbr className={styles.abbr} title={currentArtist.name}>
+                                <h1 className={styles.artistName}>{currentArtist.name}</h1>
+                            </abbr>
                             <h1 className={styles.artistCategorie}>Artist</h1>
+                            <ion-icon name="heart"></ion-icon>
                         </div>
                     ))
                 }
