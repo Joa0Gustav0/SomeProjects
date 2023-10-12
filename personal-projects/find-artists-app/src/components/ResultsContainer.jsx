@@ -3,7 +3,7 @@ import SearchBar from './SearchBar'
 import noArtistPicture from '../media/no-artist-img.png'
 import { useState } from 'react'
 
-export default function ResultsContainer({favoriteEvent}){
+export default function ResultsContainer({favoriteEvent, favArr}){
 
     const [accessToken, setAccessToken] = useState("")
 
@@ -70,7 +70,7 @@ export default function ResultsContainer({favoriteEvent}){
                                 <h1 className={styles.artistName}>{currentArtist.name}</h1>
                             </abbr>
                             <h1 className={styles.artistCategorie}>Artist</h1>
-                            <ion-icon name="heart" id={currentArtist.id} onClick={(e) => {
+                            <ion-icon name={favArr.includes(currentArtist.id) ? "heart" : "heart-outline"} id={currentArtist.id} onClick={(e) => {
                                 favoriteEvent(e.target)
                             }}></ion-icon>
                         </div>

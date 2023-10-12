@@ -27,7 +27,7 @@ export default function Finder({mainState, event}){
             <FavoritesContainer favoritesArray={favorites} favTabState={favBarState} closeEvent={() => {
                 setFavBarState("")
             }}/>
-            <ResultsContainer favoriteEvent={addFavorite} />
+            <ResultsContainer favoriteEvent={addFavorite} favArr={favorites}/>
 
             <ion-icon className={styles.favButton} name="heart" onClick={() => {
                 setFavBarState("FavoritesContainer_openedContainer__k6V0o")
