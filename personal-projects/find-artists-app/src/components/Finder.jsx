@@ -18,9 +18,11 @@ export default function Finder({mainState, event}){
 
     const addFavorite = (artistInfo) => {
         var detected =  false
-        favorites.map((elem) => {
+        var detectedI = null
+        favorites.map((elem, i) => {
             if (elem.name === artistInfo.name){
                 detected = true
+                detectedI = i
             }
         })
         if (detected === false){
@@ -28,6 +30,9 @@ export default function Finder({mainState, event}){
             if (window.matchMedia("(max-width: 899px)").matches){
                 setFavBarState("FavoritesContainer_openedContainer__k6V0o")
             }
+        }else {
+            favorites.splice(detectedI, 1)
+            setFavorites(favorites)
         }
     }
 
@@ -40,6 +45,7 @@ export default function Finder({mainState, event}){
 
             <ion-icon className={styles.favButton} name="heart" onClick={() => {
                 setFavBarState("FavoritesContainer_openedContainer__k6V0o")
+                console.log(favorites)
             }}>
             </ion-icon>
 
