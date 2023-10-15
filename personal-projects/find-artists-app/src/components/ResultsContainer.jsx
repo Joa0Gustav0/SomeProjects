@@ -64,14 +64,9 @@ export default function ResultsContainer({favoriteEvent, favArr}){
                                 <h1 className={styles.artistName}>{currentArtist.name}</h1>
                             </abbr>
                             <h1 className={styles.artistCategorie}>Artist</h1>
-                            {
-                                favArr.findIndex((elem) => elem.id === currentArtist.id) === -1 && (
-                                    <ion-icon name="heart-outline" id={currentArtist.id} onClick={(e) => {
-                                        favoriteEvent({id: currentArtist.id, name: currentArtist.name, img: currentArtist.images[0]?.url || noArtistPicture})
-                                    }}></ion-icon>
-                                )
-                            }
-                            
+                            <ion-icon name={favArr.findIndex((elem) => elem.id === currentArtist.id) > -1 ? "heart" : "heart-outline"} id={currentArtist.id} onClick={(e) => {
+                                favoriteEvent({id: currentArtist.id, name: currentArtist.name, img: currentArtist.images[0]?.url || noArtistPicture})
+                            }}></ion-icon>
                         </div>
                     ))
                 }
