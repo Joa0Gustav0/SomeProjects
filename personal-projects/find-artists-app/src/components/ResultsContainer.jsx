@@ -1,6 +1,7 @@
 import styles from './styles/ResultsContainer.module.css'
 import SearchBar from './SearchBar'
 import noArtistPicture from '../media/no-artist-img.png'
+import loadingIcon from '../media/aurora-loading.gif'
 import { useState } from 'react'
 
 export default function ResultsContainer({favoriteEvent, favArr}){
@@ -43,21 +44,41 @@ export default function ResultsContainer({favoriteEvent, favArr}){
                     if (data.artists !== undefined || null){
                         setResultsArr(data.artists.items)
                     }
+                }else{
+                    setResultsArr(resultsArr.filter((elem) => elem.name === inputValue))
+                    console.log(resultsArr)
                 }
             })
 
         }
-        inputValue.length > 0 ? search() : setResultsArr([])
+        search()
     }
 
     const [resultsArr, setResultsArr] = useState([])
+    const [barState, setBarState] = useState("not_on_search")
+    const [inputState, setInputState] = useState("not_on_focus")
+
+    const setFocus = (action) => {
+        action === "setFocus" ? setInputState("on_focus") : setInputState("not_on_focus")
+    }
 
     return(
         <div className={styles.resultsContainer}>
-            <SearchBar searchEvent={apiFunctions}/>
+            <SearchBar focus={inputState} focusEvent={setFocus} searchEvent={apiFunctions} barStatusEvent={(searchBar) => {
+                searchBar.value === "" ? 
+                setBarState("not_on_search") :
+                setBarState("on_search")
+            }}/>
             <div className={styles.results}>
                 {   
-                    resultsArr.length === 0 ? null : resultsArr.map((currentArtist, i) => (
+                    resultsArr.length === 0 ? barState === "on_search" ? 
+                    <>
+                        <h1 className={styles.notFoundText}>Aurora couldn't find any results...</h1>
+                    </> : inputState === "on_focus" ?
+                    <>
+                        <img className={styles.loadingIcon} src={loadingIcon} alt="..." />
+                    </> : null
+                    : resultsArr.map((currentArtist, i) => (
                         <div className={styles.artistContainer} key={currentArtist.id}>
                             <img className={styles.artistPicture} src={currentArtist.images[0]?.url || noArtistPicture} alt="artist-pic" />
                             <abbr className={styles.abbr} title={currentArtist.name}>

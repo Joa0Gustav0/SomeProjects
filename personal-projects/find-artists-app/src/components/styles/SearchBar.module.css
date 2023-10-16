@@ -10,6 +10,7 @@
     justify-content: center;
 
     gap: 10px;
+    z-index: 9;
     padding: 10px;
     color: white;
     overflow-x: hidden;

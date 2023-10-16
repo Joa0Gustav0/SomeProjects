@@ -31,8 +31,7 @@ export default function Finder({mainState, event}){
                 setFavBarState("FavoritesContainer_openedContainer__k6V0o")
             }
         }else {
-            favorites.splice(detectedI, 1)
-            setFavorites(favorites)
+            setFavorites(favorites.filter((elem, i, arr) => i !== detectedI))
         }
     }
 
