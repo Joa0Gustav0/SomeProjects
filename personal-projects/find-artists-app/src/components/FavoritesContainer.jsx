@@ -2,7 +2,7 @@ import whiteLogo from '../media/aurora-logo-white.png'
 import styles from './styles/FavoritesContainer.module.css'
 import noArtistPicture from '../media/no-artist-img.png'
 
-export default function FavoritesContainer({favoritesArray, favTabState, closeEvent}){
+export default function FavoritesContainer({favoritesArray, favTabState, closeEvent, removeFavoriteEvent}){
 
     return (
         <div className={`${styles.favcontainer} ${favTabState}`}>
@@ -18,6 +18,10 @@ export default function FavoritesContainer({favoritesArray, favTabState, closeEv
                                 <h1 className={styles.favArtistName}>{elem.name}</h1>
                                 <h1 className={styles.favArtistCategorie}>Artist</h1>
                             </div>
+                            <ion-icon name="heart" 
+                                onMouseEnter={(e) => e.target.name = "heart-outline"}
+                                onMouseLeave={(e) => e.target.name = "heart"}
+                                onClick={() => removeFavoriteEvent({id: elem.id})}></ion-icon>
                         </div>
                     ))}
             </div>

@@ -16,11 +16,11 @@ export default function Finder({mainState, event}){
 
     const [favorites, setFavorites] = useState([])
 
-    const addFavorite = (artistInfo) => {
+    const setFavorite = (artistInfo) => {
         var detected =  false
         var detectedI = null
         favorites.map((elem, i) => {
-            if (elem.name === artistInfo.name){
+            if (elem.id === artistInfo.id){
                 detected = true
                 detectedI = i
             }
@@ -37,10 +37,10 @@ export default function Finder({mainState, event}){
 
     return (
         <main className={mainState}>
-            <FavoritesContainer favoritesArray={favorites} favTabState={favBarState} closeEvent={() => {
+            <FavoritesContainer removeFavoriteEvent={setFavorite} favoritesArray={favorites} favTabState={favBarState} closeEvent={() => {
                 setFavBarState("")
             }}/>
-            <ResultsContainer favoriteEvent={addFavorite} favArr={favorites}/>
+            <ResultsContainer favoriteEvent={setFavorite} favArr={favorites}/>
 
             <ion-icon className={styles.favButton} name="heart" onClick={() => {
                 setFavBarState("FavoritesContainer_openedContainer__k6V0o")

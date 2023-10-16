@@ -13,7 +13,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
 
-    width: 100px;
+    width: 150px;
 }
 
 .results{
@@ -112,12 +112,24 @@
     right: -8px;
 }
 
-.notFoundText{
+.notFoundContainer{
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
 
+    gap: 10px;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+.notFoundContainer > img{
+    width: 75px;
+    opacity: .2;
+}
+.notFoundText{
     font-size: 1em;
     font-weight: 400;
     text-align: center;

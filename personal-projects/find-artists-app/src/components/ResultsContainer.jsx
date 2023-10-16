@@ -2,6 +2,7 @@ import styles from './styles/ResultsContainer.module.css'
 import SearchBar from './SearchBar'
 import noArtistPicture from '../media/no-artist-img.png'
 import loadingIcon from '../media/aurora-loading.gif'
+import error404 from '../media/aurora-no-results.png'
 import { useState } from 'react'
 
 export default function ResultsContainer({favoriteEvent, favArr}){
@@ -72,9 +73,10 @@ export default function ResultsContainer({favoriteEvent, favArr}){
             <div className={styles.results}>
                 {   
                     resultsArr.length === 0 ? barState === "on_search" ? 
-                    <>
+                    <div className={styles.notFoundContainer}>
+                        <img src={error404} alt="...." />
                         <h1 className={styles.notFoundText}>Aurora couldn't find any results...</h1>
-                    </> : inputState === "on_focus" ?
+                    </div> : inputState === "on_focus" ?
                     <>
                         <img className={styles.loadingIcon} src={loadingIcon} alt="..." />
                     </> : null
