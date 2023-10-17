@@ -5,7 +5,7 @@ import loadingIcon from '../media/aurora-loading.gif'
 import error404 from '../media/aurora-no-results.png'
 import { useState } from 'react'
 
-export default function ResultsContainer({favoriteEvent, favArr}){
+export default function ResultsContainer({favoriteEvent, favArr, setArtistPage, containerState}){
 
     const [accessToken, setAccessToken] = useState("")
 
@@ -64,7 +64,7 @@ export default function ResultsContainer({favoriteEvent, favArr}){
     }
 
     return(
-        <div className={styles.resultsContainer}>
+        <div className={`${styles.resultsContainer} ${containerState === "deactivated" ? styles.deactivated : ""}`}>
             <SearchBar focus={inputState} focusEvent={setFocus} searchEvent={apiFunctions} barStatusEvent={(searchBar) => {
                 searchBar.value === "" ? 
                 setBarState("not_on_search") :
@@ -81,7 +81,9 @@ export default function ResultsContainer({favoriteEvent, favArr}){
                         <img className={styles.loadingIcon} src={loadingIcon} alt="..." />
                     </> : null
                     : resultsArr.map((currentArtist, i) => (
-                        <div className={styles.artistContainer} key={currentArtist.id}>
+                        <div onClick={() => {
+                            setArtistPage(currentArtist)
+                        }} className={styles.artistContainer} key={currentArtist.id}>
                             <img className={styles.artistPicture} src={currentArtist.images[0]?.url || noArtistPicture} alt="artist-pic" />
                             <abbr className={styles.abbr} title={currentArtist.name}>
                                 <h1 className={styles.artistName}>{currentArtist.name}</h1>

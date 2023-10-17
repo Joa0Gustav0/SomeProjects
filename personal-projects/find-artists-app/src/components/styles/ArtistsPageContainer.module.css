@@ -1,0 +1,121 @@
+.artistsPage{
+    position: relative;
+
+    display: none;
+
+    width: 100%;
+    padding: 50px 20px;
+    border-radius: 15px;
+    height: calc(100vh - 60px);
+    background-image: linear-gradient(to top, rgb(15, 15, 15), rgb(30, 30, 30));
+    z-index: 9;
+    /* border: 1px solid rgba(255, 0, 0, 0.178); */
+}
+.artistsPage.activated{
+    display: block;
+}
+
+.artistsPage > ion-icon{
+    position: absolute;
+    top: 5px;
+    right: 5px;
+
+    width: 30px;
+    height: 30px;
+    color: white;
+    border-radius: 100%;
+}
+.artistsPage > ion-icon:hover{
+    cursor: pointer;
+    color: #1877f2;
+}
+.artistsPage > ion-icon:active{
+    cursor: pointer;
+    color: #1FC5A8;
+}
+
+.artistHeader{
+    position: relative;
+
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+
+    gap: 30px;
+    width: 100%;
+    margin-bottom: 20px;
+}
+.artistHeader > ion-icon{
+    position: absolute;
+    top: 5px;
+    right: 5px;
+
+    width: 20px;
+    height: 20px;
+    padding: 5px;
+    color: #1877f2;
+    background-color: rgb(25, 25, 25);
+    border-radius: 100%;
+}
+.artistPic{
+    width: 150px;
+    border-radius: 15px;
+    background-image: linear-gradient(to right, #1877f2, #1FC5A8);
+}
+.artistName{
+    color: white;
+    font-size: 2em;
+}
+.artistCategorie{
+    color: gray;
+    font-weight: 400;
+    font-size: 1em;
+}
+.artistFollowers{
+    color: white;
+    font-size: 1em;
+    font-weight: 400;
+}
+.artistFollowers > span{
+    color: #1877f2;
+}
+
+.artistAlbumsSec{
+}
+.artistAlbumsSecTitle{
+    color: white;
+    font-size: 1.5em;
+    margin-bottom: 5px;
+}
+.albumsList{
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    align-items: center;
+
+    gap: 10px;
+    overflow-x: scroll;
+}
+.albums{
+    width: 100px;
+    border-radius: 15px;
+    background-image: linear-gradient(to right, #1877f2, #1FC5A8);
+}
+
+@media screen and (max-width: 427px){
+    .artistHeader{
+        gap: 10px;
+        flex-direction: column;
+    }
+    .artistInformations{
+        width: 100%;
+        align-self: flex-start;
+    }
+    .artistAltInfo{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+}

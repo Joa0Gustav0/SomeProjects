@@ -1,5 +1,6 @@
 import FavoritesContainer from './FavoritesContainer'
 import ResultsContainer from './ResultsContainer'
+import ArtistsPageContainer from './ArtistsPageContainer'
 import logo from '../media/aurora-logo.png'
 import styles from './styles/Finder.module.css'
 import { useState } from 'react'
@@ -27,20 +28,29 @@ export default function Finder({mainState, event}){
         })
         if (detected === false){
             setFavorites([...favorites, artistInfo])
-            if (window.matchMedia("(max-width: 899px)").matches){
-                setFavBarState("FavoritesContainer_openedContainer__k6V0o")
-            }
         }else {
             setFavorites(favorites.filter((elem, i, arr) => i !== detectedI))
         }
     }
+
+    const [artistToPage, setArtistToPage] = useState({})
+    const [rcState, setRCState] = useState("")
+    const [apState, setAPState] = useState("")
 
     return (
         <main className={mainState}>
             <FavoritesContainer removeFavoriteEvent={setFavorite} favoritesArray={favorites} favTabState={favBarState} closeEvent={() => {
                 setFavBarState("")
             }}/>
-            <ResultsContainer favoriteEvent={setFavorite} favArr={favorites}/>
+            <ResultsContainer containerState={rcState} setArtistPage={(artist) => {
+                setArtistToPage(artist)
+                setRCState("deactivated")
+                setAPState("activated")
+            }} favoriteEvent={setFavorite} favArr={favorites}/>
+            <ArtistsPageContainer closeContainerEvent={() => {
+                setAPState("deactivated")
+                setRCState("activated")
+            }} containerState={apState} artistInfos={artistToPage}/>
 
             <ion-icon className={styles.favButton} name="heart" onClick={() => {
                 setFavBarState("FavoritesContainer_openedContainer__k6V0o")
