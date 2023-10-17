@@ -39,7 +39,7 @@ export default function Finder({mainState, event}){
 
     return (
         <main className={mainState}>
-            <FavoritesContainer removeFavoriteEvent={setFavorite} favoritesArray={favorites} favTabState={favBarState} closeEvent={() => {
+            <FavoritesContainer favoritesArray={favorites} favTabState={favBarState} closeEvent={() => {
                 setFavBarState("")
             }}/>
             <ResultsContainer containerState={rcState} setArtistPage={(artist) => {

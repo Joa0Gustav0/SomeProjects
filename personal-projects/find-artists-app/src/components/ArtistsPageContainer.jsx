@@ -63,6 +63,9 @@ export default function ArtistsPageContainer({artistInfos, containerState, close
                     <img className={styles.albums} src={testImage} alt="" />
                     <img className={styles.albums} src={testImage} alt="" />
                     <img className={styles.albums} src={testImage} alt="" />
+                    <img className={styles.albums} src={testImage} alt="" />
+                    <img className={styles.albums} src={testImage} alt="" />
+                    <img className={styles.albums} src={testImage} alt="" />
                 </div>
             </div>
             <ion-icon onClick={() => {
