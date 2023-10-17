@@ -36,16 +36,19 @@ export default function Finder({mainState, event}){
     const [artistToPage, setArtistToPage] = useState({})
     const [rcState, setRCState] = useState("")
     const [apState, setAPState] = useState("")
+    const [favButtonHover, setFavButtonHover] = useState(false)
 
     return (
         <main className={mainState}>
             <FavoritesContainer favoritesArray={favorites} favTabState={favBarState} closeEvent={() => {
                 setFavBarState("")
             }}/>
-            <ResultsContainer containerState={rcState} setArtistPage={(artist) => {
-                setArtistToPage(artist)
-                setRCState("deactivated")
-                setAPState("activated")
+            <ResultsContainer containerState={rcState} favButtonHoverEvent={(state) => state === "on_hover" ? setFavButtonHover(true) : setFavButtonHover(false)} setArtistPage={(artist) => {
+                if (!favButtonHover){
+                    setArtistToPage(artist)
+                    setRCState("deactivated")
+                    setAPState("activated")
+                }
             }} favoriteEvent={setFavorite} favArr={favorites}/>
             <ArtistsPageContainer closeContainerEvent={() => {
                 setAPState("deactivated")

@@ -5,7 +5,7 @@ import loadingIcon from '../media/aurora-loading.gif'
 import error404 from '../media/aurora-no-results.png'
 import { useState } from 'react'
 
-export default function ResultsContainer({favoriteEvent, favArr, setArtistPage, containerState}){
+export default function ResultsContainer({favoriteEvent, favArr, setArtistPage, containerState, favButtonHoverEvent}){
 
     const [accessToken, setAccessToken] = useState("")
 
@@ -89,7 +89,7 @@ export default function ResultsContainer({favoriteEvent, favArr, setArtistPage, 
                                 <h1 className={styles.artistName}>{currentArtist.name}</h1>
                             </abbr>
                             <h1 className={styles.artistCategorie}>Artist</h1>
-                            <ion-icon name={favArr.findIndex((elem) => elem.id === currentArtist.id) > -1 ? "heart" : "heart-outline"} id={currentArtist.id} onClick={(e) => {
+                            <ion-icon name={favArr.findIndex((elem) => elem.id === currentArtist.id) > -1 ? "heart" : "heart-outline"} id={currentArtist.id} onMouseEnter={() => favButtonHoverEvent("on_hover")} onMouseLeave={() => favButtonHoverEvent("!on_hover")} onClick={(e) => {
                                 favoriteEvent({id: currentArtist.id, name: currentArtist.name, img: currentArtist.images[0]?.url || noArtistPicture})
                             }}></ion-icon>
                         </div>

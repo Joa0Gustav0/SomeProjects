@@ -6,7 +6,7 @@
     width: calc(100vw - 490px);
     padding: 50px 20px;
     border-radius: 15px;
-    height: calc(100vh - 60px);
+    min-height: calc(100vh - 60px);
     background-image: linear-gradient(to top, rgb(15, 15, 15), rgb(30, 30, 30));
     z-index: 9;
     /* border: 1px solid rgba(255, 0, 0, 0.178); */
@@ -116,6 +116,9 @@
     .artistHeader{
         gap: 10px;
         flex-direction: column;
+    }
+    .artistPic{
+        align-self: flex-start;
     }
     .artistInformations{
         width: 100%;
