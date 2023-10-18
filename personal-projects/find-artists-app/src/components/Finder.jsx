@@ -108,7 +108,7 @@ export default function Finder({mainState, event}){
                     setAPState("activated")
                 }
             }} favoriteEvent={setFavorite} favArr={favorites}/>
-            <ArtistsPageContainer favEvent={setFavorite} favArr={favorites} albums={albums} closeContainerEvent={() => {
+            <ArtistsPageContainer refreshEvent={apiFunctions} favEvent={setFavorite} favArr={favorites} albums={albums} closeContainerEvent={() => {
                 setAPState("deactivated")
                 setRCState("activated")
             }} containerState={apState} artistInfos={artistToPage}/>
