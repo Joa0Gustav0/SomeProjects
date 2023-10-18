@@ -90,6 +90,8 @@
     margin-bottom: 5px;
 }
 .albumsList{
+    position: relative;
+
     display: flex;
     flex-wrap: nowrap;
     flex-direction: row;
@@ -98,13 +100,21 @@
 
     gap: 20px;
     width: 100%;
+    min-height: 150px;
     overflow-y: hidden;
     margin-bottom: 15px;
 }
 .albums{
     width: calc(33% - 12.5px);
     border-radius: 15px;
-    background-image: linear-gradient(to right, #1877f2, #1FC5A8);
+}
+.albumsLoading{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 150px;
 }
 .albumsInstructions{
     font-size: .8em;

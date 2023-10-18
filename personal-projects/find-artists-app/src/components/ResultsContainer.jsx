@@ -47,7 +47,6 @@ export default function ResultsContainer({favoriteEvent, favArr, setArtistPage, 
                     }
                 }else{
                     setResultsArr(resultsArr.filter((elem) => elem.name === inputValue))
-                    console.log(resultsArr)
                 }
             })
 

@@ -1,47 +1,9 @@
 import styles from './styles/ArtistsPageContainer.module.css'
 import no_image from '../media/no-artist-img.png'
+import loading from '../media/aurora-loading.gif'
 import { useState } from "react"
 
-export default function ArtistsPageContainer({artistInfos, containerState, closeContainerEvent}){
-
-    const [accessToken, setAccessToken] = useState("")
-
-    const clientId = "edabadfdfd3a4e8199dafba3817765dd"
-    const clientSecret = "4bbec2959922402b87117cc49141a768"
-
-    const getToken = async () => {
-        await fetch('https://accounts.spotify.com/api/token', {
-            method: 'POST',
-            headers: {
-                'Content-Type' : 'application/x-www-form-urlencoded'
-            },
-            body: 'grant_type=client_credentials&client_id=' + clientId + '&client_secret=' + clientSecret
-        })
-        .then(result => result.json())
-        .then(data => setAccessToken(data.access_token))
-    }
-
-    const apiFunctions = (searchGiven) => {
-
-        const search = async () => {
-
-            await getToken()
-
-            await fetch('https://api.spotify.com/v1/artists/' + artistInfos.id +'/albums?include_groups=single&limit=10', {
-                method: 'GET',
-                headers: {
-                    'Content-type' : 'application/json',
-                    'Authorization' : 'Bearer ' + accessToken
-                }
-            })
-            .then(resp =>  resp.json())
-            .then(data => {
-                data.error === undefined ? console.log(data) : search()
-            })
-
-        }
-        search()
-    }
+export default function ArtistsPageContainer({artistInfos, containerState, closeContainerEvent, albums}){
 
     return (
         <div className={`${styles.artistsPage} ${containerState === "activated" ? styles.activated : ""}`}>
@@ -59,9 +21,23 @@ export default function ArtistsPageContainer({artistInfos, containerState, close
             <div className={styles.artistAlbumsSec}>
                 <h1 className={styles.artistAlbumsSecTitle}>Albums</h1>
                 <div className={styles.albumsList}>
-                    
+                    {
+                        albums === undefined ?
+                        <img className={styles.albumsLoading} src={loading} alt='...'/> :
+                        albums?.error !== undefined ?
+                        <img className={styles.albumsLoading} src={loading} alt='...'/> :
+                        albums?.items?.length > 0 ?
+                        albums?.items?.map((elem, i) => (
+                            <img key={elem.id} className={styles.albums} src={elem.images[0].url} alt={elem.name} />
+                        )) :
+                        <h1>There are no Albums...</h1>
+                    }
                 </div>
-                <h2 className={styles.albumsInstructions}>Slide horizontally for more albums...</h2>
+                {
+                    albums?.items?.length > 0 && (
+                        <h2 className={styles.albumsInstructions}>Try sliding horizontally for more albums...</h2>
+                    )
+                }
             </div>
             <ion-icon onClick={() => {
                 closeContainerEvent()
