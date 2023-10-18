@@ -12,44 +12,48 @@ export default function ResultsContainer({favoriteEvent, favArr, setArtistPage, 
     const clientId = "edabadfdfd3a4e8199dafba3817765dd"
     const clientSecret = "4bbec2959922402b87117cc49141a768"
 
-    const getToken = async () => {
-        const response = await fetch('https://accounts.spotify.com/api/token', {
-            method: 'POST',
-            headers: {
-                'Content-Type' : 'application/x-www-form-urlencoded'
-            },
-            body: 'grant_type=client_credentials&client_id=' + clientId + '&client_secret=' + clientSecret
-        })
-        .then(result => result.json())
-        .then(data => setAccessToken(data.access_token))
-    }
 
     const apiFunctions = (searchGiven) => {
 
         const inputValue = searchGiven
 
-        const search = async () => {
+        const search = () => {
 
-            await getToken()
+            const getToken = async () => {
+                const response = await fetch('https://accounts.spotify.com/api/token', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type' : 'application/x-www-form-urlencoded'
+                    },
+                    body: 'grant_type=client_credentials&client_id=' + clientId + '&client_secret=' + clientSecret
+                })
+                .then(result => result.json())
+                .then(data => {
+                    setAccessToken(data.access_token)
+                    getData()
+                })
+            }
+            getToken()
 
-            const response = await fetch('https://api.spotify.com/v1/search?q=' + inputValue + '&type=artist&limit=10', {
+            const getData = async () => {
+                await fetch('https://api.spotify.com/v1/search?q=' + inputValue + '&type=artist&limit=10', {
                 method: 'GET',
                 headers: {
                     'Content-type' : 'application/json',
                     'Authorization' : 'Bearer ' + accessToken
                 }
-            })
-            .then(resp =>  resp.json())
-            .then((data) => {
-                if (inputValue !== ""){
-                    if (data.artists !== undefined || null){
-                        setResultsArr(data.artists.items)
+                })
+                .then(resp =>  resp.json())
+                .then((data) => {
+                    if (inputValue !== ""){
+                        if (data.artists !== undefined || null){
+                            setResultsArr(data.artists.items)
+                        }
+                    }else{
+                        setResultsArr(resultsArr.filter((elem) => elem.name === inputValue))
                     }
-                }else{
-                    setResultsArr(resultsArr.filter((elem) => elem.name === inputValue))
-                }
-            })
-
+                })
+            }
         }
         search()
     }
