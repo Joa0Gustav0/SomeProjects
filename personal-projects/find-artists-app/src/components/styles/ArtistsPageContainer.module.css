@@ -101,14 +101,19 @@
     margin-bottom: 5px;
 }
 .artistAlbumsSecTitle > ion-icon{
+    transition: all .1s;
     cursor: pointer;
 
     width: 20px;
     height: 20px;
     color: grey;
-}.artistAlbumsSecTitle > ion-icon:hover{
+}
+.artistAlbumsSecTitle > ion-icon:hover{
     color: white;
     cursor: pointer;
+}
+.artistAlbumsSecTitle > ion-icon:active{
+    color: grey;
 }
 .albumsList{
     position: relative;
