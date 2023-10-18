@@ -3,7 +3,7 @@ import no_image from '../media/no-artist-img.png'
 import loading from '../media/aurora-loading.gif'
 import { useState } from "react"
 
-export default function ArtistsPageContainer({artistInfos, containerState, closeContainerEvent, albums}){
+export default function ArtistsPageContainer({artistInfos, containerState, closeContainerEvent, albums, favArr, favEvent}){
 
     return (
         <div className={`${styles.artistsPage} ${containerState === "activated" ? styles.activated : ""}`}>
@@ -16,7 +16,7 @@ export default function ArtistsPageContainer({artistInfos, containerState, close
                         <h1 className={styles.artistFollowers}>{artistInfos?.followers?.total || "..."} <span>followers</span></h1>
                     </div>
                 </div>
-                <ion-icon name="heart"></ion-icon>
+                <ion-icon name={favArr.findIndex((elem) => elem.id === artistInfos?.id) > -1 ? "heart" : "heart-outline"} onClick={() => favEvent(artistInfos)}></ion-icon>
             </header>
             <div className={styles.artistAlbumsSec}>
                 <h1 className={styles.artistAlbumsSecTitle}>Albums</h1>

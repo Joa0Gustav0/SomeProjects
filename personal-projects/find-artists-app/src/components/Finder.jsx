@@ -72,7 +72,6 @@ export default function Finder({mainState, event}){
                 if (data.error === undefined){
                     setAlbums(data)
                 }else{
-                    console.log(data.error.status)
                     search()
                 }
             })
@@ -109,14 +108,13 @@ export default function Finder({mainState, event}){
                     setAPState("activated")
                 }
             }} favoriteEvent={setFavorite} favArr={favorites}/>
-            <ArtistsPageContainer albums={albums} closeContainerEvent={() => {
+            <ArtistsPageContainer favEvent={setFavorite} favArr={favorites} albums={albums} closeContainerEvent={() => {
                 setAPState("deactivated")
                 setRCState("activated")
             }} containerState={apState} artistInfos={artistToPage}/>
 
             <ion-icon className={styles.favButton} name="heart" onClick={() => {
                 setFavBarState("FavoritesContainer_openedContainer__k6V0o")
-                console.log(favorites)
             }}>
             </ion-icon>
 

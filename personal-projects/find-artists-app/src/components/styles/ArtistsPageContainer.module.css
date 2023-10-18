@@ -48,6 +48,7 @@
     margin-bottom: 20px;
 }
 .artistHeader > ion-icon{
+    transition: all .1s;
     position: absolute;
     top: 5px;
     right: 5px;
@@ -59,6 +60,14 @@
     background-color: rgb(25, 25, 25);
     border-radius: 100%;
 }
+.artistHeader > ion-icon:hover{
+    cursor: pointer;
+    transform: scale(105%, 105%);
+}
+.artistHeader > ion-icon:active{
+    color: #1FC5A8;
+}
+
 .artistPic{
     width: 150px;
     border-radius: 15px;
