@@ -138,3 +138,14 @@
     text-align: center;
     color: rgba(255, 255, 255, 0.25);
 }
+
+@media screen and (max-width: 899px){
+    .resultsContainer{
+        height: fit-content;
+        min-height: calc(100vh - 60px);
+    }
+    .results{
+        height: fit-content;
+        overflow-y: visible;
+    }
+}
