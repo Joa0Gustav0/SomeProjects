@@ -99,11 +99,18 @@
     gap: 20px;
     width: 100%;
     overflow-y: hidden;
+    margin-bottom: 15px;
 }
 .albums{
     width: calc(33% - 12.5px);
     border-radius: 15px;
     background-image: linear-gradient(to right, #1877f2, #1FC5A8);
+}
+.albumsInstructions{
+    font-size: .8em;
+    font-weight: 400;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.25);
 }
 
 @media screen and (max-width: 899px){

@@ -33,7 +33,7 @@ export default function Finder({mainState, event}){
         }
     }
 
-    const [artistToPage, setArtistToPage] = useState({})
+    const [artistToPage, setArtistToPage] = useState(undefined)
     const [rcState, setRCState] = useState("")
     const [apState, setAPState] = useState("")
     const [favButtonHover, setFavButtonHover] = useState(false)
@@ -42,7 +42,9 @@ export default function Finder({mainState, event}){
         <main className={mainState}>
             <FavoritesContainer favoritesArray={favorites} favTabState={favBarState} closeEvent={() => {
                 setFavBarState("")
-            }} openArtistPageEvent={() => {
+            }} openArtistPageEvent={(artist) => {
+                console.log(artist)
+                setArtistToPage(artist)
                 setFavBarState("")
                 setRCState("deactivated")
                 setAPState("activated")

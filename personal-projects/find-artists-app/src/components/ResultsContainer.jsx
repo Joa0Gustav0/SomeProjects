@@ -90,7 +90,7 @@ export default function ResultsContainer({favoriteEvent, favArr, setArtistPage, 
                             </abbr>
                             <h1 className={styles.artistCategorie}>Artist</h1>
                             <ion-icon name={favArr.findIndex((elem) => elem.id === currentArtist.id) > -1 ? "heart" : "heart-outline"} id={currentArtist.id} onMouseEnter={() => favButtonHoverEvent("on_hover")} onMouseLeave={() => favButtonHoverEvent("!on_hover")} onClick={(e) => {
-                                favoriteEvent({id: currentArtist.id, name: currentArtist.name, img: currentArtist.images[0]?.url || noArtistPicture})
+                                favoriteEvent(currentArtist)
                             }}></ion-icon>
                         </div>
                     ))
