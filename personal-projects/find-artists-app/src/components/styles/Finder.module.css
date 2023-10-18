@@ -53,4 +53,9 @@ main > ion-icon:active{
         display: block;
     }
 }
+@media screen and (max-width: 389px){
+    main > ion-icon{
+        bottom: 20px;
+    }
+}
 

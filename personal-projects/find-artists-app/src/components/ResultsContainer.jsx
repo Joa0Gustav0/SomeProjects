@@ -99,6 +99,12 @@ export default function ResultsContainer({favoriteEvent, favArr, setArtistPage, 
                     ))
                 }
             </div>
+            {
+                resultsArr.length > 0 && (
+                    <h1 className={styles.resultsInstructions}>Try sliding vertically for more artists...</h1>
+                )
+            }
+            
         </div>
     )
 }
