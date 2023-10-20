@@ -3,6 +3,7 @@ import ResultsContainer from './ResultsContainer'
 import ArtistsPageContainer from './ArtistsPageContainer'
 import logo from '../media/aurora-logo.png'
 import styles from './styles/Finder.module.css'
+import FavContainerStyles from './styles/FavoritesContainer.module.css'
 import { useState } from 'react'
 
 export default function Finder({mainState, event}){
@@ -114,7 +115,7 @@ export default function Finder({mainState, event}){
             }} containerState={apState} artistInfos={artistToPage}/>
 
             <ion-icon className={styles.favButton} name="heart" onClick={() => {
-                setFavBarState("FavoritesContainer_openedContainer__k6V0o")
+                setFavBarState(FavContainerStyles.openedContainer)
             }}>
             </ion-icon>
 
