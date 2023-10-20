@@ -1,6 +1,8 @@
 import Home from "./components/Home";
 import Finder from "./components/Finder";
 import { useState } from "react";
+import styles from './components/styles/Home.module.css'
+import finderStyles from './components/styles/Finder.module.css'
 
 function App() {
 
@@ -8,9 +10,9 @@ function App() {
   const [finderSection, setFinderSection] = useState("")
 
   const changeTabsState = () => {
-    if (homeSection !== "Home_deactivatedTab__nzD1A"){
-      setHomeSection("Home_deactivatedTab__nzD1A")
-      setFinderSection("Finder_activeTab__O5JDr")
+    if (homeSection !== styles.deactivatedTab){
+      setHomeSection(styles.deactivatedTab)
+      setFinderSection(finderStyles.activeTab)
     }else{
       setHomeSection("")
       setFinderSection("")
