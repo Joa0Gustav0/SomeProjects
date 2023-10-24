@@ -1,0 +1,24 @@
+.container{
+    width: 100%;
+    min-height: 100vh;
+}
+
+.clickText{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    color: white;
+    font-family: sans-serif;
+}
+
+.point{
+    position: absolute;
+    transform: translate(-50%, -50%);
+
+    width: 15px;
+    height: 15px;
+    border-radius: 100%;
+    background-color: #ff0050;
+}
