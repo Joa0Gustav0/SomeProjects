@@ -48,7 +48,12 @@ body .alt-landing-img{
     width: 100%;
     margin-top: 40%;
 }
-
+@media screen and (min-width: 1367px){
+    body > aside{
+        right: 50%;
+        transform: translate(50%, -50%);
+    }
+}
 @media screen and (max-width: 899px) {
     body{
         background-image: none;

@@ -240,6 +240,30 @@ footer{
 }
 
 /*RESPONSIVE*/
+@media screen and (min-width: 1367px){
+    .home > aside{
+        left: 50%;
+    }
+    .about{
+        position: relative;
+    }
+    .about > aside{
+        position: absolute;
+        transform: translate(-50%, -50%);
+        top: 50%;
+        left: 50%;
+
+        margin-left: 0;
+    }
+    .conclusion > aside{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        margin-left: 0;
+    }
+}
 @media screen and (max-width: 899px) {
     .home{
         display: flex;
