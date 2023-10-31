@@ -1,8 +1,8 @@
 table{
-    width: 100%;
-    max-width: 800px;
+    width: 700px;
+    max-width: 100%;
     margin-bottom: 20px;
-    border-collapse: separate;
+    border-collapse: collapse;
 }
 thead td{
     font-size: .8em;
@@ -22,6 +22,7 @@ td{
     justify-content: flex-start;
 
     gap: 10px;
+    text-wrap: nowrap;
     min-width: fit-content;
 }
 .numTd{
