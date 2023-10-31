@@ -1,0 +1,30 @@
+.pagesControllerContainer{
+
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+
+    gap: 15px;
+    margin: auto;
+    width: fit-content;
+}
+
+.pagesControllerContainer > button{
+    transition: all .1s;
+
+    border: 0;
+    width: 35px;
+    height: 35px;
+    outline: none;
+    font-size: 1em;
+    border-radius: 100%;
+    background-color: white;
+}
+.pagesControllerContainer > button:hover{
+    color: white;
+    cursor: pointer;
+    background-color: rgb(20, 20, 20);
+}
+.pagesControllerContainer > button:active{
+    background-color: transparent;
+}

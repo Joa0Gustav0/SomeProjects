@@ -1,3 +1,5 @@
+import styles from './styles/DataContainerPageController.module.css'
+
 export default function DataContainerPageController( {setPageEvent} ){
 
     const buttons = 
@@ -15,7 +17,7 @@ export default function DataContainerPageController( {setPageEvent} ){
     ]
 
     return(
-        <div>
+        <div className={styles.pagesControllerContainer}>
            {
             buttons.map((elem, i) => (
                 <button key={elem.page}
