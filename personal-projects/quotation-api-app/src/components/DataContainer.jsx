@@ -1,7 +1,7 @@
 import { useState } from "react"
 import styles from './styles/DataContainer.module.css'
 
-export default function DataContainer(){
+export default function DataContainer( {initIndexPage} ){
 
     const [data, setData] = useState(undefined)
 
@@ -28,7 +28,7 @@ export default function DataContainer(){
             <tbody>    
                 {
                     data?.map((elem, i) => (
-                        i <= 9 ?
+                        i >= initIndexPage && i < initIndexPage + 10 ?
                         <tr key={elem.name + i} className={styles.coinContainer}>
                             <td key={elem.name + "-name"} className={styles.coinTd}>
                                 <img className={styles.coinImage} src={elem.image} alt={elem.name} />
