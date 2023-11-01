@@ -1,0 +1,38 @@
+header{
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    height: 100px;
+    max-width: 100vw;
+    padding: 20px 30px;
+}
+
+.prismaLogo{
+    width: 60px;
+}
+.prismaLogo > img{
+    width: 100%;
+}
+.headerLinks{
+
+}
+.headerLinks > a{
+    color: white;
+    font-weight: 500;
+    padding: 5px 10px;
+    margin-left: 10px;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-family: 'Poppins', sans-serif;
+}
+.headerLinks > a:hover{
+    background-image: linear-gradient(to right,
+    rgb(255, 176, 0),
+    rgb(230, 40, 113),
+    rgb(157, 40, 136));
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
