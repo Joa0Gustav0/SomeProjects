@@ -1,0 +1,32 @@
+.heroSection{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+
+    padding: 0 30px;
+    min-height: 100vh;
+}
+.heroPicture{
+    width: 100%;
+    max-width: 450px;
+}
+
+.heroSection aside > h1{
+    color: white;
+    font-size: 2em;
+    text-align: right;
+    font-weight: 500;
+    text-transform: uppercase;
+    font-family: 'Poppins', sans-serif;
+}
+.heroSection aside > h1 span{
+    font-size: 48px;
+    background-clip: text;
+    font-weight: 600;
+    -webkit-text-fill-color: transparent;
+    background-image: linear-gradient(to right, 
+    rgb(255, 176, 0),
+    rgb(230, 30, 113),
+    rgb(157, 40, 136));
+}

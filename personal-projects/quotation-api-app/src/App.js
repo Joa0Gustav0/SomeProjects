@@ -1,4 +1,5 @@
 import Header from "./components/Header";
+import Hero from "./components/Hero";
 import DataContainer from "./components/DataContainer";
 import DataContainerPageController from "./components/DataContainerPageController";
 import { useState } from "react";
@@ -11,7 +12,9 @@ function App() {
   return (
     <>
       <Header />
-      
+      <main>
+        <Hero />
+      </main>
 
       {/* <div className={styles.container}>
         <DataContainer initIndexPage={initPage}/>
