@@ -20,9 +20,7 @@ header{
 .prismaLogo > img{
     width: 100%;
 }
-.headerLinks{
 
-}
 .headerLinks > a{
     color: white;
     font-weight: 500;
@@ -39,4 +37,10 @@ header{
     rgb(157, 40, 136));
     background-clip: text;
     -webkit-text-fill-color: transparent;
+}
+
+@media screen and (max-width: 1000px) {
+    header{
+        position: relative;
+    }
 }

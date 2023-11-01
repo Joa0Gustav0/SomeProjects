@@ -1,5 +1,6 @@
 .heroSection{
     display: flex;
+    flex-wrap: wrap;
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
@@ -29,4 +30,19 @@
     rgb(255, 176, 0),
     rgb(230, 30, 113),
     rgb(157, 40, 136));
+}
+
+@media screen and (max-width: 1000px) {
+    .heroSection{
+        padding: 30px;
+        flex-direction: column-reverse;
+        min-height: calc(100vh - 100px);
+    }
+
+    .heroSection aside{
+        text-wrap: nowrap;
+    }
+    .heroSection aside > h1{
+        text-align: center;
+    }
 }
