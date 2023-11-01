@@ -12,6 +12,10 @@ export default function Hero(){
                     <span>Cryptocurrencies</span>
                 </h1>
             </aside>
+            
+            <span className={styles.rightsText}>
+            © 2023 PRISMA. All Rights Reserved.
+            </span>
         </section>
     )
 }

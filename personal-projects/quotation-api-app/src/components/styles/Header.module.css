@@ -44,3 +44,12 @@ header{
         position: relative;
     }
 }
+@media screen and (max-width: 599px) {
+    header{
+        justify-content: center;
+        height: fit-content;
+    }
+    header > span {
+        display: none;
+    }
+}
