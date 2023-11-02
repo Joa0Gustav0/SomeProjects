@@ -50,6 +50,7 @@
 
 @media screen and (max-width: 1000px) {
     .heroSection{
+        padding: 30px;
         justify-content: center;
         flex-direction: column-reverse;
         min-height: calc(100vh - 100px);
