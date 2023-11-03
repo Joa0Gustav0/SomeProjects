@@ -15,10 +15,10 @@ export default function DataContainerPageController( {setPageEvent} ){
         <div className={styles.pagesControllerContainer}>
            {
             buttons.map((elem, i) => (
-                <button key={elem.page}
+                <a href="#currencies" key={elem.page}
                 onClick={() => {
                     setPageEvent(elem.initIndex)
-                }}><h1>{elem.page}</h1></button>
+                }}><h1>{elem.page}</h1></a>
             ))
            } 
         </div>
