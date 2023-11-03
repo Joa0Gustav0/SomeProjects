@@ -4,7 +4,7 @@ main {
     min-height: fit-content;
 }
 
-main section:not(:last-child){
+main section{
     border-bottom: 1px solid transparent;
     background: linear-gradient(black, black) padding-box,
     linear-gradient(to right,

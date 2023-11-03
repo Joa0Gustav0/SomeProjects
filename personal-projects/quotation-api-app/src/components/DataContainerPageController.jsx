@@ -8,12 +8,7 @@ export default function DataContainerPageController( {setPageEvent} ){
         {page: 2, initIndex: 10},
         {page: 3, initIndex: 20},
         {page: 4, initIndex: 30},
-        {page: 5, initIndex: 40},
-        {page: 6, initIndex: 50},
-        {page: 7, initIndex: 60},
-        {page: 8, initIndex: 70},
-        {page: 9, initIndex: 80},
-        {page: 10, initIndex: 90}
+        {page: 5, initIndex: 40}
     ]
 
     return(

@@ -1,6 +1,6 @@
 .tableContainer{
     overflow-x: scroll;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     border-radius: 25px 25px 0px 0px;
 }
 .tableContainer::-webkit-scrollbar{
@@ -63,4 +63,24 @@ tbody > tr {
 .coinImage {
     width: 30px;
     height: 30px;
+}
+
+.loadingImg{
+    width: 100px;
+}
+.noDataTxt{
+    color: white;
+    margin-left: 20px;
+    text-align: center;
+    font-family: "Fira Mono", sans-serif;
+}
+
+.scrollText{
+    font-size: .8em;
+    text-align: center;
+    margin-bottom: 10px;
+    margin-bottom: 20px;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.3);
+    font-family: "Poppins", sans-serif;
 }

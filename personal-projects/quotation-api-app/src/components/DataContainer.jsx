@@ -1,4 +1,5 @@
 import DataContainerPageController from "./DataContainerPageController";
+import loadingSVG from './media/prima-loading-svg.gif'
 import { useState } from "react"
 import styles from './styles/DataContainer.module.css'
 
@@ -8,15 +9,30 @@ export default function DataContainer(){
 
     window.onload = async () => {
 
+        if (matchMedia("(max-width: 910px)").matches){
+            setScrollTxt("Try scrolling vertically for more informations...")
+        }else{
+            setScrollTxt("")
+        }
+
         await fetch("https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&")
         .then(data => data.json())
         .then(data => {
-        console.log(data)
         setData(data)
-
-    })}
+        })
+    }
 
     const [initPage, setInitPage] = useState(0)
+
+    const [scrollTxt, setScrollTxt] = useState(null)
+
+    window.onresize = () => {
+        if (matchMedia("(max-width: 910px)").matches){
+            setScrollTxt("Try scrolling vertically for more informations...")
+        }else{
+            setScrollTxt("")
+        }
+    }
 
     return (
         <>
@@ -56,7 +72,19 @@ export default function DataContainer(){
                     </tbody>
                 </table>
             </div>
-            <DataContainerPageController setPageEvent={initIndex => setInitPage(initIndex)}/>
+            {
+                data !== undefined ?
+                <>
+                    <p className={styles.scrollText}>{scrollTxt}</p>
+                    <DataContainerPageController setPageEvent={initIndex => setInitPage(initIndex)}/>
+                </>
+                :
+                <>
+                    <img className={styles.loadingImg} src={loadingSVG} alt="..."/>
+                    <p className={styles.noDataTxt}>There are no informations? Wait a couple minutes and refresh page.</p>
+                </>
+
+            }
         </>
     )
 }
