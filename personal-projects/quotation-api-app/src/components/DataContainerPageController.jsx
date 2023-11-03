@@ -23,7 +23,7 @@ export default function DataContainerPageController( {setPageEvent} ){
                 <button key={elem.page}
                 onClick={() => {
                     setPageEvent(elem.initIndex)
-                }}>{elem.page}</button>
+                }}><h1>{elem.page}</h1></button>
             ))
            } 
         </div>
