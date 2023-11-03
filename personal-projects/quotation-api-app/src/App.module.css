@@ -17,3 +17,32 @@ main section{
     margin: auto;
     width: fit-content;
 }
+
+.goTopButton {
+    transition: all .25s;
+    position: fixed;
+    top: -100px;
+    right: 30px;
+
+    width: 80px;
+    z-index: 11;
+}
+.goTopButton.active{
+    top: 30px;
+}
+.goTopButton::after{
+    position: absolute;
+    left: calc(50% - 1px);
+    top: -41px;
+
+    content: " ";
+    width: 3px;
+    height: 50px;
+    background: linear-gradient(to top,
+    rgb(255, 176, 0),
+    rgb(230, 40, 113),
+    rgb(157, 40, 136));
+}
+.goTopButton > img {
+    width: 100%;
+}
