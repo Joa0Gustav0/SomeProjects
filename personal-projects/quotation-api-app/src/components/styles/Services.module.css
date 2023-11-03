@@ -1,0 +1,75 @@
+.servicesSection{
+    width: 100%;
+    padding: 30px;
+    min-height: 100vh;
+}
+.servicesTitle{
+    color: white;
+    font-size: 2em;
+    text-align: center;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    font-family: 'Poppins', sans-serif;
+}
+
+.servicesList{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+
+    gap: 30px;
+    width: 100%;
+    margin: auto;
+}
+
+.serviceContainer{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+
+    gap: 10px;
+    width: 100%;
+    color: white;
+    max-width: 350px;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+}
+.serviceContainer > img {
+    width: 100%;
+    max-width: 150px;
+}
+.serviceContainer > h1{
+    text-transform: uppercase;
+}
+.serviceContainer > p{
+    padding: 15px;
+    padding-top: 0;
+    font-weight: 400;
+}
+.serviceContainer > p span{
+    font-weight: 700;
+}
+
+.serviceContainer > h1,
+.serviceContainer > p span{
+   background: linear-gradient(to right, 
+   rgb(255, 176, 0),
+   rgb(230, 30, 113),
+   rgb(242, 0, 146));
+   background-clip: text;
+   -webkit-text-fill-color: transparent; 
+}
+
+@media screen and (max-width: 789px) {
+    .servicesList {
+        flex-direction: column;
+        align-items: center;
+    }
+    .serviceContainer:not(:last-child){
+        max-width: 300px;
+        border-bottom: 1px solid rgb(230, 30, 113);
+    }
+}
