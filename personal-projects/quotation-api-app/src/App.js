@@ -1,19 +1,18 @@
 import Header from "./components/Header";
 import Hero from "./components/Hero";
-import DataContainer from "./components/DataContainer";
-import DataContainerPageController from "./components/DataContainerPageController";
-import { useState } from "react";
+import Currencies from "./components/Currencies";
 import styles from './App.module.css'
 
 function App() {
 
-  const [initPage, setInitPage] = useState(0)
+  
 
   return (
     <>
       <Header />
       <main>
         <Hero />
+        <Currencies />
       </main>
 
       {/* <div className={styles.container}>

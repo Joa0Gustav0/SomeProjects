@@ -1,7 +1,8 @@
+import DataContainerPageController from "./DataContainerPageController";
 import { useState } from "react"
 import styles from './styles/DataContainer.module.css'
 
-export default function DataContainer( {initIndexPage} ){
+export default function DataContainer(){
 
     const [data, setData] = useState(undefined)
 
@@ -15,40 +16,47 @@ export default function DataContainer( {initIndexPage} ){
 
     })}
 
+    const [initPage, setInitPage] = useState(0)
+
     return (
-        <table className={styles.dataContainer}>
-            <thead>
-                <tr>
-                    <td><h1>Coin</h1></td>
-                    <td className={styles.numTd}><h1>Price</h1></td>
-                    <td className={styles.numTd}><h1>24h</h1></td>
-                    <td className={styles.numTd}><h1>Market Cap</h1></td>
-                </tr>
-            </thead>
-            <tbody>    
-                {
-                    data?.map((elem, i) => (
-                        i >= initIndexPage && i < initIndexPage + 10 ?
-                        <tr key={elem.name + i} className={styles.coinContainer}>
-                            <td key={elem.name + "-name"} className={styles.coinTd}>
-                                <img className={styles.coinImage} src={elem.image} alt={elem.name} />
-                                <h1>{elem.name}</h1>
-                            </td>
-                            <td key={elem.name + "-price"} className={styles.numTd}>
-                                <h1>${Number(elem.current_price).toFixed(2)}</h1>
-                            </td>
-                            <td key={elem.name + "24hchange"} className={`${styles.numTd} ${elem.price_change_percentage_24h >= 0 ? styles.posValue : styles.negValue}`}>
-                                <h1>{elem.price_change_percentage_24h > 0 ? "+" : ""}{elem.price_change_percentage_24h.toFixed(2)}%</h1>
-                            </td>
-                            <td key={elem.name + "market-cap"} className={styles.numTd}>
-                                <h1>${elem.market_cap}</h1>
-                            </td>
+        <>
+            <div className={styles.tableContainer}>
+                <table className={styles.dataContainer}>
+                    <thead>
+                        <tr>
+                            <td><h1>Coin</h1></td>
+                            <td className={styles.numTd}><h1>Price</h1></td>
+                            <td className={styles.numTd}><h1>24h</h1></td>
+                            <td className={styles.numTd}><h1>Market Cap</h1></td>
                         </tr>
-                        :
-                        null
-                    ))
-                }
-            </tbody>
-        </table>
+                    </thead>
+                    <tbody>    
+                        {
+                            data?.map((elem, i) => (
+                                i >= initPage && i < initPage + 10 ?
+                                <tr key={elem.name + i} className={styles.coinContainer}>
+                                    <td key={elem.name + "-name"} className={styles.coinTd}>
+                                        <img className={styles.coinImage} src={elem.image} alt={elem.name} />
+                                        <h1>{elem.name}</h1>
+                                    </td>
+                                    <td key={elem.name + "-price"} className={styles.numTd}>
+                                        <h1>${Number(elem.current_price).toFixed(2)}</h1>
+                                    </td>
+                                    <td key={elem.name + "24hchange"} className={`${styles.numTd} ${elem.price_change_percentage_24h >= 0 ? styles.posValue : styles.negValue}`}>
+                                        <h1>{elem.price_change_percentage_24h > 0 ? "+" : ""}{elem.price_change_percentage_24h.toFixed(2)}%</h1>
+                                    </td>
+                                    <td key={elem.name + "market-cap"} className={styles.numTd}>
+                                        <h1>${elem.market_cap}</h1>
+                                    </td>
+                                </tr>
+                                :
+                                null
+                            ))
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <DataContainerPageController setPageEvent={initIndex => setInitPage(initIndex)}/>
+        </>
     )
 }

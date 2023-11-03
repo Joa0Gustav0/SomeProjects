@@ -1,0 +1,13 @@
+.currenciesSection {
+    margin: auto;
+    padding-top: 20px;
+    width: fit-content;
+}
+
+.sectionTitle{
+    color: white;
+    font-size: 2em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    font-family: "Poppins", sans-serif;
+}

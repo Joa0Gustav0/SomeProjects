@@ -4,6 +4,15 @@ main {
     min-height: fit-content;
 }
 
+main section:not(:last-child){
+    border-bottom: 1px solid transparent;
+    background: linear-gradient(black, black) padding-box,
+    linear-gradient(to right,
+    rgb(255, 176, 0),
+    rgb(230, 40, 113),
+    rgb(157, 40, 136)) border-box;
+}
+
 .container{
     margin: auto;
     width: fit-content;
