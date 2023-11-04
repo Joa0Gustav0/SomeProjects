@@ -22,9 +22,10 @@ main section{
     transition: all .25s;
     position: fixed;
     top: -100px;
-    right: 30px;
+    right: 35px;
+    transform: translateX(50%);
 
-    width: 80px;
+    width: 65px;
     z-index: 11;
 }
 .goTopButton.active{

@@ -49,12 +49,9 @@
     padding-top: 0;
     font-weight: 400;
 }
-.serviceContainer > p span{
-    font-weight: 700;
-}
 
-.serviceContainer > h1,
-.serviceContainer > p span{
+
+.serviceContainer > h1{
    background: linear-gradient(to right, 
    rgb(255, 176, 0),
    rgb(230, 30, 113),
