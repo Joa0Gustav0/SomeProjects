@@ -47,3 +47,9 @@ main section{
 .goTopButton > img {
     width: 100%;
 }
+
+@media screen and (min-width: 1367px) {
+    .goTopButton {
+        right: calc(50% - 645px);
+    }
+}

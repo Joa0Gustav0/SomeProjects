@@ -8,7 +8,7 @@
     justify-content: space-around;
 
     padding: 0 30px;
-    min-height: 100vh;
+    min-height: 768px;
 }
 .heroPicture{
     width: 100%;
