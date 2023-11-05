@@ -171,6 +171,7 @@
     align-items: center;
     justify-content: center;
     min-height: 100vh;
+    background-color: white;
 }
 .locator ion-icon{
     width: 5vw;
@@ -241,6 +242,15 @@ footer{
 
 /*RESPONSIVE*/
 @media screen and (min-width: 1367px){
+
+    .home,
+    .about,
+    .services,
+    .locator,
+    .conclusion{
+        min-height: 768px;
+    }
+
     .home > aside{
         left: 50%;
     }

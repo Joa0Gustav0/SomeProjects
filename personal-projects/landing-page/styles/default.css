@@ -26,7 +26,9 @@ body{
 /*HEADER*/
 header{
     position: relative;
+    margin: auto;
     display: flex;
+    max-width: 1366px;
     align-items: center;
     justify-content: space-between;
     padding: 20px 30px;
