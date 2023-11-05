@@ -2,6 +2,7 @@ import Header from "./components/Header";
 import Hero from "./components/Hero";
 import Currencies from "./components/Currencies";
 import Services from "./components/Services";
+import Footer from "./components/Footer";
 import styles from './App.module.css'
 import goTopButtonPic from './components/media/go-top-button.png'
 import { useState } from "react";
@@ -23,6 +24,7 @@ function App() {
         <Hero />
         <Currencies />
         <Services />
+        <Footer />
       </main>
       <a className={goTopButton} href="#home">
         <img src={goTopButtonPic} alt="go-top-button"/>
