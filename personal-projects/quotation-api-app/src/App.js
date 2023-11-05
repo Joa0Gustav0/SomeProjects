@@ -23,11 +23,6 @@ function App() {
       <a className={goTopButton} href="#home">
         <img src={goTopButtonPic} alt="go-top-button"/>
       </a>
-
-      {/* <div className={styles.container}>
-        <DataContainer initIndexPage={initPage}/>
-        <DataContainerPageController setPageEvent={initPage => setInitPage(initPage)}/>
-      </div> */}
     </>
   );
 }

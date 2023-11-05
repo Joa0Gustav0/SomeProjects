@@ -1,3 +1,4 @@
+import SideBar from './SideBar'
 import styles from './styles/Header.module.css'
 import logo from './media/prisma-logo.png'
 
@@ -12,6 +13,7 @@ export default function Header(){
                 <a href="#currencies">Currencies</a>
                 <a href="#services">Services</a>
             </span>
+            <SideBar />
         </header>
     )
 }

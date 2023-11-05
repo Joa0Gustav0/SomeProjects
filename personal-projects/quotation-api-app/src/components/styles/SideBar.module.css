@@ -1,0 +1,114 @@
+.sideBarButton{
+    transition: all .175s;
+    position: relative;
+
+    display: none;
+
+    border: 0;
+    width: 40px;
+    height: 40px;
+    outline: none;
+    border-radius: 100%;
+    background: linear-gradient(to bottom, 
+    rgb(255, 176, 0),
+    rgb(230, 30, 113),
+    rgb(157, 40, 136));
+}
+
+.sideBarButton:hover{
+    cursor: pointer;
+    transform: scale(107.5%, 107.5%);
+}
+.sideBarButton:active{
+    transform: scale(90%, 90%);
+}
+
+.line{
+    transition: all .25s;
+
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 25px;
+    height: 2px;
+    background-color: white;
+}
+.l1{
+    top: calc(50% - 7.5px);
+}
+.l3{
+    top: calc(50% + 7.5px);
+}
+
+.sideBar{
+    transition: all .5s;
+    position: fixed;
+    top: 0px;
+    right: -320px;
+
+    display: none;
+
+    width: 300px;
+    height: 100vh;
+    padding: 20px;
+    border-radius: 5px 0px 0px 5px;
+    background: linear-gradient(to bottom, 
+    rgb(225, 146, 0),
+    rgb(200, 0, 83),
+    rgb(127, 10, 106));
+    z-index: 12;
+}
+.sideBar.activated{
+    right: 0px
+}
+
+.sideBar > ion-icon {
+    transition: all .175s;
+    position: absolute;
+    top: 7.5px;
+    right: 7.5px;
+
+    width: 35px;
+    height: 35px;
+    color: black;
+}
+.sideBar > ion-icon:hover{
+    cursor: pointer;
+    transform: scale(110%, 110%);
+}
+.sideBar > ion-icon:active{
+    transform: scale(90%, 90%);
+}
+
+.sideBar > a {
+    transition: all .1s;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+
+    gap: 5px;
+    color: black;
+    font-size: 1em;
+    font-weight: 500;
+    margin-bottom: 15px;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-family: 'Poppins', sans-serif;
+}
+.sideBar > a ion-icon{
+    width: 20px;
+    height: 20px;
+}
+.sideBar > a:hover{
+    color: white;
+}
+
+@media screen and (max-width: 599px) {
+    .sideBar,
+    .sideBarButton {
+        display: block;
+    }
+}
