@@ -10,11 +10,15 @@ function App() {
 
   const [goTopButton, setGoTopButton] = useState(styles.goTopButton)
 
-  window.onscroll = () => window.scrollY < 100 ? setGoTopButton(styles.goTopButton) : setGoTopButton(`${styles.goTopButton} ${styles.active}`)
-
   return (
     <>
-      <Header />
+      <Header gtButtonFunction={() => {
+        if (window.scrollY > 100){
+          setGoTopButton(`${styles.goTopButton} ${styles.active}`)
+        }else{
+          setGoTopButton(styles.goTopButton)
+        }
+      }}/>
       <main>
         <Hero />
         <Currencies />
