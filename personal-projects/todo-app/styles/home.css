@@ -8,8 +8,10 @@
     justify-content: space-between;
 
     width: 100%;
-    min-height: 100vh;
+    margin: auto;
     padding: 30px;
+    max-width: 1366px;
+    min-height: 100vh;
     border-bottom: 2px solid #4D3D87;
 }
 
@@ -210,6 +212,8 @@
     flex-direction: row;
 
     width: 100%;
+    margin: auto;
+    max-width: 1366px;
     min-height: 100vh;
     overflow-x: hidden;
 }
@@ -332,5 +336,21 @@
     .hero-section__aside__headline,
     .hero-section__aside__subheadline{
         text-align: center;
+    }
+}
+
+@media screen and (min-height: 769px) {
+    .hero-section,
+    .about-section{
+        min-height: 768px;
+    }
+}
+@media screen and (min-width: 1367px) {
+    .about-section__section{
+        min-width: 1366px;
+        max-width: 1366px;
+    }
+    .go-top-button{
+        left: calc(50% - 680px);
     }
 }

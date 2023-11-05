@@ -3,6 +3,9 @@ const addCategoriesButton = document.querySelector('.to-do-section__add-categori
 const removeCategorieButton = document.querySelectorAll('.to-do-section__categorie-containers__delete-categorie-button')
 
 addCategoriesButton.addEventListener('click', () => {
+    if (allContainers.length < 10) {
+
+    
     //create container
     const categorieContainerModel = document.querySelector('.to-do-section__other-categorie-containers-model-example')
     let newCategorieContainer = document.createElement('div')
@@ -55,6 +58,7 @@ addCategoriesButton.addEventListener('click', () => {
             allContainers[i].style.display = 'none'
         }
         newCategorieContainer.style.display = 'flex'
+    }
     }
 })
 
