@@ -8,8 +8,9 @@ section {
     flex-wrap: nowrap;
     align-items: center;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
 
+    gap: 40px;
     width: 100%;
     min-height: 100vh;
     padding: 100px 30px;
