@@ -8,7 +8,13 @@ export default function DataList( {productsArr} ) {
 
                 {
                     productsArr?.length > 0 ?
-                    null
+                    productsArr.map((elem, i) => (
+                        <div key={elem.name + i} className={styles.productContainer}>
+                            <h1>{elem.name}</h1>
+                            <h2>{elem.price}</h2>
+                            <button>Add ocurrences</button>
+                        </div> 
+                    ))
                     :
                     <p>No products were added... </p>
                 }

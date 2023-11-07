@@ -1,8 +1,9 @@
 import styles from './styles/DataForm.module.css'
 
-export default function DataForm() {
+export default function DataForm( {formButtonFunc} ) {
+
     return (
-        <form>
+        <div className={styles.dataFormContainer}>
             <h1>Add New product</h1>
             <label htmlFor="product-input">
                 <h2>Product:</h2>
@@ -14,15 +15,19 @@ export default function DataForm() {
             </label>
             <input type="number" id="price-input" 
             placeholder="Product price"/>
-            <label htmlFor="sales-input">
-                <h2>Number of sales:</h2>
-            </label>
-            <input type="number" id="sales-input" 
-            placeholder="Product sales"/>
 
-            <button>
+            <button onClick={() => {
+                const pName = document.getElementById("product-input")
+                const pPrice = document.getElementById("price-input")
+
+                if (pName.value !== "" && pPrice.value !== "") {
+                    formButtonFunc({name: pName.value, price: Number(pPrice.value)})
+                    pName.value = ""
+                    pPrice.value = ""
+                }
+            }}>
                 <h1>Add product</h1>
             </button>
-        </form>
+        </div>
     )
 }

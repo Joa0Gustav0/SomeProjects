@@ -1,4 +1,4 @@
-form {
+.dataFormContainer {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -11,19 +11,19 @@ form {
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.205);
 }
 
-form > h1 {
+.dataFormContainer > h1 {
     color: #1872ff;
     font-size: 1.5em;
     margin-bottom: 10px;
     text-transform: capitalize;
 }
 
-form > label > h2 {
+.dataFormContainer > label > h2 {
     font-weight: 500;
     font-size: 1.25em;
 }
 
-form > input {
+.dataFormContainer > input {
     width: 100%;
     border: 0;
     padding: 5px;
@@ -32,7 +32,9 @@ form > input {
     border-bottom: 1px solid black;
 }
 
-form > button {
+.dataFormContainer > button {
+    transition: all .1s;
+
     border: 0;
     width: 100%;
     padding: 10px;
@@ -42,4 +44,13 @@ form > button {
     margin-top: 10px;
     border-radius: 5px;
     background-color: #1872ff;
+}
+
+.dataFormContainer > button:hover {
+    cursor: pointer;
+    color: rgba(255, 255, 255, 0.555);
+}
+.dataFormContainer > button:active {
+    color: #1872ff;
+    background-color: white;
 }
