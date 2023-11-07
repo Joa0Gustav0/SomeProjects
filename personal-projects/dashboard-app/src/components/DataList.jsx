@@ -15,6 +15,8 @@ export default function DataList( {productsArr} ) {
                             </abbr>
                             <h2>${elem.price.toFixed(2)}</h2>
                             <button>Add ocurrences</button>
+
+                            <ion-icon name="brush"></ion-icon>
                         </div> 
                     ))
                     :

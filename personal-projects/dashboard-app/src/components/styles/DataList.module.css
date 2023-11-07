@@ -43,6 +43,8 @@
 }
 
 .productContainer {
+    position: relative;
+
     width: 100%;
     padding: 10px;
     border-radius: 5px;
@@ -60,6 +62,7 @@
     overflow: hidden;
     text-wrap: nowrap;
     text-overflow: ellipsis;
+    width: calc(100% - 30px);
     text-transform: capitalize;
 }
 .productContainer h2 {
@@ -86,4 +89,28 @@
 .productContainer button:active {
     color: #1877f2;
     background-color: white;
+}
+
+.productContainer ion-icon {
+    transition: all .1s;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+
+    width: 20px;
+    height: 20px;
+    padding: 5px;
+    color: #1877f2;
+    border-radius: 100%;
+    
+}
+.productContainer ion-icon:hover {
+    color: white;
+    cursor: pointer;
+    background-color: #1877f2;
+}
+.productContainer ion-icon:active {
+    color: white;
+    cursor: pointer;
+    background-color: #1565ce;
 }
