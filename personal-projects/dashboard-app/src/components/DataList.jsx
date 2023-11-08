@@ -1,6 +1,7 @@
 import styles from './styles/DataList.module.css'
 
-export default function DataList( {productsArr} ) {
+export default function DataList( {productsArr, editFunction} ) {
+
     return (
         <aside className={styles.dataListContainer}>
             <h1>Products <span>({productsArr.length} items)</span></h1>
@@ -9,14 +10,17 @@ export default function DataList( {productsArr} ) {
                 {
                     productsArr?.length > 0 ?
                     productsArr.map((elem, i) => (
-                        <div key={elem.name + i} className={styles.productContainer}>
+                        <div key={elem.name + i} id={elem.id} className={styles.productContainer}>
                             <abbr title={elem.name}>
                                 <h1>{elem.name}</h1>
                             </abbr>
                             <h2>${elem.price.toFixed(2)}</h2>
                             <button>Add ocurrences</button>
 
-                            <ion-icon name="brush"></ion-icon>
+                            <ion-icon name="brush"
+                                onClick={() => {
+                                    editFunction(i)
+                                }}></ion-icon>
                         </div> 
                     ))
                     :

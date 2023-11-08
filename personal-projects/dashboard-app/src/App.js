@@ -7,16 +7,21 @@ import { useState } from "react";
 
 function App() {
 
-  const [productEdit, setProductEdit] = useState(null)
+  const [productEditI, setProductEditI] = useState(null)
   const [pArr, setPArr] = useState([])
 
   return (
     <main>
       <DataForm formButtonFunc={(newProduct) => setPArr([...pArr, newProduct])}/>
       <Dashboard />
-      <DataList productsArr={pArr}/>
+      <DataList productsArr={pArr} editFunction={(productI) => setProductEditI(productI)}/>
 
-      <EditTab editableProduct={productEdit}/>
+      <EditTab productsArr={pArr} 
+        editProductI={productEditI} 
+        editableProduct={productEditI}
+        closeNClear={() => {
+          setProductEditI(null)
+        }}/>
     </main>
   );
 }
