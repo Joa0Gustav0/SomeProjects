@@ -72,15 +72,15 @@
     border-radius: 5px;
     background-color: #cccccc;
 }
-.editTabContainer.enabled > button {
+.editTabContainer > button.enabled {
     background-color: #1872ff;
 }
 
-.editTabContainer.enabled > button:hover {
+.editTabContainer > button.enabled:hover {
     cursor: pointer;
     color: rgba(255, 255, 255, 0.555);
 }
-.editTabContainer.enabled > button:active {
+.editTabContainer > button.enabled:active {
     color: #1877f2;
     background-color: white;
 }
