@@ -21,6 +21,11 @@ function App() {
         editableProduct={productEditI}
         closeNClear={() => {
           setProductEditI(null)
+        }}
+        saveChanges={(newName, newPrice, index) => {
+          pArr[index].name = newName
+          pArr[index].price = newPrice
+          setProductEditI(null)
         }}/>
     </main>
   );

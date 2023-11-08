@@ -1,7 +1,7 @@
 import styles from './styles/EditTab.module.css'
 import { useState } from 'react'
 
-export default function EditTab( {productsArr, editProductI, closeNClear} ) {
+export default function EditTab( {productsArr, editProductI, closeNClear, saveChanges} ) {
 
     const [buttonState, setButtonState] = useState('deactivated')
 
@@ -16,6 +16,16 @@ export default function EditTab( {productsArr, editProductI, closeNClear} ) {
         }
     }
 
+    const postNewChanges = () => {
+        const pNameInput = document.getElementById("product-input-edit")
+        const pPriceInput = document.getElementById("price-input-edit")
+
+        saveChanges(pNameInput.value, Number(pPriceInput.value), editProductI)
+        
+        pNameInput.value = ""
+        pPriceInput.value = ""
+    }
+
     return (
         <>
             <div className={editProductI !== null ? `${styles.safeLayer} ${styles.active}` : styles.safeLayer}></div>
@@ -26,7 +36,11 @@ export default function EditTab( {productsArr, editProductI, closeNClear} ) {
                 <input type="text" id="product-input-edit" onChange={() => validateInputs()} placeholder={productsArr[editProductI]?.name}/>
                 <label htmlFor="price-input-edit">Price:</label>
                 <input type="number" id="price-input-edit" onChange={() => validateInputs()} placeholder={productsArr[editProductI]?.price}/>
-                <button className={buttonState === 'activated' ? styles.enabled : ''}>Save Changes</button>
+                <button className={buttonState === 'activated' ? styles.enabled : ''} onClick={() => {
+                    if (buttonState === 'activated'){
+                        postNewChanges()
+                    }
+                }}>Save Changes</button>
                 <ion-icon name="close" onClick={() => {
                     const pNameInput = document.getElementById("product-input-edit")
                     const pPriceInput = document.getElementById("price-input-edit")
