@@ -7,6 +7,7 @@ import { useState } from "react";
 
 function App() {
 
+  const [productEdit, setProductEdit] = useState(null)
   const [pArr, setPArr] = useState([])
 
   return (
@@ -15,7 +16,7 @@ function App() {
       <Dashboard />
       <DataList productsArr={pArr}/>
 
-      <EditTab />
+      <EditTab editableProduct={productEdit}/>
     </main>
   );
 }
