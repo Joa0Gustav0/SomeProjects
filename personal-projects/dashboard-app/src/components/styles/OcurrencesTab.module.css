@@ -85,6 +85,27 @@
     background-color: white;
 }
 
+.ocurrencesTab > ion-icon{
+    transition: all .1s;
+
+    position: absolute;
+    top: 5px;
+    right: 5px;
+
+    width: 25px;
+    height: 25px;
+    padding: 5px;
+    border-radius: 100%;
+    background-color: rgba(0, 0, 0, 0);
+}
+.ocurrencesTab > ion-icon:hover{
+    cursor: pointer;
+    color: #1877f2;
+}
+.ocurrencesTab > ion-icon:active{
+    background-color: rgba(0, 0, 0, .1);
+}
+
 .safeLayer {
     position: absolute;
     top: 0;

@@ -35,7 +35,13 @@ function App() {
         }
       }/>
       <OcurrencesTab pArr={pArr}
-        pIndex={productOcurrencesI}/>
+        pIndex={productOcurrencesI}
+        closeTab={() => {
+          setProductOcurrencesI(null)
+        }}
+        addOcurrenceFunction={(newOcurrence, index) => {
+          pArr[index].ocurrences = [...pArr[index].ocurrences, newOcurrence]
+        }}/>
     </main>
   );
 }
