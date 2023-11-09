@@ -39,7 +39,9 @@ export default function OcurrencesTab( {pArr, pIndex, addOcurrenceFunction, clos
                         const month = document.getElementById('month-input')
                         const salesNum = document.getElementById('sales-input')
 
-                        addOcurrenceFunction({month: Number(month.value), salesNum: Number(salesNum)}, pIndex)
+                        addOcurrenceFunction({month: Number(month.value), salesNum: Number(salesNum.value)}, pIndex)
+                        month.value = ""
+                        salesNum.value = ""
                         closeTab()
                     }
                 }}>Add Ocurrence</button>

@@ -58,3 +58,26 @@
     text-align: center;
     text-transform: uppercase;
 }
+
+.dashMarksY, .zero{
+    position: absolute;
+    left: 0px;
+    transform: translate(calc(-100% + 2.5px), -50%);
+
+    font-size: 1em;
+    font-weight: 600;
+}
+
+.emptyY {
+    position: absolute;
+    left: 0px;
+    top: 5%;
+    transform: translate(calc(-100% + 2.5px), -50%);
+
+    font-size: 1em;
+    font-weight: 600;
+}
+
+.zero {
+    bottom: -19.5px;
+}

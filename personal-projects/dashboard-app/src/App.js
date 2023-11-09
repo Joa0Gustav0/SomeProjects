@@ -12,10 +12,22 @@ function App() {
   const [productOcurrencesI, setProductOcurrencesI] = useState(null)
   const [pArr, setPArr] = useState([])
 
+  const [hSalesNum, setHSalesNum] = useState(-1)
+    
+  const getHSalesNum = () => {
+    pArr.map((elem, i) => {
+      elem.ocurrences.map((ocurrence, ocurrenceI) => {
+          if (ocurrence.salesNum > hSalesNum){
+            setHSalesNum(Number(ocurrence.salesNum))
+          }
+      })
+    })
+  }
+
   return (
     <main>
       <DataForm formButtonFunc={(newProduct) => setPArr([...pArr, newProduct])}/>
-      <Dashboard />
+      <Dashboard products={pArr} hSalesNum={hSalesNum}/>
       <DataList productsArr={pArr} editFunction={(productI) => setProductEditI(productI)} ocurrencesFunction={(productI) => setProductOcurrencesI(productI)}/>
 
       <EditTab productsArr={pArr} 
@@ -41,6 +53,7 @@ function App() {
         }}
         addOcurrenceFunction={(newOcurrence, index) => {
           pArr[index].ocurrences = [...pArr[index].ocurrences, newOcurrence]
+          getHSalesNum()
         }}/>
     </main>
   );

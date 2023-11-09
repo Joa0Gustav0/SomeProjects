@@ -1,7 +1,7 @@
 import styles from './styles/Dashboard.module.css'
 import { useState } from 'react'
 
-export default function Dashboard() {
+export default function Dashboard( {hSalesNum} ) {
 
     const [view, setView] = useState("month")
 
@@ -15,9 +15,26 @@ export default function Dashboard() {
         years.push(i)
     }
 
+    const dashMarksY = [1,2,3,4,5]
+
     return (
         <aside className={styles.dashBoard}>
 
+            {
+                hSalesNum > -1 ?
+                dashMarksY.map((elem, i) => (
+                    <div key={'dashMarkY-' + i} style={{top: `${20 * i}%`}} className={styles.dashMarksY}>
+                        {hSalesNum - i * (hSalesNum / 5)} -
+                    </div>
+                ))
+                :
+                <div key={'empty-value-y'} className={styles.emptyY}>
+                    X -
+                </div> 
+            }
+            <div key={'empty-value-y'} className={styles.zero}>
+                0 -
+            </div> 
             {
                 view === 'month' ?
                 
