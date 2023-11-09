@@ -1,6 +1,6 @@
 import styles from './styles/DataList.module.css'
 
-export default function DataList( {productsArr, editFunction} ) {
+export default function DataList( {productsArr, editFunction, ocurrencesFunction} ) {
 
     return (
         <aside className={styles.dataListContainer}>
@@ -15,7 +15,7 @@ export default function DataList( {productsArr, editFunction} ) {
                                 <h1>{elem.name}</h1>
                             </abbr>
                             <h2>${elem.price.toFixed(2)}</h2>
-                            <button>Add ocurrences</button>
+                            <button onClick={() => ocurrencesFunction(i)}>Add ocurrences</button>
 
                             <ion-icon name="brush"
                                 onClick={() => {

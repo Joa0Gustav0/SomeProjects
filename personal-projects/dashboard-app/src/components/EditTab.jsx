@@ -9,7 +9,7 @@ export default function EditTab( {productsArr, editProductI, closeNClear, saveCh
         const pNameInput = document.getElementById("product-input-edit")
         const pPriceInput = document.getElementById("price-input-edit")
 
-        if (pNameInput.value !== "" && pPriceInput.value !== ""){
+        if (pNameInput.value !== "" && pPriceInput.value !== "" && Number(pPriceInput.value) >= 0){
             setButtonState('activated')
         }else {
             setButtonState('deactivated')
@@ -31,7 +31,7 @@ export default function EditTab( {productsArr, editProductI, closeNClear, saveCh
             <div className={editProductI !== null ? `${styles.safeLayer} ${styles.active}` : styles.safeLayer}></div>
             <div className={editProductI !== null ? `${styles.editTabContainer} ${styles.active}` : styles.editTabContainer}>
                 <h1>Edit Product</h1>
-                <p>The product you are editing is: <span>{productsArr[editProductI]?.name}</span></p>
+                <p>The product you are editing is: <br /><span>{productsArr[editProductI]?.name}</span></p>
                 <label htmlFor="product-input-edit">Product:</label>
                 <input type="text" id="product-input-edit" onChange={() => validateInputs()} placeholder={productsArr[editProductI]?.name}/>
                 <label htmlFor="price-input-edit">Price:</label>
