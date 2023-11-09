@@ -58,7 +58,7 @@
     border-bottom: 1px solid black;
 }
 
-.editTabContainer > button {
+.scButton, .delButton {
     transition: all .1s;
 
     border: 0;
@@ -72,15 +72,27 @@
     border-radius: 5px;
     background-color: #cccccc;
 }
-.editTabContainer > button.enabled {
+.delButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.delButton > ion-icon {
+    width: 20px;
+    height: 20px;
+}
+
+.scButton.enabled, .delButton {
     background-color: #1872ff;
 }
 
-.editTabContainer > button.enabled:hover {
+.scButton.enabled:hover, 
+.delButton:hover {
     cursor: pointer;
     color: rgba(255, 255, 255, 0.555);
 }
-.editTabContainer > button.enabled:active {
+.scButton.enabled:active , 
+.delButton:active{
     color: #1877f2;
     background-color: white;
 }

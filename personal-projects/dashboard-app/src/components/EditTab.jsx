@@ -36,11 +36,21 @@ export default function EditTab( {productsArr, editProductI, closeNClear, saveCh
                 <input type="text" id="product-input-edit" onChange={() => validateInputs()} placeholder={productsArr[editProductI]?.name}/>
                 <label htmlFor="price-input-edit">Price:</label>
                 <input type="number" id="price-input-edit" onChange={() => validateInputs()} placeholder={productsArr[editProductI]?.price}/>
-                <button className={buttonState === 'activated' ? styles.enabled : ''} onClick={() => {
+                <button className={buttonState !== 'activated' ? styles.scButton : `${styles.scButton} ${styles.enabled}`} onClick={() => {
                     if (buttonState === 'activated'){
                         postNewChanges()
                     }
                 }}>Save Changes</button>
+                <button className={styles.delButton}
+                onClick={() => {
+                    const pNameInput = document.getElementById("product-input-edit")
+                    const pPriceInput = document.getElementById("price-input-edit")
+
+                    pNameInput.value = ""
+                    pPriceInput.value = ""
+
+                    closeNClear('del', editProductI)
+                }}><ion-icon name="trash"></ion-icon></button>
                 <ion-icon name="close" onClick={() => {
                     const pNameInput = document.getElementById("product-input-edit")
                     const pPriceInput = document.getElementById("price-input-edit")

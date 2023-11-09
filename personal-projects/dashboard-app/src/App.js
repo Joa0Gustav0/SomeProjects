@@ -19,7 +19,11 @@ function App() {
       <EditTab productsArr={pArr} 
         editProductI={productEditI} 
         editableProduct={productEditI}
-        closeNClear={() => {
+        closeNClear={(action, i) => {
+          if (action === 'del') {
+            console.log('dsadsada')
+            setPArr(pArr.filter((elem, index) => index !== i))
+          }
           setProductEditI(null)
         }}
         saveChanges={(newName, newPrice, index) => {
