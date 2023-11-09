@@ -15,13 +15,26 @@ function App() {
   const [hSalesNum, setHSalesNum] = useState(-1)
     
   const getHSalesNum = () => {
+    var initialValue = -1
+
     pArr.map((elem, i) => {
       elem.ocurrences.map((ocurrence, ocurrenceI) => {
-          if (ocurrence.salesNum > hSalesNum){
-            setHSalesNum(Number(ocurrence.salesNum))
+          if (ocurrence.salesNum > initialValue){
+            const numArr = Array.from(ocurrence.salesNum.toString())
+            for (var i = numArr.length - 1; i >= 0; i--){
+              if (i === numArr.length - 1){
+                if (numArr[i] !== "5" || numArr[i] !== "0"){
+                  initialValue = Number(ocurrence.salesNum) + (10 - numArr[i]) 
+                }else {
+                  initialValue = Number(ocurrence.salesNum)
+                }
+              }
+            }
           }
       })
     })
+
+    setHSalesNum(Number(initialValue))
   }
 
   return (
@@ -35,9 +48,9 @@ function App() {
         editableProduct={productEditI}
         closeNClear={(action, i) => {
           if (action === 'del') {
-            console.log('dsadsada')
             setPArr(pArr.filter((elem, index) => index !== i))
           }
+          getHSalesNum()
           setProductEditI(null)
         }}
         saveChanges={(newName, newPrice, index) => {

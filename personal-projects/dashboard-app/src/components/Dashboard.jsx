@@ -32,7 +32,7 @@ export default function Dashboard( {hSalesNum} ) {
                     X -
                 </div> 
             }
-            <div key={'empty-value-y'} className={styles.zero}>
+            <div key={'zero-value-y'} className={styles.zero}>
                 0 -
             </div> 
             {
