@@ -9,7 +9,7 @@ export default function DataForm( {formButtonFunc} ) {
                 <h2>Product:</h2>
             </label>
             <input type="text" id="product-input" 
-            placeholder="Product name"/>
+            placeholder="Product name" autoComplete='off'/>
             <label htmlFor="price-input">
                 <h2>Price:</h2>
             </label>

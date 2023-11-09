@@ -12,35 +12,31 @@ function App() {
   const [productOcurrencesI, setProductOcurrencesI] = useState(null)
   const [pArr, setPArr] = useState([])
 
+  const [ocurrences, setOcurrences] = useState([])
   const [hSalesNum, setHSalesNum] = useState(-1)
-    
-  const getHSalesNum = () => {
-    var initialValue = -1
 
-    pArr.map((elem, i) => {
-      elem.ocurrences.map((ocurrence, ocurrenceI) => {
-          if (ocurrence.salesNum > initialValue){
-            const numArr = Array.from(ocurrence.salesNum.toString())
-            for (var i = numArr.length - 1; i >= 0; i--){
-              if (i === numArr.length - 1){
-                if (numArr[i] !== "5" || numArr[i] !== "0"){
-                  initialValue = Number(ocurrence.salesNum) + (10 - numArr[i]) 
-                }else {
-                  initialValue = Number(ocurrence.salesNum)
-                }
-              }
-            }
-          }
+  const getOcurrences = () => {
+    pArr.map((product) => {
+      product.ocurrences?.map((pOcurrences) => {
+        setOcurrences([...ocurrences, pOcurrences])
       })
     })
+      
+    getTheHSalesNum()
+  }
 
-    setHSalesNum(Number(initialValue))
+  const getTheHSalesNum = () => {
+    ocurrences.map((cOcurrence) => {
+      if (cOcurrence.salesNum > hSalesNum) {
+        setHSalesNum(cOcurrence.salesNum)
+      }
+    })
   }
 
   return (
     <main>
       <DataForm formButtonFunc={(newProduct) => setPArr([...pArr, newProduct])}/>
-      <Dashboard products={pArr} hSalesNum={hSalesNum}/>
+      <Dashboard hSalesNum={hSalesNum}/>
       <DataList productsArr={pArr} editFunction={(productI) => setProductEditI(productI)} ocurrencesFunction={(productI) => setProductOcurrencesI(productI)}/>
 
       <EditTab productsArr={pArr} 
@@ -49,8 +45,8 @@ function App() {
         closeNClear={(action, i) => {
           if (action === 'del') {
             setPArr(pArr.filter((elem, index) => index !== i))
+            getOcurrences()
           }
-          getHSalesNum()
           setProductEditI(null)
         }}
         saveChanges={(newName, newPrice, index) => {
@@ -59,6 +55,9 @@ function App() {
           setProductEditI(null)
         }
       }/>
+
+      {/* create a function for removing ocurrences */}
+
       <OcurrencesTab pArr={pArr}
         pIndex={productOcurrencesI}
         closeTab={() => {
@@ -66,7 +65,7 @@ function App() {
         }}
         addOcurrenceFunction={(newOcurrence, index) => {
           pArr[index].ocurrences = [...pArr[index].ocurrences, newOcurrence]
-          getHSalesNum()
+          getOcurrences()
         }}/>
     </main>
   );

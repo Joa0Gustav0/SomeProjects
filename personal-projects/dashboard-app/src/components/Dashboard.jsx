@@ -15,7 +15,7 @@ export default function Dashboard( {hSalesNum} ) {
         years.push(i)
     }
 
-    const dashMarksY = [1,2,3,4,5]
+    const dashMarksY = [1,2,3,4,5] 
 
     return (
         <aside className={styles.dashBoard}>

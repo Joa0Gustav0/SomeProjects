@@ -33,7 +33,7 @@ export default function EditTab( {productsArr, editProductI, closeNClear, saveCh
                 <h1>Edit Product</h1>
                 <p>The product you are editing is: <br /><span>{productsArr[editProductI]?.name}</span></p>
                 <label htmlFor="product-input-edit">Product:</label>
-                <input type="text" id="product-input-edit" onChange={() => validateInputs()} placeholder={productsArr[editProductI]?.name}/>
+                <input type="text" id="product-input-edit" onChange={() => validateInputs()} placeholder={productsArr[editProductI]?.name} autoComplete='off'/>
                 <label htmlFor="price-input-edit">Price:</label>
                 <input type="number" id="price-input-edit" onChange={() => validateInputs()} placeholder={productsArr[editProductI]?.price}/>
                 <button className={buttonState !== 'activated' ? styles.scButton : `${styles.scButton} ${styles.enabled}`} onClick={() => {
