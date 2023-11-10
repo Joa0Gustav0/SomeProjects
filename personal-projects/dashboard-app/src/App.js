@@ -4,7 +4,7 @@ import DataList from "./components/DataList";
 import EditTab from "./components/EditTab";
 import OcurrencesTab from "./components/OcurrencesTab";
 import styles from './App.module.css'
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function App() {
 
@@ -12,16 +12,14 @@ function App() {
   const [productOcurrencesI, setProductOcurrencesI] = useState(null)
   const [pArr, setPArr] = useState([])
 
-  const [ocurrences, setOcurrences] = useState([])
   const [hSalesNum, setHSalesNum] = useState(-1)
 
-  const getOcurrences = (previousAction) => {
+  useEffect(() => {
     var ocurrencesVar = []
 
     pArr.map((product) => {
-      product.ocurrences?.map((pOcurrences) => {
+      product?.ocurrences?.map((pOcurrences) => {
         ocurrencesVar = [...ocurrencesVar, pOcurrences]
-        /* setOcurrences([...ocurrences, pOcurrences]) */
       })
     })
 
@@ -29,28 +27,14 @@ function App() {
       
     if (ocurrencesVar.length > 0) {
       ocurrencesVar.map((cOcurrence) => {
-        if (previousAction === 'added') {
-          if (cOcurrence.salesNum > hSalesNum) {
-            hSalesNumVar = cOcurrence.salesNum
-          }
-        }else{
-          if (cOcurrence.salesNum > hSalesNumVar){
-            hSalesNumVar = cOcurrence.salesNum
-          }
+        if (cOcurrence.salesNum > hSalesNumVar) {
+          hSalesNumVar = cOcurrence.salesNum
         }
       })
     }
 
     setHSalesNum(hSalesNumVar)
-  }
-
-  const getTheHSalesNum = () => {
-    ocurrences.map((cOcurrence) => {
-      if (cOcurrence.salesNum > hSalesNum) {
-        setHSalesNum(cOcurrence.salesNum)
-      }
-    })
-  }
+  })
 
   return (
     <main>
@@ -64,7 +48,6 @@ function App() {
         closeNClear={(action, i) => {
           if (action === 'del') {
             setPArr(pArr.filter((elem, index) => index !== i))
-            getOcurrences('removed')
           }
           setProductEditI(null)
         }}
@@ -84,7 +67,6 @@ function App() {
         }}
         addOcurrenceFunction={(newOcurrence, index) => {
           pArr[index].ocurrences = [...pArr[index].ocurrences, newOcurrence]
-          getOcurrences('added')
         }}/>
     </main>
   );
