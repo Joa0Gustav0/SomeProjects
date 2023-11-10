@@ -1,5 +1,5 @@
 import styles from './styles/Dashboard.module.css'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 export default function Dashboard( {hSalesNum} ) {
 
@@ -17,6 +17,12 @@ export default function Dashboard( {hSalesNum} ) {
 
     const dashMarksY = [1,2,3,4,5] 
 
+    const [highestYNum, setHighestYNum] = useState()
+
+    useEffect(() => {
+        setHighestYNum(hSalesNum + (10 - Array.from(hSalesNum.toString())[Array.from(hSalesNum.toString()).length - 1]))
+    }, [hSalesNum])
+
     return (
         <aside className={styles.dashBoard}>
 
@@ -24,7 +30,7 @@ export default function Dashboard( {hSalesNum} ) {
                 hSalesNum > -1 ?
                 dashMarksY.map((elem, i) => (
                     <div key={'dashMarkY-' + i} style={{top: `${20 * i}%`}} className={styles.dashMarksY}>
-                        {hSalesNum - i * (hSalesNum / 5)} -
+                        {highestYNum - i * (highestYNum / 5)} -
                     </div>
                 ))
                 :
