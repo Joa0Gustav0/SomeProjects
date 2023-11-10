@@ -42,6 +42,7 @@ export default function OcurrencesTab( {pArr, pIndex, addOcurrenceFunction, clos
                         addOcurrenceFunction({month: Number(month.value), salesNum: Number(salesNum.value)}, pIndex)
                         month.value = ""
                         salesNum.value = ""
+                        setBttState('deactivated')
                         closeTab()
                     }
                 }}>Add Ocurrence</button>

@@ -21,7 +21,11 @@ export default function DataForm( {formButtonFunc} ) {
                 const pPrice = document.getElementById("price-input")
 
                 if (pName.value !== "" && pPrice.value !== "" && Number(pPrice.value) >= 0) {
-                    formButtonFunc({name: pName.value, price: Number(pPrice.value), ocurrences: []})
+                    formButtonFunc({name: pName.value, price: Number(pPrice.value), ocurrences: [[
+                        Math.random()*(255 - 1 + 1) + 1,
+                        Math.random()*(255 - 1 + 1) + 1,
+                        Math.random()*(255 - 1 + 1) + 1
+                    ]]})
                     pName.value = ""
                     pPrice.value = ""
                 }

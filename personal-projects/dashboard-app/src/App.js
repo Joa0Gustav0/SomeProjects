@@ -22,6 +22,7 @@ function App() {
       pOcurrences = [...pOcurrences, product.ocurrences]
     })
 
+    console.log(pOcurrences)
     setAllOcurrences(pOcurrences)
 
     var hSalesNumVar = -1
@@ -33,10 +34,9 @@ function App() {
         }
       })
     })
-
-    console.log(hSalesNumVar)
+    
     setHSalesNum(hSalesNumVar)
-  })
+  }, [productEditI, productOcurrencesI, pArr])
 
   return (
     <main>
@@ -68,7 +68,7 @@ function App() {
           setProductOcurrencesI(null)
         }}
         addOcurrenceFunction={(newOcurrence, index) => {
-          pArr[index].ocurrences = [...pArr[index].ocurrences, newOcurrence]
+          pArr[index].ocurrences = [newOcurrence, ...pArr[index].ocurrences]
         }}/>
     </main>
   );

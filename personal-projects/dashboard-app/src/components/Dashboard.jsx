@@ -20,7 +20,12 @@ export default function Dashboard( {hSalesNum, allOcurrences} ) {
     const [highestYNum, setHighestYNum] = useState()
 
     useEffect(() => {
-        setHighestYNum(hSalesNum + (10 - Array.from(hSalesNum.toString())[Array.from(hSalesNum.toString()).length - 1]))
+        if (Array.from(hSalesNum.toString())[Array.from(hSalesNum.toString()).length - 1] !== '0' &&
+        Array.from(hSalesNum.toString())[Array.from(hSalesNum.toString()).length - 1] !== '5'){
+            setHighestYNum(hSalesNum + (10 - Array.from(hSalesNum.toString())[Array.from(hSalesNum.toString()).length - 1]))
+        }else {
+            setHighestYNum(hSalesNum)
+        }
     }, [hSalesNum])
 
     return (
@@ -67,10 +72,17 @@ export default function Dashboard( {hSalesNum, allOcurrences} ) {
 
             {   
                 allOcurrences?.map((productOcurrences) => productOcurrences?.map((ocurrence, index) => (
+                    index !== productOcurrences.length - 1 ?
                     <div key={`point-m${ocurrence.month}-sn${ocurrence.salesNum}`} 
                         className={styles.dashboardPointModel}
-                        style={{left: `${7.91 * (ocurrence.month)}%`, bottom: `${(100/highestYNum) * ocurrence.salesNum}%`}}
+                        style={{left: `${7.91 * (ocurrence.month)}%`, 
+                            bottom: `${(100/highestYNum) * ocurrence.salesNum}%`, 
+                            backgroundColor: `rgb(${productOcurrences[productOcurrences.length - 1][0]}, 
+                                ${productOcurrences[productOcurrences.length - 1][1]}, 
+                                ${productOcurrences[productOcurrences.length - 1][2]})`}}
                     ></div>
+                    :
+                    null
                 )))
             }
 
