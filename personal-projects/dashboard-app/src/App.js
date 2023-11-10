@@ -15,14 +15,33 @@ function App() {
   const [ocurrences, setOcurrences] = useState([])
   const [hSalesNum, setHSalesNum] = useState(-1)
 
-  const getOcurrences = () => {
+  const getOcurrences = (previousAction) => {
+    var ocurrencesVar = []
+
     pArr.map((product) => {
       product.ocurrences?.map((pOcurrences) => {
-        setOcurrences([...ocurrences, pOcurrences])
+        ocurrencesVar = [...ocurrencesVar, pOcurrences]
+        /* setOcurrences([...ocurrences, pOcurrences]) */
       })
     })
+
+    var hSalesNumVar = -1
       
-    getTheHSalesNum()
+    if (ocurrencesVar.length > 0) {
+      ocurrencesVar.map((cOcurrence) => {
+        if (previousAction === 'added') {
+          if (cOcurrence.salesNum > hSalesNum) {
+            hSalesNumVar = cOcurrence.salesNum
+          }
+        }else{
+          if (cOcurrence.salesNum > hSalesNumVar){
+            hSalesNumVar = cOcurrence.salesNum
+          }
+        }
+      })
+    }
+
+    setHSalesNum(hSalesNumVar)
   }
 
   const getTheHSalesNum = () => {
@@ -45,7 +64,7 @@ function App() {
         closeNClear={(action, i) => {
           if (action === 'del') {
             setPArr(pArr.filter((elem, index) => index !== i))
-            getOcurrences()
+            getOcurrences('removed')
           }
           setProductEditI(null)
         }}
@@ -65,7 +84,7 @@ function App() {
         }}
         addOcurrenceFunction={(newOcurrence, index) => {
           pArr[index].ocurrences = [...pArr[index].ocurrences, newOcurrence]
-          getOcurrences()
+          getOcurrences('added')
         }}/>
     </main>
   );
