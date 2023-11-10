@@ -1,7 +1,7 @@
 import styles from './styles/Dashboard.module.css'
 import { useState, useEffect } from 'react'
 
-export default function Dashboard( {hSalesNum} ) {
+export default function Dashboard( {hSalesNum, allOcurrences} ) {
 
     const [view, setView] = useState("month")
 
@@ -63,6 +63,15 @@ export default function Dashboard( {hSalesNum} ) {
                         {elem}
                     </div>
                 ))
+            }
+
+            {   
+                allOcurrences?.map((productOcurrences) => productOcurrences?.map((ocurrence, index) => (
+                    <div key={`point-m${ocurrence.month}-sn${ocurrence.salesNum}`} 
+                        className={styles.dashboardPointModel}
+                        style={{left: `${7.91 * (ocurrence.month)}%`, top: "50%"}}
+                    ></div>
+                )))
             }
 
             <span className={styles.dashView}>

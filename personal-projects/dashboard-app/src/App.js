@@ -13,33 +13,35 @@ function App() {
   const [pArr, setPArr] = useState([])
 
   const [hSalesNum, setHSalesNum] = useState(-1)
+  const [allOcurrences, setAllOcurrences] = useState(undefined)
 
   useEffect(() => {
-    var ocurrencesVar = []
+    var pOcurrences = []
 
     pArr.map((product) => {
-      product?.ocurrences?.map((pOcurrences) => {
-        ocurrencesVar = [...ocurrencesVar, pOcurrences]
-      })
+      pOcurrences = [...pOcurrences, product.ocurrences]
     })
+
+    setAllOcurrences(pOcurrences)
 
     var hSalesNumVar = -1
       
-    if (ocurrencesVar.length > 0) {
-      ocurrencesVar.map((cOcurrence) => {
-        if (cOcurrence.salesNum > hSalesNumVar) {
-          hSalesNumVar = cOcurrence.salesNum
+    pOcurrences.map((elem) => {
+      elem?.map((ocurrence) => {
+        if (ocurrence.salesNum > hSalesNumVar) {
+          hSalesNumVar = ocurrence.salesNum
         }
       })
-    }
+    })
 
+    console.log(hSalesNumVar)
     setHSalesNum(hSalesNumVar)
   })
 
   return (
     <main>
       <DataForm formButtonFunc={(newProduct) => setPArr([...pArr, newProduct])}/>
-      <Dashboard hSalesNum={hSalesNum}/>
+      <Dashboard hSalesNum={hSalesNum} allOcurrences={allOcurrences}/>
       <DataList productsArr={pArr} editFunction={(productI) => setProductEditI(productI)} ocurrencesFunction={(productI) => setProductOcurrencesI(productI)}/>
 
       <EditTab productsArr={pArr} 

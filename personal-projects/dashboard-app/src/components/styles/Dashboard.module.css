@@ -81,3 +81,13 @@
 .zero {
     bottom: -19.5px;
 }
+
+.dashboardPointModel {
+    position: absolute;
+    transform: translate(-50%, -50%);
+
+    width: 10px;
+    height: 10px;
+    border-radius: 100%;
+    background-color: black;
+}
