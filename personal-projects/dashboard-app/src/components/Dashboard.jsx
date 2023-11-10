@@ -69,7 +69,7 @@ export default function Dashboard( {hSalesNum, allOcurrences} ) {
                 allOcurrences?.map((productOcurrences) => productOcurrences?.map((ocurrence, index) => (
                     <div key={`point-m${ocurrence.month}-sn${ocurrence.salesNum}`} 
                         className={styles.dashboardPointModel}
-                        style={{left: `${7.91 * (ocurrence.month)}%`, top: "50%"}}
+                        style={{left: `${7.91 * (ocurrence.month)}%`, bottom: `${(100/highestYNum) * ocurrence.salesNum}%`}}
                     ></div>
                 )))
             }

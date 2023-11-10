@@ -83,11 +83,12 @@
 }
 
 .dashboardPointModel {
+    transition: all .25s;
     position: absolute;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, 50%);
 
     width: 10px;
     height: 10px;
     border-radius: 100%;
-    background-color: black;
+    background-color: #1877f2;
 }
