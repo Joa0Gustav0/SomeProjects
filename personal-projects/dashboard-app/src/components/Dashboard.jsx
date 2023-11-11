@@ -32,6 +32,11 @@ export default function Dashboard( {hSalesNum, allOcurrences} ) {
         <aside className={styles.dashBoard}>
 
             {
+                dashMarksY.map((elem, i) => (
+                    <div key={'line-' + i} className={hSalesNum > -1 ? `${styles.xLines} ${styles.enabled}` : styles.xLines} style={{top: `${20 * i}%`}}></div>
+                ))
+            }
+            {
                 hSalesNum > -1 ?
                 dashMarksY.map((elem, i) => (
                     <div key={'dashMarkY-' + i} style={{top: `${20 * i}%`}} className={styles.dashMarksY}>
@@ -46,29 +51,6 @@ export default function Dashboard( {hSalesNum, allOcurrences} ) {
             <div key={'zero-value-y'} className={styles.zero}>
                 0 -
             </div> 
-            {
-                view === 'month' ?
-                
-                months.map((elem, i) => (
-                    <div key={elem + '-month'} 
-                    className={styles.dashMark} 
-                    style={{left: `${7.91 * (i + 1)}%`}}>
-                        | <br />
-                        {elem}
-                    </div>
-                ))
-
-                :
-                
-                years.map((elem, i) => (
-                    <div key={elem + '-month'} 
-                    className={styles.dashMark} 
-                    style={{left: `${8.25 * (i + 1)}%`}}>
-                        | <br />
-                        {elem}
-                    </div>
-                ))
-            }
 
             {   
                 allOcurrences?.map((productOcurrences) => productOcurrences?.map((ocurrence, index) => (
@@ -77,9 +59,7 @@ export default function Dashboard( {hSalesNum, allOcurrences} ) {
                         className={styles.dashboardPointModel}
                         style={{left: `${7.91 * (ocurrence.month)}%`, 
                             bottom: `${(100/highestYNum) * ocurrence.salesNum}%`, 
-                            backgroundColor: `rgb(${productOcurrences[productOcurrences.length - 1][0]}, 
-                                ${productOcurrences[productOcurrences.length - 1][1]}, 
-                                ${productOcurrences[productOcurrences.length - 1][2]})`}}
+                            backgroundColor: `${productOcurrences[productOcurrences.length - 1]}`}}
                     ></div>
                     :
                     null
@@ -108,6 +88,29 @@ export default function Dashboard( {hSalesNum, allOcurrences} ) {
                     <h1>Years</h1> 
                 </button>
             </span>
+            {
+                view === 'month' ?
+                
+                months.map((elem, i) => (
+                    <div key={elem + '-month'} 
+                    className={styles.dashMark} 
+                    style={{left: `${7.91 * (i + 1)}%`}}>
+                        | <br />
+                        {elem}
+                    </div>
+                ))
+
+                :
+                
+                years.map((elem, i) => (
+                    <div key={elem + '-month'} 
+                    className={styles.dashMark} 
+                    style={{left: `${8.25 * (i + 1)}%`}}>
+                        | <br />
+                        {elem}
+                    </div>
+                ))
+            }
         </aside>
     )
 }

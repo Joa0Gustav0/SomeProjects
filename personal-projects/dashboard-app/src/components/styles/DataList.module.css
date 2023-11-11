@@ -96,6 +96,19 @@
     background-color: white;
 }
 
+.pColorCaption {
+    transition: all .25s;
+    position: absolute;
+    top: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    width: 20px;
+    height: 5px;
+    border-radius: 10px;
+    background-color: transparent;
+}
+
 .productContainer ion-icon {
     transition: all .1s;
     position: absolute;

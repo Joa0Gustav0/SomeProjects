@@ -23,13 +23,33 @@
     font-size: 1.25em;
 }
 
-.dataFormContainer > input {
+.dataFormContainer > input:not(:last-of-type) {
     width: 100%;
     border: 0;
     padding: 5px;
     outline: none;
     margin-bottom: 20px;
     border-bottom: 1px solid black;
+}
+
+.colorInput {
+    width: 100%;
+    border: none;
+    margin-top: 5px;
+    margin-bottom: 20px;
+    background-color: transparent;
+}
+.colorInput::-webkit-color-swatch {
+    transition: all .25s;
+    border: none;
+    border-radius: 5px;
+}
+.colorInput::-webkit-color-swatch:hover {
+    cursor: pointer;
+    transform: scale(102%, 102%);
+}
+.colorInput::-webkit-color-swatch:active {
+    transform: scale(98%, 98%);
 }
 
 .dataFormContainer > button {
