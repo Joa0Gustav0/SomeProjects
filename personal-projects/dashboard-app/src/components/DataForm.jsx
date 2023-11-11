@@ -3,8 +3,8 @@ import { useState, useEffect } from 'react'
 
 export default function DataForm( {formButtonFunc, products} ) {
 
+    const pColor = document.getElementById("caption-input")
     window.onload = () => {
-        const pColor = document.getElementById("caption-input")
         pColor.value = "#1872ff"
     }
 
@@ -25,6 +25,7 @@ export default function DataForm( {formButtonFunc, products} ) {
     }
 
     const clearInputs = () => {
+        pColor.value = "#1872ff"
         resetInputStates()
         for (var i = 0; i < inputs.length - 1; i++){
             inputs[i].value = ''

@@ -4,12 +4,33 @@ import { useState } from 'react'
 export default function EditTab( {productsArr, editProductI, closeNClear, saveChanges} ) {
 
     const [buttonState, setButtonState] = useState('deactivated')
+    const pNameInput = document.getElementById("product-input-edit")
+    const pPriceInput = document.getElementById("price-input-edit")
+
+    const clearInputs = () => {
+        pNameInput.value = ""
+        pPriceInput.value = ""
+    }
 
     const validateInputs = () => {
-        const pNameInput = document.getElementById("product-input-edit")
-        const pPriceInput = document.getElementById("price-input-edit")
+        var alreadyExists = false
+        var containsLetter = false
 
-        if (pNameInput.value !== "" && pPriceInput.value !== "" && Number(pPriceInput.value) >= 0){
+        for (var i  = 0; i < productsArr.length; i++) {
+            if (productsArr[i].name === pNameInput.value) {
+                alreadyExists = true
+            }
+        }
+
+        const chars = "abcdefghijklmnopqrstuvwxyz"
+
+        for (var aI = 0; aI < Array.from(pNameInput.value.toLowerCase()).length; aI++) {
+            if (chars.includes(Array.from(pNameInput.value.toLowerCase())[aI])) {
+                containsLetter = true
+            }
+        }
+
+        if (pNameInput.value !== "" && containsLetter === true && alreadyExists === false && pPriceInput.value !== "" && Number(pPriceInput.value) > 0){
             setButtonState('activated')
         }else {
             setButtonState('deactivated')
@@ -17,13 +38,8 @@ export default function EditTab( {productsArr, editProductI, closeNClear, saveCh
     }
 
     const postNewChanges = () => {
-        const pNameInput = document.getElementById("product-input-edit")
-        const pPriceInput = document.getElementById("price-input-edit")
-
         saveChanges(pNameInput.value, Number(pPriceInput.value), editProductI)
-        
-        pNameInput.value = ""
-        pPriceInput.value = ""
+        clearInputs()
     }
 
     return (
@@ -43,20 +59,11 @@ export default function EditTab( {productsArr, editProductI, closeNClear, saveCh
                 }}>Save Changes</button>
                 <button className={styles.delButton}
                 onClick={() => {
-                    const pNameInput = document.getElementById("product-input-edit")
-                    const pPriceInput = document.getElementById("price-input-edit")
-
-                    pNameInput.value = ""
-                    pPriceInput.value = ""
-
+                    clearInputs()
                     closeNClear('del', editProductI)
                 }}><ion-icon name="trash"></ion-icon></button>
                 <ion-icon name="close" onClick={() => {
-                    const pNameInput = document.getElementById("product-input-edit")
-                    const pPriceInput = document.getElementById("price-input-edit")
-
-                    pNameInput.value = ""
-                    pPriceInput.value = ""
+                    clearInputs()
 
                     closeNClear()
                 }}></ion-icon>
