@@ -57,6 +57,16 @@
     border-bottom: 1px solid black;
 }
 
+.conflictTxt {
+    display: none;
+
+    color: #F1AA4B;
+    font-size: .75em;
+}
+.conflictTxt.enabled {
+    display: block;
+}
+
 .ocurrencesTab > button {
     transition: all .1s;
 

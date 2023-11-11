@@ -62,12 +62,21 @@ function App() {
       {/* create a function for removing ocurrences */}
 
       <OcurrencesTab pArr={pArr}
+        ocurrences={allOcurrences}
         pIndex={productOcurrencesI}
         closeTab={() => {
           setProductOcurrencesI(null)
         }}
-        addOcurrenceFunction={(newOcurrence, index) => {
-          pArr[index].ocurrences = [newOcurrence, ...pArr[index].ocurrences]
+        addOcurrenceFunction={(action, newOcurrence, index) => {
+          if (action === 'add') {
+            pArr[index].ocurrences = [newOcurrence, ...pArr[index].ocurrences]
+          }else {
+            pArr[index].ocurrences.map((elem) => {
+              if (elem.month === newOcurrence.month) {
+                elem.salesNum = newOcurrence.salesNum
+              }
+            })
+          }
         }}/>
     </main>
   );
