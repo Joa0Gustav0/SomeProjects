@@ -32,6 +32,23 @@
     border-bottom: 1px solid black;
 }
 
+.dataFormContainer > input:not(:last-of-type).onErr {
+    margin-bottom: 2.5px;
+}
+
+.inputErrTxt {
+    display: none;
+
+    width: 100%;
+    font-size: .8em;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+.inputErrTxt.display {
+    display: block;
+    color: #ff0050;
+}
+
 .colorInput {
     width: 100%;
     border: none;
@@ -61,7 +78,6 @@
     outline: none;
     font-size: 8px;
     color: white;
-    margin-top: 10px;
     border-radius: 5px;
     background-color: #1872ff;
 }

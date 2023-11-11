@@ -22,7 +22,6 @@ function App() {
       pOcurrences = [...pOcurrences, product.ocurrences]
     })
 
-    console.log(pOcurrences)
     setAllOcurrences(pOcurrences)
 
     var hSalesNumVar = -1
@@ -34,13 +33,13 @@ function App() {
         }
       })
     })
-    
+
     setHSalesNum(hSalesNumVar)
   }, [productEditI, productOcurrencesI, pArr])
 
   return (
     <main>
-      <DataForm formButtonFunc={(newProduct) => setPArr([...pArr, newProduct])}/>
+      <DataForm formButtonFunc={(newProduct) => setPArr([...pArr, newProduct])} products={pArr}/>
       <Dashboard hSalesNum={hSalesNum} allOcurrences={allOcurrences}/>
       <DataList productsArr={pArr} editFunction={(productI) => setProductEditI(productI)} ocurrencesFunction={(productI) => setProductOcurrencesI(productI)}/>
 
