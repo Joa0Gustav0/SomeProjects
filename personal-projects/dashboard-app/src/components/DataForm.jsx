@@ -101,12 +101,11 @@ export default function DataForm( {formButtonFunc, products} ) {
                     validateInput(inputs[i], i)
                 }
 
-                console.log(inputsSts)
                 setpNameErrTxt(inputsSts[0])
                 setpPriceErrTxt(inputsSts[1])
 
                 if (inputsSts[0] === 'ok' && inputsSts[1] === 'ok') {
-                    formButtonFunc({name: inputs[0].value, price: Number(inputs[1].value), ocurrences: [inputs[2].value]})
+                    formButtonFunc({name: inputs[0].value, price: Number(inputs[1].value), color: inputs[2].value, ocurrences: []})
                     clearInputs()
                 }
             }}>

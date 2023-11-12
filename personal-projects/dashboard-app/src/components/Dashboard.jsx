@@ -54,16 +54,32 @@ export default function Dashboard( {hSalesNum, allOcurrences} ) {
 
             {   
                 allOcurrences?.map((productOcurrences) => productOcurrences?.map((ocurrence, index) => (
-                    index !== productOcurrences.length - 1 ?
                     <div key={`point-m${ocurrence.month}-sn${ocurrence.salesNum}`} 
                         className={styles.dashboardPointModel}
                         style={{left: `${7.91 * (ocurrence.month)}%`, 
                             bottom: `${(100/highestYNum) * ocurrence.salesNum}%`, 
-                            backgroundColor: `${productOcurrences[productOcurrences.length - 1]}`}}
+                            backgroundColor: ocurrence.color}}
                     ></div>
+                )))
+            }
+
+            {
+                allOcurrences?.map((productOcurrences) => productOcurrences?.sort(function(a,b) {return a.month - b.month}).map((ocurrence, index) =>
+                productOcurrences.length > 1?
+                index < productOcurrences.length - 1 ?
+                    <div key={`line-m${ocurrence.month}-sn${ocurrence.salesNum}`}
+                        className={styles.dashboardLineModel}
+                        style={{left: `${7.91 * (ocurrence.month)}%`, 
+                            bottom: `${(100/highestYNum) * ocurrence.salesNum}%`,
+                            width: `${Math.sqrt(((7.91 * (productOcurrences[index + 1].month)) - (7.91 * (ocurrence.month)))**2 + (((100/highestYNum) * productOcurrences[index + 1].salesNum) - ((100/highestYNum) * ocurrence.salesNum))**2)}%`, 
+                            borderBottom: '2px solid ' + ocurrence.color}}>
+
+                    </div>
                     :
                     null
-                )))
+                :
+                null
+                ))
             }
 
             <span className={styles.dashView}>

@@ -37,6 +37,14 @@ function App() {
     setHSalesNum(hSalesNumVar)
   }, [productEditI, productOcurrencesI, pArr])
 
+  useEffect(() => {
+    allOcurrences?.map((pOcurrences) => {
+      pOcurrences.sort(function(a, b) {
+        return a.month - b.month
+      })
+    })
+  })
+
   return (
     <main>
       <DataForm formButtonFunc={(newProduct) => setPArr([...pArr, newProduct])} products={pArr}/>
@@ -61,15 +69,18 @@ function App() {
 
       {/* create a function for removing ocurrences */}
 
+
       <OcurrencesTab pArr={pArr}
-        ocurrences={allOcurrences}
+        ocurrences={allOcurrences?.sort(function (a, b) {
+          return b.month - a.month
+        })}
         pIndex={productOcurrencesI}
         closeTab={() => {
           setProductOcurrencesI(null)
         }}
         addOcurrenceFunction={(action, newOcurrence, index) => {
           if (action === 'add') {
-            pArr[index].ocurrences = [newOcurrence, ...pArr[index].ocurrences]
+            pArr[index].ocurrences = [...pArr[index].ocurrences, newOcurrence]
           }else {
             pArr[index].ocurrences.map((elem) => {
               if (elem.month === newOcurrence.month) {

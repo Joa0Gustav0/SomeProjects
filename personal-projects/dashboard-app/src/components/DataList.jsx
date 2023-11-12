@@ -18,7 +18,7 @@ export default function DataList( {productsArr, editFunction, ocurrencesFunction
                             <button onClick={() => ocurrencesFunction(i)}>Add ocurrences</button>
 
                             <div className={styles.pColorCaption} 
-                                style={{backgroundColor: elem.ocurrences[elem.ocurrences.length - 1]}
+                                style={{backgroundColor: elem.color}
                                 }></div>
                             <ion-icon name="brush"
                                 onClick={() => {

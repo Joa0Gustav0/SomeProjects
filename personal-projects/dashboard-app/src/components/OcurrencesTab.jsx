@@ -51,7 +51,7 @@ export default function OcurrencesTab( {pArr, pIndex, addOcurrenceFunction, clos
                         if (conflictTxtSts === 'enabled') {
                             addOcurrenceFunction('change', {month: Number(month.value), salesNum: Number(salesNum.value)}, pIndex)
                         }else {
-                            addOcurrenceFunction('add', {month: Number(month.value), salesNum: Number(salesNum.value)}, pIndex)
+                            addOcurrenceFunction('add', {month: Number(month.value), salesNum: Number(salesNum.value), color: pArr[pIndex].color}, pIndex)
                         }
                         month.value = ""
                         salesNum.value = ""
