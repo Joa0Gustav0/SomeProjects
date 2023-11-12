@@ -28,8 +28,40 @@ export default function Dashboard( {hSalesNum, allOcurrences} ) {
         }
     }, [hSalesNum])
 
+    useEffect(() => {
+        const c = document.getElementById('dashboardCanvas')
+        var ctx = c.getContext('2d')
+
+        ctx.clearRect(0, 0, 500, 300)
+        
+       
+
+        allOcurrences?.map((productOcurrences) => productOcurrences?.sort(function(a,b) {return a.month - b.month}).map((ocurrence, index) => {
+            if (productOcurrences.length > 1) {
+                if (index === 0) {
+                    ctx.beginPath()
+                    ctx.moveTo(((7.91 * (ocurrence.month))/100) * 500, 350 - ((((100/highestYNum) * ocurrence.salesNum)/100) * 350))
+                }
+                if (index < productOcurrences.length) {
+                    ctx.lineTo(((7.91 * (ocurrence.month))/100) * 500, 350 - ((((100/highestYNum) * ocurrence.salesNum)/100) * 350))
+                    ctx.lineWidth = 2
+                    ctx.strokeStyle = ocurrence.color
+                }
+                if (index === productOcurrences.length - 1) {
+                    ctx.stroke()
+                    ctx.closePath()
+                }
+            }
+        }))
+
+        
+        console.log('new line')
+    })
+
     return (
         <aside className={styles.dashBoard}>
+
+            <canvas key={'canvas'} width={500} height={350} id='dashboardCanvas'></canvas>
 
             {
                 dashMarksY.map((elem, i) => (
@@ -53,33 +85,23 @@ export default function Dashboard( {hSalesNum, allOcurrences} ) {
             </div> 
 
             {   
-                allOcurrences?.map((productOcurrences) => productOcurrences?.map((ocurrence, index) => (
-                    <div key={`point-m${ocurrence.month}-sn${ocurrence.salesNum}`} 
-                        className={styles.dashboardPointModel}
-                        style={{left: `${7.91 * (ocurrence.month)}%`, 
+                allOcurrences?.map((productOcurrences) => productOcurrences?.sort(function(a,b) {return a.month - b.month}).map((ocurrence, index) => (
+                    <>
+                        <div key={`point-m${ocurrence.month}-sn${ocurrence.salesNum}`} 
+                            className={styles.dashboardPointModel}
+                            style={{left: `${7.91 * (ocurrence.month)}%`, 
                             bottom: `${(100/highestYNum) * ocurrence.salesNum}%`, 
-                            backgroundColor: ocurrence.color}}
-                    ></div>
+                            backgroundColor: ocurrence.color}}>
+                        </div>
+                        {/* <div key={`line-m${ocurrence.month}-sn${ocurrence.salesNum}`}
+                        className={productOcurrences.length > 1 && index < productOcurrences.length - 1 ? styles.dashboardLineModel : `${styles.dashboardLineModel} ${styles.deactivated}`}
+                        style={{width: `calc(${Math.sqrt(((7.91 * (productOcurrences[index + 1]?.month)) - (7.91 * (ocurrence.month)))**2 + (((100/highestYNum) * productOcurrences[index + 1]?.salesNum) - ((100/highestYNum) * ocurrence.salesNum))**2)}% - 40px)`, 
+                        borderBottom: '2px solid ' + ocurrence.color, left: `${7.91 * (ocurrence.month)}%`, 
+                        bottom: `${(100/highestYNum) * ocurrence.salesNum}%`,
+                        transform: 'translate(0px, 3px) rotateZ(60.5deg)'}}>
+                        </div> */}
+                    </>
                 )))
-            }
-
-            {
-                allOcurrences?.map((productOcurrences) => productOcurrences?.sort(function(a,b) {return a.month - b.month}).map((ocurrence, index) =>
-                productOcurrences.length > 1?
-                index < productOcurrences.length - 1 ?
-                    <div key={`line-m${ocurrence.month}-sn${ocurrence.salesNum}`}
-                        className={styles.dashboardLineModel}
-                        style={{left: `${7.91 * (ocurrence.month)}%`, 
-                            bottom: `${(100/highestYNum) * ocurrence.salesNum}%`,
-                            width: `${Math.sqrt(((7.91 * (productOcurrences[index + 1].month)) - (7.91 * (ocurrence.month)))**2 + (((100/highestYNum) * productOcurrences[index + 1].salesNum) - ((100/highestYNum) * ocurrence.salesNum))**2)}%`, 
-                            borderBottom: '2px solid ' + ocurrence.color}}>
-
-                    </div>
-                    :
-                    null
-                :
-                null
-                ))
             }
 
             <span className={styles.dashView}>

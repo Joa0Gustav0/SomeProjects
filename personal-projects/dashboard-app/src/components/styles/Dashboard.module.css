@@ -1,9 +1,8 @@
 .dashBoard {
     position: relative;
 
-    width: 100%;
+    width: 500px;
     height: 350px;
-    max-width: 500px;
     border-left: 1px solid black;
     border-bottom: 1px solid black;
 }
@@ -104,6 +103,11 @@
 
 .dashboardLineModel {
     position: absolute;
+    transform-origin: bottom left;
+
     width: 100px;
     height: 100px;
+}
+.dashboardLineModel.deactivated {
+    display: none;
 }
