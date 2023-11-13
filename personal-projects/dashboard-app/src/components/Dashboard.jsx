@@ -53,9 +53,6 @@ export default function Dashboard( {hSalesNum, allOcurrences} ) {
                 }
             }
         }))
-
-        
-        console.log('new line')
     })
 
     return (

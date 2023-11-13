@@ -48,12 +48,24 @@
 }
 
 .productContainer {
+    transition: all .25s;
     position: relative;
 
     width: 100%;
     padding: 10px;
     border-radius: 5px;
+    background-color: white;
     box-shadow: 0px 0px 7.5px rgba(0, 0, 0, 0.2);
+}
+.productContainer:hover {
+    cursor: pointer;
+    transform: scale(101.5%, 101.5%);
+}
+.productContainer:active {
+    transform: scale(98.5%, 98.5%);
+}
+.productContainer.selected {
+    border: 1px solid #1877f2;
 }
 
 .productContainer abbr {
@@ -70,6 +82,7 @@
     width: calc(100% - 30px);
     text-transform: capitalize;
 }
+
 .productContainer h2 {
     font-size: 1em;
     margin-bottom: 10px;
@@ -86,7 +99,6 @@
     border-radius: 5px;
     background-color: #1877f2;
 }
-
 .productContainer button:hover {
     cursor: pointer;
     color: rgba(255, 255, 255, 0.5);
