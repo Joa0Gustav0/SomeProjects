@@ -1,7 +1,48 @@
 import styles from './styles/DataList.module.css'
-import { useState } from 'react'
+import dashboardStyles from './styles/Dashboard.module.css'
+import { useState, useEffect } from 'react'
 
-export default function DataList( {productsArr, editFunction, ocurrencesFunction} ) {
+export default function DataList( {productsArr, editFunction, ocurrencesFunction, allOcurrences, hSalesNum} ) {
+
+    const allProducts = document.getElementsByClassName(styles.productContainer)
+
+    const [highestYNum, setHighestYNum] = useState()
+
+    useEffect(() => {
+        if (Array.from(hSalesNum.toString())[Array.from(hSalesNum.toString()).length - 1] !== '0' &&
+        Array.from(hSalesNum.toString())[Array.from(hSalesNum.toString()).length - 1] !== '5'){
+            setHighestYNum(hSalesNum + (10 - Array.from(hSalesNum.toString())[Array.from(hSalesNum.toString()).length - 1]))
+        }else {
+            setHighestYNum(hSalesNum)
+        }
+    }, [hSalesNum])
+
+    
+
+    const drawCanvasLines = () => {
+        const c = document.getElementById('dashboardCanvas')
+        var ctx = c.getContext('2d')
+
+        ctx.clearRect(0, 0, 500, 300)
+
+        allOcurrences?.map((productOcurrences, pIndex) => productOcurrences?.sort(function(a,b) {return a.month - b.month}).map((ocurrence, index) => {
+            if (productOcurrences.length > 1) {
+                if (index === 0) {
+                    ctx.beginPath()
+                    ctx.moveTo(((7.91 * (ocurrence.month))/100) * 500, 350 - ((((100/highestYNum) * ocurrence.salesNum)/100) * 350))
+                }
+                if (index < productOcurrences.length) {
+                    ctx.lineTo(((7.91 * (ocurrence.month))/100) * 500, 350 - ((((100/highestYNum) * ocurrence.salesNum)/100) * 350))
+                    ctx.lineWidth = 2
+                    ctx.strokeStyle = allProducts[pIndex].className === `${productsArr[pIndex].linedName} ${styles.productContainer} ${styles.selected}` ? ocurrence.color : `${ocurrence.color}40`
+                }
+                if (index === productOcurrences.length - 1) {
+                    ctx.stroke()
+                    ctx.closePath()
+                }
+            }
+        }))
+    }
 
     return (
         <aside className={styles.dataListContainer}>
@@ -12,7 +53,6 @@ export default function DataList( {productsArr, editFunction, ocurrencesFunction
                     productsArr?.length > 0 ?
                     productsArr.map((elem, i) => (
                         <div key={elem.name + i} id={elem.id} className={`${elem.linedName} ${styles.productContainer}`} onClick={() => {
-                            const allProducts = document.getElementsByClassName(styles.productContainer)
 
                             for (var index = 0; index < allProducts.length; index++) {
                                 if (index === i){
@@ -21,13 +61,15 @@ export default function DataList( {productsArr, editFunction, ocurrencesFunction
                                     allProducts[index].className = `${elem.linedName} ${styles.productContainer}`
                                 }
                             }
+
+                            drawCanvasLines()
+
                         }}>
                             <abbr title={elem.name}>
                                 <h1>{elem.name}</h1>
                             </abbr>
                             <h2>${elem.price.toFixed(2)}</h2>
                             <button onClick={() => ocurrencesFunction(i)}>Add ocurrences</button>
-
                             <div className={styles.pColorCaption} 
                                 style={{backgroundColor: elem.color}
                                 }></div>

@@ -86,7 +86,7 @@ export default function Dashboard( {hSalesNum, allOcurrences, products} ) {
             {   
                 allOcurrences?.map((productOcurrences, pIndex) => productOcurrences?.sort(function(a,b) {return a.month - b.month}).map((ocurrence, index) => (
                     <div key={`${products[pIndex].linedNname}point-m${ocurrence.month}-sn${ocurrence.salesNum}`} 
-                        className={styles.dashboardPointModel}
+                        className={`${styles.dashboardPointModel} ${products[pIndex].linedNname}`}
                         style={{left: `${7.91 * (ocurrence.month)}%`, 
                         bottom: `${(100/highestYNum) * ocurrence.salesNum}%`, 
                         backgroundColor: allProducts[pIndex].className === `${products[pIndex].linedName} ${productsStyles.productContainer} ${productsStyles.selected}` ? ocurrence.color : `${ocurrence.color}40`}}>
