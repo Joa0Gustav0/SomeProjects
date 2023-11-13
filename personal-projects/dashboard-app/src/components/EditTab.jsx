@@ -38,7 +38,20 @@ export default function EditTab( {productsArr, editProductI, closeNClear, saveCh
     }
 
     const postNewChanges = () => {
-        saveChanges(pNameInput.value, Number(pPriceInput.value), editProductI)
+
+        const txtArr = Array.from(pNameInput.value.toLowerCase())
+        var formatName = ''
+
+        txtArr.map((char) => {
+            if (char === ' ') {
+                formatName = formatName + '-'
+            }else {
+                formatName = formatName + char
+            }
+        })
+
+
+        saveChanges(pNameInput.value, Number(pPriceInput.value), editProductI, formatName)
         clearInputs()
     }
 

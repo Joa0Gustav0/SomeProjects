@@ -3,10 +3,13 @@ import Dashboard from "./components/Dashboard";
 import DataList from "./components/DataList";
 import EditTab from "./components/EditTab";
 import OcurrencesTab from "./components/OcurrencesTab";
+import productsStyles from './components/styles/DataList.module.css'
 import styles from './App.module.css'
 import { useState, useEffect } from "react";
 
 function App() {
+
+  var allProducts = document.getElementsByClassName(productsStyles.productContainer)
 
   const [productEditI, setProductEditI] = useState(null)
   const [productOcurrencesI, setProductOcurrencesI] = useState(null)
@@ -60,9 +63,10 @@ function App() {
           }
           setProductEditI(null)
         }}
-        saveChanges={(newName, newPrice, index) => {
+        saveChanges={(newName, newPrice, index, newLinedName) => {
           pArr[index].name = newName
           pArr[index].price = newPrice
+          allProducts[index].className = `${newLinedName} ${productsStyles.productContainer} ${productsStyles.selected}`
           setProductEditI(null)
         }
       }/>

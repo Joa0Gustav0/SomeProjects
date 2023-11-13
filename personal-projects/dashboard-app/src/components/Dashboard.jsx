@@ -37,8 +37,6 @@ export default function Dashboard( {hSalesNum, allOcurrences, products} ) {
         var ctx = c.getContext('2d')
 
         ctx.clearRect(0, 0, 500, 300)
-        
-       
 
         allOcurrences?.map((productOcurrences, pIndex) => productOcurrences?.sort(function(a,b) {return a.month - b.month}).map((ocurrence, index) => {
             if (productOcurrences.length > 1) {
