@@ -48,7 +48,7 @@ function App() {
   return (
     <main>
       <DataForm formButtonFunc={(newProduct) => setPArr([...pArr, newProduct])} products={pArr}/>
-      <Dashboard hSalesNum={hSalesNum} allOcurrences={allOcurrences}/>
+      <Dashboard products={pArr} hSalesNum={hSalesNum} allOcurrences={allOcurrences}/>
       <DataList productsArr={pArr} editFunction={(productI) => setProductEditI(productI)} ocurrencesFunction={(productI) => setProductOcurrencesI(productI)}/>
 
       <EditTab productsArr={pArr} 

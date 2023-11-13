@@ -104,8 +104,19 @@ export default function DataForm( {formButtonFunc, products} ) {
                 setpNameErrTxt(inputsSts[0])
                 setpPriceErrTxt(inputsSts[1])
 
+                const txtArr = Array.from(inputs[0].value.toLowerCase())
+                var formatName = ''
+
+                txtArr.map((char) => {
+                    if (char === ' ') {
+                        formatName = formatName + '-'
+                    }else {
+                        formatName = formatName + char
+                    }
+                })
+
                 if (inputsSts[0] === 'ok' && inputsSts[1] === 'ok') {
-                    formButtonFunc({name: inputs[0].value, price: Number(inputs[1].value), color: inputs[2].value, ocurrences: []})
+                    formButtonFunc({name: inputs[0].value, linedName: formatName, price: Number(inputs[1].value), color: inputs[2].value, ocurrences: []})
                     clearInputs()
                 }
             }}>

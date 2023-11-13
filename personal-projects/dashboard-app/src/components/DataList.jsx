@@ -11,14 +11,14 @@ export default function DataList( {productsArr, editFunction, ocurrencesFunction
                 {
                     productsArr?.length > 0 ?
                     productsArr.map((elem, i) => (
-                        <div key={elem.name + i} id={elem.id} className={styles.productContainer} onClick={() => {
+                        <div key={elem.name + i} id={elem.id} className={`${elem.linedName} ${styles.productContainer}`} onClick={() => {
                             const allProducts = document.getElementsByClassName(styles.productContainer)
 
                             for (var index = 0; index < allProducts.length; index++) {
                                 if (index === i){
-                                    allProducts[index].className = `${styles.productContainer} ${styles.selected}`
+                                    allProducts[index].className = `${elem.linedName} ${styles.productContainer} ${styles.selected}`
                                 }else {
-                                    allProducts[index].className = styles.productContainer
+                                    allProducts[index].className = `${elem.linedName} ${styles.productContainer}`
                                 }
                             }
                         }}>

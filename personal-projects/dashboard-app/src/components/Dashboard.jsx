@@ -1,7 +1,8 @@
 import styles from './styles/Dashboard.module.css'
+import productsStyles from './styles/DataList.module.css'
 import { useState, useEffect } from 'react'
 
-export default function Dashboard( {hSalesNum, allOcurrences} ) {
+export default function Dashboard( {hSalesNum, allOcurrences, products} ) {
 
     const [view, setView] = useState("month")
 
@@ -28,6 +29,9 @@ export default function Dashboard( {hSalesNum, allOcurrences} ) {
         }
     }, [hSalesNum])
 
+
+    var allProducts = document.getElementsByClassName(productsStyles.productContainer)
+
     useEffect(() => {
         const c = document.getElementById('dashboardCanvas')
         var ctx = c.getContext('2d')
@@ -36,7 +40,7 @@ export default function Dashboard( {hSalesNum, allOcurrences} ) {
         
        
 
-        allOcurrences?.map((productOcurrences) => productOcurrences?.sort(function(a,b) {return a.month - b.month}).map((ocurrence, index) => {
+        allOcurrences?.map((productOcurrences, pIndex) => productOcurrences?.sort(function(a,b) {return a.month - b.month}).map((ocurrence, index) => {
             if (productOcurrences.length > 1) {
                 if (index === 0) {
                     ctx.beginPath()
@@ -45,7 +49,7 @@ export default function Dashboard( {hSalesNum, allOcurrences} ) {
                 if (index < productOcurrences.length) {
                     ctx.lineTo(((7.91 * (ocurrence.month))/100) * 500, 350 - ((((100/highestYNum) * ocurrence.salesNum)/100) * 350))
                     ctx.lineWidth = 2
-                    ctx.strokeStyle = ocurrence.color
+                    ctx.strokeStyle = allProducts[pIndex].className === `${products[pIndex].linedName} ${productsStyles.productContainer} ${productsStyles.selected}` ? ocurrence.color : `${ocurrence.color}40`
                 }
                 if (index === productOcurrences.length - 1) {
                     ctx.stroke()
@@ -82,22 +86,13 @@ export default function Dashboard( {hSalesNum, allOcurrences} ) {
             </div> 
 
             {   
-                allOcurrences?.map((productOcurrences) => productOcurrences?.sort(function(a,b) {return a.month - b.month}).map((ocurrence, index) => (
-                    <>
-                        <div key={`point-m${ocurrence.month}-sn${ocurrence.salesNum}`} 
-                            className={styles.dashboardPointModel}
-                            style={{left: `${7.91 * (ocurrence.month)}%`, 
-                            bottom: `${(100/highestYNum) * ocurrence.salesNum}%`, 
-                            backgroundColor: ocurrence.color}}>
-                        </div>
-                        {/* <div key={`line-m${ocurrence.month}-sn${ocurrence.salesNum}`}
-                        className={productOcurrences.length > 1 && index < productOcurrences.length - 1 ? styles.dashboardLineModel : `${styles.dashboardLineModel} ${styles.deactivated}`}
-                        style={{width: `calc(${Math.sqrt(((7.91 * (productOcurrences[index + 1]?.month)) - (7.91 * (ocurrence.month)))**2 + (((100/highestYNum) * productOcurrences[index + 1]?.salesNum) - ((100/highestYNum) * ocurrence.salesNum))**2)}% - 40px)`, 
-                        borderBottom: '2px solid ' + ocurrence.color, left: `${7.91 * (ocurrence.month)}%`, 
-                        bottom: `${(100/highestYNum) * ocurrence.salesNum}%`,
-                        transform: 'translate(0px, 3px) rotateZ(60.5deg)'}}>
-                        </div> */}
-                    </>
+                allOcurrences?.map((productOcurrences, pIndex) => productOcurrences?.sort(function(a,b) {return a.month - b.month}).map((ocurrence, index) => (
+                    <div key={`${products[pIndex].linedNname}point-m${ocurrence.month}-sn${ocurrence.salesNum}`} 
+                        className={styles.dashboardPointModel}
+                        style={{left: `${7.91 * (ocurrence.month)}%`, 
+                        bottom: `${(100/highestYNum) * ocurrence.salesNum}%`, 
+                        backgroundColor: allProducts[pIndex].className === `${products[pIndex].linedName} ${productsStyles.productContainer} ${productsStyles.selected}` ? ocurrence.color : `${ocurrence.color}40`}}>
+                    </div>
                 )))
             }
 
