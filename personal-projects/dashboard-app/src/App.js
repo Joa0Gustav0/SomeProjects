@@ -48,11 +48,15 @@ function App() {
     })
   })
 
+  useEffect(() => {
+    
+  })
+
   return (
     <main>
       <DataForm formButtonFunc={(newProduct) => setPArr([...pArr, newProduct])} products={pArr}/>
       <Dashboard products={pArr} hSalesNum={hSalesNum} allOcurrences={allOcurrences}/>
-      <DataList productsArr={pArr} allOcurrences={allOcurrences}  hSalesNum={hSalesNum} editFunction={(productI) => setProductEditI(productI)} ocurrencesFunction={(productI) => setProductOcurrencesI(productI)}/>
+      <DataList productsArr={pArr} allOcurrences={allOcurrences}  hSalesNum={hSalesNum} editFunction={(productI) => setProductEditI(productI)} ocurrencesFunction={(productI) => setProductOcurrencesI(productI)} />
 
       <EditTab productsArr={pArr} 
         editProductI={productEditI} 

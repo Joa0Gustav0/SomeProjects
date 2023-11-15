@@ -1,6 +1,6 @@
 .editTabContainer {
     transition: all .5s;
-    position: absolute;
+    position: fixed;
     top: -400px;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -119,7 +119,7 @@
 }
 
 .safeLayer {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
 

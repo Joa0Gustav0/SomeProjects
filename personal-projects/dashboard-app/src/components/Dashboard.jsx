@@ -32,33 +32,54 @@ export default function Dashboard( {hSalesNum, allOcurrences, products} ) {
 
     var allProducts = document.getElementsByClassName(productsStyles.productContainer)
 
+    
+    const dashboardPoints = document.getElementsByClassName(styles.dashboardPointModel)
+
     useEffect(() => {
+        const dashboard = document.getElementById('dashboard')
         const c = document.getElementById('dashboardCanvas')
         var ctx = c.getContext('2d')
 
+        console.log(dashboardPoints.length)
+
+        for (var i = 0; i < dashboardPoints.length; i++) {
+            dashboardPoints[i].parentNode.removeChild(dashboardPoints[i])
+        }
         ctx.clearRect(0, 0, 500, 300)
 
         allOcurrences?.map((productOcurrences, pIndex) => productOcurrences?.sort(function(a,b) {return a.month - b.month}).map((ocurrence, index) => {
             if (productOcurrences.length > 1) {
                 if (index === 0) {
                     ctx.beginPath()
-                    ctx.moveTo(((7.91 * (ocurrence.month))/100) * 500, 350 - ((((100/highestYNum) * ocurrence.salesNum)/100) * 350))
+                    ctx.moveTo(((7.91 * (ocurrence.month))/100) * 500, 352 - ((((100/highestYNum) * ocurrence.salesNum)/100) * 350))
                 }
-                if (index < productOcurrences.length) {
-                    ctx.lineTo(((7.91 * (ocurrence.month))/100) * 500, 350 - ((((100/highestYNum) * ocurrence.salesNum)/100) * 350))
+                if (index > 0 && index < productOcurrences.length) {
+                    ctx.lineTo(((7.91 * (ocurrence.month))/100) * 500, 352 - ((((100/highestYNum) * ocurrence.salesNum)/100) * 350))
                     ctx.lineWidth = 2
-                    ctx.strokeStyle = allProducts[pIndex].className === `${products[pIndex].linedName} ${productsStyles.productContainer} ${productsStyles.selected}` ? ocurrence.color : `${ocurrence.color}40`
+                    ctx.strokeStyle = allProducts[pIndex]?.className === `${products[pIndex]?.linedName} ${productsStyles.productContainer} ${productsStyles.selected}` ? ocurrence.color : `${ocurrence.color}40`
                 }
                 if (index === productOcurrences.length - 1) {
                     ctx.stroke()
                     ctx.closePath()
                 }
             }
+            var newOcurrencePoint = document.createElement('div')
+            newOcurrencePoint.className = styles.dashboardPointModel
+            newOcurrencePoint.style.left = `${((7.91 * (ocurrence.month))/100) * 500}px`
+            newOcurrencePoint.style.top = `${340 - ((((100/highestYNum) * ocurrence.salesNum)/100) * 350)}px`
+           
+            if (allProducts[pIndex]?.classList.contains(products[pIndex]?.linedName)) {
+                newOcurrencePoint.style.backgroundColor = ocurrence.color
+            }else {
+                newOcurrencePoint.style.backgroundColor = ocurrence.color 
+                + '40'
+            }
+            dashboard.appendChild(newOcurrencePoint)
         }))
     })
 
     return (
-        <aside className={styles.dashBoard}>
+        <aside id='dashboard' className={styles.dashBoard}>
 
             <canvas key={'canvas'} width={500} height={350} id='dashboardCanvas'></canvas>
 
@@ -82,17 +103,6 @@ export default function Dashboard( {hSalesNum, allOcurrences, products} ) {
             <div key={'zero-value-y'} className={styles.zero}>
                 0 -
             </div> 
-
-            {   
-                allOcurrences?.map((productOcurrences, pIndex) => productOcurrences?.sort(function(a,b) {return a.month - b.month}).map((ocurrence, index) => (
-                    <div key={`${products[pIndex].linedNname}point-m${ocurrence.month}-sn${ocurrence.salesNum}`} 
-                        className={`${styles.dashboardPointModel} ${products[pIndex].linedNname}`}
-                        style={{left: `${7.91 * (ocurrence.month)}%`, 
-                        bottom: `${(100/highestYNum) * ocurrence.salesNum}%`, 
-                        backgroundColor: allProducts[pIndex].className === `${products[pIndex].linedName} ${productsStyles.productContainer} ${productsStyles.selected}` ? ocurrence.color : `${ocurrence.color}40`}}>
-                    </div>
-                )))
-            }
 
             <span className={styles.dashView}>
                 <button className={
