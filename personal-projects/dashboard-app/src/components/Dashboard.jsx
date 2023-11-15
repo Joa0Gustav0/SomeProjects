@@ -31,20 +31,24 @@ export default function Dashboard( {hSalesNum, allOcurrences, products} ) {
 
 
     var allProducts = document.getElementsByClassName(productsStyles.productContainer)
-
-    
-    const dashboardPoints = document.getElementsByClassName(styles.dashboardPointModel)
+    const dashboard = document.getElementById('dashboard')
 
     useEffect(() => {
-        const dashboard = document.getElementById('dashboard')
+
+        for (var childI = 0; childI < dashboard?.childNodes.length; childI++) {
+            if (dashboard?.childNodes[childI].className === styles.dashboardPointModel) {
+                dashboard?.childNodes[childI].remove()
+            }
+        }
+        for (var childI2 = 0; childI2 < dashboard?.childNodes.length; childI2++) {
+            if (dashboard?.childNodes[childI2].className === styles.dashboardPointModel) {
+                dashboard?.childNodes[childI2].remove()
+            }
+        }
+
         const c = document.getElementById('dashboardCanvas')
         var ctx = c.getContext('2d')
-
-        console.log(dashboardPoints.length)
-
-        for (var i = 0; i < dashboardPoints.length; i++) {
-            dashboardPoints[i].parentNode.removeChild(dashboardPoints[i])
-        }
+    
         ctx.clearRect(0, 0, 500, 300)
 
         allOcurrences?.map((productOcurrences, pIndex) => productOcurrences?.sort(function(a,b) {return a.month - b.month}).map((ocurrence, index) => {
