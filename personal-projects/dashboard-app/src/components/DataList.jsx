@@ -62,7 +62,12 @@ export default function DataList( {productsArr, editFunction, ocurrencesFunction
                 newOcurrencePoint.style.backgroundColor = ocurrence.color 
                 + '40'
             }
+
+            var ocurrencePointData = document.createElement('div')
+            ocurrencePointData.className = dashboardStyles.dashboardPointDataContainer
+            ocurrencePointData.innerHTML = `<div><h1>Month:</h1> <p>${ocurrence.month}</p></div> <div><h1>Sales:</h1> <p>${ocurrence.salesNum}</p></div> <div><h1>Earnings:</h1> <p>$${ocurrence.salesNum * productsArr[pIndex]?.price}</p></div>`
             dashboard.appendChild(newOcurrencePoint)
+            newOcurrencePoint.appendChild(ocurrencePointData)
         }))
     }
 

@@ -99,6 +99,59 @@
     height: 10px;
     border-radius: 100%;
 }
+.dashboardPointModel:hover {
+    width: 12.5px;
+    height: 12.5px;
+    transform: translate(-50%, calc(75% - 2.5px));
+}
+
+.dashboardPointDataContainer {
+    transition: all .25s;
+    position: absolute;
+    left: 50%;
+    top: 0px;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+
+    display: flex;
+    flex-direction: row;
+
+    opacity: 0;
+    max-width: 250px;
+    min-width: 100px;
+    padding: 5px;
+    border-radius: 5px;
+    width: fit-content;
+    text-align: center;
+    background-color: white;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+.dashboardPointModel:hover > div {
+    top: calc(-300% - 10px);
+    opacity: 1;
+}
+.dashboardPointDataContainer div {
+    display: flex;
+    padding: 5px 10px;
+    align-items: center;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+.dashboardPointDataContainer div:not(:last-of-type):not(:first-of-type) {
+    border-left: 1px solid rgba(0, 0, 0, 0.25);
+    border-right: 1px solid rgba(0, 0, 0, 0.25);
+}
+.dashboardPointDataContainer h1{
+    width: 100%;
+    font-size: 1em;
+    color: #1872ff;
+}
+.dashboardPointDataContainer p {
+    font-size: 1em;
+}
+.dashboardPointDataContainer p:not(:last-of-type) {
+    margin-bottom: 5px;
+}
 
 .dashboardLineModel {
     position: absolute;
