@@ -16,6 +16,9 @@ export default function Dashboard( {hSalesNum, allOcurrences, products} ) {
         years.push(i)
     }
 
+    const [selectedYear, setSelectedYear] = useState(2023)
+    const [yearBttStt, setYearBttStt] = useState('deactivated')
+
     const dashMarksY = [1,2,3,4,5] 
 
     const [highestYNum, setHighestYNum] = useState()
@@ -111,6 +114,21 @@ export default function Dashboard( {hSalesNum, allOcurrences, products} ) {
             <div key={'zero-value-y'} className={styles.zero}>
                 0 -
             </div> 
+
+            <span className={styles.yearsView} 
+                style={view === 'month' ? {display: 'block'} : {display: 'none'}}>
+                <button style={yearBttStt === 'activated' ? {borderRadius: '5px 5px 0px 0px'} : {borderRadius: '5px'}} onClick={() => yearBttStt === 'activated' ? setYearBttStt('deactivated') : setYearBttStt('activated')}>{selectedYear} <ion-icon name='chevron-down'></ion-icon></button>
+                <div id='yC' className={styles.yearsContainer}
+                    style={yearBttStt === 'activated' ? {display: 'block'} : {display: 'none'}}>
+                    {
+                        years.map((elem) => (
+                            <button key={elem + '-month'} onClick={() => {setSelectedYear(elem); setYearBttStt('deactivated'); const yC = document.getElementById('yC'); yC.scrollTo(0, 0)}}>{elem}</button>
+                        ))
+                    }
+                </div>
+
+                <h1>Year</h1>
+            </span>
 
             <span className={styles.dashView}>
                 <button className={

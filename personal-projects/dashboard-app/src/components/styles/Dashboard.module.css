@@ -47,6 +47,76 @@
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.233);
 }
 
+.yearsView {
+    position: absolute;
+    top: -30px;
+    left: calc(50% - 175px);
+    transform: translate(-50%, -50%);
+    
+    display: flex;
+    flex-direction: column;
+
+    width: 80px;
+    border-radius: 5px;
+}
+.yearsView h1 {
+    position: absolute;
+    top: -25px;
+
+    width: 100%;
+    font-size: 1em;
+    font-weight: 600;
+    text-align: center;
+}
+.yearsView button {
+    transition: all .175s;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    border: 0;
+    width: 100%;
+    outline: none;
+    padding: 10px;
+    background-color: white;
+}
+.yearsView > button {
+    justify-content: space-between;
+
+    color: white;
+    font-weight: 600;
+    border-radius: 5px;
+    background-color: #1872ff;
+}
+.yearsView > button:hover {
+    cursor: pointer;
+    background-color: #1667e9;
+}
+.yearsView > button:active {
+    color: #1872ff;
+}
+
+.yearsContainer {
+    position: absolute;
+    top: 100%;
+
+    width: 100%;
+    height: 60px;
+    overflow-y: scroll;
+    border-bottom: 1px solid black;
+}
+.yearsContainer button:nth-of-type(odd) {
+    background-color: #ececec;
+}
+.yearsContainer button:hover {
+    cursor: pointer;
+    background-color: rgb(226, 226, 226);
+}
+.yearsContainer::-webkit-scrollbar {
+    display: none;
+}
+
 .dashMark {
     position: absolute;
     bottom: 0;
