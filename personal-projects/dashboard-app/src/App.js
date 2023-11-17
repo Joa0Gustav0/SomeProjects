@@ -52,10 +52,12 @@ function App() {
     
   })
 
+  const [selectedYear, setSelectedYear] = useState(2023)
+
   return (
     <main>
       <DataForm formButtonFunc={(newProduct) => setPArr([...pArr, newProduct])} products={pArr}/>
-      <Dashboard products={pArr} hSalesNum={hSalesNum} allOcurrences={allOcurrences}/>
+      <Dashboard selectedYear={selectedYear} setSelectedYear={(year) => setSelectedYear(year)} products={pArr} hSalesNum={hSalesNum} allOcurrences={allOcurrences}/>
       <DataList productsArr={pArr} allOcurrences={allOcurrences}  hSalesNum={hSalesNum} editFunction={(productI) => setProductEditI(productI)} ocurrencesFunction={(productI) => setProductOcurrencesI(productI)} />
 
       <EditTab productsArr={pArr} 

@@ -2,7 +2,7 @@ import styles from './styles/Dashboard.module.css'
 import productsStyles from './styles/DataList.module.css'
 import { useState, useEffect } from 'react'
 
-export default function Dashboard( {hSalesNum, allOcurrences, products} ) {
+export default function Dashboard( {hSalesNum, allOcurrences, products, selectedYear, setSelectedYear} ) {
 
     const [view, setView] = useState("month")
 
@@ -16,7 +16,6 @@ export default function Dashboard( {hSalesNum, allOcurrences, products} ) {
         years.push(i)
     }
 
-    const [selectedYear, setSelectedYear] = useState(2023)
     const [yearBttStt, setYearBttStt] = useState('deactivated')
 
     const dashMarksY = [1,2,3,4,5] 
