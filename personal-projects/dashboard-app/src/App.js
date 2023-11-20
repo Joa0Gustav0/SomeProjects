@@ -58,7 +58,7 @@ function App() {
     <main>
       <DataForm formButtonFunc={(newProduct) => setPArr([...pArr, newProduct])} products={pArr}/>
       <Dashboard selectedYear={selectedYear} setSelectedYear={(year) => setSelectedYear(year)} products={pArr} hSalesNum={hSalesNum} allOcurrences={allOcurrences}/>
-      <DataList productsArr={pArr} allOcurrences={allOcurrences}  hSalesNum={hSalesNum} editFunction={(productI) => setProductEditI(productI)} ocurrencesFunction={(productI) => setProductOcurrencesI(productI)} />
+      <DataList productsArr={pArr} selectedYear={selectedYear} allOcurrences={allOcurrences}  hSalesNum={hSalesNum} editFunction={(productI) => setProductEditI(productI)} ocurrencesFunction={(productI) => setProductOcurrencesI(productI)} />
 
       <EditTab productsArr={pArr} 
         editProductI={productEditI} 
@@ -81,6 +81,7 @@ function App() {
 
 
       <OcurrencesTab pArr={pArr}
+        selectedYear={selectedYear}
         ocurrences={allOcurrences?.sort(function (a, b) {
           return b.month - a.month
         })}
@@ -91,6 +92,7 @@ function App() {
         addOcurrenceFunction={(action, newOcurrence, index) => {
           if (action === 'add') {
             pArr[index].ocurrences = [...pArr[index].ocurrences, newOcurrence]
+            console.log(allOcurrences)
           }else {
             pArr[index].ocurrences.map((elem) => {
               if (elem.month === newOcurrence.month) {
