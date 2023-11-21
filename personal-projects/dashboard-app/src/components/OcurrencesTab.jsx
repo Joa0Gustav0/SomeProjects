@@ -13,7 +13,7 @@ export default function OcurrencesTab( {pArr, pIndex, addOcurrenceFunction, clos
         var alreadyExists = false
 
         pArr[pIndex].ocurrences.map((elem) => {
-            if (Number(elem.month) === Number(month.value)) {
+            if (Number(elem.month) === Number(month.value) && Number(elem.year) === Number(selectedYear)) {
                 alreadyExists = true
             }
         })

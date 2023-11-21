@@ -92,7 +92,6 @@ function App() {
         addOcurrenceFunction={(action, newOcurrence, index) => {
           if (action === 'add') {
             pArr[index].ocurrences = [...pArr[index].ocurrences, newOcurrence]
-            console.log(allOcurrences)
           }else {
             pArr[index].ocurrences.map((elem) => {
               if (elem.month === newOcurrence.month) {

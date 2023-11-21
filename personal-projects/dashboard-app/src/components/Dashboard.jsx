@@ -59,40 +59,43 @@ export default function Dashboard( {hSalesNum, allOcurrences, products, selected
 
         var ctx = c.getContext('2d')
 
-        allOcurrences?.map((productOcurrences, pIndex) => productOcurrences?.sort(function(a,b) {return a.month - b.month}).map((ocurrence, index) => {
-            if (ocurrence.year === selectedYear) {
-                if (productOcurrences.length > 1) {
-                    if (index === 0) {
-                        ctx.beginPath()
-                        ctx.moveTo(((7.91 * (ocurrence.month))/100) * 500, 352 - ((((100/highestYNum) * ocurrence.salesNum)/100) * 350))
-                    }
-                    if (index > 0 && index < productOcurrences.length) {
-                        ctx.lineTo(((7.91 * (ocurrence.month))/100) * 500, 352 - ((((100/highestYNum) * ocurrence.salesNum)/100) * 350))
-                        ctx.lineWidth = 2
-                        ctx.strokeStyle = allProducts[pIndex]?.className === `${products[pIndex]?.linedName} ${productsStyles.productContainer} ${productsStyles.selected}` ? ocurrence.color : `${ocurrence.color}40`
-                    }
-                    if (index === productOcurrences.length - 1) {
-                        ctx.stroke()
-                        ctx.closePath()
-                    }
-                }
-                var newOcurrencePoint = document.createElement('div')
-                newOcurrencePoint.className = styles.dashboardPointModel
-                newOcurrencePoint.style.left = `${((7.91 * (ocurrence.month))/100) * 500}px`
-                newOcurrencePoint.style.top = `${340 - ((((100/highestYNum) * ocurrence.salesNum)/100) * 350)}px`
-               
-                if (allProducts[pIndex]?.classList.contains(products[pIndex]?.linedName)) {
-                    newOcurrencePoint.style.backgroundColor = ocurrence.color
-                }else {
-                    newOcurrencePoint.style.backgroundColor = ocurrence.color 
-                    + '40'
-                }
-                var ocurrencePointData = document.createElement('div')
-                ocurrencePointData.className = styles.dashboardPointDataContainer
-                ocurrencePointData.innerHTML = `<div><h1>Month:</h1> <p>${ocurrence.month}</p></div> <div><h1>Sales:</h1> <p>${ocurrence.salesNum}</p></div> <div><h1>Earnings:</h1> <p>$${ocurrence.salesNum * products[pIndex]?.price}</p></div>`
-                dashboard.appendChild(newOcurrencePoint)
-                newOcurrencePoint.appendChild(ocurrencePointData)
+        var formatedOcurrences = []
+
+
+        allOcurrences?.map((p, i) => {
+            formatedOcurrences.push(p.filter((v) => v.year === selectedYear))
+        })
+
+        formatedOcurrences?.map((productOcurrences, pIndex) => productOcurrences?.sort(function(a,b) {return a.month - b.month}).map((ocurrence, index) => {
+            if (index === 0) {
+                ctx.beginPath()
+                ctx.moveTo(((7.91 * (ocurrence.month))/100) * 500, 352 - ((((100/highestYNum) * ocurrence.salesNum)/100) * 350))
             }
+            if (index > 0) {
+                ctx.lineTo(((7.91 * (ocurrence.month))/100) * 500, 352 - ((((100/highestYNum) * ocurrence.salesNum)/100) * 350))
+                ctx.lineWidth = 2
+                ctx.strokeStyle = allProducts[pIndex]?.className === `${products[pIndex]?.linedName} ${productsStyles.productContainer} ${productsStyles.selected}` ? ocurrence.color : `${ocurrence.color}40`
+            }
+            if (index === productOcurrences.length - 1) {
+                ctx.stroke()
+                ctx.closePath()
+            }
+            var newOcurrencePoint = document.createElement('div')
+            newOcurrencePoint.className = styles.dashboardPointModel
+            newOcurrencePoint.style.left = `${((7.91 * (ocurrence.month))/100) * 500}px`
+            newOcurrencePoint.style.top = `${340 - ((((100/highestYNum) * ocurrence.salesNum)/100) * 350)}px`
+           
+            if (allProducts[pIndex]?.classList.contains(products[pIndex]?.linedName)) {
+                newOcurrencePoint.style.backgroundColor = ocurrence.color
+            }else {
+                newOcurrencePoint.style.backgroundColor = ocurrence.color 
+                + '40'
+            }
+            var ocurrencePointData = document.createElement('div')
+            ocurrencePointData.className = styles.dashboardPointDataContainer
+            ocurrencePointData.innerHTML = `<div><h1>Month:</h1> <p>${ocurrence.month}</p></div> <div><h1>Sales:</h1> <p>${ocurrence.salesNum}</p></div> <div><h1>Earnings:</h1> <p>$${ocurrence.salesNum * products[pIndex]?.price}</p></div>`
+            dashboard.appendChild(newOcurrencePoint)
+            newOcurrencePoint.appendChild(ocurrencePointData)
         }))
     })
 
