@@ -2,7 +2,7 @@ import styles from './styles/Dashboard.module.css'
 import productsStyles from './styles/DataList.module.css'
 import { useState, useEffect } from 'react'
 
-export default function Dashboard( {hSalesNum, allOcurrences, products, selectedYear, setSelectedYear, view, setView} ) {
+export default function Dashboard( {hSalesNum, getHSalesNum, allOcurrences, products, selectedYear, setSelectedYear, view, setView} ) {
 
     const months = ['jan','feb', 'mar', 'apr', 'may', 'june', 'july', 'aug', 'sept', 'oct', 'nov', 'dec']
 
@@ -53,44 +53,77 @@ export default function Dashboard( {hSalesNum, allOcurrences, products, selected
 
         var ctx = c.getContext('2d')
 
-        var formatedOcurrences = []
+        if (view === 'month') {
+            var formatedOcurrences = []
 
+            allOcurrences?.map((p, i) => {
+                formatedOcurrences.push(p.filter((v) => v.year === selectedYear))
+            })
 
-        allOcurrences?.map((p, i) => {
-            formatedOcurrences.push(p.filter((v) => v.year === selectedYear))
-        })
+            formatedOcurrences?.map((productOcurrences, pIndex) => productOcurrences?.sort(function(a,b) {return a.month - b.month}).map((ocurrence, index) => {
+                if (index === 0) {
+                    ctx.beginPath()
+                    ctx.moveTo(((7.91 * (ocurrence.month))/100) * 500, 352 - ((((100/highestYNum) * ocurrence.salesNum)/100) * 350))
+                }
+                if (index > 0) {
+                    ctx.lineTo(((7.91 * (ocurrence.month))/100) * 500, 352 - ((((100/highestYNum) * ocurrence.salesNum)/100) * 350))
+                    ctx.lineWidth = 2
+                    ctx.strokeStyle = allProducts[pIndex]?.className === `${products[pIndex]?.linedName} ${productsStyles.productContainer} ${productsStyles.selected}` ? ocurrence.color : `${ocurrence.color}40`
+                }
+                if (index === productOcurrences.length - 1) {
+                    ctx.stroke()
+                    ctx.closePath()
+                }
+                var newOcurrencePoint = document.createElement('div')
+                newOcurrencePoint.className = styles.dashboardPointModel
+                newOcurrencePoint.style.left = `${((7.91 * (ocurrence.month))/100) * 500}px`
+                newOcurrencePoint.style.top = `${340 - ((((100/highestYNum) * ocurrence.salesNum)/100) * 350)}px`
+            
+                if (allProducts[pIndex]?.classList.contains(products[pIndex]?.linedName)) {
+                    newOcurrencePoint.style.backgroundColor = ocurrence.color
+                }else {
+                    newOcurrencePoint.style.backgroundColor = ocurrence.color 
+                    + '40'
+                }
+                var ocurrencePointData = document.createElement('div')
+                ocurrencePointData.className = styles.dashboardPointDataContainer
+                ocurrencePointData.innerHTML = `<div><h1>Month:</h1> <p>${ocurrence.month}</p></div> <div><h1>Sales:</h1> <p>${ocurrence.salesNum}</p></div> <div><h1>Earnings:</h1> <p>$${ocurrence.salesNum * products[pIndex]?.price}</p></div>`
+                dashboard.appendChild(newOcurrencePoint)
+                newOcurrencePoint.appendChild(ocurrencePointData)
+            }))
+        }
+        if (view === 'year') {
+            var yearOcurrences = []
 
-        formatedOcurrences?.map((productOcurrences, pIndex) => productOcurrences?.sort(function(a,b) {return a.month - b.month}).map((ocurrence, index) => {
-            if (index === 0) {
-                ctx.beginPath()
-                ctx.moveTo(((7.91 * (ocurrence.month))/100) * 500, 352 - ((((100/highestYNum) * ocurrence.salesNum)/100) * 350))
-            }
-            if (index > 0) {
-                ctx.lineTo(((7.91 * (ocurrence.month))/100) * 500, 352 - ((((100/highestYNum) * ocurrence.salesNum)/100) * 350))
-                ctx.lineWidth = 2
-                ctx.strokeStyle = allProducts[pIndex]?.className === `${products[pIndex]?.linedName} ${productsStyles.productContainer} ${productsStyles.selected}` ? ocurrence.color : `${ocurrence.color}40`
-            }
-            if (index === productOcurrences.length - 1) {
-                ctx.stroke()
-                ctx.closePath()
-            }
-            var newOcurrencePoint = document.createElement('div')
-            newOcurrencePoint.className = styles.dashboardPointModel
-            newOcurrencePoint.style.left = `${((7.91 * (ocurrence.month))/100) * 500}px`
-            newOcurrencePoint.style.top = `${340 - ((((100/highestYNum) * ocurrence.salesNum)/100) * 350)}px`
-           
-            if (allProducts[pIndex]?.classList.contains(products[pIndex]?.linedName)) {
-                newOcurrencePoint.style.backgroundColor = ocurrence.color
-            }else {
-                newOcurrencePoint.style.backgroundColor = ocurrence.color 
-                + '40'
-            }
-            var ocurrencePointData = document.createElement('div')
-            ocurrencePointData.className = styles.dashboardPointDataContainer
-            ocurrencePointData.innerHTML = `<div><h1>Month:</h1> <p>${ocurrence.month}</p></div> <div><h1>Sales:</h1> <p>${ocurrence.salesNum}</p></div> <div><h1>Earnings:</h1> <p>$${ocurrence.salesNum * products[pIndex]?.price}</p></div>`
-            dashboard.appendChild(newOcurrencePoint)
-            newOcurrencePoint.appendChild(ocurrencePointData)
-        }))
+            years.map((year) => {
+                allOcurrences.map((p) => p.map((ocurrence) => {
+                    if (ocurrence.year === year) {
+                        yearOcurrences.push(ocurrence)
+                    }
+                }))
+            })
+
+            years.map((year, yi) => {
+                var currentYearEarning = 0
+
+                yearOcurrences.map((elem) => {
+                    if (elem.year === year) {
+                        currentYearEarning = currentYearEarning + (elem.price * elem.salesNum)
+                    }
+                })
+
+                if (currentYearEarning > 0) {
+                    var newOcurrencePoint = document.createElement('div')
+                    newOcurrencePoint.className = styles.dashboardPointModel
+                    newOcurrencePoint.style.left = `${((8.25 * (yi + 1))/100) * 500}px`
+                    newOcurrencePoint.style.top = `${340 - ((((100/highestYNum) * currentYearEarning)/100) * 350)}px`
+                    newOcurrencePoint.style.backgroundColor = '#1872ff'
+                    dashboard.appendChild(newOcurrencePoint)
+                }
+
+            })
+        }
+        
     }
 
     useEffect(() => {
@@ -146,6 +179,8 @@ export default function Dashboard( {hSalesNum, allOcurrences, products, selected
                 }
                 onClick={() => {
                     setView('month')
+                    getHSalesNum()
+                    drawnCanvasLines()
                 }}>
                     <h1>Months</h1>
                 </button>
@@ -156,6 +191,8 @@ export default function Dashboard( {hSalesNum, allOcurrences, products, selected
                 }
                 onClick={() => {
                     setView('year')
+                    getHSalesNum()
+                    drawnCanvasLines()
                 }}>
                     <h1>Years</h1> 
                 </button>

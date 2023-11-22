@@ -20,26 +20,49 @@ function App() {
   const [hSalesNum, setHSalesNum] = useState(-1)
   const [allOcurrences, setAllOcurrences] = useState(undefined)
 
-  useEffect(() => {
-    var pOcurrences = []
+  const getHSalesNum = () => {
+    if (view === 'month') {
+      var pOcurrences = []
+  
+      pArr.map((product) => {
+        pOcurrences = [...pOcurrences, product.ocurrences]
+      })
+  
+      setAllOcurrences(pOcurrences)
+  
+      var hSalesNumVar = -1
+        
+      pOcurrences.map((elem) => {
+        elem?.map((ocurrence) => {
+          if (ocurrence.salesNum > hSalesNumVar) {
+            hSalesNumVar = ocurrence.salesNum
+          }
+        })
+      })
+    }else {
+      var hSalesNumVar = -1
+      var yearOcurrences = []
 
-    pArr.map((product) => {
-      pOcurrences = [...pOcurrences, product.ocurrences]
-    })
+      for (var i = 2013; i <= 2023; i++) {
+          allOcurrences.map((p) => p.map((ocurrence) => {
+              if (ocurrence.year === i) {
+                  yearOcurrences.push(ocurrence)
+              }
+          }))
+      }
 
-    setAllOcurrences(pOcurrences)
-
-    var hSalesNumVar = -1
-      
-    pOcurrences.map((elem) => {
-      elem?.map((ocurrence) => {
-        if (ocurrence.salesNum > hSalesNumVar) {
-          hSalesNumVar = ocurrence.salesNum
+      yearOcurrences.map((ocurrence) => {
+        if ((ocurrence.price * ocurrence.salesNum) > hSalesNumVar) {
+          hSalesNumVar = ocurrence.price * ocurrence.salesNum
         }
       })
-    })
+    }
 
     setHSalesNum(hSalesNumVar)
+  }
+
+  useEffect(() => {
+    getHSalesNum()
   }, [productEditI, productOcurrencesI, pArr])
 
   useEffect(() => {
@@ -55,7 +78,7 @@ function App() {
   return (
     <main>
       <DataForm formButtonFunc={(newProduct) => setPArr([...pArr, newProduct])} products={pArr}/>
-      <Dashboard view={view} setView={(requiredView) => setView(requiredView)} selectedYear={selectedYear} setSelectedYear={(year) => setSelectedYear(year)} products={pArr} hSalesNum={hSalesNum} allOcurrences={allOcurrences}/>
+      <Dashboard view={view} setView={(requiredView) => setView(requiredView)} selectedYear={selectedYear} setSelectedYear={(year) => setSelectedYear(year)} products={pArr} hSalesNum={hSalesNum} getHSalesNum={() => getHSalesNum()} allOcurrences={allOcurrences}/>
       <DataList productsArr={pArr} selectedYear={selectedYear} allOcurrences={allOcurrences}  hSalesNum={hSalesNum} editFunction={(productI) => setProductEditI(productI)} ocurrencesFunction={(productI) => setProductOcurrencesI(productI)} view={view}/>
 
       <EditTab productsArr={pArr} 

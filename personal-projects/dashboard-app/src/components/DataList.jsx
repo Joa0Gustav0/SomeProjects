@@ -79,7 +79,37 @@ export default function DataList( {productsArr, editFunction, ocurrencesFunction
                 newOcurrencePoint.appendChild(ocurrencePointData)
             }))
         }
+        if (view === 'year') {
+            var yearOcurrences = []
 
+            for (var i = 2013; i <= 2023; i++) {
+                allOcurrences.map((p) => p.map((ocurrence) => {
+                    if (ocurrence.year === i) {
+                        yearOcurrences.push(ocurrence)
+                    }
+                }))
+            }
+
+            for (var year = 2013; i <= 2023; year++) {
+                var currentYearEarning = 0
+
+                yearOcurrences.map((elem) => {
+                    if (elem.year === year) {
+                        currentYearEarning = currentYearEarning + (elem.price * elem.salesNum)
+                    }
+                })
+
+                if (currentYearEarning > 0) {
+                    var newOcurrencePoint = document.createElement('div')
+                    newOcurrencePoint.className = dashboardStyles.dashboardPointModel
+                    newOcurrencePoint.style.left = `${((8.25 * (year - 2012))/100) * 500}px`
+                    newOcurrencePoint.style.top = `${340 - ((((100/highestYNum) * currentYearEarning)/100) * 350)}px`
+                    newOcurrencePoint.style.backgroundColor = '#1872ff'
+                    dashboard.appendChild(newOcurrencePoint)
+                }
+            }
+
+        }
     }
 
     return (
