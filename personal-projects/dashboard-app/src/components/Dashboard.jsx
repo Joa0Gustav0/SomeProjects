@@ -2,14 +2,12 @@ import styles from './styles/Dashboard.module.css'
 import productsStyles from './styles/DataList.module.css'
 import { useState, useEffect } from 'react'
 
-export default function Dashboard( {hSalesNum, allOcurrences, products, selectedYear, setSelectedYear} ) {
-
-    const [view, setView] = useState("month")
+export default function Dashboard( {hSalesNum, allOcurrences, products, selectedYear, setSelectedYear, view, setView} ) {
 
     const months = ['jan','feb', 'mar', 'apr', 'may', 'june', 'july', 'aug', 'sept', 'oct', 'nov', 'dec']
 
     const years = []
-    const currentYear = new Date().getFullYear()
+    const currentYear = 2023
     const initialYear = currentYear - 10
 
     for (var i = initialYear; i <= currentYear; i++){
@@ -35,16 +33,12 @@ export default function Dashboard( {hSalesNum, allOcurrences, products, selected
     var allProducts = document.getElementsByClassName(productsStyles.productContainer)
     const dashboard = document.getElementById('dashboard')
 
-    useEffect(() => {
-
-        for (var childI = 0; childI < dashboard?.childNodes.length; childI++) {
-            if (dashboard?.childNodes[childI].className === styles.dashboardPointModel) {
-                dashboard?.childNodes[childI].remove()
-            }
-        }
-        for (var childI2 = 0; childI2 < dashboard?.childNodes.length; childI2++) {
-            if (dashboard?.childNodes[childI2].className === styles.dashboardPointModel) {
-                dashboard?.childNodes[childI2].remove()
+    const drawnCanvasLines = () => {
+        for (var i = 0; i <= 3; i++) {
+            for (var childI = 0; childI < dashboard?.childNodes.length; childI++) {
+                if (dashboard?.childNodes[childI].className === styles.dashboardPointModel) {
+                    dashboard?.childNodes[childI].remove()
+                }
             }
         }
 
@@ -97,6 +91,10 @@ export default function Dashboard( {hSalesNum, allOcurrences, products, selected
             dashboard.appendChild(newOcurrencePoint)
             newOcurrencePoint.appendChild(ocurrencePointData)
         }))
+    }
+
+    useEffect(() => {
+        drawnCanvasLines()
     })
 
     return (

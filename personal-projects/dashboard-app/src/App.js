@@ -10,6 +10,8 @@ import { useState, useEffect } from "react";
 function App() {
 
   var allProducts = document.getElementsByClassName(productsStyles.productContainer)
+  
+  const [view, setView] = useState("month")
 
   const [productEditI, setProductEditI] = useState(null)
   const [productOcurrencesI, setProductOcurrencesI] = useState(null)
@@ -48,17 +50,13 @@ function App() {
     })
   })
 
-  useEffect(() => {
-    
-  })
-
   const [selectedYear, setSelectedYear] = useState(2023)
 
   return (
     <main>
       <DataForm formButtonFunc={(newProduct) => setPArr([...pArr, newProduct])} products={pArr}/>
-      <Dashboard selectedYear={selectedYear} setSelectedYear={(year) => setSelectedYear(year)} products={pArr} hSalesNum={hSalesNum} allOcurrences={allOcurrences}/>
-      <DataList productsArr={pArr} selectedYear={selectedYear} allOcurrences={allOcurrences}  hSalesNum={hSalesNum} editFunction={(productI) => setProductEditI(productI)} ocurrencesFunction={(productI) => setProductOcurrencesI(productI)} />
+      <Dashboard view={view} setView={(requiredView) => setView(requiredView)} selectedYear={selectedYear} setSelectedYear={(year) => setSelectedYear(year)} products={pArr} hSalesNum={hSalesNum} allOcurrences={allOcurrences}/>
+      <DataList productsArr={pArr} selectedYear={selectedYear} allOcurrences={allOcurrences}  hSalesNum={hSalesNum} editFunction={(productI) => setProductEditI(productI)} ocurrencesFunction={(productI) => setProductOcurrencesI(productI)} view={view}/>
 
       <EditTab productsArr={pArr} 
         editProductI={productEditI} 
