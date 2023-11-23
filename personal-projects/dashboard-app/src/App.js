@@ -51,13 +51,20 @@ function App() {
           }))
       }
 
-      yearOcurrences.map((ocurrence) => {
-        if ((ocurrence.price * ocurrence.salesNum) > hSalesNumVar) {
-          hSalesNumVar = ocurrence.price * ocurrence.salesNum
-        }
-      })
-    }
+      for (var y = 2013; y <= 2023; y++) {
+        var yearEarning = 0
 
+        yearOcurrences.map((ocurrence) => {
+          if (ocurrence.year === y) {
+            yearEarning = yearEarning + (ocurrence.salesNum * ocurrence.price)
+          }
+        })
+
+        if (yearEarning > hSalesNumVar) {
+          hSalesNumVar = yearEarning
+        }
+      }
+    }
     setHSalesNum(hSalesNumVar)
   }
 
