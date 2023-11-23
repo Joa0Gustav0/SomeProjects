@@ -105,10 +105,12 @@ export default function Dashboard( {hSalesNum, getHSalesNum, allOcurrences, prod
 
             years.map((year, yi) => {
                 var currentYearEarning = 0
+                var currentYearSalesNum = 0
 
                 yearOcurrences.map((elem) => {
                     if (elem.year === year) {
                         currentYearEarning = currentYearEarning + (elem.price * elem.salesNum)
+                        currentYearSalesNum = currentYearSalesNum + elem.salesNum
                     }
                 })
 
@@ -119,12 +121,18 @@ export default function Dashboard( {hSalesNum, getHSalesNum, allOcurrences, prod
                     newOcurrencePoint.style.top = `${340 - ((((100/highestYNum) * currentYearEarning)/100) * 350)}px`
                     newOcurrencePoint.style.backgroundColor = '#1872ff'
                     dashboard.appendChild(newOcurrencePoint)
+
+                    var ocurrencePointData = document.createElement('div')
+                    ocurrencePointData.className = styles.dashboardPointDataContainer
+                    ocurrencePointData.innerHTML = `<div><h1>Year:</h1> <p>${year}</p></div> <div><h1>Sales:</h1> <p>${currentYearSalesNum}</p></div> <div><h1>Earnings:</h1> <p>$${currentYearEarning}</p></div>`
+                    newOcurrencePoint.appendChild(ocurrencePointData)
+
                     if (yi === 0) {
                         ctx.beginPath()
-                        ctx.moveTo(((8.25 * (yi + 1))/100) * 500, 350 - ((((100/highestYNum) * currentYearEarning)/100) * 350))
+                        ctx.moveTo(((8.25 * (yi + 1))/100) * 500, 352 - ((((100/highestYNum) * currentYearEarning)/100) * 350))
                     }
                     if (yi > 0) {
-                        ctx.lineTo(((8.25 * (yi + 1))/100) * 500, 350 - ((((100/highestYNum) * currentYearEarning)/100) * 350))
+                        ctx.lineTo(((8.25 * (yi + 1))/100) * 500, 352 - ((((100/highestYNum) * currentYearEarning)/100) * 350))
                         ctx.lineWidth = 2
                         ctx.strokeStyle = '#1872ff'
                     }

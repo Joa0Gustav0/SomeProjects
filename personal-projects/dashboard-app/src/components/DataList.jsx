@@ -92,6 +92,7 @@ export default function DataList( {productsArr, editFunction, ocurrencesFunction
 
             for (var year = 2013; year <= 2023; year++) {
                 var currentYearEarning = 0
+                var currentYearSalesNum = 0
 
                 yearOcurrences.map((elem) => {
                     if (elem.year === year) {
@@ -107,12 +108,17 @@ export default function DataList( {productsArr, editFunction, ocurrencesFunction
                     newOcurrencePoint.style.backgroundColor = '#1872ff'
                     dashboard.appendChild(newOcurrencePoint)
 
+                    var ocurrencePointData = document.createElement('div')
+                    ocurrencePointData.className = dashboardStyles.dashboardPointDataContainer
+                    ocurrencePointData.innerHTML = `<div><h1>Year:</h1> <p>${year}</p></div> <div><h1>Sales:</h1> <p>${currentYearSalesNum}</p></div> <div><h1>Earnings:</h1> <p>$${currentYearEarning}</p></div>`
+                    newOcurrencePoint.appendChild(ocurrencePointData)
+
                     if (year === 0) {
                         ctx.beginPath()
-                        ctx.moveTo(((8.25 * (year - 2012))/100) * 500, 350 - ((((100/highestYNum) * currentYearEarning)/100) * 350))
+                        ctx.moveTo(((8.25 * (year - 2012))/100) * 500, 352 - ((((100/highestYNum) * currentYearEarning)/100) * 350))
                     }
                     if (year > 0) {
-                        ctx.lineTo(((8.25 * (year - 2012))/100) * 500, 350 - ((((100/highestYNum) * currentYearEarning)/100) * 350))
+                        ctx.lineTo(((8.25 * (year - 2012))/100) * 500, 352 - ((((100/highestYNum) * currentYearEarning)/100) * 350))
                         ctx.lineWidth = 2
                         ctx.strokeStyle = '#1872ff'
                     }
