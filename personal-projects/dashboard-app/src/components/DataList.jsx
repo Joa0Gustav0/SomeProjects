@@ -90,7 +90,7 @@ export default function DataList( {productsArr, editFunction, ocurrencesFunction
                 }))
             }
 
-            for (var year = 2013; i <= 2023; year++) {
+            for (var year = 2013; year <= 2023; year++) {
                 var currentYearEarning = 0
 
                 yearOcurrences.map((elem) => {
@@ -106,6 +106,20 @@ export default function DataList( {productsArr, editFunction, ocurrencesFunction
                     newOcurrencePoint.style.top = `${340 - ((((100/highestYNum) * currentYearEarning)/100) * 350)}px`
                     newOcurrencePoint.style.backgroundColor = '#1872ff'
                     dashboard.appendChild(newOcurrencePoint)
+
+                    if (year === 0) {
+                        ctx.beginPath()
+                        ctx.moveTo(((8.25 * (year - 2012))/100) * 500, 350 - ((((100/highestYNum) * currentYearEarning)/100) * 350))
+                    }
+                    if (year > 0) {
+                        ctx.lineTo(((8.25 * (year - 2012))/100) * 500, 350 - ((((100/highestYNum) * currentYearEarning)/100) * 350))
+                        ctx.lineWidth = 2
+                        ctx.strokeStyle = '#1872ff'
+                    }
+                    if (year === 2023) {
+                        ctx.stroke()
+                        ctx.closePath()
+                    }
                 }
             }
 

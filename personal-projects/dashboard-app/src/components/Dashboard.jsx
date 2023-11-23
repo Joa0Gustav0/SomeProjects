@@ -119,6 +119,19 @@ export default function Dashboard( {hSalesNum, getHSalesNum, allOcurrences, prod
                     newOcurrencePoint.style.top = `${340 - ((((100/highestYNum) * currentYearEarning)/100) * 350)}px`
                     newOcurrencePoint.style.backgroundColor = '#1872ff'
                     dashboard.appendChild(newOcurrencePoint)
+                    if (yi === 0) {
+                        ctx.beginPath()
+                        ctx.moveTo(((8.25 * (yi + 1))/100) * 500, 350 - ((((100/highestYNum) * currentYearEarning)/100) * 350))
+                    }
+                    if (yi > 0) {
+                        ctx.lineTo(((8.25 * (yi + 1))/100) * 500, 350 - ((((100/highestYNum) * currentYearEarning)/100) * 350))
+                        ctx.lineWidth = 2
+                        ctx.strokeStyle = '#1872ff'
+                    }
+                    if (yi === years.length - 1) {
+                        ctx.stroke()
+                        ctx.closePath()
+                    }
                 }
 
             })

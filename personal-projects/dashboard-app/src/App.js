@@ -52,7 +52,7 @@ function App() {
       }
 
       for (var y = 2013; y <= 2023; y++) {
-        var yearEarning = 0
+        var yearEarning = -1
 
         yearOcurrences.map((ocurrence) => {
           if (ocurrence.year === y) {
