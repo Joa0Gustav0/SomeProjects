@@ -39,6 +39,9 @@ function App() {
           }
         })
       })
+
+      console.log(hSalesNumVar)
+
     }else {
       var hSalesNumVar = -1
       var yearOcurrences = []
@@ -64,6 +67,8 @@ function App() {
           hSalesNumVar = yearEarning
         }
       }
+
+      console.log(hSalesNumVar)
     }
     setHSalesNum(hSalesNumVar)
   }
@@ -85,7 +90,60 @@ function App() {
   return (
     <main>
       <DataForm formButtonFunc={(newProduct) => setPArr([...pArr, newProduct])} products={pArr}/>
-      <Dashboard view={view} setView={(requiredView) => setView(requiredView)} selectedYear={selectedYear} setSelectedYear={(year) => setSelectedYear(year)} products={pArr} hSalesNum={hSalesNum} getHSalesNum={() => getHSalesNum()} allOcurrences={allOcurrences}/>
+      <Dashboard view={view} setView={(requiredView) => {
+        setView(requiredView)
+        if (requiredView === 'month') {
+          var pOcurrences = []
+  
+          pArr.map((product) => {
+            pOcurrences = [...pOcurrences, product.ocurrences]
+          })
+      
+          setAllOcurrences(pOcurrences)
+      
+          var hSalesNumVar = -1
+            
+          pOcurrences.map((elem) => {
+            elem?.map((ocurrence) => {
+              if (ocurrence.salesNum > hSalesNumVar) {
+                hSalesNumVar = ocurrence.salesNum
+              }
+            })
+          })
+
+          setHSalesNum(hSalesNumVar)
+
+        }else {
+          var hSalesNumVar = -1
+          var yearOcurrences = []
+
+          for (var i = 2013; i <= 2023; i++) {
+              allOcurrences.map((p) => p.map((ocurrence) => {
+                  if (ocurrence.year === i) {
+                      yearOcurrences.push(ocurrence)
+                  }
+              }))
+          }
+
+          for (var y = 2013; y <= 2023; y++) {
+            var yearEarning = -1
+
+            yearOcurrences.map((ocurrence) => {
+              if (ocurrence.year === y) {
+                yearEarning = yearEarning + (ocurrence.salesNum * ocurrence.price)
+              }
+            })
+
+            if (yearEarning > hSalesNumVar) {
+              hSalesNumVar = yearEarning
+            }
+          }
+
+          setHSalesNum(hSalesNumVar)
+
+        } 
+
+      }} selectedYear={selectedYear} setSelectedYear={(year) => setSelectedYear(year)} products={pArr} hSalesNum={hSalesNum} getHSalesNum={() => getHSalesNum()} allOcurrences={allOcurrences}/>
       <DataList productsArr={pArr} selectedYear={selectedYear} allOcurrences={allOcurrences}  hSalesNum={hSalesNum} editFunction={(productI) => setProductEditI(productI)} ocurrencesFunction={(productI) => setProductOcurrencesI(productI)} view={view}/>
 
       <EditTab productsArr={pArr} 

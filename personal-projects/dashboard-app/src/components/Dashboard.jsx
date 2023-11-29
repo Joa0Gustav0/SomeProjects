@@ -29,6 +29,14 @@ export default function Dashboard( {hSalesNum, getHSalesNum, allOcurrences, prod
         }
     }, [hSalesNum])
 
+    useEffect(() => {
+        const highestYDashMark = document.getElementById('highest-y-dashmark')
+        if (dashboard !== undefined && dashboard !== null 
+            && highestYDashMark !== undefined && highestYDashMark !== null) {
+            dashboard.style.marginLeft = highestYDashMark.clientWidth - 15 + 'px'
+            dashboard.style.marginRight = highestYDashMark.clientWidth - 15 + 'px'
+        }
+    })
 
     var allProducts = document.getElementsByClassName(productsStyles.productContainer)
     const dashboard = document.getElementById('dashboard')
@@ -164,7 +172,7 @@ export default function Dashboard( {hSalesNum, getHSalesNum, allOcurrences, prod
             {
                 hSalesNum > -1 ?
                 dashMarksY.map((elem, i) => (
-                    <div key={'dashMarkY-' + i} style={{top: `${20 * i}%`}} className={styles.dashMarksY}>
+                    <div key={'dashMarkY-' + i} id={i === 0 ? 'highest-y-dashmark' : ''} style={{top: `${20 * i}%`}} className={styles.dashMarksY}>
                         {highestYNum - i * (highestYNum / 5)} -
                     </div>
                 ))
@@ -200,7 +208,6 @@ export default function Dashboard( {hSalesNum, getHSalesNum, allOcurrences, prod
                 }
                 onClick={() => {
                     setView('month')
-                    getHSalesNum()
                     drawnCanvasLines()
                 }}>
                     <h1>Months</h1>
@@ -212,7 +219,6 @@ export default function Dashboard( {hSalesNum, getHSalesNum, allOcurrences, prod
                 }
                 onClick={() => {
                     setView('year')
-                    getHSalesNum()
                     drawnCanvasLines()
                 }}>
                     <h1>Years</h1> 
