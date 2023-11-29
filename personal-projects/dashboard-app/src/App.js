@@ -20,6 +20,70 @@ function App() {
   const [hSalesNum, setHSalesNum] = useState(-1)
   const [allOcurrences, setAllOcurrences] = useState(undefined)
 
+  const setResponsiveState = (action) => {
+    const main = document.getElementById('main')
+    const dashboard = document.getElementById('dashboard')
+
+    const oldDashboardContainer = document.getElementById('dashboardContainer')
+    if (oldDashboardContainer !== null && oldDashboardContainer !== undefined) {
+      main.appendChild(dashboard)
+      oldDashboardContainer.remove()
+    }
+
+    if (action === 'break') {
+      var dashboardContainer = document.createElement('div')
+      dashboardContainer.id = 'dashboardContainer'
+      dashboardContainer.className = styles.dashboardContainer
+      const highestYDashMark = document.getElementById('highest-y-dashmark')
+      dashboard.style.margin = 'auto'
+      if (highestYDashMark !== null && highestYDashMark !== undefined) {
+        if (window.innerWidth <= 500 + highestYDashMark) {
+          dashboard.style.marginLeft = highestYDashMark.clientWidth + 'px'
+        } 
+      }else {
+        if (window.innerWidth <= 600) {
+          dashboard.style.marginLeft = '30px'
+        } 
+      }
+      main.appendChild(dashboardContainer)
+      dashboardContainer.appendChild(dashboard)
+    }
+  }
+
+  const responsiveFunction = () => {
+    const highestYDashMark = document.getElementById('highest-y-dashmark')
+    const main = document.getElementById('main')
+
+    if (highestYDashMark !== null && highestYDashMark !== undefined) {
+      if (window.innerWidth <= 1220 + (highestYDashMark.clientWidth * 2 - 27)) {
+        if (main !== undefined && main !== null) {
+          main.style.flexDirection = 'column'
+          setResponsiveState('break')
+        }
+      }else {
+        if (main !== undefined && main !== null) {   
+          main.style.flexDirection = 'row'
+          setResponsiveState()
+        }
+      }
+    }else {
+      if (window.innerWidth <= 1225) {
+        if (main !== undefined && main !== null) {
+          main.style.flexDirection = 'column'
+          setResponsiveState('break')
+        }
+      }else {
+        if (main !== undefined && main !== null) {   
+          main.style.flexDirection = 'row'
+          setResponsiveState()
+        }
+      }
+    }
+  }
+  
+  window.onload = responsiveFunction()
+  window.onresize = responsiveFunction()
+
   const getHSalesNum = () => {
     if (view === 'month') {
       var pOcurrences = []
@@ -39,8 +103,6 @@ function App() {
           }
         })
       })
-
-      console.log(hSalesNumVar)
 
     }else {
       var hSalesNumVar = -1
@@ -67,8 +129,6 @@ function App() {
           hSalesNumVar = yearEarning
         }
       }
-
-      console.log(hSalesNumVar)
     }
     setHSalesNum(hSalesNumVar)
   }
@@ -88,7 +148,7 @@ function App() {
   const [selectedYear, setSelectedYear] = useState(2023)
 
   return (
-    <main>
+    <main id='main'>
       <DataForm formButtonFunc={(newProduct) => setPArr([...pArr, newProduct])} products={pArr}/>
       <Dashboard view={view} setView={(requiredView) => {
         setView(requiredView)

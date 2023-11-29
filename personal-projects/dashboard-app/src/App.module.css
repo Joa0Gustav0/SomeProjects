@@ -4,10 +4,19 @@ main {
     flex-direction: row;
     align-items: center;
     justify-content: center;
-
+    
     gap: 30px;
     width: 100%;
+    margin: auto;
     padding: 30px;
     max-width: 1366px;
     min-height: 100vh;
+}
+
+.dashboardContainer {
+    width: 100%;
+    padding-top: 80px;
+    overflow-x: scroll;
+    padding-bottom: 30px;
+    border: 1px solid red;
 }
