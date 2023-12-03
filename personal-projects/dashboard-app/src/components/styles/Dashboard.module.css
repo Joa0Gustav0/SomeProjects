@@ -56,7 +56,7 @@
     display: flex;
     flex-direction: column;
 
-    z-index: 0;
+    z-index: 20;
     width: 80px;
     border-radius: 5px;
 }
@@ -108,6 +108,7 @@
     overflow-y: scroll;
     border-bottom: 1px solid black;
 }
+
 .yearsContainer button:nth-of-type(odd) {
     background-color: #ececec;
 }
@@ -167,6 +168,7 @@
     position: absolute;
     transform: translate(-50%, 75%);
 
+    z-index: 10;
     width: 10px;
     height: 10px;
     border-radius: 100%;
@@ -235,3 +237,4 @@
 .dashboardLineModel.deactivated {
     display: none;
 }
+

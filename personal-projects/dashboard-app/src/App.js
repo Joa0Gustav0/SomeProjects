@@ -20,70 +20,6 @@ function App() {
   const [hSalesNum, setHSalesNum] = useState(-1)
   const [allOcurrences, setAllOcurrences] = useState(undefined)
 
-  const setResponsiveState = (action) => {
-    const main = document.getElementById('main')
-    const dashboard = document.getElementById('dashboard')
-
-    const oldDashboardContainer = document.getElementById('dashboardContainer')
-    if (oldDashboardContainer !== null && oldDashboardContainer !== undefined) {
-      main.appendChild(dashboard)
-      oldDashboardContainer.remove()
-    }
-
-    if (action === 'break') {
-      var dashboardContainer = document.createElement('div')
-      dashboardContainer.id = 'dashboardContainer'
-      dashboardContainer.className = styles.dashboardContainer
-      const highestYDashMark = document.getElementById('highest-y-dashmark')
-      dashboard.style.margin = 'auto'
-      if (highestYDashMark !== null && highestYDashMark !== undefined) {
-        if (window.innerWidth <= 500 + highestYDashMark) {
-          dashboard.style.marginLeft = highestYDashMark.clientWidth + 'px'
-        } 
-      }else {
-        if (window.innerWidth <= 600) {
-          dashboard.style.marginLeft = '30px'
-        } 
-      }
-      main.appendChild(dashboardContainer)
-      dashboardContainer.appendChild(dashboard)
-    }
-  }
-
-  const responsiveFunction = () => {
-    const highestYDashMark = document.getElementById('highest-y-dashmark')
-    const main = document.getElementById('main')
-
-    if (highestYDashMark !== null && highestYDashMark !== undefined) {
-      if (window.innerWidth <= 1220 + (highestYDashMark.clientWidth * 2 - 27)) {
-        if (main !== undefined && main !== null) {
-          main.style.flexDirection = 'column'
-          setResponsiveState('break')
-        }
-      }else {
-        if (main !== undefined && main !== null) {   
-          main.style.flexDirection = 'row'
-          setResponsiveState()
-        }
-      }
-    }else {
-      if (window.innerWidth <= 1225) {
-        if (main !== undefined && main !== null) {
-          main.style.flexDirection = 'column'
-          setResponsiveState('break')
-        }
-      }else {
-        if (main !== undefined && main !== null) {   
-          main.style.flexDirection = 'row'
-          setResponsiveState()
-        }
-      }
-    }
-  }
-  
-  window.onload = responsiveFunction()
-  window.onresize = responsiveFunction()
-
   const getHSalesNum = () => {
     if (view === 'month') {
       var pOcurrences = []
@@ -151,59 +87,49 @@ function App() {
     <main id='main'>
       <DataForm formButtonFunc={(newProduct) => setPArr([...pArr, newProduct])} products={pArr}/>
       <Dashboard view={view} setView={(requiredView) => {
-        setView(requiredView)
-        if (requiredView === 'month') {
-          var pOcurrences = []
-  
-          pArr.map((product) => {
-            pOcurrences = [...pOcurrences, product.ocurrences]
-          })
-      
-          setAllOcurrences(pOcurrences)
-      
-          var hSalesNumVar = -1
-            
-          pOcurrences.map((elem) => {
-            elem?.map((ocurrence) => {
-              if (ocurrence.salesNum > hSalesNumVar) {
-                hSalesNumVar = ocurrence.salesNum
-              }
+          setView(requiredView)
+          if (requiredView === 'month') {
+            var pOcurrences = []
+            pArr.map((product) => {
+              pOcurrences = [...pOcurrences, product.ocurrences]
             })
-          })
-
-          setHSalesNum(hSalesNumVar)
-
-        }else {
-          var hSalesNumVar = -1
-          var yearOcurrences = []
-
-          for (var i = 2013; i <= 2023; i++) {
-              allOcurrences.map((p) => p.map((ocurrence) => {
-                  if (ocurrence.year === i) {
-                      yearOcurrences.push(ocurrence)
-                  }
-              }))
-          }
-
-          for (var y = 2013; y <= 2023; y++) {
-            var yearEarning = -1
-
-            yearOcurrences.map((ocurrence) => {
-              if (ocurrence.year === y) {
-                yearEarning = yearEarning + (ocurrence.salesNum * ocurrence.price)
-              }
+        
+            setAllOcurrences(pOcurrences)
+        
+            var hSalesNumVar = -1
+        
+            pOcurrences.map((elem) => {
+              elem?.map((ocurrence) => {
+                if (ocurrence.salesNum > hSalesNumVar) {
+                  hSalesNumVar = ocurrence.salesNum
+                }
+              })
             })
-
-            if (yearEarning > hSalesNumVar) {
-              hSalesNumVar = yearEarning
+            setHSalesNum(hSalesNumVar)
+          }else {
+            var hSalesNumVar = -1
+            var yearOcurrences = []
+            for (var i = 2013; i <= 2023; i++) {
+                allOcurrences.map((p) => p.map((ocurrence) => {
+                    if (ocurrence.year === i) {
+                        yearOcurrences.push(ocurrence)
+                    }
+                }))
             }
+            for (var y = 2013; y <= 2023; y++) {
+              var yearEarning = -1
+              yearOcurrences.map((ocurrence) => {
+                if (ocurrence.year === y) {
+                  yearEarning = yearEarning + (ocurrence.salesNum * ocurrence.price)
+                }
+              })
+              if (yearEarning > hSalesNumVar) {
+                hSalesNumVar = yearEarning
+              }
+            }
+            setHSalesNum(hSalesNumVar)
           }
-
-          setHSalesNum(hSalesNumVar)
-
-        } 
-
-      }} selectedYear={selectedYear} setSelectedYear={(year) => setSelectedYear(year)} products={pArr} hSalesNum={hSalesNum} getHSalesNum={() => getHSalesNum()} allOcurrences={allOcurrences}/>
+        }} selectedYear={selectedYear} setSelectedYear={(year) => setSelectedYear(year)} products={pArr} hSalesNum={hSalesNum} getHSalesNum={() => getHSalesNum()} allOcurrences={allOcurrences}/>
       <DataList productsArr={pArr} selectedYear={selectedYear} allOcurrences={allOcurrences}  hSalesNum={hSalesNum} editFunction={(productI) => setProductEditI(productI)} ocurrencesFunction={(productI) => setProductOcurrencesI(productI)} view={view}/>
 
       <EditTab productsArr={pArr} 

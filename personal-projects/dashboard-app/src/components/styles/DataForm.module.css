@@ -1,15 +1,25 @@
 .dataFormContainer {
+    transition: all .5s;
+    position: absolute;
+    top: -400px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
 
+    z-index: 100;
     width: 100%;
     padding: 20px;
     max-width: 300px;
     border-radius: 5px;
     background-color: white;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.205);
+}
+.dataFormContainer.active {
+    top: 50%;
 }
 
 .dataFormContainer > h1 {
@@ -90,4 +100,80 @@
 .dataFormContainer > button:active {
     color: #1872ff;
     background-color: white;
+}
+
+.dataFormContainer > ion-icon{
+    transition: all .1s;
+
+    position: absolute;
+    top: 5px;
+    right: 5px;
+
+    width: 25px;
+    height: 25px;
+    padding: 5px;
+    border-radius: 100%;
+    background-color: rgba(0, 0, 0, 0);
+}
+.dataFormContainer > ion-icon:hover{
+    cursor: pointer;
+    color: #1877f2;
+}
+.dataFormContainer > ion-icon:active{
+    background-color: rgba(0, 0, 0, .1);
+}
+
+.APButton {
+    transition: all .15s;
+    position: absolute;
+    top: 30px;
+    right: 30px;
+
+    display: flex;
+    align-items: center ;
+    justify-content: center;
+
+    border: 0;
+    outline: none;
+    padding: 5px;
+    border-radius: 100%;
+    background-color: #1872ff;
+}
+.APButton > ion-icon {
+    transition: all .15s;
+    width: 30px;
+    height: 30px;
+    color: white;
+}
+.APButton:hover {
+    background-color: #1566e7;
+}
+.APButton:hover > ion-icon {
+    cursor: pointer;
+    transform: scale(115%, 115%);
+}
+.APButton:active {
+    color: #1566e7;
+    background-color: white;
+}
+.APButton:active > ion-icon {
+    color: #1566e7;
+    transform: scale(95%, 95%);
+}
+
+.safeLayer {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    display: none;
+
+    z-index: 99;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.safeLayer.active {
+    display: block;
 }

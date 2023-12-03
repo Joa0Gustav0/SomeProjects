@@ -29,8 +29,9 @@ export default function Dashboard( {hSalesNum, getHSalesNum, allOcurrences, prod
         }
     }, [hSalesNum])
 
+    var highestYDashMark = document.getElementById('highest-y-dashmark') 
     useEffect(() => {
-        const highestYDashMark = document.getElementById('highest-y-dashmark')
+        highestYDashMark = document.getElementById('highest-y-dashmark')
         if (dashboard !== undefined && dashboard !== null 
             && highestYDashMark !== undefined && highestYDashMark !== null) {
             dashboard.style.marginLeft = highestYDashMark.clientWidth - 15 + 'px'
@@ -160,10 +161,8 @@ export default function Dashboard( {hSalesNum, getHSalesNum, allOcurrences, prod
     })
 
     return (
-        <aside id='dashboard' className={styles.dashBoard}>
-
+        <aside id='dashboard' className={styles.dashBoard} style={{}}>
             <canvas key={'canvas'} width={500} height={350} id='dashboardCanvas'></canvas>
-
             {
                 dashMarksY.map((elem, i) => (
                     <div key={'line-' + i} className={hSalesNum > -1 ? `${styles.xLines} ${styles.enabled}` : styles.xLines} style={{top: `${20 * i}%`}}></div>
@@ -179,13 +178,12 @@ export default function Dashboard( {hSalesNum, getHSalesNum, allOcurrences, prod
                 :
                 <div key={'empty-value-y'} className={styles.emptyY}>
                     X -
-                </div> 
+                </div>
             }
             <div key={'zero-value-y'} className={styles.zero}>
                 0 -
-            </div> 
-
-            <span className={styles.yearsView} 
+            </div>
+            <span className={styles.yearsView}
                 style={view === 'month' ? {display: 'block'} : {display: 'none'}}>
                 <button style={yearBttStt === 'activated' ? {borderRadius: '5px 5px 0px 0px'} : {borderRadius: '5px'}} onClick={() => yearBttStt === 'activated' ? setYearBttStt('deactivated') : setYearBttStt('activated')}>{selectedYear} <ion-icon name='chevron-down'></ion-icon></button>
                 <div id='yC' className={styles.yearsContainer}
@@ -196,10 +194,8 @@ export default function Dashboard( {hSalesNum, getHSalesNum, allOcurrences, prod
                         ))
                     }
                 </div>
-
                 <h1>Year</h1>
             </span>
-
             <span className={styles.dashView}>
                 <button className={
                     view !== 'month' ?
@@ -221,26 +217,25 @@ export default function Dashboard( {hSalesNum, getHSalesNum, allOcurrences, prod
                     setView('year')
                     drawnCanvasLines()
                 }}>
-                    <h1>Years</h1> 
+                    <h1>Years</h1>
                 </button>
             </span>
             {
                 view === 'month' ?
-                
+        
                 months.map((elem, i) => (
-                    <div key={elem + '-month'} 
-                    className={styles.dashMark} 
+                    <div key={elem + '-month'}
+                    className={styles.dashMark}
                     style={{left: `${7.91 * (i + 1)}%`}}>
                         | <br />
                         {elem}
                     </div>
                 ))
-
                 :
-                
+        
                 years.map((elem, i) => (
-                    <div key={elem + '-month'} 
-                    className={styles.dashMark} 
+                    <div key={elem + '-month'}
+                    className={styles.dashMark}
                     style={{left: `${8.25 * (i + 1)}%`}}>
                         | <br />
                         {elem}

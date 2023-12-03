@@ -5,7 +5,7 @@ main {
     align-items: center;
     justify-content: center;
     
-    gap: 30px;
+    gap: 60px;
     width: 100%;
     margin: auto;
     padding: 30px;
@@ -13,10 +13,3 @@ main {
     min-height: 100vh;
 }
 
-.dashboardContainer {
-    width: 100%;
-    padding-top: 80px;
-    overflow-x: scroll;
-    padding-bottom: 30px;
-    border: 1px solid red;
-}
