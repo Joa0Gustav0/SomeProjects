@@ -3,6 +3,7 @@ import Dashboard from "./components/Dashboard";
 import DataList from "./components/DataList";
 import EditTab from "./components/EditTab";
 import Header from "./components/Header";
+import Footer from './components/Footer'
 import OcurrencesTab from "./components/OcurrencesTab";
 import productsStyles from './components/styles/DataList.module.css'
 import styles from './App.module.css'
@@ -13,6 +14,8 @@ function App() {
   var allProducts = document.getElementsByClassName(productsStyles.productContainer)
   
   const [view, setView] = useState("month")
+
+  const [darkMode, setDarkMode] = useState(false)
 
   const [productEditI, setProductEditI] = useState(null)
   const [productOcurrencesI, setProductOcurrencesI] = useState(null)
@@ -86,7 +89,7 @@ function App() {
 
   return (
     <>
-    <Header />
+    <Header darkMode={darkMode} setDarkMode={() => setDarkMode(!darkMode)}/>
     <main id='main'>
       <DataForm formButtonFunc={(newProduct) => setPArr([...pArr, newProduct])} products={pArr}/>
       <Dashboard view={view} setView={(requiredView) => {
@@ -176,6 +179,7 @@ function App() {
           }
         }}/>
     </main>
+    <Footer />
     </>
   );
 }

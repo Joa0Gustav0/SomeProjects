@@ -10,6 +10,7 @@
 }
 
 .dashboardContainer {
+    position: relative;
     overflow-x: scroll;
     padding-left: 30px;
 }

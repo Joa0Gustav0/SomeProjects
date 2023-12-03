@@ -6,7 +6,6 @@ header {
     gap: 5px;
     width: 100%;
     padding: 20px;
-    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.05);
 }
 header img {
     width: 50px;
@@ -23,4 +22,32 @@ header a {
     text-decoration: none;
     text-transform: uppercase;
     font-family: 'Ubuntu Mono', sans-serif;
+}
+
+header > ion-icon {
+    transition: all .1s;
+    position: absolute;
+    right: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+
+    width: 20px;
+    height: 20px;
+    padding: 5px;
+    color: black;
+    border-radius: 100%;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0);
+}
+header > ion-icon:hover {
+    cursor: pointer;
+    width: 22.5px;
+    height: 22.5px;
+    right: 29.5px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, .1);
+}
+header > ion-icon:active {
+    right: 25;
+    width: 20px;
+    height: 20px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0);
 }
