@@ -1,4 +1,5 @@
 .dashBoard {
+    transition: all .25s;
     position: relative;
 
     width: 500px;
@@ -7,6 +8,11 @@
     margin-bottom: 30px;
     border-left: 1px solid black;
     border-bottom: 1px solid black;
+}
+.dashBoard.dark {
+    color: white;
+    border-left: 1px solid white;
+    border-bottom: 1px solid white;
 }
 
 .dashboardContainer {
@@ -19,6 +25,7 @@
 }
 
 .dashView {
+    transition: all .25s;
     position: absolute;
     top: -30px;
     left: 50%;
@@ -34,6 +41,9 @@
     background-color: white;
     box-shadow: inset 0px 0px 2.5px rgba(0, 0, 0, 0.267);
 }
+.dashView.dark {
+    background-color: #252525;
+}
 
 .dashView > button {
     transition: all .25s;
@@ -46,13 +56,16 @@
     text-transform: uppercase;
     background-color: transparent;
 }
+.dashView.dark > button {
+    color: white;
+    background-color: #252525;
+}
 .dashView > button:not(.active):hover {
     cursor: pointer;
     color: #1872ff;
 }
 
-.monthButton.active,
-.yearButton.active {
+.dashView > button.active {
     color: white;
     background-color: #1872ff;
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.233);
@@ -173,6 +186,9 @@
 .xLines.enabled {
     border-top: 1px solid hsla(0, 0%, 0%, 0.25);
 }
+.xLines.dark.enabled {
+    border-top: 1px solid hsla(0, 0%, 100%, 0.151);
+}
 
 .dashboardPointModel {
     transition: all .25s;
@@ -212,6 +228,9 @@
     background-color: white;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
 }
+.dashBoard.dark .dashboardPointDataContainer {
+    background-color: #252525;
+}
 .dashboardPointModel:hover > div {
     top: calc(-300% - 10px);
     opacity: 1;
@@ -226,6 +245,10 @@
 .dashboardPointDataContainer div:not(:last-of-type):not(:first-of-type) {
     border-left: 1px solid rgba(0, 0, 0, 0.25);
     border-right: 1px solid rgba(0, 0, 0, 0.25);
+}
+.dashBoard.dark .dashboardPointDataContainer div:not(:last-of-type):not(:first-of-type) {
+    border-left: 1px solid rgba(255, 255, 255, 0.25);
+    border-right: 1px solid rgba(255, 255, 255, 0.25);
 }
 .dashboardPointDataContainer h1{
     width: 100%;

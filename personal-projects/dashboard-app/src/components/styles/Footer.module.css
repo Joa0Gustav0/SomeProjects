@@ -1,4 +1,5 @@
 footer{
+    transition: all .25s;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -6,6 +7,9 @@ footer{
 
     width: 100%;
     padding: 10px 30px;
+}
+footer.dark {
+    background-color: #202020;
 }
 
 footer > img {
@@ -15,7 +19,11 @@ footer > img {
 }
 
 .rightsText{
+    transition: all .25s;
     color: black;
     font-weight: 600;
     font-size: .8em;
+}
+.rightsText.dark {
+    color: white;
 }

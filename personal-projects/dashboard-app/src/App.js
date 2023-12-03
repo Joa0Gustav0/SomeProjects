@@ -90,9 +90,9 @@ function App() {
   return (
     <>
     <Header darkMode={darkMode} setDarkMode={() => setDarkMode(!darkMode)}/>
-    <main id='main'>
-      <DataForm formButtonFunc={(newProduct) => setPArr([...pArr, newProduct])} products={pArr}/>
-      <Dashboard view={view} setView={(requiredView) => {
+    <main id='main' style={darkMode === true ? {backgroundColor: '#151515'} : {backgroundColor: 'white'}}>
+      <DataForm darkMode={darkMode} formButtonFunc={(newProduct) => setPArr([...pArr, newProduct])} products={pArr}/>
+      <Dashboard darkMode={darkMode} view={view} setView={(requiredView) => {
           setView(requiredView)
           if (requiredView === 'month') {
             var pOcurrences = []
@@ -136,9 +136,9 @@ function App() {
             setHSalesNum(hSalesNumVar)
           }
         }} selectedYear={selectedYear} setSelectedYear={(year) => setSelectedYear(year)} products={pArr} hSalesNum={hSalesNum} getHSalesNum={() => getHSalesNum()} allOcurrences={allOcurrences}/>
-      <DataList productsArr={pArr} selectedYear={selectedYear} allOcurrences={allOcurrences}  hSalesNum={hSalesNum} editFunction={(productI) => setProductEditI(productI)} ocurrencesFunction={(productI) => setProductOcurrencesI(productI)} view={view}/>
+      <DataList darkMode={darkMode} productsArr={pArr} selectedYear={selectedYear} allOcurrences={allOcurrences}  hSalesNum={hSalesNum} editFunction={(productI) => setProductEditI(productI)} ocurrencesFunction={(productI) => setProductOcurrencesI(productI)} view={view}/>
 
-      <EditTab productsArr={pArr} 
+      <EditTab darkMode={darkMode} productsArr={pArr} 
         editProductI={productEditI} 
         editableProduct={productEditI}
         closeNClear={(action, i) => {
@@ -158,7 +158,7 @@ function App() {
       {/* create a function for removing ocurrences */}
 
 
-      <OcurrencesTab pArr={pArr}
+      <OcurrencesTab darkMode={darkMode} pArr={pArr}
         selectedYear={selectedYear}
         ocurrences={allOcurrences?.sort(function (a, b) {
           return b.month - a.month
@@ -179,7 +179,7 @@ function App() {
           }
         }}/>
     </main>
-    <Footer />
+    <Footer darkMode={darkMode}/>
     </>
   );
 }

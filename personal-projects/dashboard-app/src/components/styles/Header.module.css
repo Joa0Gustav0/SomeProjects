@@ -1,11 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap');
 
 header {
+    transition: all .25s;
     position: relative;
 
     gap: 5px;
     width: 100%;
     padding: 20px;
+}
+header.dark {
+    background-color: #202020;
 }
 header img {
     width: 50px;

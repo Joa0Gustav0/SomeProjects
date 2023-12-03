@@ -1,7 +1,7 @@
 import styles from './styles/OcurrencesTab.module.css'
 import { useState } from 'react'
 
-export default function OcurrencesTab( {pArr, pIndex, addOcurrenceFunction, closeTab, selectedYear} ) {
+export default function OcurrencesTab( {pArr, pIndex, addOcurrenceFunction, closeTab, selectedYear, darkMode} ) {
 
     const [bttState, setBttState] = useState('deactivated')
     const month = document.getElementById('month-input')
@@ -34,7 +34,7 @@ export default function OcurrencesTab( {pArr, pIndex, addOcurrenceFunction, clos
     return (
         <>
             <div className={pIndex !== null ? `${styles.safeLayer} ${styles.active}` : styles.safeLayer}></div>
-            <div className={pIndex !== null ? `${styles.ocurrencesTab} ${styles.active}` : styles.ocurrencesTab}>
+            <div className={pIndex === null ? darkMode === true ? `${styles.ocurrencesTab} ${styles.dark}` : styles.ocurrencesTab : darkMode === true ? `${styles.ocurrencesTab} ${styles.dark} ${styles.active}` : `${styles.ocurrencesTab} ${styles.active}`}>
                 <h1>Add Ocurrences</h1>
                 <p>You are adding ocurrences to: <br />
                     <span>{pArr[pIndex]?.name}</span>

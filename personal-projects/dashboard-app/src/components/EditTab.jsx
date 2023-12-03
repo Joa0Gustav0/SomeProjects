@@ -1,7 +1,7 @@
 import styles from './styles/EditTab.module.css'
 import { useState } from 'react'
 
-export default function EditTab( {productsArr, editProductI, closeNClear, saveChanges} ) {
+export default function EditTab( {productsArr, editProductI, closeNClear, saveChanges, darkMode} ) {
 
     const [buttonState, setButtonState] = useState('deactivated')
     const pNameInput = document.getElementById("product-input-edit")
@@ -58,7 +58,7 @@ export default function EditTab( {productsArr, editProductI, closeNClear, saveCh
     return (
         <>
             <div className={editProductI !== null ? `${styles.safeLayer} ${styles.active}` : styles.safeLayer}></div>
-            <div className={editProductI !== null ? `${styles.editTabContainer} ${styles.active}` : styles.editTabContainer}>
+            <div className={editProductI === null ? darkMode === true ? `${styles.editTabContainer} ${styles.dark}` : styles.editTabContainer : darkMode === true ? `${styles.editTabContainer} ${styles.dark} ${styles.active}` : `${styles.editTabContainer} ${styles.active}`}>
                 <h1>Edit Product</h1>
                 <p>The product you are editing is: <br /><span>{productsArr[editProductI]?.name}</span></p>
                 <label htmlFor="product-input-edit">Product:</label>

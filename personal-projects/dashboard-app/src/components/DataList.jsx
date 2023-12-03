@@ -2,7 +2,7 @@ import styles from './styles/DataList.module.css'
 import dashboardStyles from './styles/Dashboard.module.css'
 import { useState, useEffect } from 'react'
 
-export default function DataList( {productsArr, editFunction, ocurrencesFunction, allOcurrences, hSalesNum, selectedYear, view} ) {
+export default function DataList( {productsArr, editFunction, ocurrencesFunction, allOcurrences, hSalesNum, selectedYear, view, darkMode} ) {
 
     const allProducts = document.getElementsByClassName(styles.productContainer)
 
@@ -133,7 +133,7 @@ export default function DataList( {productsArr, editFunction, ocurrencesFunction
     }
 
     return (
-        <aside id='data-list' className={styles.dataListContainer}>
+        <aside id='data-list' className={darkMode === true ? `${styles.dataListContainer} ${styles.dark}` : styles.dataListContainer}>
             <h1>Products <span>({productsArr.length} items)</span></h1>
             <div className={styles.dataList__List} style={productsArr?.length > 0 ? {justifyContent: "flex-start"} : {justifyContent: "center"}}>
 

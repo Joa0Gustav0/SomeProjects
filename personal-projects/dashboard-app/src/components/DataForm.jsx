@@ -1,7 +1,7 @@
 import styles from './styles/DataForm.module.css'
 import { useState, useEffect } from 'react'
 
-export default function DataForm( {formButtonFunc, products} ) {
+export default function DataForm( {formButtonFunc, products, darkMode} ) {
 
     const pColor = document.getElementById("caption-input")
     window.onload = () => {
@@ -78,7 +78,7 @@ export default function DataForm( {formButtonFunc, products} ) {
         <>
             <button className={styles.APButton} onClick={() => setAddingData(!addingData)}><ion-icon name='add'></ion-icon></button>
             <div className={addingData === true ? `${styles.safeLayer} ${styles.active}` : styles.safeLayer}></div>
-            <div className={addingData !== true ? styles.dataFormContainer : `${styles.dataFormContainer} ${styles.active}`}>
+            <div className={addingData !== true ? darkMode === true ? `${styles.dataFormContainer} ${styles.dark}` : styles.dataFormContainer : darkMode === true ? `${styles.dataFormContainer} ${styles.dark} ${styles.active}` : `${styles.dataFormContainer} ${styles.active}`}>
                 <h1>Add New product</h1>
                 <label htmlFor="product-input">
                     <h2>Product:</h2>

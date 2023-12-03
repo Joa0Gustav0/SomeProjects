@@ -1,6 +1,6 @@
 .dataFormContainer {
     transition: all .5s;
-    position: absolute;
+    position: fixed;
     top: -400px;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -21,6 +21,9 @@
 .dataFormContainer.active {
     top: 50%;
 }
+.dataFormContainer.dark {
+    background-color: #252525;
+}
 
 .dataFormContainer > h1 {
     color: #1872ff;
@@ -33,6 +36,9 @@
     font-weight: 500;
     font-size: 1.25em;
 }
+.dataFormContainer.dark > label > h2 {
+    color: white;
+}
 
 .dataFormContainer > input:not(:last-of-type) {
     width: 100%;
@@ -40,7 +46,12 @@
     padding: 5px;
     outline: none;
     margin-bottom: 20px;
+    background-color: transparent;
     border-bottom: 1px solid black;
+}
+.dataFormContainer.dark > input:not(:last-of-type) {
+    color: white;
+    border-bottom: 1px solid white;
 }
 
 .dataFormContainer > input:not(:last-of-type).onErr {
@@ -101,6 +112,9 @@
     color: #1872ff;
     background-color: white;
 }
+.dataFormContainer.dark > button:active {
+    background-color: #353535;
+}
 
 .dataFormContainer > ion-icon{
     transition: all .1s;
@@ -114,6 +128,9 @@
     padding: 5px;
     border-radius: 100%;
     background-color: rgba(0, 0, 0, 0);
+}
+.dataFormContainer.dark > ion-icon {
+    color: white;
 }
 .dataFormContainer > ion-icon:hover{
     cursor: pointer;

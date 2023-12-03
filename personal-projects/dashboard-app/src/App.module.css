@@ -1,4 +1,5 @@
 main {
+    transition: all .25s;
     position: relative;
 
     display: flex;

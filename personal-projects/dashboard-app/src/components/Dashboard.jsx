@@ -2,7 +2,7 @@ import styles from './styles/Dashboard.module.css'
 import productsStyles from './styles/DataList.module.css'
 import { useState, useEffect } from 'react'
 
-export default function Dashboard( {hSalesNum, getHSalesNum, allOcurrences, products, selectedYear, setSelectedYear, view, setView} ) {
+export default function Dashboard( {hSalesNum, getHSalesNum, allOcurrences, products, selectedYear, setSelectedYear, view, setView, darkMode} ) {
 
     const months = ['jan','feb', 'mar', 'apr', 'may', 'june', 'july', 'aug', 'sept', 'oct', 'nov', 'dec']
 
@@ -162,11 +162,11 @@ export default function Dashboard( {hSalesNum, getHSalesNum, allOcurrences, prod
 
     return (
         <div className={styles.dashboardContainer} style={{paddingLeft: `${highestYDashMark?.clientWidth}`}}>
-            <aside id='dashboard' className={styles.dashBoard} style={{}}>
+            <aside id='dashboard' className={darkMode === true ? `${styles.dashBoard} ${styles.dark}` : styles.dashBoard} style={{}}>
                 <canvas key={'canvas'} width={500} height={350} id='dashboardCanvas'></canvas>
                 {
                     dashMarksY.map((elem, i) => (
-                        <div key={'line-' + i} className={hSalesNum > -1 ? `${styles.xLines} ${styles.enabled}` : styles.xLines} style={{top: `${20 * i}%`}}></div>
+                        <div key={'line-' + i} className={hSalesNum > -1 ? darkMode === true ?`${styles.xLines} ${styles.dark} ${styles.enabled}` : `${styles.xLines} ${styles.enabled}` : darkMode === true ? `${styles.xLines} ${styles.dark}` : styles.xLines} style={{top: `${20 * i}%`}}></div>
                     ))
                 }
                 {
@@ -197,7 +197,7 @@ export default function Dashboard( {hSalesNum, getHSalesNum, allOcurrences, prod
                     </div>
                     <h1>Year</h1>
                 </span>
-                <span className={styles.dashView}>
+                <span className={darkMode === true ? `${styles.dashView} ${styles.dark}` : styles.dashView}>
                     <button className={
                         view !== 'month' ?
                         styles.monthButton :

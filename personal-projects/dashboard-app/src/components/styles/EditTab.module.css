@@ -19,6 +19,9 @@
     background-color: white;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
 }
+.editTabContainer.dark {
+    background-color: #252525;
+}
 
 .editTabContainer.active {
     top: 50%;
@@ -36,6 +39,9 @@
     text-align: center;
     margin-bottom: 20px;
 }
+.editTabContainer.dark > p {
+    color: white;
+}
 
 .editTabContainer > p > span {
     color: #1877f2;
@@ -47,7 +53,9 @@
 .editTabContainer > label {
     font-weight: 500;
     font-size: 1.25em;
-
+}
+.editTabContainer.dark > label {
+    color: white;
 }
 
 .editTabContainer > input {
@@ -56,7 +64,12 @@
     padding: 5px;
     outline: none;
     margin-bottom: 20px;
+    background-color: transparent;
     border-bottom: 1px solid black;
+}
+.editTabContainer.dark > input {
+    color: white;
+    border-bottom: 1px solid white;
 }
 
 .scButton, .delButton {
@@ -97,6 +110,10 @@
     color: #1877f2;
     background-color: white;
 }
+.editTabContainer.dark .scButton.enabled:active , 
+.editTabContainer.dark .delButton:active{
+    background-color: #353535;
+}
 
 .editTabContainer > ion-icon{
     transition: all .1s;
@@ -110,6 +127,9 @@
     padding: 5px;
     border-radius: 100%;
     background-color: rgba(0, 0, 0, 0);
+}
+.editTabContainer.dark > ion-icon {
+    color: white;
 }
 .editTabContainer > ion-icon:hover{
     cursor: pointer;
