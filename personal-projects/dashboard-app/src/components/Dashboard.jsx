@@ -161,87 +161,89 @@ export default function Dashboard( {hSalesNum, getHSalesNum, allOcurrences, prod
     })
 
     return (
-        <aside id='dashboard' className={styles.dashBoard} style={{}}>
-            <canvas key={'canvas'} width={500} height={350} id='dashboardCanvas'></canvas>
-            {
-                dashMarksY.map((elem, i) => (
-                    <div key={'line-' + i} className={hSalesNum > -1 ? `${styles.xLines} ${styles.enabled}` : styles.xLines} style={{top: `${20 * i}%`}}></div>
-                ))
-            }
-            {
-                hSalesNum > -1 ?
-                dashMarksY.map((elem, i) => (
-                    <div key={'dashMarkY-' + i} id={i === 0 ? 'highest-y-dashmark' : ''} style={{top: `${20 * i}%`}} className={styles.dashMarksY}>
-                        {highestYNum - i * (highestYNum / 5)} -
+        <div className={styles.dashboardContainer} style={{paddingLeft: `${highestYDashMark?.clientWidth}`}}>
+            <aside id='dashboard' className={styles.dashBoard} style={{}}>
+                <canvas key={'canvas'} width={500} height={350} id='dashboardCanvas'></canvas>
+                {
+                    dashMarksY.map((elem, i) => (
+                        <div key={'line-' + i} className={hSalesNum > -1 ? `${styles.xLines} ${styles.enabled}` : styles.xLines} style={{top: `${20 * i}%`}}></div>
+                    ))
+                }
+                {
+                    hSalesNum > -1 ?
+                    dashMarksY.map((elem, i) => (
+                        <div key={'dashMarkY-' + i} id={i === 0 ? 'highest-y-dashmark' : ''} style={{top: `${20 * i}%`}} className={styles.dashMarksY}>
+                            {highestYNum - i * (highestYNum / 5)} -
+                        </div>
+                    ))
+                    :
+                    <div key={'empty-value-y'} className={styles.emptyY}>
+                        X -
                     </div>
-                ))
-                :
-                <div key={'empty-value-y'} className={styles.emptyY}>
-                    X -
+                }
+                <div key={'zero-value-y'} className={styles.zero}>
+                    0 -
                 </div>
-            }
-            <div key={'zero-value-y'} className={styles.zero}>
-                0 -
-            </div>
-            <span className={styles.yearsView}
-                style={view === 'month' ? {display: 'block'} : {display: 'none'}}>
-                <button style={yearBttStt === 'activated' ? {borderRadius: '5px 5px 0px 0px'} : {borderRadius: '5px'}} onClick={() => yearBttStt === 'activated' ? setYearBttStt('deactivated') : setYearBttStt('activated')}>{selectedYear} <ion-icon name='chevron-down'></ion-icon></button>
-                <div id='yC' className={styles.yearsContainer}
-                    style={yearBttStt === 'activated' ? {display: 'block'} : {display: 'none'}}>
-                    {
-                        years.map((elem) => (
-                            <button key={elem + '-month'} onClick={() => {setSelectedYear(elem); setYearBttStt('deactivated'); const yC = document.getElementById('yC'); yC.scrollTo(0, 0)}}>{elem}</button>
-                        ))
+                <span className={styles.yearsView}
+                    style={view === 'month' ? {display: 'block'} : {display: 'none'}}>
+                    <button style={yearBttStt === 'activated' ? {borderRadius: '5px 5px 0px 0px'} : {borderRadius: '5px'}} onClick={() => yearBttStt === 'activated' ? setYearBttStt('deactivated') : setYearBttStt('activated')}>{selectedYear} <ion-icon name='chevron-down'></ion-icon></button>
+                    <div id='yC' className={styles.yearsContainer}
+                        style={yearBttStt === 'activated' ? {display: 'block'} : {display: 'none'}}>
+                        {
+                            years.map((elem) => (
+                                <button key={elem + '-month'} onClick={() => {setSelectedYear(elem); setYearBttStt('deactivated'); const yC = document.getElementById('yC'); yC.scrollTo(0, 0)}}>{elem}</button>
+                            ))
+                        }
+                    </div>
+                    <h1>Year</h1>
+                </span>
+                <span className={styles.dashView}>
+                    <button className={
+                        view !== 'month' ?
+                        styles.monthButton :
+                        `${styles.monthButton} ${styles.active}`
                     }
-                </div>
-                <h1>Year</h1>
-            </span>
-            <span className={styles.dashView}>
-                <button className={
-                    view !== 'month' ?
-                    styles.monthButton :
-                    `${styles.monthButton} ${styles.active}`
-                }
-                onClick={() => {
-                    setView('month')
-                    drawnCanvasLines()
-                }}>
-                    <h1>Months</h1>
-                </button>
-                <button className={
+                    onClick={() => {
+                        setView('month')
+                        drawnCanvasLines()
+                    }}>
+                        <h1>Months</h1>
+                    </button>
+                    <button className={
+                        view === 'month' ?
+                        styles.yearButton :
+                        `${styles.yearButton} ${styles.active}`
+                    }
+                    onClick={() => {
+                        setView('year')
+                        drawnCanvasLines()
+                    }}>
+                        <h1>Years</h1>
+                    </button>
+                </span>
+                {
                     view === 'month' ?
-                    styles.yearButton :
-                    `${styles.yearButton} ${styles.active}`
+            
+                    months.map((elem, i) => (
+                        <div key={elem + '-month'}
+                        className={styles.dashMark}
+                        style={{left: `${7.91 * (i + 1)}%`}}>
+                            | <br />
+                            {elem}
+                        </div>
+                    ))
+                    :
+            
+                    years.map((elem, i) => (
+                        <div key={elem + '-month'}
+                        className={styles.dashMark}
+                        style={{left: `${8.25 * (i + 1)}%`}}>
+                            | <br />
+                            {elem}
+                        </div>
+                    ))
                 }
-                onClick={() => {
-                    setView('year')
-                    drawnCanvasLines()
-                }}>
-                    <h1>Years</h1>
-                </button>
-            </span>
-            {
-                view === 'month' ?
-        
-                months.map((elem, i) => (
-                    <div key={elem + '-month'}
-                    className={styles.dashMark}
-                    style={{left: `${7.91 * (i + 1)}%`}}>
-                        | <br />
-                        {elem}
-                    </div>
-                ))
-                :
-        
-                years.map((elem, i) => (
-                    <div key={elem + '-month'}
-                    className={styles.dashMark}
-                    style={{left: `${8.25 * (i + 1)}%`}}>
-                        | <br />
-                        {elem}
-                    </div>
-                ))
-            }
-        </aside>
+            </aside>
+        </div>
     )
 }

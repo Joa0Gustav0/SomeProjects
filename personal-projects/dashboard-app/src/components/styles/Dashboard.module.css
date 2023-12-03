@@ -3,8 +3,18 @@
 
     width: 500px;
     height: 350px;
+    margin-top: 80px; 
+    margin-bottom: 30px;
     border-left: 1px solid black;
     border-bottom: 1px solid black;
+}
+
+.dashboardContainer {
+    overflow-x: scroll;
+    padding-left: 30px;
+}
+.dashboardContainer::-webkit-scrollbar {
+    display: none;
 }
 
 .dashView {
@@ -176,6 +186,7 @@
 .dashboardPointModel:hover {
     width: 12.5px;
     height: 12.5px;
+    z-index: 25;
     transform: translate(-50%, calc(75% - 2.5px));
 }
 

@@ -133,7 +133,7 @@ export default function DataList( {productsArr, editFunction, ocurrencesFunction
     }
 
     return (
-        <aside className={styles.dataListContainer}>
+        <aside id='data-list' className={styles.dataListContainer}>
             <h1>Products <span>({productsArr.length} items)</span></h1>
             <div className={styles.dataList__List} style={productsArr?.length > 0 ? {justifyContent: "flex-start"} : {justifyContent: "center"}}>
 
