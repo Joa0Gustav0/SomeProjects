@@ -13,6 +13,7 @@ main {
     padding: 30px;
     padding-top: 60px;
     max-width: 1366px;
-    min-height: 100vh;
+    padding-bottom: 65px;
+    min-height: calc(100vh - 90px);
 }
 
