@@ -2,6 +2,7 @@ import DataForm from "./components/DataForm";
 import Dashboard from "./components/Dashboard";
 import DataList from "./components/DataList";
 import EditTab from "./components/EditTab";
+import Header from "./components/Header";
 import OcurrencesTab from "./components/OcurrencesTab";
 import productsStyles from './components/styles/DataList.module.css'
 import styles from './App.module.css'
@@ -84,6 +85,8 @@ function App() {
   const [selectedYear, setSelectedYear] = useState(2023)
 
   return (
+    <>
+    <Header />
     <main id='main'>
       <DataForm formButtonFunc={(newProduct) => setPArr([...pArr, newProduct])} products={pArr}/>
       <Dashboard view={view} setView={(requiredView) => {
@@ -173,6 +176,7 @@ function App() {
           }
         }}/>
     </main>
+    </>
   );
 }
 
