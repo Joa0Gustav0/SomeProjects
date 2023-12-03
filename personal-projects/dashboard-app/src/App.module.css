@@ -13,7 +13,6 @@ main {
     margin: auto;
     padding: 30px;
     padding-top: 60px;
-    max-width: 1366px;
     padding-bottom: 65px;
     box-shadow: inset 0px 0px 15px rgba(49, 35, 35, 0.1);
     min-height: calc(100vh - 90px);
