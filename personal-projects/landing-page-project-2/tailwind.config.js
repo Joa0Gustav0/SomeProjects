@@ -9,7 +9,7 @@ module.exports = {
       txt: "#172554",
       txtLessOpacity: "#515C7F",
       white: "#FFFFFF",
-      transparent: '#FFFFFF00'
+      transparent: "#FFFFFF00",
     },
     fontFamily: {
       DMSerifDisplay: "DM Serif Display",
@@ -21,7 +21,7 @@ module.exports = {
       md: "650px",
       lg: "900px",
       xl: "1280px",
-      "2xl": "1536px",
+      mx: "1366px",
     },
   },
   plugins: [],
