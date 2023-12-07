@@ -7,6 +7,7 @@ export default function App() {
   const [userLanguage, setUserLanguage] = useState("pt-br")
 
   return (
-    <Header lang={userLanguage}/>
+    <Header lang={userLanguage}
+      setLang={(selectedLang) => setUserLanguage(selectedLang)}/>
   )
 }

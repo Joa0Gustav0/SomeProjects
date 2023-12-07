@@ -5,6 +5,16 @@ module.exports = {
   ],
   theme: {
     extend: {},
+    fontFamily: {
+      poppins: 'Poppins'
+    },
+    screens: {
+      'sm': '640px',
+      'md': '650px',
+      'lg': '900px',
+      'xl': '1280px',
+      '2xl': '1536px',
+    }
   },
   plugins: [],
 }
