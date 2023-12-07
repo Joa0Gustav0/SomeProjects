@@ -1,10 +1,20 @@
 export default function Header({ lang }) {
-  const header = document.getElementById("header");
-
-  window.onscroll = () =>
-    window.scrollY > 100
-      ? header?.classList.add("bg-white shadow-xl")
-      : header?.classList.remove("bg-white shadow-xl");
+  window.onscroll = () => {
+    const header = document.getElementById("header");
+    if (
+      window.scrollY >= 100 &&
+      header?.classList.contains("bg-white") === false
+    ) {
+      header?.classList.add("bg-white");
+      header?.classList.add("shadow-sm");
+    } else if (
+      window.scrollY < 100 &&
+      header?.classList.contains("bg-white")
+    ) {
+      header?.classList.remove("bg-white");
+      header?.classList.remove("shadow-sm");
+    }
+  };
 
   const content = [
     {
@@ -36,9 +46,9 @@ export default function Header({ lang }) {
   return (
     <header
       id="header"
-      className="fixed top-0 left-1/2 -translate-x-1/2 w-full max-w-[1366px] transition-all duration-300"
+      className="fixed top-0 left-1/2 -translate-x-1/2 w-full max-w-[1366px] z-50 transition-all duration-200"
     >
-      <div className="relative flex justify-center lg:justify-between m-auto items-center w-full px-10 py-8">
+      <div className="relative flex justify-center lg:justify-between m-auto items-center w-full px-8 py-6">
         <a href="/" className="flex items-center gap-3">
           <h1 className=" font-DMSerifDisplay capitalize font-normal text-main text-4xl">
             Vivence.
