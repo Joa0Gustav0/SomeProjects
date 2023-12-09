@@ -77,15 +77,15 @@ export default function Reviews({ lang }) {
       className="relative min-h-[679px] pt-[88px] pb-[30px] flex flex-col items-center gap-[35px] px-[20px] sm:px-[40px] overflow-hidden"
     >
       <aside className="w-fit flex flex-col items-center">
-        <h2 className="w-fit mt-[30px] font-DMSerifDisplay text-subMain text-[56px]">
+        <h2 className="w-fit mt-[30px] font-DMSerifDisplay text-subMain text-[9vw] xsm:text-[56px]">
           <span className="text-main">Vivence</span>{" "}
           {content.map((elem) => (elem.lang === lang ? elem.subtitle : ""))}
         </h2>
-        <h1 className="w-fit font-DMSerifDisplay text-main text-[96px] uppercase">
+        <h1 className="w-fit font-DMSerifDisplay text-main text-[15vw] xsm:text-[96px] uppercase">
           {content.map((elem) => (elem.lang === lang ? elem.title : ""))}
         </h1>
       </aside>
-      <aside className="grid grid-rows-2 grid-cols-3 max-w-[650px] m-auto gap-[20px]">
+      <aside className="grid grid-cols-2 grid-rows-3  xxsm:grid-rows-2 xxsm:grid-cols-3 max-w-[650px] m-auto gap-[20px]">
         {mosaicPics.map((elem, i) => (
           <img
             src={elem.img}
@@ -94,7 +94,7 @@ export default function Reviews({ lang }) {
               i === 0
                 ? ` self-stretch row-span-2 rounded-sm hover:scale-105 transition-all duration-[.4s]`
                 : i === 1
-                  ? `col-span-2 rounded-sm hover:scale-105 transition-all duration-[.4s]`
+                  ? `col-span-2 rounded-sm hover:scale-105 transition-all order-1 xxsm:order-[none] duration-[.4s]`
                   : "rounded-sm self-stretch hover:scale-105 transition-all duration-[.4s]"
             }
           />
