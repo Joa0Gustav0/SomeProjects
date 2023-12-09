@@ -91,6 +91,8 @@ export default function App() {
   window.onscroll = () => {
     sectionsAnimationFunc();
 
+    setNavbarActive(false)
+
     const header = document.getElementById("header");
     if (
       window.scrollY >= 30 &&
@@ -104,9 +106,11 @@ export default function App() {
     }
   };
 
+  const [navbarActive, setNavbarActive] = useState(false)
+
   return (
     <main className="relative w-full m-auto max-w-[1366px] h-fit bg-white">
-      <Header lang={userLanguage} />
+      <Header lang={userLanguage} navbarActive={navbarActive} setNavbarActive={() => setNavbarActive(!navbarActive)}/>
       <Hero
         selectedLang={userLanguage}
         setLang={(selectedLang) => setUserLanguage(selectedLang)}

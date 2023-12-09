@@ -21,3 +21,28 @@
 body {
   background-color: #14566b;
 }
+
+ion-icon {
+  transition: all .25s;
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+
+  width: 30px;
+  height: 30px;
+  padding: 5px;
+  color: #155e75;
+}
+ion-icon:hover {
+  cursor: pointer;
+  transform: scale(115%, 115%) translateY(-50%);
+}
+ion-icon:active {
+  transform: scale(95%, 95%) translateY(-50%);
+}
+@media screen and (min-width:900px) {
+  ion-icon {
+    display: none;
+  }
+}
