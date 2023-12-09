@@ -1,6 +1,7 @@
 import Header from "./components/Header.jsx";
 import Hero from "./components/Hero.jsx";
-import About from "./components/About.jsx"
+import About from "./components/About.jsx";
+import Reviews from "./components/Reviews.jsx";
 
 import { useState } from "react";
 
@@ -15,6 +16,7 @@ export default function App() {
         setLang={(selectedLang) => setUserLanguage(selectedLang)}
       />
       <About />
+      <Reviews lang={userLanguage}/>
     </main>
   );
 }

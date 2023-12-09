@@ -55,7 +55,14 @@ export default function Hero({ selectedLang, setLang }) {
         </h1>
       </aside>
       {content.map((elem) =>
-        elem.lang === selectedLang ? <button className="absolute bottom-8 right-10 w-10 h-6 transition-all duration-300 hover:scale-110 active:scale-95" onClick={() => setLang(elem.next)}><img src={elem.langIcon} alt={elem.lang + "-icon"} /></button> : null
+        elem.lang === selectedLang ? (
+          <button
+            className="absolute bottom-8 right-10 w-10 h-6 transition-all duration-300 hover:scale-110 active:scale-95"
+            onClick={() => setLang(elem.next)}
+          >
+            <img src={elem.langIcon} alt={elem.lang + "-icon"} />
+          </button>
+        ) : null
       )}
     </section>
   );
