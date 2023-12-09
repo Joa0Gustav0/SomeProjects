@@ -8,7 +8,7 @@ export default function About({ lang }) {
       title: "É amor.",
       subtitle: "É mais que uma empresa...",
       paragraph: (
-        <p className="font-DMSans text-txt text-[4.5vw] xsm:text-[24px] text-justify">
+        <p key={"paragraph"} className="font-DMSans text-txt text-[4.5vw] xsm:text-[24px] text-justify">
           Desde 1997, A <span className="font-bold">Vivence</span> desenvolve
           diariamente preparando diferentes
           <span className="font-bold"> obras gastronômicas</span> pensando no
@@ -31,7 +31,7 @@ export default function About({ lang }) {
       title: "It's love.",
       subtitle: "It's more than a company...",
       paragraph: (
-        <p className="font-DMSans text-txt text-[4.5vw] xsm:text-[24px] text-justify">
+        <p key={"paragraph"} className="font-DMSans text-txt text-[4.5vw] xsm:text-[24px] text-justify">
           Since 1997, <span className="font-bold">Vivence</span> has been
           developing daily preparing different
           <span className="font-bold"> gastronomic works</span> thinking about
@@ -54,7 +54,7 @@ export default function About({ lang }) {
       title: "Es amor.",
       subtitle: "Es más que una empresa...",
       paragraph: (
-        <p className="font-DMSans text-txt text-[4.5vw] xsm:text-[24px] text-justify">
+        <p key={"paragraph"} className="font-DMSans text-txt text-[4.5vw] xsm:text-[24px] text-justify">
           Desde 1997, <span className="font-bold">Vivence</span> ha estado
           desarrollando preparando diariamente diferentes
           <span className="font-bold"> obras gastronómicas</span> pensando en

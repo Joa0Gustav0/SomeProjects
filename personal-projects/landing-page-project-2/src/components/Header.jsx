@@ -1,18 +1,4 @@
 export default function Header({ lang }) {
-  window.onscroll = () => {
-    const header = document.getElementById("header");
-    if (
-      window.scrollY >= 30 &&
-      header?.classList.contains("bg-white") === false
-    ) {
-      header?.classList.add("bg-white");
-      header?.classList.add("shadow-sm");
-    } else if (window.scrollY < 100 && header?.classList.contains("bg-white")) {
-      header?.classList.remove("bg-white");
-      header?.classList.remove("shadow-sm");
-    }
-  };
-
   const content = [
     {
       lang: "pt-br",

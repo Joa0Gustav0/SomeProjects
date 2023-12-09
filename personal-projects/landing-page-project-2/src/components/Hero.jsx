@@ -11,7 +11,7 @@ export default function Hero({ selectedLang, setLang }) {
       next: "en",
       langIcon: brazilIcon,
       leftAside: (
-        <p className="font-DMSerifDisplay text-[12vw] leading-[1] xsm:text-7xl text-subMain m-auto w-fit text-center lg:text-left">
+        <p key="left-aside" className="font-DMSerifDisplay text-[12vw] leading-[1] xsm:text-7xl text-subMain m-auto w-fit text-center lg:text-left">
           Sabor, <br />
           Sutileza, <br />& Paixão.
         </p>
@@ -22,7 +22,7 @@ export default function Hero({ selectedLang, setLang }) {
       next: "es",
       langIcon: usaIcon,
       leftAside: (
-        <p className="font-DMSerifDisplay text-[12vw] leading-[1] xsm:text-7xl text-subMain m-auto w-fit text-center lg:text-left">
+        <p key="left-aside" className="font-DMSerifDisplay text-[12vw] leading-[1] xsm:text-7xl text-subMain m-auto w-fit text-center lg:text-left">
           Flavor, <br />
           Finesse, <br />& Passion.
         </p>
@@ -33,7 +33,7 @@ export default function Hero({ selectedLang, setLang }) {
       next: "pt-br",
       langIcon: argentinaIcon,
       leftAside: (
-        <p className="font-DMSerifDisplay text-[12vw] leading-[1] xsm:text-7xl text-subMain m-auto w-fit text-center lg:text-left">
+        <p key="left-aside" className="font-DMSerifDisplay text-[12vw] leading-[1] xsm:text-7xl text-subMain m-auto w-fit text-center lg:text-left">
           Sabor, <br />
           Sutileza, <br />& Pasión.
         </p>
@@ -57,6 +57,7 @@ export default function Hero({ selectedLang, setLang }) {
       {content.map((elem) =>
         elem.lang === selectedLang ? (
           <button
+            key="language-button"
             className="absolute bottom-8 right-10 w-10 h-6 transition-all duration-300 hover:scale-110 active:scale-95"
             onClick={() => setLang(elem.next)}
           >

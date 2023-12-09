@@ -88,6 +88,7 @@ export default function Reviews({ lang }) {
       <aside className="grid grid-cols-2 grid-rows-3  xxsm:grid-rows-2 xxsm:grid-cols-3 max-w-[650px] m-auto gap-[20px]">
         {mosaicPics.map((elem, i) => (
           <img
+            key={"mosaic-pic" + i}
             src={elem.img}
             alt="mosaic-pic"
             className={
@@ -103,8 +104,8 @@ export default function Reviews({ lang }) {
       <aside className="flex flex-col items-center gap-[60px] md:gap-[30px]">
         {content.map((elem) =>
           elem.lang === lang
-            ? elem.reviews.map((review) => (
-                <div className="flex flex-col items-center md:items-end max-w-[650px] relative after:absolute after:-bottom-[30px] after:w-1/4 after:border-dotted after:h-1 after:border-b-2 after:border-subMain md:after:hidden last-of-type:after:hidden">
+            ? elem.reviews.map((review, i) => (
+                <div key={"review" + i} className="flex flex-col items-center md:items-end max-w-[650px] relative after:absolute after:-bottom-[30px] after:w-1/4 after:border-dotted after:h-1 after:border-b-2 after:border-subMain md:after:hidden last-of-type:after:hidden">
                   <p className="text-[20px] text-txtLessOpacity font-DMSerifDisplay italic text-center">
                     {review.txt}
                   </p>

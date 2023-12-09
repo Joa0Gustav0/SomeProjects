@@ -26,7 +26,7 @@ export default function Contact({ lang }) {
       title: "Contato.",
       firstP: "Possuimos alguns pontos de produção e distribuição:",
       secondP: (
-        <p className="font-DMSans text-txt text-[4.5vw] xsm:text-[22px] text-center mb-[50px] w-fit m-auto">
+        <p key="paragraph" className="font-DMSans text-txt text-[4.5vw] xsm:text-[22px] text-center mb-[50px] w-fit m-auto">
           Deseja nos contatar? <br />
           Utilize o número com a localização mais próxima de seu país. <br />
           Ou entre em contato via email.
@@ -55,7 +55,7 @@ export default function Contact({ lang }) {
       title: "Contact.",
       firstP: "We own some production and distribution points:",
       secondP: (
-        <p className="font-DMSans text-txt text-[4.5vw] xsm:text-[22px] text-center mb-[50px] w-fit m-auto">
+        <p key="paragraph" className="font-DMSans text-txt text-[4.5vw] xsm:text-[22px] text-center mb-[50px] w-fit m-auto">
           Do you want to contact us? <br />
           Use the number closest to your country. <br />
           Or contact us via email.
@@ -84,7 +84,7 @@ export default function Contact({ lang }) {
       title: "Contacto.",
       firstP: "Nosotros tenemos puntos de producción y distribución:",
       secondP: (
-        <p className="font-DMSans text-txt text-[4.5vw] xsm:text-[22px] text-center mb-[50px] w-fit m-auto">
+        <p key="paragraph" className="font-DMSans text-txt text-[4.5vw] xsm:text-[22px] text-center mb-[50px] w-fit m-auto">
           ¿Quieres contactar con nosotros? <br />
           Utilice el número más cercano a su país. <br />O contáctenos por
           correo electrónico.
@@ -107,8 +107,8 @@ export default function Contact({ lang }) {
       <div className="flex flex-col sm:flex-row flex-wrap items-center justify-around w-full mt-[50px] sm:mt-[100px] mb-[50px] gap-[50px]">
         {content.map((elem) =>
           elem.lang === lang
-            ? elem.localization.map((localiz) => (
-                <div className="w-fit flex flex-col gap-[10px] items-center">
+            ? elem.localization.map((localiz, i) => (
+                <div key={"localiz" + i} className="w-fit flex flex-col gap-[10px] items-center">
                   <p className="font-DMSans text-txt capitalize font-medium">
                     {localiz.address} 📍
                   </p>
