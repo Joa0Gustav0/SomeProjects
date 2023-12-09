@@ -16,7 +16,7 @@ export default function App() {
         selectedLang={userLanguage}
         setLang={(selectedLang) => setUserLanguage(selectedLang)}
       />
-      <About />
+      <About lang={userLanguage}/>
       <Reviews lang={userLanguage}/>
       <Contact lang={userLanguage}/>
     </main>
