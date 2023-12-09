@@ -2,7 +2,7 @@ export default function Header({ lang }) {
   window.onscroll = () => {
     const header = document.getElementById("header");
     if (
-      window.scrollY >= 100 &&
+      window.scrollY >= 30 &&
       header?.classList.contains("bg-white") === false
     ) {
       header?.classList.add("bg-white");

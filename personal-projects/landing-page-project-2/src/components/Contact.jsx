@@ -115,7 +115,7 @@ export default function Contact({ lang }) {
                   <img
                     src={localiz.flag}
                     alt="localiz-flag"
-                    className="w-[250px] h-[175px]"
+                    className="w-[250px] sm:h-[175px]"
                   />
                   <p className="font-DMSans text-main font-medium">
                     📞 {localiz.contact}

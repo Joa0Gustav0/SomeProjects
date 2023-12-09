@@ -11,7 +11,7 @@ export default function Hero({ selectedLang, setLang }) {
       next: "en",
       langIcon: brazilIcon,
       leftAside: (
-        <p className="font-DMSerifDisplay text-7xl text-subMain m-auto w-fit">
+        <p className="font-DMSerifDisplay text-[12vw] leading-[1] xsm:text-7xl text-subMain m-auto w-fit text-center lg:text-left">
           Sabor, <br />
           Sutileza, <br />& Paixão.
         </p>
@@ -22,7 +22,7 @@ export default function Hero({ selectedLang, setLang }) {
       next: "es",
       langIcon: usaIcon,
       leftAside: (
-        <p className="font-DMSerifDisplay text-7xl text-subMain m-auto w-fit">
+        <p className="font-DMSerifDisplay text-[12vw] leading-[1] xsm:text-7xl text-subMain m-auto w-fit text-center lg:text-left">
           Flavor, <br />
           Finesse, <br />& Passion.
         </p>
@@ -33,7 +33,7 @@ export default function Hero({ selectedLang, setLang }) {
       next: "pt-br",
       langIcon: argentinaIcon,
       leftAside: (
-        <p className="font-DMSerifDisplay text-7xl text-subMain m-auto w-fit">
+        <p className="font-DMSerifDisplay text-[12vw] leading-[1] xsm:text-7xl text-subMain m-auto w-fit text-center lg:text-left">
           Sabor, <br />
           Sutileza, <br />& Pasión.
         </p>
@@ -42,15 +42,15 @@ export default function Hero({ selectedLang, setLang }) {
   ];
 
   return (
-    <section className="relative w-full h-fit min-h-[679px] grid grid-cols-3 items-center">
-      <aside>
+    <section className="relative w-full h-fit min-h-[679px] grid grid-cols-1 lg:grid-rows-1 lg:grid-cols-2 mx:grid-cols-3 items-center pt-[118px] lg:pt-[0] pb-[88px] lg:pb-0">
+      <aside className="pb-[30px] lg:pb-0">
         {content.map((elem) =>
           elem.lang === selectedLang ? elem.leftAside : null
         )}
       </aside>
-      <img src={heroPicture} alt="hero" className="relative" />
+      <img src={heroPicture} alt="hero" className="relative m-auto w-full max-w-[350px] lg:max-w-[400px]" />
       <aside>
-        <h1 className="w-fit m-auto font-DMSerifDisplay text-8xl text-main">
+        <h1 className="w-fit m-auto font-DMSerifDisplay text-[94px] text-main hidden mx:block">
           Vivence.
         </h1>
       </aside>

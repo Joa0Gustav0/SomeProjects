@@ -74,10 +74,10 @@ export default function Reviews({ lang }) {
   return (
     <section
       id="reviews"
-      className="relative min-h-[679px] pt-[88px] pb-[30px] flex flex-col items-center gap-[35px] px-[20px] sm:px-[40px] overflow-hidden"
+      className="relative min-h-[679px] pt-[88px] pb-[80px] flex flex-col items-center gap-[35px] px-[20px] sm:px-[40px] overflow-hidden"
     >
       <aside className="w-fit flex flex-col items-center">
-        <h2 className="w-fit mt-[30px] font-DMSerifDisplay text-subMain text-[9vw] xsm:text-[56px]">
+        <h2 className="w-fit mt-[30px] font-DMSerifDisplay text-subMain text-[10vw] xsm:text-[56px]">
           <span className="text-main">Vivence</span>{" "}
           {content.map((elem) => (elem.lang === lang ? elem.subtitle : ""))}
         </h2>

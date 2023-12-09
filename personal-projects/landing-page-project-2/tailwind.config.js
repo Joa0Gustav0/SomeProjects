@@ -9,6 +9,7 @@ module.exports = {
       txt: "#172554",
       txtLessOpacity: "#515C7F",
       white: "#FFFFFF",
+      black: "#000000",
       transparent: "#FFFFFF00",
     },
     fontFamily: {
@@ -22,7 +23,8 @@ module.exports = {
       sm: "650px",
       md: "720px",
       lg: "900px",
-      xl: "950px",
+      mlg: "950px",
+      xl: "1050px",
       mx: "1100px",
     },
   },
