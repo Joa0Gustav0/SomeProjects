@@ -105,8 +105,12 @@ export default function Reviews({ lang }) {
           elem.lang === lang
             ? elem.reviews.map((review) => (
                 <div className="flex flex-col items-end max-w-[650px]">
-                  <p className="text-[20px] text-txtLessOpacity font-DMSerifDisplay italic">{review.txt}</p>
-                  <h3 className="text-[20px] text-txt font-DMSerifDisplay">{review.author}</h3>
+                  <p className="text-[20px] text-txtLessOpacity font-DMSerifDisplay italic">
+                    {review.txt}
+                  </p>
+                  <h3 className="text-[20px] text-txt font-DMSerifDisplay">
+                    {review.author}
+                  </h3>
                 </div>
               ))
             : null

@@ -7,10 +7,7 @@ export default function Header({ lang }) {
     ) {
       header?.classList.add("bg-white");
       header?.classList.add("shadow-sm");
-    } else if (
-      window.scrollY < 100 &&
-      header?.classList.contains("bg-white")
-    ) {
+    } else if (window.scrollY < 100 && header?.classList.contains("bg-white")) {
       header?.classList.remove("bg-white");
       header?.classList.remove("shadow-sm");
     }

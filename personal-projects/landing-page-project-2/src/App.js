@@ -2,6 +2,7 @@ import Header from "./components/Header.jsx";
 import Hero from "./components/Hero.jsx";
 import About from "./components/About.jsx";
 import Reviews from "./components/Reviews.jsx";
+import Contact from "./components/Contact.jsx"
 
 import { useState } from "react";
 
@@ -17,6 +18,7 @@ export default function App() {
       />
       <About />
       <Reviews lang={userLanguage}/>
+      <Contact lang={userLanguage}/>
     </main>
   );
 }
