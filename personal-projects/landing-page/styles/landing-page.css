@@ -275,12 +275,19 @@ footer{
     }
 }
 @media screen and (max-width: 899px) {
+
+    header {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+    }
+
     .home{
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
+        justify-content: flex-end;
 
-        height: 125vh;
+        height: 12vh;
         background-image: none;
         overflow-y: hidden;
         overflow-x: hidden;
@@ -301,6 +308,7 @@ footer{
     .about{
         position: relative;
         flex-direction: column;
+        justify-content: space-between;
 
         padding: 0px 20px;
         padding-top: 40px;
