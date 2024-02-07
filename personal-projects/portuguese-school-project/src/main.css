@@ -1,0 +1,135 @@
+:root {
+  --primary-color: #4d3d87;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  user-select: none;
+  box-sizing: border-box;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+body {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+  min-height: 100vh;
+  padding: 15px 20px;
+  background-color: #f5f5f5;
+}
+
+.game-details-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  gap: 10px;
+  margin: auto;
+  margin-top: 0;
+  width: fit-content;
+  margin-bottom: 15px;
+}
+.game-details-container__round-headline-text {
+  color: var(--primary-color);
+}
+.game-details-container__round-subheadline-text {
+  color: #636363;
+  font-weight: 500;
+  font-size: 1em;
+}
+.game-details-container__player-on-play-text {
+  font-weight: 500;
+  font-size: 1.25em;
+}
+
+main {
+  width: 100%;
+  margin: auto;
+  margin-top: 30px;
+  max-width: 1115px;
+  min-height: fit-content;
+}
+
+.pontuations-container {
+  display: flex;
+  justify-content: space-around;
+}
+.pontuations-container__player-pontuation {
+  font-weight: 500;
+  font-size: 1.25em;
+  padding: 5px 10px;
+  text-align: center;
+  border-radius: 10px;
+  background-color: white;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.15);
+}
+
+.game-target-text-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  gap: 15px;
+  width: 100%;
+  margin: auto;
+  max-width: 350px;
+  margin-top: 50px;
+  text-align: justify;
+  margin-bottom: 50px;
+}
+.game-target-text-container__target-text {
+  padding: 12.5px;
+  font-weight: 500;
+  font-size: 1.25em;
+  border-radius: 10px;
+  background-color: white;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.15);
+}
+.game-target-text-container__tip-text {
+  color: #636363;
+  font-weight: 500;
+  text-align: center;
+}
+
+.check-result-button {
+  transition: all 0.25s;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 0;
+  margin: auto;
+  color: white;
+  font-weight: 500;
+  font-size: 1.25em;
+  border-radius: 10px;
+  padding: 7.5px 10px;
+  background-color: var(--primary-color);
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.15);
+}
+@keyframes button_pop_animation {
+  0% {
+    transform: scale(100%, 100%);
+  }
+  25% {
+    transform: scale(90%, 90%);
+  }
+  75% {
+    transform: scale(115%, 115%);
+  }
+  100% {
+    transform: scale(110%, 110%);
+  }
+}
+
+.check-result-button:hover {
+  cursor: pointer;
+  transform: scale(110%, 110%);
+  animation: button_pop_animation 0.25s linear normal;
+}
