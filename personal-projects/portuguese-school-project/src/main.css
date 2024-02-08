@@ -1,5 +1,6 @@
 :root {
   --primary-color: #4d3d87;
+  --crown-color: #FFE7A0;
 }
 
 * {
@@ -33,7 +34,7 @@ body {
   margin: auto;
   margin-top: 0;
   width: fit-content;
-  margin-bottom: 15px;
+  margin-bottom: 30px;
 }
 .game-details-container__round-headline-text {
   color: var(--primary-color);
@@ -60,6 +61,8 @@ main {
   justify-content: space-around;
 }
 .pontuations-container__player-pontuation {
+  position: relative;
+
   font-weight: 500;
   font-size: 1.25em;
   padding: 5px 10px;
@@ -67,6 +70,33 @@ main {
   border-radius: 10px;
   background-color: white;
   box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.15);
+}
+@keyframes crown-floating-animation {
+  0% {
+    top: -25px;
+  }
+  100% {
+    top: -32.5px;
+  }
+}
+.pontuations-container__player-pontuation > img {
+  position: absolute;
+  top: -25px;
+  right: -17.5px;
+
+  display: none;
+
+  width: 100%;
+  max-width: 30px;
+  transform: rotateZ(30deg);
+  animation: crown-floating-animation 1s linear alternate infinite;
+}
+
+.pontuations-container__player-pontuation.crown {
+  background-color: var(--crown-color);
+}
+.pontuations-container__player-pontuation.crown > img {
+  display: block;
 }
 
 .game-target-text-container {
