@@ -8,22 +8,28 @@ function render(target: Element, innerValue: string | number) {
 
 class PlayersScore {
   constructor(public score: number, public index: number) {
-    render(PLAYERS_SCORE_ELEMENTS[index], score);
+    render(
+      PLAYERS_SCORE_ELEMENTS[index],
+      score < 10 ? "0" + score.toString() : score
+    );
   }
 
   updateScore(newScore) {
-    render(PLAYERS_SCORE_ELEMENTS[this.index], newScore);
+    render(
+      PLAYERS_SCORE_ELEMENTS[this.index],
+      newScore < 10 ? "0" + newScore.toString() : newScore
+    );
   }
 
-  private static getMajorScore(score1: number, score2: number) {
-    if (score1 === score2) {
+  private static getMajorScore(entryScore1: number, entryScore2: number) {
+    if (entryScore1 === entryScore2) {
       return null;
     }
 
-    if (score1 > score2) {
-      return score1;
+    if (entryScore1 > entryScore2) {
+      return entryScore1;
     } else {
-      return score2;
+      return entryScore2;
     }
   }
 

@@ -6,20 +6,20 @@ var PlayersScore = /** @class */ (function () {
     function PlayersScore(score, index) {
         this.score = score;
         this.index = index;
-        render(PLAYERS_SCORE_ELEMENTS[index], score);
+        render(PLAYERS_SCORE_ELEMENTS[index], score < 10 ? "0" + score.toString() : score);
     }
     PlayersScore.prototype.updateScore = function (newScore) {
-        render(PLAYERS_SCORE_ELEMENTS[this.index], newScore);
+        render(PLAYERS_SCORE_ELEMENTS[this.index], newScore < 10 ? "0" + newScore.toString() : newScore);
     };
-    PlayersScore.getMajorScore = function (score1, score2) {
-        if (score1 === score2) {
+    PlayersScore.getMajorScore = function (entryScore1, entryScore2) {
+        if (entryScore1 === entryScore2) {
             return null;
         }
-        if (score1 > score2) {
-            return score1;
+        if (entryScore1 > entryScore2) {
+            return entryScore1;
         }
         else {
-            return score2;
+            return entryScore2;
         }
     };
     PlayersScore.setMajorScorePlayerCrown = function (score1, score2) {
