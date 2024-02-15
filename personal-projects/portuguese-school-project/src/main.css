@@ -181,6 +181,8 @@ main {
   position: fixed;
 
   width: 100%;
+  z-index: -1;
+  opacity: 7.5%;
   max-width: 500px;
 }
 
