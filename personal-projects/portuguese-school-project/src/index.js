@@ -23,14 +23,12 @@ var PlayersScore = /** @class */ (function () {
     PlayersScore.updateScore = function (action, targetPlayerEmoji, entryValue) {
         PlayersScore.players.map(function (player, index) {
             if (player.emoji === targetPlayerEmoji) {
-                console.log(player.score);
                 if (action === "decrease") {
                     player.score -= entryValue;
                 }
                 else {
                     player.score += entryValue;
                 }
-                console.log(player.score);
                 render("modify", PLAYERS_SCORES_TXTS[player.index], player.score < 10 ? "0" + player.score : player.score);
             }
         });
