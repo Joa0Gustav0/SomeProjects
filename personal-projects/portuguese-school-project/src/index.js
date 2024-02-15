@@ -8,10 +8,10 @@ function render(mode, target, innerValue) {
     }
 }
 var PlayersScore = /** @class */ (function () {
-    function PlayersScore(emoji, name, score, index) {
+    function PlayersScore(emoji, score, index) {
+        if (score === void 0) { score = 0; }
         if (index === void 0) { index = PlayersScore.quantityOfPlayersInGame; }
         this.emoji = emoji;
-        this.name = name;
         this.score = score;
         this.index = index;
         PlayersScore.createPlayerScoreContainer(emoji, score);
@@ -19,14 +19,20 @@ var PlayersScore = /** @class */ (function () {
         PlayersScore.players.push(this);
         PlayersScore.quantityOfPlayersInGame++;
     }
-    PlayersScore.prototype.updateScore = function (action, additionalValue) {
-        if (action === "increase") {
-            this.score += additionalValue;
-        }
-        else {
-            this.score -= additionalValue;
-        }
-        render("modify", PLAYERS_SCORE_ELEMENTS[this.index], this.score);
+    PlayersScore.updateScore = function (action, targetPlayerEmoji, entryValue) {
+        PlayersScore.players.map(function (player, index) {
+            if (player.emoji === targetPlayerEmoji) {
+                console.log(player.score);
+                if (action === "decrease") {
+                    player.score -= entryValue;
+                }
+                else {
+                    player.score += entryValue;
+                }
+                console.log(player.score);
+                render("modify", PLAYERS_SCORE_ELEMENTS[player.index], player.score < 10 ? "0" + player.score : player.score);
+            }
+        });
     };
     PlayersScore.createPlayerScoreContainer = function (targetPlayerEmoji, targetPlayerScore) {
         render("keep", document.querySelector(".pontuations-container"), "\n    <h1 class=\"pontuations-container__player-pontuation\">\n    ".concat(targetPlayerEmoji, "\n    <span class=\"pontuations-container__player-pontuation__text\"\n      >").concat(targetPlayerScore, "</span\n    >\n    <img src=\"../public/media/crown-icon.png\" alt=\"\u00EDcone de coroa\">\n  </h1>\n    "));
@@ -44,12 +50,12 @@ var PlayersScore = /** @class */ (function () {
     };
     PlayersScore.setMajorScorePlayerCrown = function () {
         var lastMajorScorePlayer = {
-            name: "",
+            emoji: "",
             score: 0,
         };
         this.players.map(function (player, index) {
             if (player.score > lastMajorScorePlayer.score) {
-                lastMajorScorePlayer.name = player.name;
+                lastMajorScorePlayer.emoji = player.emoji;
                 lastMajorScorePlayer.score = player.score;
             }
         });
@@ -63,8 +69,7 @@ var PlayersScore = /** @class */ (function () {
     PlayersScore.players = [];
     return PlayersScore;
 }());
-var playerScore1 = new PlayersScore("📚", "Letícia", 0);
-var playersScore2 = new PlayersScore("🧠", "Joinha", 50);
-playerScore1.updateScore("increase", 50);
-playersScore2.updateScore("decrease", 10);
+new PlayersScore("🤩");
+new PlayersScore("😀", 10);
+PlayersScore.updateScore("increase", "😀", 2);
 PlayersScore.setMajorScorePlayerCrown();

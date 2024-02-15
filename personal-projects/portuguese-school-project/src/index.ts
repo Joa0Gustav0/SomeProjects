@@ -20,9 +20,8 @@ class PlayersScore {
 
   constructor(
     public emoji: string,
-    public name: string,
-    public score: number,
-    public index = PlayersScore.quantityOfPlayersInGame
+    public score: number = 0,
+    private index = PlayersScore.quantityOfPlayersInGame
   ) {
     PlayersScore.createPlayerScoreContainer(emoji, score);
     render(
@@ -34,16 +33,23 @@ class PlayersScore {
     PlayersScore.quantityOfPlayersInGame++;
   }
 
-  updateScore(action: "increase" | "decrease",additionalValue: number) {
-    if (action === "increase") {
-      this.score += additionalValue;
-    } else {
-      this.score -= additionalValue;
-    }
-    render(
-      "modify",
-      PLAYERS_SCORE_ELEMENTS[this.index], this.score
-    );
+  static updateScore(
+    action: "increase" | "decrease",
+    targetPlayerEmoji: string,
+    entryValue: number
+  ) {
+    PlayersScore.players.map((player, index) => {
+      if (player.emoji === targetPlayerEmoji) {
+        console.log(player.score);
+        if (action === "decrease") {
+          player.score -= entryValue;
+        } else {
+          player.score += entryValue;
+        }
+        console.log(player.score);
+        render("modify", PLAYERS_SCORE_ELEMENTS[player.index], player.score < 10 ? "0" + player.score : player.score);
+      }
+    });
   }
 
   private static createPlayerScoreContainer(
@@ -79,29 +85,26 @@ class PlayersScore {
 
   static setMajorScorePlayerCrown() {
     var lastMajorScorePlayer = {
-      name: "",
+      emoji: "",
       score: 0,
     };
 
     this.players.map((player, index) => {
       if (player.score > lastMajorScorePlayer.score) {
-        lastMajorScorePlayer.name = player.name;
+        lastMajorScorePlayer.emoji = player.emoji;
         lastMajorScorePlayer.score = player.score;
       }
-    })
+    });
 
     Array.from(PLAYERS_SCORE_ELEMENTS).map((scoreElement) => {
       if (scoreElement.innerHTML === lastMajorScorePlayer.score.toString()) {
         (scoreElement.parentNode! as Element).classList.add("crown");
       }
     });
-
-
   }
 }
 
-var playerScore1 = new PlayersScore("📚", "Letícia", 0);
-var playersScore2 = new PlayersScore("🧠", "Joinha", 50);
-playerScore1.updateScore("increase", 50);
-playersScore2.updateScore("decrease", 10);
+new PlayersScore("🤩");
+new PlayersScore("😀", 10);
+PlayersScore.updateScore("increase", "😀", 2);
 PlayersScore.setMajorScorePlayerCrown();
