@@ -1,4 +1,5 @@
-var PLAYERS_SCORE_ELEMENTS = document.getElementsByClassName("pontuations-container__player-pontuation__text");
+var PLAYERS_SCORES_TXTS = document.getElementsByClassName("pontuations-container__player-pontuation__text");
+var CONTAINER_FOR_ALL_PLAYERS_SCORES = document.querySelector(".pontuations-container");
 function render(mode, target, innerValue) {
     if (mode === "modify") {
         target.innerHTML = innerValue.toString();
@@ -15,7 +16,7 @@ var PlayersScore = /** @class */ (function () {
         this.score = score;
         this.index = index;
         PlayersScore.createPlayerScoreContainer(emoji, score);
-        render("modify", PLAYERS_SCORE_ELEMENTS[index], score < 10 ? "0" + score.toString() : score);
+        render("modify", PLAYERS_SCORES_TXTS[index], score < 10 ? "0" + score.toString() : score);
         PlayersScore.players.push(this);
         PlayersScore.quantityOfPlayersInGame++;
     }
@@ -30,12 +31,12 @@ var PlayersScore = /** @class */ (function () {
                     player.score += entryValue;
                 }
                 console.log(player.score);
-                render("modify", PLAYERS_SCORE_ELEMENTS[player.index], player.score < 10 ? "0" + player.score : player.score);
+                render("modify", PLAYERS_SCORES_TXTS[player.index], player.score < 10 ? "0" + player.score : player.score);
             }
         });
     };
     PlayersScore.createPlayerScoreContainer = function (targetPlayerEmoji, targetPlayerScore) {
-        render("keep", document.querySelector(".pontuations-container"), "\n    <h1 class=\"pontuations-container__player-pontuation\">\n    ".concat(targetPlayerEmoji, "\n    <span class=\"pontuations-container__player-pontuation__text\"\n      >").concat(targetPlayerScore, "</span\n    >\n    <img src=\"../public/media/crown-icon.png\" alt=\"\u00EDcone de coroa\">\n  </h1>\n    "));
+        render("keep", CONTAINER_FOR_ALL_PLAYERS_SCORES, "\n    <h1 class=\"pontuations-container__player-pontuation\">\n    ".concat(targetPlayerEmoji, "\n    <span class=\"pontuations-container__player-pontuation__text\"\n      >").concat(targetPlayerScore, "</span\n    >\n    <img src=\"../public/media/crown-icon.png\" alt=\"\u00EDcone de coroa\">\n  </h1>\n    "));
     };
     PlayersScore.getMajorScore = function (entryScore1, entryScore2) {
         if (entryScore1 === entryScore2) {
@@ -59,7 +60,7 @@ var PlayersScore = /** @class */ (function () {
                 lastMajorScorePlayer.score = player.score;
             }
         });
-        Array.from(PLAYERS_SCORE_ELEMENTS).map(function (scoreElement) {
+        Array.from(PLAYERS_SCORES_TXTS).map(function (scoreElement) {
             if (scoreElement.innerHTML === lastMajorScorePlayer.score.toString()) {
                 scoreElement.parentNode.classList.add("crown");
             }

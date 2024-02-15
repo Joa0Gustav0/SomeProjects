@@ -1,6 +1,8 @@
-const PLAYERS_SCORE_ELEMENTS = document.getElementsByClassName(
+const PLAYERS_SCORES_TXTS = document.getElementsByClassName(
   "pontuations-container__player-pontuation__text"
 );
+
+const CONTAINER_FOR_ALL_PLAYERS_SCORES = document.querySelector(".pontuations-container")!;
 
 function render(
   mode: "modify" | "keep",
@@ -26,7 +28,7 @@ class PlayersScore {
     PlayersScore.createPlayerScoreContainer(emoji, score);
     render(
       "modify",
-      PLAYERS_SCORE_ELEMENTS[index],
+      PLAYERS_SCORES_TXTS[index],
       score < 10 ? "0" + score.toString() : score
     );
     PlayersScore.players.push(this);
@@ -47,7 +49,7 @@ class PlayersScore {
           player.score += entryValue;
         }
         console.log(player.score);
-        render("modify", PLAYERS_SCORE_ELEMENTS[player.index], player.score < 10 ? "0" + player.score : player.score);
+        render("modify", PLAYERS_SCORES_TXTS[player.index], player.score < 10 ? "0" + player.score : player.score);
       }
     });
   }
@@ -58,7 +60,7 @@ class PlayersScore {
   ) {
     render(
       "keep",
-      document.querySelector(".pontuations-container")!,
+      CONTAINER_FOR_ALL_PLAYERS_SCORES,
       `
     <h1 class="pontuations-container__player-pontuation">
     ${targetPlayerEmoji}
@@ -96,7 +98,7 @@ class PlayersScore {
       }
     });
 
-    Array.from(PLAYERS_SCORE_ELEMENTS).map((scoreElement) => {
+    Array.from(PLAYERS_SCORES_TXTS).map((scoreElement) => {
       if (scoreElement.innerHTML === lastMajorScorePlayer.score.toString()) {
         (scoreElement.parentNode! as Element).classList.add("crown");
       }
