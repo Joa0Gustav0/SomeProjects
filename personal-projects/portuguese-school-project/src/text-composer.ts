@@ -125,7 +125,7 @@ class TargetText {
 
   private displayText() {
     render("modify", CONTAINER_FOR_TARGET_TEXT, "");
-    const TEXT_WORDS = this.formatedContent.split(" ");
+    const TEXT_WORDS = Array.from(this.formatedContent);
 
     TEXT_WORDS.forEach((word) => {
       render(
@@ -139,7 +139,11 @@ class TargetText {
   }
 
   private createEditableSubstringElement(word: string) {
-    return `<span class="editable-word">${word}</span> `;
+    if (" .,!".includes(word)) {
+      return word;
+    } else {
+      return `<span class="editable-word">${word}</span>`
+    }
   }
 
   private setEditableElementsEventListeners() {
@@ -148,14 +152,24 @@ class TargetText {
         (element as HTMLSpanElement).addEventListener(
           "click",
           function (event) {
-            (event.target as HTMLSpanElement).classList.add("editing-word");
+            setWordEditableMode(event.target as HTMLSpanElement);
           }
         );
       });
     }
   }
 }
-
 new TargetText();
 
+function setWordEditableMode(targetWordElement: HTMLSpanElement) {
+  if (targetWordElement.classList.contains("editing-word")) {
+    targetWordElement.classList.remove("editing-word");
+    return;
+  }
 
+  Array.from(EDITABLE_WORDS_ELEMENTS).forEach((element) => {
+    (element as HTMLSpanElement).classList.remove("editing-word");
+  })
+
+  targetWordElement.classList.add("editing-word");
+}

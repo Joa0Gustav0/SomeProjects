@@ -3,15 +3,17 @@
 }
 .editable-word:hover {
   cursor: pointer;
+  margin: 0px 5px;
 }
 .editable-word:hover,
 .editing-word {
-  font-size: 1.15em;
+  font-size: 1.25em;
 }
 .editable-word:active {
   font-size: 1.1em;
 }
 
 .editing-word {
+  margin: 0px 2.5px;
   color: var(--primary-color);
 }

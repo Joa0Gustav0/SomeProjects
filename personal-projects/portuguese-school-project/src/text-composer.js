@@ -54,20 +54,25 @@ var TargetText = /** @class */ (function () {
     TargetText.prototype.displayText = function () {
         var _this = this;
         render("modify", CONTAINER_FOR_TARGET_TEXT, "");
-        var TEXT_WORDS = this.formatedContent.split(" ");
+        var TEXT_WORDS = Array.from(this.formatedContent);
         TEXT_WORDS.forEach(function (word) {
             render("keep", CONTAINER_FOR_TARGET_TEXT, _this.createEditableSubstringElement(word));
         });
         this.setEditableElementsEventListeners();
     };
     TargetText.prototype.createEditableSubstringElement = function (word) {
-        return "<span class=\"editable-word\">".concat(word, "</span> ");
+        if (" .,!".includes(word)) {
+            return word;
+        }
+        else {
+            return "<span class=\"editable-word\">".concat(word, "</span>");
+        }
     };
     TargetText.prototype.setEditableElementsEventListeners = function () {
         if (EDITABLE_WORDS_ELEMENTS) {
             Array.from(EDITABLE_WORDS_ELEMENTS).forEach(function (element) {
                 element.addEventListener("click", function (event) {
-                    event.target.classList.add("editing-word");
+                    setWordEditableMode(event.target);
                 });
             });
         }
@@ -126,3 +131,13 @@ var TargetText = /** @class */ (function () {
     return TargetText;
 }());
 new TargetText();
+function setWordEditableMode(targetWordElement) {
+    if (targetWordElement.classList.contains("editing-word")) {
+        targetWordElement.classList.remove("editing-word");
+        return;
+    }
+    Array.from(EDITABLE_WORDS_ELEMENTS).forEach(function (element) {
+        element.classList.remove("editing-word");
+    });
+    targetWordElement.classList.add("editing-word");
+}
