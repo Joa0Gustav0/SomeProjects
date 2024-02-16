@@ -1,5 +1,5 @@
 var CONTAINER_FOR_TARGET_TEXT = document.querySelector(".game-target-text-container__target-text");
-var EDITABLE_WORDS_ELEMENTS = document.getElementsByClassName("editable-word");
+var EDITABLE_WORDS_ELEMENTS = document.getElementsByClassName("editable-char");
 function render(mode, target, innerValue) {
     if (mode === "modify") {
         target.innerHTML = innerValue.toString();
@@ -54,18 +54,27 @@ var TargetText = /** @class */ (function () {
     TargetText.prototype.displayText = function () {
         var _this = this;
         render("modify", CONTAINER_FOR_TARGET_TEXT, "");
-        var TEXT_WORDS = Array.from(this.formatedContent);
+        var TEXT_WORDS = this.formatedContent.split(" ");
         TEXT_WORDS.forEach(function (word) {
-            render("keep", CONTAINER_FOR_TARGET_TEXT, _this.createEditableSubstringElement(word));
+            var newWordElement = "<div class=\"full-word\">";
+            var WORD_CHARS = Array.from(word);
+            WORD_CHARS.forEach(function (char, index) {
+                newWordElement += _this.createEditableCharElement(char);
+            });
+            newWordElement += "</div>";
+            render("keep", CONTAINER_FOR_TARGET_TEXT, newWordElement);
         });
         this.setEditableElementsEventListeners();
     };
-    TargetText.prototype.createEditableSubstringElement = function (word) {
-        if (" .,!".includes(word)) {
-            return word;
+    TargetText.prototype.createEditableCharElement = function (char) {
+        var VOWELS = "aeiouáâéêíóôúû";
+        if (" .,!".includes(char)) {
+            return char;
         }
         else {
-            return "<span class=\"editable-word\">".concat(word, "</span>");
+            return "<span class=\"editable-char\">".concat(char, "<span class=\"editable-char__edit-container\">\n      ").concat(VOWELS.includes(char.toLowerCase())
+                ? "Hora de acentuar ✅"
+                : "Acento aqui não! ❌", "</span></span>");
         }
     };
     TargetText.prototype.setEditableElementsEventListeners = function () {
@@ -132,12 +141,12 @@ var TargetText = /** @class */ (function () {
 }());
 new TargetText();
 function setWordEditableMode(targetWordElement) {
-    if (targetWordElement.classList.contains("editing-word")) {
-        targetWordElement.classList.remove("editing-word");
+    if (targetWordElement.classList.contains("editing-char")) {
+        targetWordElement.classList.remove("editing-char");
         return;
     }
     Array.from(EDITABLE_WORDS_ELEMENTS).forEach(function (element) {
-        element.classList.remove("editing-word");
+        element.classList.remove("editing-char");
     });
-    targetWordElement.classList.add("editing-word");
+    targetWordElement.classList.add("editing-char");
 }

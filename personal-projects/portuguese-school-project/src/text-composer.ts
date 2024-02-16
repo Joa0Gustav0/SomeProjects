@@ -2,7 +2,7 @@ const CONTAINER_FOR_TARGET_TEXT = document.querySelector(
   ".game-target-text-container__target-text"
 )!;
 const EDITABLE_WORDS_ELEMENTS =
-  document.getElementsByClassName("editable-word");
+  document.getElementsByClassName("editable-char");
 
 function render(
   mode: "modify" | "keep",
@@ -125,24 +125,36 @@ class TargetText {
 
   private displayText() {
     render("modify", CONTAINER_FOR_TARGET_TEXT, "");
-    const TEXT_WORDS = Array.from(this.formatedContent);
+    const TEXT_WORDS = this.formatedContent.split(" ");
 
     TEXT_WORDS.forEach((word) => {
-      render(
-        "keep",
-        CONTAINER_FOR_TARGET_TEXT,
-        this.createEditableSubstringElement(word)
-      );
+      let newWordElement = `<div class="full-word">`;
+
+      let WORD_CHARS = Array.from(word);
+      WORD_CHARS.forEach((char, index) => {
+        newWordElement += this.createEditableCharElement(char);
+      });
+
+      newWordElement += `</div>`;
+
+      render("keep", CONTAINER_FOR_TARGET_TEXT, newWordElement);
     });
 
     this.setEditableElementsEventListeners();
   }
 
-  private createEditableSubstringElement(word: string) {
-    if (" .,!".includes(word)) {
-      return word;
+  private createEditableCharElement(char: string) {
+    const VOWELS = "aeiouáâéêíóôúû";
+
+    if (" .,!".includes(char)) {
+      return char;
     } else {
-      return `<span class="editable-word">${word}</span>`
+      return `<span class="editable-char">${char}<span class="editable-char__edit-container">
+      ${
+        VOWELS.includes(char.toLowerCase())
+          ? "Hora de acentuar ✅"
+          : "Acento aqui não! ❌"
+      }</span></span>`;
     }
   }
 
@@ -162,14 +174,14 @@ class TargetText {
 new TargetText();
 
 function setWordEditableMode(targetWordElement: HTMLSpanElement) {
-  if (targetWordElement.classList.contains("editing-word")) {
-    targetWordElement.classList.remove("editing-word");
+  if (targetWordElement.classList.contains("editing-char")) {
+    targetWordElement.classList.remove("editing-char");
     return;
   }
 
   Array.from(EDITABLE_WORDS_ELEMENTS).forEach((element) => {
-    (element as HTMLSpanElement).classList.remove("editing-word");
-  })
+    (element as HTMLSpanElement).classList.remove("editing-char");
+  });
 
-  targetWordElement.classList.add("editing-word");
+  targetWordElement.classList.add("editing-char");
 }

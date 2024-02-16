@@ -1,19 +1,54 @@
-.editable-word {
-  transition: all .25s;
+.full-word {
+  margin-right: 16px;
+  min-width: fit-content;
+  max-width: fit-content;
 }
-.editable-word:hover {
+
+.editable-char {
+  transition: all .25s;
+
+  position: relative;
+}
+.editable-char:hover {
   cursor: pointer;
   margin: 0px 5px;
 }
-.editable-word:hover,
-.editing-word {
+.editable-char:hover,
+.editing-char {
   font-size: 1.25em;
 }
-.editable-word:active {
+.editable-char:active {
   font-size: 1.1em;
 }
 
-.editing-word {
+.editing-char {
   margin: 0px 2.5px;
   color: var(--primary-color);
+}
+
+.editable-char__edit-container {
+  transition: all .5s;
+  
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  transform: translateX(-50%) scale(1%, 1%);
+
+  opacity: 0;
+  padding: 5px;
+  color: black;
+  font-size: .65em;
+  font-weight: 500;
+  border-radius: 10px;
+  pointer-events: none;
+  min-width: max-content;
+  background-color: white;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.15);
+}
+.editing-char .editable-char__edit-container {
+  top: -35px;
+  transform: translateX(-50%) scale(100%, 100%);
+  
+  opacity: 1;
+  pointer-events: all;
 }
