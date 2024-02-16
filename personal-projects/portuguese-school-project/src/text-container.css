@@ -1,0 +1,17 @@
+.editable-word {
+  transition: all .25s;
+}
+.editable-word:hover {
+  cursor: pointer;
+}
+.editable-word:hover,
+.editing-word {
+  font-size: 1.15em;
+}
+.editable-word:active {
+  font-size: 1.1em;
+}
+
+.editing-word {
+  color: var(--primary-color);
+}

@@ -1,6 +1,8 @@
 const CONTAINER_FOR_TARGET_TEXT = document.querySelector(
   ".game-target-text-container__target-text"
 )!;
+const EDITABLE_WORDS_ELEMENTS =
+  document.getElementsByClassName("editable-word");
 
 function render(
   mode: "modify" | "keep",
@@ -68,13 +70,13 @@ class TargetText {
   ];
 
   public content: string;
-  public formatContent: string = "";
+  public formatedContent: string = "";
   private mutableWords: Array<string> | undefined = [];
 
   constructor() {
     this.getNewText();
     this.unaccentuateText();
-    render("modify", CONTAINER_FOR_TARGET_TEXT, this.formatContent);
+    this.displayText();
   }
 
   private getNewText() {
@@ -93,24 +95,23 @@ class TargetText {
     this.content = reachedText.text;
   }
 
-  
   private unaccentuateText() {
     const TEXT_WORDS: string[] = this.content.split(" ");
-    
+
     TEXT_WORDS.forEach((word) => {
       if (this.mutableWords?.includes(word)) {
         word = this.unaccentuateWord(word);
       }
-      this.formatContent += word + " ";
+      this.formatedContent += word + " ";
     });
   }
-  
+
   private unaccentuateWord(word: string) {
     const POSSIBLE_ACCENTUATIONS = "áâéêíóôúû";
     const UNACCENTUATIONS = "aaeeioouu";
-  
+
     const WORD_CHARS = Array.from(word);
-  
+
     word = "";
     WORD_CHARS.forEach((char) => {
       if (POSSIBLE_ACCENTUATIONS.indexOf(char) > -1) {
@@ -118,9 +119,43 @@ class TargetText {
       }
       word += char;
     });
-  
+
     return word;
+  }
+
+  private displayText() {
+    render("modify", CONTAINER_FOR_TARGET_TEXT, "");
+    const TEXT_WORDS = this.formatedContent.split(" ");
+
+    TEXT_WORDS.forEach((word) => {
+      render(
+        "keep",
+        CONTAINER_FOR_TARGET_TEXT,
+        this.createEditableSubstringElement(word)
+      );
+    });
+
+    this.setEditableElementsEventListeners();
+  }
+
+  private createEditableSubstringElement(word: string) {
+    return `<span class="editable-word">${word}</span> `;
+  }
+
+  private setEditableElementsEventListeners() {
+    if (EDITABLE_WORDS_ELEMENTS) {
+      Array.from(EDITABLE_WORDS_ELEMENTS).forEach((element) => {
+        (element as HTMLSpanElement).addEventListener(
+          "click",
+          function (event) {
+            (event.target as HTMLSpanElement).classList.add("editing-word");
+          }
+        );
+      });
+    }
   }
 }
 
 new TargetText();
+
+

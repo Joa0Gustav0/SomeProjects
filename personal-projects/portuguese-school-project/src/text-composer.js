@@ -1,4 +1,5 @@
 var CONTAINER_FOR_TARGET_TEXT = document.querySelector(".game-target-text-container__target-text");
+var EDITABLE_WORDS_ELEMENTS = document.getElementsByClassName("editable-word");
 function render(mode, target, innerValue) {
     if (mode === "modify") {
         target.innerHTML = innerValue.toString();
@@ -9,11 +10,11 @@ function render(mode, target, innerValue) {
 }
 var TargetText = /** @class */ (function () {
     function TargetText() {
-        this.formatContent = "";
+        this.formatedContent = "";
         this.mutableWords = [];
         this.getNewText();
         this.unaccentuateText();
-        render("modify", CONTAINER_FOR_TARGET_TEXT, this.formatContent);
+        this.displayText();
     }
     TargetText.prototype.getNewText = function () {
         var availableTexts = TargetText.TEXTS.filter(function (text) { return !text.alreadyUsed; });
@@ -34,7 +35,7 @@ var TargetText = /** @class */ (function () {
             if ((_a = _this.mutableWords) === null || _a === void 0 ? void 0 : _a.includes(word)) {
                 word = _this.unaccentuateWord(word);
             }
-            _this.formatContent += word + " ";
+            _this.formatedContent += word + " ";
         });
     };
     TargetText.prototype.unaccentuateWord = function (word) {
@@ -49,6 +50,27 @@ var TargetText = /** @class */ (function () {
             word += char;
         });
         return word;
+    };
+    TargetText.prototype.displayText = function () {
+        var _this = this;
+        render("modify", CONTAINER_FOR_TARGET_TEXT, "");
+        var TEXT_WORDS = this.formatedContent.split(" ");
+        TEXT_WORDS.forEach(function (word) {
+            render("keep", CONTAINER_FOR_TARGET_TEXT, _this.createEditableSubstringElement(word));
+        });
+        this.setEditableElementsEventListeners();
+    };
+    TargetText.prototype.createEditableSubstringElement = function (word) {
+        return "<span class=\"editable-word\">".concat(word, "</span> ");
+    };
+    TargetText.prototype.setEditableElementsEventListeners = function () {
+        if (EDITABLE_WORDS_ELEMENTS) {
+            Array.from(EDITABLE_WORDS_ELEMENTS).forEach(function (element) {
+                element.addEventListener("click", function (event) {
+                    event.target.classList.add("editing-word");
+                });
+            });
+        }
     };
     TargetText.TEXTS = [
         {
