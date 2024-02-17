@@ -143,19 +143,44 @@ class TargetText {
     this.setEditableElementsEventListeners();
   }
 
+  private getCharPossibleAccentuations(entryChar: string) {
+    const POSSIBLE_ACCENTUATIONS = "áâéêíîóôúû";
+    const UNACCENTUATIONS = "aaeeiioouu";
+
+    const CHAR_INDEX = POSSIBLE_ACCENTUATIONS.includes(entryChar.toLowerCase())
+      ? POSSIBLE_ACCENTUATIONS.indexOf(entryChar.toLowerCase())
+      : UNACCENTUATIONS.indexOf(entryChar.toLowerCase());
+
+    const isCircumflex = CHAR_INDEX % 2 !== 0;
+
+    return [
+      isCircumflex
+        ? POSSIBLE_ACCENTUATIONS[CHAR_INDEX - 1]
+        : POSSIBLE_ACCENTUATIONS[CHAR_INDEX],
+      isCircumflex
+        ? entryChar.toLowerCase()
+        : POSSIBLE_ACCENTUATIONS[CHAR_INDEX + 1],
+    ];
+  }
+  
   private createEditableCharElement(char: string) {
     const VOWELS = "aeiouáâéêíóôúû";
+    let CONTAINER_SIGNS_BUTTONS = "";
+
+    this.getCharPossibleAccentuations(char).forEach((accentuatedChar) => {
+      CONTAINER_SIGNS_BUTTONS += `<button class="editable-char__edit-container__buttons">${accentuatedChar}</button>`;
+    });
 
     if (" .,!".includes(char)) {
       return char;
-    } else {
-      return `<span class="editable-char">${char}<span class="editable-char__edit-container">
+    }
+
+    return `<span class="editable-char">${char}<span class="editable-char__edit-container">
       ${
         VOWELS.includes(char.toLowerCase())
-          ? "Hora de acentuar ✅"
+          ? CONTAINER_SIGNS_BUTTONS
           : "Acento aqui não! ❌"
-      }</span></span>`;
-    }
+      }<div class="editable-char__edit-container__index"></div></span></span>`;
   }
 
   private setEditableElementsEventListeners() {

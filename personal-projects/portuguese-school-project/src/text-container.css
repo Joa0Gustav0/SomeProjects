@@ -45,10 +45,52 @@
   background-color: white;
   box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.15);
 }
+.editable-char__edit-container:hover {
+  cursor: default;
+}
 .editing-char .editable-char__edit-container {
   top: -35px;
   transform: translateX(-50%) scale(100%, 100%);
   
   opacity: 1;
   pointer-events: all;
+}
+
+.editable-char__edit-container__index {
+  position: absolute;
+  bottom: 0px;
+  left: 50%;
+  transform: translate(-50%, 50%) rotateZ(45deg);
+
+  width: 10px;
+  height: 10px;
+  background-color: white;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.15);
+}
+
+.editable-char__edit-container__buttons {
+  transition: all .25s;
+
+  border: 0;
+  width: 36px;
+  outline: none;
+  color: white;
+  font-weight: 900;
+  font-size: 1.25em;
+  border-radius: 10px;
+  background-color: var(--primary-color);
+  border: 1px solid transparent;
+}
+.editable-char__edit-container__buttons:first-of-type {
+  margin-right: 5px;
+}
+.editable-char__edit-container__buttons:hover {
+  cursor: pointer;
+  opacity: 75%;
+  transform: scale(105%, 105%);
+}
+
+.editable-char__edit-container__buttons:active {
+  opacity: 1;
+  transform: scale(95%, 95%);
 }

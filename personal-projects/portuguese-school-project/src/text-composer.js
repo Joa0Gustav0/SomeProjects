@@ -66,16 +66,34 @@ var TargetText = /** @class */ (function () {
         });
         this.setEditableElementsEventListeners();
     };
+    TargetText.prototype.getCharPossibleAccentuations = function (entryChar) {
+        var POSSIBLE_ACCENTUATIONS = "áâéêíîóôúû";
+        var UNACCENTUATIONS = "aaeeiioouu";
+        var CHAR_INDEX = POSSIBLE_ACCENTUATIONS.includes(entryChar.toLowerCase())
+            ? POSSIBLE_ACCENTUATIONS.indexOf(entryChar.toLowerCase())
+            : UNACCENTUATIONS.indexOf(entryChar.toLowerCase());
+        var isCircumflex = CHAR_INDEX % 2 !== 0;
+        return [
+            isCircumflex
+                ? POSSIBLE_ACCENTUATIONS[CHAR_INDEX - 1]
+                : POSSIBLE_ACCENTUATIONS[CHAR_INDEX],
+            isCircumflex
+                ? entryChar.toLowerCase()
+                : POSSIBLE_ACCENTUATIONS[CHAR_INDEX + 1],
+        ];
+    };
     TargetText.prototype.createEditableCharElement = function (char) {
         var VOWELS = "aeiouáâéêíóôúû";
+        var CONTAINER_SIGNS_BUTTONS = "";
+        this.getCharPossibleAccentuations(char).forEach(function (accentuatedChar) {
+            CONTAINER_SIGNS_BUTTONS += "<button class=\"editable-char__edit-container__buttons\">".concat(accentuatedChar, "</button>");
+        });
         if (" .,!".includes(char)) {
             return char;
         }
-        else {
-            return "<span class=\"editable-char\">".concat(char, "<span class=\"editable-char__edit-container\">\n      ").concat(VOWELS.includes(char.toLowerCase())
-                ? "Hora de acentuar ✅"
-                : "Acento aqui não! ❌", "</span></span>");
-        }
+        return "<span class=\"editable-char\">".concat(char, "<span class=\"editable-char__edit-container\">\n      ").concat(VOWELS.includes(char.toLowerCase())
+            ? CONTAINER_SIGNS_BUTTONS
+            : "Acento aqui não! ❌", "<div class=\"editable-char__edit-container__index\"></div></span></span>");
     };
     TargetText.prototype.setEditableElementsEventListeners = function () {
         if (EDITABLE_WORDS_ELEMENTS) {
