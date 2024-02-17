@@ -76,8 +76,6 @@ var PlayersScore = /** @class */ (function () {
     PlayersScore.winnerScore = "";
     return PlayersScore;
 }());
-new PlayersScore("😎");
-new PlayersScore("🤩");
 var CONTAINER_FOR_TARGET_TEXT = document.querySelector(".game-target-text-container__target-text");
 var EDITABLE_WORDS_ELEMENTS = document.getElementsByClassName("editable-char");
 var TargetText = /** @class */ (function () {
@@ -228,7 +226,7 @@ var TargetText = /** @class */ (function () {
             alreadyUsed: false,
         },
         {
-            text: "Quando lhe convêm, minhas histórias lhe interessam.",
+            text: "Quando minhas histórias lhe convêm, elas lhe interessam.",
             multableKeywords: ["convêm,"],
             alreadyUsed: false,
         },
@@ -247,7 +245,6 @@ var TargetText = /** @class */ (function () {
     TargetText.mutableWords = [];
     return TargetText;
 }());
-new TargetText();
 var MainButton = /** @class */ (function () {
     function MainButton() {
         MainButton.setButtonListener("check");
@@ -285,7 +282,8 @@ var MainButton = /** @class */ (function () {
                     "".concat(index < PlayersScore.players.length - 1 ? "$" : ""));
         });
         if (GameRound.round === TargetText.TEXTS.length) {
-            open("/public/congratulations.html?scores=" + PLAYERS_SCORES +
+            open("/public/congratulations.html?scores=" +
+                PLAYERS_SCORES +
                 "winner=" +
                 PlayersScore.winner, "_self");
             return;
@@ -339,13 +337,13 @@ var MainButton = /** @class */ (function () {
         PlayersScore.setMajorScorePlayerCrown();
     };
     MainButton.setRoundResultText = function (action, roundScore, errors) {
-        var _a;
+        var _a, _b;
         var ROUND_RESULT_TEXT = document.querySelector(".game-target-text-container__result-text");
         if (action === "clear") {
             ROUND_RESULT_TEXT.innerHTML = "<span class=\"game-target-text-container__result-text__points\"></span>";
         }
         else {
-            ROUND_RESULT_TEXT.innerHTML = "De ".concat(TargetText.mutableWords ? TargetText.mutableWords.length : 0, " erro").concat(((_a = TargetText.mutableWords) === null || _a === void 0 ? void 0 : _a.length) === 1 ? "" : "s", " inicia").concat(errors === 1 ? "l" : "is", ", ").concat(errors === 0 ? "você corrigiu todos! 💪" : "agora, h\u00E1 ".concat(errors, ". \uD83E\uDD21"), "<br/><span class=\"game-target-text-container__result-text__points ").concat(roundScore <= 0 ? "no-gain" : "", "\">+").concat(roundScore, "</span>");
+            ROUND_RESULT_TEXT.innerHTML = "De ".concat(TargetText.mutableWords ? TargetText.mutableWords.length : 0, " erro").concat(((_a = TargetText.mutableWords) === null || _a === void 0 ? void 0 : _a.length) === 1 ? "" : "s", " inicia").concat(((_b = TargetText.mutableWords) === null || _b === void 0 ? void 0 : _b.length) === 1 ? "l" : "is", ", ").concat(errors === 0 ? "você corrigiu todos! 💪" : "agora, h\u00E1 ".concat(errors, ". \uD83E\uDD21"), "<br/><span class=\"game-target-text-container__result-text__points ").concat(roundScore <= 0 ? "no-gain" : "", "\">+").concat(roundScore, "</span>");
         }
     };
     MainButton.setWordStatus = function (index, status) {
@@ -369,7 +367,6 @@ var MainButton = /** @class */ (function () {
     MainButton.BUTTON_ELEMENT = document.querySelector(".check-result-button");
     return MainButton;
 }());
-new MainButton();
 var ROUND_TEXT_ELEMENT = document.querySelector(".game-details-container__round-headline-text__number");
 var PLAYER_TURN_TEXT_ELEMENT = document.querySelector(".game-details-container__round-subheadline-text__emoji");
 var GameRound = /** @class */ (function () {
@@ -405,4 +402,56 @@ var GameRound = /** @class */ (function () {
     GameRound.round = 0;
     return GameRound;
 }());
-new GameRound();
+function startGameSettings() {
+    var LIST_FOR_PLAYERS_EMOJIS = document.querySelector(".game-settings-container__players-list");
+    var AVAILABLE_PLAYERS_EMOJIS = "📚🧠🤓🤩😎👽🦉📐🧬";
+    Array.from(AVAILABLE_PLAYERS_EMOJIS).forEach(function (emoji) {
+        render("keep", LIST_FOR_PLAYERS_EMOJIS, createPlayerEmojiButton(emoji));
+    });
+}
+function createPlayerEmojiButton(emoji) {
+    return "<li class=\"game-settings-container__players-list__button\" onClick=\"selectPlayer(this)\" >".concat(emoji, "</li>");
+}
+function selectPlayer(player) {
+    player.classList.toggle("selected");
+}
+var START_GAME_BUTTON = document.querySelector(".game-settings-container__button");
+START_GAME_BUTTON.addEventListener("click", function (event) { return startGame(event.target); });
+function startGame(buttonElement) {
+    if (buttonElement.classList.contains("disabled")) {
+        return;
+    }
+    setSelectedPlayersIntoGame();
+    new TargetText();
+    new MainButton();
+    closeGameSettings();
+    //Start your engines 🔥
+    new GameRound();
+}
+function setSelectedPlayersIntoGame() {
+    var SELECTED_PLAYERS = document.getElementsByClassName("game-settings-container__players-list__button");
+    if (SELECTED_PLAYERS.length > 0) {
+        Array.from(SELECTED_PLAYERS).forEach(function (player) {
+            if (player.classList.contains("selected")) {
+                new PlayersScore(player.innerHTML);
+            }
+        });
+    }
+}
+function closeGameSettings() {
+    var GAME_SCREEN_SAVER = document.querySelector(".screen-saver");
+    GAME_SCREEN_SAVER.classList.remove("enabled");
+}
+function verifyPlayersSelection() {
+    var SELECTED_PLAYERS = document.getElementsByClassName("game-settings-container__players-list__button selected");
+    if (SELECTED_PLAYERS.length <= 0) {
+        START_GAME_BUTTON.classList.add("disabled");
+    }
+    else {
+        START_GAME_BUTTON.classList.remove("disabled");
+    }
+}
+startGameSettings();
+setInterval(function () {
+    verifyPlayersSelection();
+});

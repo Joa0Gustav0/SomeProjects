@@ -121,9 +121,6 @@ class PlayersScore {
   }
 }
 
-new PlayersScore("😎");
-new PlayersScore("🤩");
-
 const CONTAINER_FOR_TARGET_TEXT = document.querySelector(
   ".game-target-text-container__target-text"
 )!;
@@ -167,7 +164,7 @@ class TargetText {
       alreadyUsed: false,
     },
     {
-      text: "Quando lhe convêm, minhas histórias lhe interessam.",
+      text: "Quando minhas histórias lhe convêm, elas lhe interessam.",
       multableKeywords: ["convêm,"],
       alreadyUsed: false,
     },
@@ -338,8 +335,6 @@ class TargetText {
   }
 }
 
-new TargetText();
-
 class MainButton {
   static BUTTON_ELEMENT: HTMLElement = document.querySelector(
     ".check-result-button"
@@ -393,7 +388,8 @@ class MainButton {
 
     if (GameRound.round === TargetText.TEXTS.length) {
       open(
-        "/public/congratulations.html?scores=" + PLAYERS_SCORES +
+        "/public/congratulations.html?scores=" +
+          PLAYERS_SCORES +
           "winner=" +
           PlayersScore.winner,
         "_self"
@@ -475,7 +471,7 @@ class MainButton {
       ROUND_RESULT_TEXT.innerHTML = `De ${
         TargetText.mutableWords ? TargetText.mutableWords.length : 0
       } erro${TargetText.mutableWords?.length === 1 ? "" : "s"} inicia${
-        errors === 1 ? "l" : "is"
+        TargetText.mutableWords?.length === 1 ? "l" : "is"
       }, ${
         errors === 0 ? "você corrigiu todos! 💪" : `agora, há ${errors}. 🤡`
       }<br/><span class="game-target-text-container__result-text__points ${
@@ -509,7 +505,6 @@ class MainButton {
     charEditContainer.innerHTML = `<p class="editable-char__edit-container__paragraph">${correctChar} 👈</p><div class="editable-char__edit-container__index"></div>`;
   }
 }
-new MainButton();
 
 const ROUND_TEXT_ELEMENT = document.querySelector(
   ".game-details-container__round-headline-text__number"
@@ -559,4 +554,80 @@ class GameRound {
     });
   }
 }
-new GameRound();
+
+function startGameSettings() {
+  const LIST_FOR_PLAYERS_EMOJIS = document.querySelector(
+    ".game-settings-container__players-list"
+  )!;
+  const AVAILABLE_PLAYERS_EMOJIS = "📚🧠🤓🤩😎👽🦉📐🧬";
+
+  Array.from(AVAILABLE_PLAYERS_EMOJIS).forEach((emoji) => {
+    render("keep", LIST_FOR_PLAYERS_EMOJIS, createPlayerEmojiButton(emoji));
+  });
+}
+
+function createPlayerEmojiButton(emoji: string) {
+  return `<li class="game-settings-container__players-list__button" onClick="selectPlayer(this)" >${emoji}</li>`;
+}
+function selectPlayer(player: HTMLElement) {
+  player.classList.toggle("selected");
+}
+
+const START_GAME_BUTTON = document.querySelector(
+  ".game-settings-container__button"
+)! as HTMLElement;
+
+START_GAME_BUTTON.addEventListener("click", (event) => startGame(event.target as HTMLElement));
+
+function startGame(buttonElement: HTMLElement) {
+  if (buttonElement.classList.contains("disabled")) {
+    return;
+  }
+
+  setSelectedPlayersIntoGame();
+  new TargetText();
+  new MainButton();
+  closeGameSettings();
+
+  //Start your engines 🔥
+  new GameRound();
+}
+
+function setSelectedPlayersIntoGame() {
+  const SELECTED_PLAYERS = document.getElementsByClassName(
+    "game-settings-container__players-list__button"
+  )!;
+
+  if (SELECTED_PLAYERS.length > 0) {
+    Array.from(SELECTED_PLAYERS).forEach((player) => {
+      if (player.classList.contains("selected")) {
+        new PlayersScore(player.innerHTML);
+      }
+    });
+  }
+}
+function closeGameSettings() {
+  const GAME_SCREEN_SAVER = document.querySelector(
+    ".screen-saver"
+  )! as HTMLElement;
+
+  GAME_SCREEN_SAVER.classList.remove("enabled");
+}
+
+function verifyPlayersSelection() {
+  const SELECTED_PLAYERS = document.getElementsByClassName(
+    "game-settings-container__players-list__button selected"
+  )!;
+
+  if (SELECTED_PLAYERS.length <= 0) {
+    START_GAME_BUTTON.classList.add("disabled");
+  } else {
+    START_GAME_BUTTON.classList.remove("disabled");
+  }
+}
+
+startGameSettings();
+
+setInterval(function () {
+  verifyPlayersSelection();
+});
