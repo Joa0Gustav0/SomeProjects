@@ -51,7 +51,16 @@ var PlayersScore = /** @class */ (function () {
             if (scoreElement.innerHTML === lastMajorScorePlayer.score.toString()) {
                 scoreElement.parentNode.classList.add("crown");
             }
+            else {
+                scoreElement.parentNode.classList.remove("crown");
+            }
         });
+        var playersWithCrown = document.getElementsByClassName("crown");
+        if (playersWithCrown.length > 1) {
+            Array.from(playersWithCrown).forEach(function (player) {
+                player.classList.remove("crown");
+            });
+        }
     };
     PlayersScore.quantityOfPlayersInGame = 0;
     PlayersScore.players = [];
@@ -63,7 +72,6 @@ var CONTAINER_FOR_TARGET_TEXT = document.querySelector(".game-target-text-contai
 var EDITABLE_WORDS_ELEMENTS = document.getElementsByClassName("editable-char");
 var TargetText = /** @class */ (function () {
     function TargetText() {
-        this.mutableWords = [];
         this.getNewText();
         this.unaccentuateText();
         this.displayText();
@@ -72,7 +80,7 @@ var TargetText = /** @class */ (function () {
         TargetText.content = "";
         var availableTexts = TargetText.TEXTS.filter(function (text) { return !text.alreadyUsed; });
         var reachedText = availableTexts[Math.floor(Math.random() * availableTexts.length)];
-        this.mutableWords = reachedText.multableKeywords;
+        TargetText.mutableWords = reachedText.multableKeywords;
         TargetText.TEXTS.forEach(function (element) {
             if (element.text === reachedText.text) {
                 element.alreadyUsed = true;
@@ -86,7 +94,7 @@ var TargetText = /** @class */ (function () {
         TargetText.formatedContent = "";
         TEXT_WORDS.forEach(function (word) {
             var _a;
-            if ((_a = _this.mutableWords) === null || _a === void 0 ? void 0 : _a.includes(word)) {
+            if ((_a = TargetText.mutableWords) === null || _a === void 0 ? void 0 : _a.includes(word)) {
                 word = _this.unaccentuateWord(word);
             }
             TargetText.formatedContent += word + " ";
@@ -226,6 +234,7 @@ var TargetText = /** @class */ (function () {
         },
     ];
     TargetText.formatedContent = "";
+    TargetText.mutableWords = [];
     return TargetText;
 }());
 new TargetText();
@@ -247,11 +256,17 @@ var MainButton = /** @class */ (function () {
         MainButton.disableInteractableCharElements();
         MainButton.compareTexts(MainButton.getCorrectTextChars(), MainButton.getEditedTextChars());
         MainButton.setButtonListener("set-new-round");
+        var decorativeEmojis = ["🚀", "🎠", "🎯", "🚴", "🚗"];
+        MainButton.BUTTON_ELEMENT.innerHTML =
+            "Proxima Rodada " +
+                decorativeEmojis[Math.floor(Math.random() * decorativeEmojis.length)];
     };
     MainButton.setNewRound = function () {
         new TargetText();
         new MainButton();
         GameRound.setRound();
+        MainButton.setRoundResultText("clear", 0, 0);
+        MainButton.BUTTON_ELEMENT.innerHTML = "Conferir Acentuação 🔎";
     };
     MainButton.disableInteractableCharElements = function () {
         Array.from(document.getElementsByClassName("editable-char")).map(function (element) { return element.classList.add("off"); });
@@ -263,14 +278,38 @@ var MainButton = /** @class */ (function () {
         return Array.from(document.getElementsByClassName("editable-char")).map(function (element) { return element.innerHTML[0].toLowerCase(); });
     };
     MainButton.compareTexts = function (modelText, analisedText) {
+        var initalGain = 25;
+        var errors = 0;
         modelText.forEach(function (char, index) {
             if (char !== analisedText[index]) {
                 MainButton.setWordStatus(index, "error");
+                errors++;
             }
             else {
                 MainButton.setWordStatus(index, "correct");
             }
         });
+        if (TargetText.mutableWords) {
+            if (TargetText.mutableWords.length > 0 && errors >= TargetText.mutableWords.length) {
+                initalGain -= 25;
+            }
+            else if (errors > 0 && errors < TargetText.mutableWords.length) {
+                initalGain -= 10;
+            }
+        }
+        PlayersScore.updateScore("increase", GameRound.playerInTurn, initalGain);
+        MainButton.setRoundResultText("display", initalGain, errors);
+        PlayersScore.setMajorScorePlayerCrown();
+    };
+    MainButton.setRoundResultText = function (action, roundScore, errors) {
+        var _a;
+        var ROUND_RESULT_TEXT = document.querySelector(".game-target-text-container__result-text");
+        if (action === "clear") {
+            ROUND_RESULT_TEXT.innerHTML = "<span class=\"game-target-text-container__result-text__points\"></span>";
+        }
+        else {
+            ROUND_RESULT_TEXT.innerHTML = "De ".concat(TargetText.mutableWords ? TargetText.mutableWords.length : 0, " erro").concat(((_a = TargetText.mutableWords) === null || _a === void 0 ? void 0 : _a.length) === 1 ? "" : "s", " inicia").concat(errors === 1 ? "l" : "is", ", ").concat(errors === 0 ? "você corrigiu todos! 💪" : "agora, h\u00E1 ".concat(errors, ". \uD83E\uDD21"), "<br/><span class=\"game-target-text-container__result-text__points ").concat(roundScore <= 0 ? "no-gain" : "", "\">+").concat(roundScore, "</span>");
+        }
     };
     MainButton.setWordStatus = function (index, status) {
         var _a, _b;

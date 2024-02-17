@@ -94,8 +94,17 @@ class PlayersScore {
     Array.from(PLAYERS_SCORES_TXTS).map((scoreElement) => {
       if (scoreElement.innerHTML === lastMajorScorePlayer.score.toString()) {
         (scoreElement.parentNode! as Element).classList.add("crown");
+      } else {
+        (scoreElement.parentNode! as Element).classList.remove("crown");
       }
     });
+
+    let playersWithCrown = document.getElementsByClassName("crown");
+    if (playersWithCrown.length > 1) {
+      Array.from(playersWithCrown).forEach((player) => {
+        player.classList.remove("crown");
+      });
+    }
   }
 }
 
@@ -163,7 +172,7 @@ class TargetText {
 
   static content: string;
   static formatedContent: string = "";
-  private mutableWords: Array<string> | undefined = [];
+  static mutableWords: Array<string> | undefined = [];
 
   constructor() {
     this.getNewText();
@@ -177,7 +186,7 @@ class TargetText {
 
     let reachedText =
       availableTexts[Math.floor(Math.random() * availableTexts.length)];
-    this.mutableWords = reachedText.multableKeywords;
+    TargetText.mutableWords = reachedText.multableKeywords;
 
     TargetText.TEXTS.forEach((element) => {
       if (element.text === reachedText.text) {
@@ -193,7 +202,7 @@ class TargetText {
 
     TargetText.formatedContent = "";
     TEXT_WORDS.forEach((word) => {
-      if (this.mutableWords?.includes(word)) {
+      if (TargetText.mutableWords?.includes(word)) {
         word = this.unaccentuateWord(word);
       }
       TargetText.formatedContent += word + " ";
@@ -319,7 +328,7 @@ class TargetText {
 new TargetText();
 
 class MainButton {
-  static readonly BUTTON_ELEMENT: HTMLElement = document.querySelector(
+  static BUTTON_ELEMENT: HTMLElement = document.querySelector(
     ".check-result-button"
   )!;
 
@@ -347,12 +356,19 @@ class MainButton {
     );
 
     MainButton.setButtonListener("set-new-round");
+
+    let decorativeEmojis = ["🚀", "🎠", "🎯", "🚴", "🚗"];
+    MainButton.BUTTON_ELEMENT.innerHTML =
+      "Proxima Rodada " +
+      decorativeEmojis[Math.floor(Math.random() * decorativeEmojis.length)];
   }
 
   static setNewRound() {
     new TargetText();
     new MainButton();
     GameRound.setRound();
+    MainButton.setRoundResultText("clear", 0, 0);
+    MainButton.BUTTON_ELEMENT.innerHTML = "Conferir Acentuação 🔎";
   }
 
   static disableInteractableCharElements() {
@@ -373,14 +389,51 @@ class MainButton {
   }
 
   static compareTexts(modelText: string[], analisedText: string[]) {
+    let initalGain = 25;
+    let errors = 0;
+
     modelText.forEach((char: string, index: number) => {
       if (char !== analisedText[index]) {
         MainButton.setWordStatus(index, "error");
+        errors++;
       } else {
         MainButton.setWordStatus(index, "correct");
       }
     });
+
+    if (TargetText.mutableWords) {
+      if (TargetText.mutableWords.length > 0 && errors >= TargetText.mutableWords.length) {
+        initalGain -= 25;
+      } else if (errors > 0 && errors < TargetText.mutableWords.length) {
+        initalGain -= 10;
+      }
+    }
+    PlayersScore.updateScore("increase", GameRound.playerInTurn, initalGain);
+
+    MainButton.setRoundResultText("display", initalGain, errors);
+    PlayersScore.setMajorScorePlayerCrown();
   }
+
+  static setRoundResultText(
+    action: "clear" | "display",
+    roundScore: number,
+    errors: number
+  ) {
+    const ROUND_RESULT_TEXT = document.querySelector(
+      ".game-target-text-container__result-text"
+    )!;
+
+    if (action === "clear") {
+      ROUND_RESULT_TEXT.innerHTML = `<span class="game-target-text-container__result-text__points"></span>`;
+    } else {
+      ROUND_RESULT_TEXT.innerHTML = `De ${
+        TargetText.mutableWords ? TargetText.mutableWords.length : 0
+      } erro${TargetText.mutableWords?.length === 1 ? "" : "s"} inicia${errors === 1 ? "l" : "is"}, ${
+        errors === 0 ? "você corrigiu todos! 💪" : `agora, há ${errors}. 🤡`
+      }<br/><span class="game-target-text-container__result-text__points ${roundScore <= 0 ? "no-gain" : ""}">+${roundScore}</span>`;
+    }
+  }
+
   static setWordStatus(index: number, status: "error" | "correct") {
     let allChars = document.getElementsByClassName("editable-char");
 
@@ -438,12 +491,14 @@ class GameRound {
       this.playerInTurn = PlayersScore.players[1].emoji;
     }
 
-    render("modify", PLAYER_TURN_TEXT_ELEMENT, this.playerInTurn)
-    this.setPlayerTurnIndexStyle(this.playerInTurn)
+    render("modify", PLAYER_TURN_TEXT_ELEMENT, this.playerInTurn);
+    this.setPlayerTurnIndexStyle(this.playerInTurn);
   }
 
   static setPlayerTurnIndexStyle(targetPlayer: string) {
-    let allPlayersScoresContainer = document.getElementsByClassName("pontuations-container__player-pontuation")!;
+    let allPlayersScoresContainer = document.getElementsByClassName(
+      "pontuations-container__player-pontuation"
+    )!;
 
     Array.from(allPlayersScoresContainer).forEach((playerScoreContainer) => {
       if (playerScoreContainer.innerHTML.includes(targetPlayer)) {
@@ -451,7 +506,7 @@ class GameRound {
       } else {
         playerScoreContainer.classList.remove("player-has-turn");
       }
-    })
+    });
   }
 }
 new GameRound();
