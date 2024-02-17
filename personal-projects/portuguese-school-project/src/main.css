@@ -1,6 +1,6 @@
 :root {
   --primary-color: #4d3d87;
-  --crown-color: #FFE7A0;
+  --crown-color: #ffe7a0;
 }
 
 * {
@@ -112,11 +112,14 @@ main {
   text-align: justify;
   margin-bottom: 50px;
 }
+
 .game-target-text-container__target-text {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
 
+  gap: 16px;
+  min-width: calc(fit-content + 100px);
   padding: 17.5px;
   font-weight: 500;
   font-size: 1.25em;

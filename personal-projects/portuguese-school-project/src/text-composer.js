@@ -10,7 +10,6 @@ function render(mode, target, innerValue) {
 }
 var TargetText = /** @class */ (function () {
     function TargetText() {
-        this.formatedContent = "";
         this.mutableWords = [];
         this.getNewText();
         this.unaccentuateText();
@@ -25,17 +24,17 @@ var TargetText = /** @class */ (function () {
                 element.alreadyUsed = true;
             }
         });
-        this.content = reachedText.text;
+        TargetText.content = reachedText.text;
     };
     TargetText.prototype.unaccentuateText = function () {
         var _this = this;
-        var TEXT_WORDS = this.content.split(" ");
+        var TEXT_WORDS = TargetText.content.split(" ");
         TEXT_WORDS.forEach(function (word) {
             var _a;
             if ((_a = _this.mutableWords) === null || _a === void 0 ? void 0 : _a.includes(word)) {
                 word = _this.unaccentuateWord(word);
             }
-            _this.formatedContent += word + " ";
+            TargetText.formatedContent += word + " ";
         });
     };
     TargetText.prototype.unaccentuateWord = function (word) {
@@ -54,7 +53,7 @@ var TargetText = /** @class */ (function () {
     TargetText.prototype.displayText = function () {
         var _this = this;
         render("modify", CONTAINER_FOR_TARGET_TEXT, "");
-        var TEXT_WORDS = this.formatedContent.split(" ");
+        var TEXT_WORDS = TargetText.formatedContent.split(" ");
         TEXT_WORDS.forEach(function (word) {
             var newWordElement = "<div class=\"full-word\">";
             var WORD_CHARS = Array.from(word);
@@ -74,6 +73,7 @@ var TargetText = /** @class */ (function () {
             : UNACCENTUATIONS.indexOf(entryChar.toLowerCase());
         var isCircumflex = CHAR_INDEX % 2 !== 0;
         return [
+            UNACCENTUATIONS[CHAR_INDEX],
             isCircumflex
                 ? POSSIBLE_ACCENTUATIONS[CHAR_INDEX - 1]
                 : POSSIBLE_ACCENTUATIONS[CHAR_INDEX],
@@ -86,7 +86,7 @@ var TargetText = /** @class */ (function () {
         var VOWELS = "aeiouáâéêíóôúû";
         var CONTAINER_SIGNS_BUTTONS = "";
         this.getCharPossibleAccentuations(char).forEach(function (accentuatedChar) {
-            CONTAINER_SIGNS_BUTTONS += "<button class=\"editable-char__edit-container__buttons\">".concat(accentuatedChar, "</button>");
+            CONTAINER_SIGNS_BUTTONS += "<button class=\"editable-char__edit-container__buttons\" onClick=\"editAccentuation(this)\">".concat(accentuatedChar, "</button>");
         });
         if (" .,!".includes(char)) {
             return char;
@@ -136,7 +136,7 @@ var TargetText = /** @class */ (function () {
         },
         {
             text: "Ele só colabora quando o convém.",
-            multableKeywords: ["convém"],
+            multableKeywords: ["convém."],
             alreadyUsed: false,
         },
         {
@@ -155,9 +155,15 @@ var TargetText = /** @class */ (function () {
             alreadyUsed: false,
         },
     ];
+    TargetText.formatedContent = "";
     return TargetText;
 }());
 new TargetText();
+function editAccentuation(selectedAccentuation) {
+    var _a;
+    var currentCharElement = (_a = selectedAccentuation.parentNode) === null || _a === void 0 ? void 0 : _a.parentNode;
+    currentCharElement.innerHTML = currentCharElement.innerHTML.replace(currentCharElement.innerHTML[0], selectedAccentuation.innerHTML);
+}
 function setWordEditableMode(targetWordElement) {
     if (targetWordElement.classList.contains("editing-char")) {
         targetWordElement.classList.remove("editing-char");
@@ -167,4 +173,36 @@ function setWordEditableMode(targetWordElement) {
         element.classList.remove("editing-char");
     });
     targetWordElement.classList.add("editing-char");
+}
+var SPELLER_BUTTON = document.querySelector(".check-result-button");
+SPELLER_BUTTON.addEventListener("click", function () {
+    var correctTextChars = getCorrectTextChars();
+    var editedTextChars = getEditedTextChars();
+    compareTexts(correctTextChars, editedTextChars);
+});
+function getCorrectTextChars() {
+    return Array.from(TargetText.content.toLowerCase()).filter(function (char) { return !" .,!".includes(char); });
+}
+function getEditedTextChars() {
+    return Array.from(document.getElementsByClassName("editable-char")).map(function (element) { return element.innerHTML[0].toLowerCase(); });
+}
+function compareTexts(modelText, analisedText) {
+    modelText.forEach(function (char, index) {
+        if (char !== analisedText[index]) {
+            setWordStatus(index, "error");
+        }
+        else {
+            setWordStatus(index, "correct");
+        }
+    });
+}
+function setWordStatus(index, status) {
+    var _a, _b, _c, _d;
+    var allChars = document.getElementsByClassName("editable-char");
+    if (status === "correct") {
+        (_b = (_a = allChars[index]) === null || _a === void 0 ? void 0 : _a.parentElement) === null || _b === void 0 ? void 0 : _b.classList.add("correct-word");
+    }
+    else {
+        (_d = (_c = allChars[index]) === null || _c === void 0 ? void 0 : _c.parentElement) === null || _d === void 0 ? void 0 : _d.classList.add("error-word");
+    }
 }

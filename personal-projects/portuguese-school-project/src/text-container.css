@@ -1,17 +1,20 @@
 .full-word {
-  margin-right: 16px;
   min-width: fit-content;
   max-width: fit-content;
 }
-
+@font-face {
+  font-family: RobotoMono;
+  src: url("/public/RobotoMono-VariableFont_wght.ttf");
+}
 .editable-char {
-  transition: all .25s;
-
+  transition: all 0.25s;
+  
   position: relative;
+  font-family: RobotoMono;
 }
 .editable-char:hover {
   cursor: pointer;
-  margin: 0px 5px;
+  padding: 0px 5px;
 }
 .editable-char:hover,
 .editing-char {
@@ -22,13 +25,13 @@
 }
 
 .editing-char {
-  margin: 0px 2.5px;
+  max-width: 13px;
   color: var(--primary-color);
 }
 
 .editable-char__edit-container {
-  transition: all .5s;
-  
+  transition: all 0.5s;
+
   position: absolute;
   top: 25%;
   left: 50%;
@@ -37,7 +40,7 @@
   opacity: 0;
   padding: 5px;
   color: black;
-  font-size: .65em;
+  font-size: 0.65em;
   font-weight: 500;
   border-radius: 10px;
   pointer-events: none;
@@ -49,9 +52,9 @@
   cursor: default;
 }
 .editing-char .editable-char__edit-container {
-  top: -35px;
+  top: -50px;
   transform: translateX(-50%) scale(100%, 100%);
-  
+
   opacity: 1;
   pointer-events: all;
 }
@@ -69,20 +72,20 @@
 }
 
 .editable-char__edit-container__buttons {
-  transition: all .25s;
+  transition: all 0.25s;
 
   border: 0;
   width: 36px;
   outline: none;
   color: white;
-  font-weight: 900;
+  font-weight: 700;
   font-size: 1.25em;
   border-radius: 10px;
   background-color: var(--primary-color);
   border: 1px solid transparent;
 }
-.editable-char__edit-container__buttons:first-of-type {
-  margin-right: 5px;
+.editable-char__edit-container__buttons:not(:first-of-type):not(:last-of-type) {
+  margin: 5px;
 }
 .editable-char__edit-container__buttons:hover {
   cursor: pointer;
@@ -93,4 +96,11 @@
 .editable-char__edit-container__buttons:active {
   opacity: 1;
   transform: scale(95%, 95%);
+}
+
+.correct-word {
+  color: yellowgreen;
+}
+.error-word {
+  color: red;
 }

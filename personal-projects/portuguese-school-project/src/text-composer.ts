@@ -49,7 +49,7 @@ class TargetText {
     },
     {
       text: "Ele só colabora quando o convém.",
-      multableKeywords: ["convém"],
+      multableKeywords: ["convém."],
       alreadyUsed: false,
     },
     {
@@ -69,8 +69,8 @@ class TargetText {
     },
   ];
 
-  public content: string;
-  public formatedContent: string = "";
+  static content: string;
+  static formatedContent: string = "";
   private mutableWords: Array<string> | undefined = [];
 
   constructor() {
@@ -92,17 +92,17 @@ class TargetText {
       }
     });
 
-    this.content = reachedText.text;
+    TargetText.content = reachedText.text;
   }
 
   private unaccentuateText() {
-    const TEXT_WORDS: string[] = this.content.split(" ");
+    const TEXT_WORDS: string[] = TargetText.content.split(" ");
 
     TEXT_WORDS.forEach((word) => {
       if (this.mutableWords?.includes(word)) {
         word = this.unaccentuateWord(word);
       }
-      this.formatedContent += word + " ";
+      TargetText.formatedContent += word + " ";
     });
   }
 
@@ -125,7 +125,7 @@ class TargetText {
 
   private displayText() {
     render("modify", CONTAINER_FOR_TARGET_TEXT, "");
-    const TEXT_WORDS = this.formatedContent.split(" ");
+    const TEXT_WORDS = TargetText.formatedContent.split(" ");
 
     TEXT_WORDS.forEach((word) => {
       let newWordElement = `<div class="full-word">`;
@@ -154,6 +154,7 @@ class TargetText {
     const isCircumflex = CHAR_INDEX % 2 !== 0;
 
     return [
+      UNACCENTUATIONS[CHAR_INDEX],
       isCircumflex
         ? POSSIBLE_ACCENTUATIONS[CHAR_INDEX - 1]
         : POSSIBLE_ACCENTUATIONS[CHAR_INDEX],
@@ -162,13 +163,13 @@ class TargetText {
         : POSSIBLE_ACCENTUATIONS[CHAR_INDEX + 1],
     ];
   }
-  
+
   private createEditableCharElement(char: string) {
     const VOWELS = "aeiouáâéêíóôúû";
     let CONTAINER_SIGNS_BUTTONS = "";
 
     this.getCharPossibleAccentuations(char).forEach((accentuatedChar) => {
-      CONTAINER_SIGNS_BUTTONS += `<button class="editable-char__edit-container__buttons">${accentuatedChar}</button>`;
+      CONTAINER_SIGNS_BUTTONS += `<button class="editable-char__edit-container__buttons" onClick="editAccentuation(this)">${accentuatedChar}</button>`;
     });
 
     if (" .,!".includes(char)) {
@@ -198,6 +199,16 @@ class TargetText {
 }
 new TargetText();
 
+function editAccentuation(selectedAccentuation: HTMLElement) {
+  let currentCharElement = selectedAccentuation.parentNode?.parentNode;
+  (currentCharElement as HTMLElement).innerHTML = (
+    currentCharElement as HTMLElement
+  ).innerHTML.replace(
+    (currentCharElement as HTMLElement).innerHTML[0],
+    selectedAccentuation.innerHTML
+  );
+}
+
 function setWordEditableMode(targetWordElement: HTMLSpanElement) {
   if (targetWordElement.classList.contains("editing-char")) {
     targetWordElement.classList.remove("editing-char");
@@ -209,4 +220,45 @@ function setWordEditableMode(targetWordElement: HTMLSpanElement) {
   });
 
   targetWordElement.classList.add("editing-char");
+}
+
+const SPELLER_BUTTON: HTMLElement = document.querySelector(
+  ".check-result-button"
+)!;
+
+SPELLER_BUTTON.addEventListener("click", function () {
+  let correctTextChars = getCorrectTextChars();
+  let editedTextChars = getEditedTextChars();
+
+  compareTexts(correctTextChars, editedTextChars);
+});
+
+function getCorrectTextChars() {
+  return Array.from(TargetText.content.toLowerCase()).filter(
+    (char) => !" .,!".includes(char)
+  );
+}
+function getEditedTextChars() {
+  return Array.from(document.getElementsByClassName("editable-char")).map(
+    (element) => element.innerHTML[0].toLowerCase()
+  );
+}
+
+function compareTexts(modelText, analisedText) {
+  modelText.forEach((char, index) => {
+    if (char !== analisedText[index]) {
+      setWordStatus(index, "error");
+    } else {
+      setWordStatus(index, "correct");
+    }
+  });
+}
+function setWordStatus(index: number, status: "error" | "correct") {
+  let allChars = document.getElementsByClassName("editable-char");
+
+  if (status === "correct") {
+    allChars[index]?.parentElement?.classList.add("correct-word");
+  } else {
+    allChars[index]?.parentElement?.classList.add("error-word");
+  }
 }
