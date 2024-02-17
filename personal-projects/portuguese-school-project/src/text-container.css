@@ -12,19 +12,19 @@
   position: relative;
   font-family: RobotoMono;
 }
-.editable-char:hover {
+.editable-char:not(.off):hover {
   cursor: pointer;
   padding: 0px 5px;
 }
-.editable-char:hover,
-.editing-char {
+.editable-char:not(.off):hover,
+.editing-char:not(.off) {
   font-size: 1.25em;
 }
-.editable-char:active {
+.editable-char:not(.off):active {
   font-size: 1.1em;
 }
 
-.editing-char {
+.editing-char:not(.off) {
   max-width: 13px;
   color: var(--primary-color);
 }
@@ -47,6 +47,9 @@
   min-width: max-content;
   background-color: white;
   box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.15);
+}
+.editable-char.off .editable-char__edit-container {
+  display: none;
 }
 .editable-char__edit-container:hover {
   cursor: default;

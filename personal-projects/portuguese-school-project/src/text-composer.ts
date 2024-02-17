@@ -227,11 +227,16 @@ const SPELLER_BUTTON: HTMLElement = document.querySelector(
 )!;
 
 SPELLER_BUTTON.addEventListener("click", function () {
-  let correctTextChars = getCorrectTextChars();
-  let editedTextChars = getEditedTextChars();
+  disableInteractableCharElements();
 
-  compareTexts(correctTextChars, editedTextChars);
+  compareTexts(getCorrectTextChars(), getEditedTextChars());
 });
+
+function disableInteractableCharElements() {
+  Array.from(document.getElementsByClassName("editable-char")).map((element) =>
+    element.classList.add("off")
+  );
+}
 
 function getCorrectTextChars() {
   return Array.from(TargetText.content.toLowerCase()).filter(

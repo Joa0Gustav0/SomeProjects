@@ -176,10 +176,14 @@ function setWordEditableMode(targetWordElement) {
 }
 var SPELLER_BUTTON = document.querySelector(".check-result-button");
 SPELLER_BUTTON.addEventListener("click", function () {
-    var correctTextChars = getCorrectTextChars();
-    var editedTextChars = getEditedTextChars();
-    compareTexts(correctTextChars, editedTextChars);
+    disableInteractableCharElements();
+    compareTexts(getCorrectTextChars(), getEditedTextChars());
 });
+function disableInteractableCharElements() {
+    Array.from(document.getElementsByClassName("editable-char")).map(function (element) {
+        return element.classList.add("off");
+    });
+}
 function getCorrectTextChars() {
     return Array.from(TargetText.content.toLowerCase()).filter(function (char) { return !" .,!".includes(char); });
 }
