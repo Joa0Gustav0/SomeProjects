@@ -58,9 +58,11 @@ var PlayersScore = /** @class */ (function () {
         });
         var playersWithCrown = document.getElementsByClassName("crown");
         Array.from(playersWithCrown).forEach(function (player, index) {
-            var playerEmoji = (Array.from(player.textContent)[5]);
+            var playerEmoji = Array.from(player.textContent)[5];
             var emojiUnicode = playerEmoji.codePointAt(0).toString(16);
-            PlayersScore.winner += emojiUnicode + "".concat(index < Array.from(playersWithCrown).length - 1 ? "$" : "");
+            PlayersScore.winner +=
+                emojiUnicode +
+                    "".concat(index < Array.from(playersWithCrown).length - 1 ? "$" : "");
         });
         if (playersWithCrown.length > 1) {
             Array.from(playersWithCrown).forEach(function (player) {
@@ -71,6 +73,7 @@ var PlayersScore = /** @class */ (function () {
     PlayersScore.quantityOfPlayersInGame = 0;
     PlayersScore.players = [];
     PlayersScore.winner = "";
+    PlayersScore.winnerScore = "";
     return PlayersScore;
 }());
 new PlayersScore("😎");
@@ -274,8 +277,17 @@ var MainButton = /** @class */ (function () {
         }
     };
     MainButton.setNewRound = function () {
+        PlayersScore.winnerScore = "";
+        var PLAYERS_SCORES = "";
+        PlayersScore.players.map(function (player, index) {
+            return (PLAYERS_SCORES +=
+                player.score +
+                    "".concat(index < PlayersScore.players.length - 1 ? "$" : ""));
+        });
         if (GameRound.round === TargetText.TEXTS.length) {
-            open("/public/congratulations.html?winner=" + PlayersScore.winner, "_self");
+            open("/public/congratulations.html?scores=" + PLAYERS_SCORES +
+                "winner=" +
+                PlayersScore.winner, "_self");
             return;
         }
         new TargetText();

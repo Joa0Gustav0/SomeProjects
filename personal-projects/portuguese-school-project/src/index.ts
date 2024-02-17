@@ -22,6 +22,7 @@ class PlayersScore {
   static quantityOfPlayersInGame = 0;
   static players: Array<PlayersScore> = [];
   static winner: string = "";
+  static winnerScore: string = "";
 
   constructor(
     public emoji: string,
@@ -104,10 +105,12 @@ class PlayersScore {
     let playersWithCrown = document.getElementsByClassName("crown");
 
     Array.from(playersWithCrown).forEach((player, index) => {
-      let playerEmoji = (Array.from((player.textContent as "string"))[5]);
+      let playerEmoji = Array.from(player.textContent as "string")[5];
 
       let emojiUnicode = playerEmoji.codePointAt(0)!.toString(16);
-      PlayersScore.winner += emojiUnicode + `${index < Array.from(playersWithCrown).length - 1 ? "$" : ""}`; 
+      PlayersScore.winner +=
+        emojiUnicode +
+        `${index < Array.from(playersWithCrown).length - 1 ? "$" : ""}`;
     });
 
     if (playersWithCrown.length > 1) {
@@ -379,8 +382,22 @@ class MainButton {
   }
 
   static setNewRound() {
+    PlayersScore.winnerScore = "";
+    let PLAYERS_SCORES = "";
+    PlayersScore.players.map(
+      (player, index) =>
+        (PLAYERS_SCORES +=
+          player.score +
+          `${index < PlayersScore.players.length - 1 ? "$" : ""}`)
+    );
+
     if (GameRound.round === TargetText.TEXTS.length) {
-      open("/public/congratulations.html?winner=" + PlayersScore.winner, "_self");
+      open(
+        "/public/congratulations.html?scores=" + PLAYERS_SCORES +
+          "winner=" +
+          PlayersScore.winner,
+        "_self"
+      );
       return;
     }
     new TargetText();
