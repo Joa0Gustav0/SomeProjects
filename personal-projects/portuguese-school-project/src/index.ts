@@ -21,6 +21,7 @@ const CONTAINER_FOR_ALL_PLAYERS_SCORES = document.querySelector(
 class PlayersScore {
   static quantityOfPlayersInGame = 0;
   static players: Array<PlayersScore> = [];
+  static winner: string = "";
 
   constructor(
     public emoji: string,
@@ -79,12 +80,13 @@ class PlayersScore {
   }
 
   static setMajorScorePlayerCrown() {
+    PlayersScore.winner = "";
     var lastMajorScorePlayer = {
       emoji: "",
       score: 0,
     };
 
-    this.players.map((player, index) => {
+    this.players.map((player) => {
       if (player.score > lastMajorScorePlayer.score) {
         lastMajorScorePlayer.emoji = player.emoji;
         lastMajorScorePlayer.score = player.score;
@@ -100,6 +102,13 @@ class PlayersScore {
     });
 
     let playersWithCrown = document.getElementsByClassName("crown");
+
+    Array.from(playersWithCrown).forEach((player) =>
+      PlayersScore.winner += (Array.from((player.textContent as "string"))[5])
+    );
+
+    console.log(PlayersScore.winner);
+
     if (playersWithCrown.length > 1) {
       Array.from(playersWithCrown).forEach((player) => {
         player.classList.remove("crown");
@@ -358,12 +367,21 @@ class MainButton {
     MainButton.setButtonListener("set-new-round");
 
     let decorativeEmojis = ["🚀", "🎠", "🎯", "🚴", "🚗"];
-    MainButton.BUTTON_ELEMENT.innerHTML =
-      "Proxima Rodada " +
-      decorativeEmojis[Math.floor(Math.random() * decorativeEmojis.length)];
+
+    if (GameRound.round === TargetText.TEXTS.length) {
+      MainButton.BUTTON_ELEMENT.innerHTML = `Espiar Resultados 🏆`;
+    } else {
+      MainButton.BUTTON_ELEMENT.innerHTML =
+        "Proxima Rodada " +
+        decorativeEmojis[Math.floor(Math.random() * decorativeEmojis.length)];
+    }
   }
 
   static setNewRound() {
+    if (GameRound.round === TargetText.TEXTS.length) {
+      open("/public/?winner=" + PlayersScore.winner, "_self");
+      return;
+    }
     new TargetText();
     new MainButton();
     GameRound.setRound();
@@ -402,7 +420,10 @@ class MainButton {
     });
 
     if (TargetText.mutableWords) {
-      if (TargetText.mutableWords.length > 0 && errors >= TargetText.mutableWords.length) {
+      if (
+        TargetText.mutableWords.length > 0 &&
+        errors >= TargetText.mutableWords.length
+      ) {
         initalGain -= 25;
       } else if (errors > 0 && errors < TargetText.mutableWords.length) {
         initalGain -= 10;
@@ -428,9 +449,13 @@ class MainButton {
     } else {
       ROUND_RESULT_TEXT.innerHTML = `De ${
         TargetText.mutableWords ? TargetText.mutableWords.length : 0
-      } erro${TargetText.mutableWords?.length === 1 ? "" : "s"} inicia${errors === 1 ? "l" : "is"}, ${
+      } erro${TargetText.mutableWords?.length === 1 ? "" : "s"} inicia${
+        errors === 1 ? "l" : "is"
+      }, ${
         errors === 0 ? "você corrigiu todos! 💪" : `agora, há ${errors}. 🤡`
-      }<br/><span class="game-target-text-container__result-text__points ${roundScore <= 0 ? "no-gain" : ""}">+${roundScore}</span>`;
+      }<br/><span class="game-target-text-container__result-text__points ${
+        roundScore <= 0 ? "no-gain" : ""
+      }">+${roundScore}</span>`;
     }
   }
 

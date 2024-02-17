@@ -37,11 +37,12 @@ var PlayersScore = /** @class */ (function () {
         render("keep", CONTAINER_FOR_ALL_PLAYERS_SCORES, "\n    <h1 class=\"pontuations-container__player-pontuation\">\n    ".concat(targetPlayerEmoji, "\n    <span class=\"pontuations-container__player-pontuation__text\"\n      >").concat(targetPlayerScore, "</span\n    >\n    <img src=\"../public/media/crown-icon.png\" alt=\"\u00EDcone de coroa\">\n  </h1>\n    "));
     };
     PlayersScore.setMajorScorePlayerCrown = function () {
+        PlayersScore.winner = "";
         var lastMajorScorePlayer = {
             emoji: "",
             score: 0,
         };
-        this.players.map(function (player, index) {
+        this.players.map(function (player) {
             if (player.score > lastMajorScorePlayer.score) {
                 lastMajorScorePlayer.emoji = player.emoji;
                 lastMajorScorePlayer.score = player.score;
@@ -56,6 +57,10 @@ var PlayersScore = /** @class */ (function () {
             }
         });
         var playersWithCrown = document.getElementsByClassName("crown");
+        Array.from(playersWithCrown).forEach(function (player) {
+            return PlayersScore.winner += (Array.from(player.textContent)[5]);
+        });
+        console.log(PlayersScore.winner);
         if (playersWithCrown.length > 1) {
             Array.from(playersWithCrown).forEach(function (player) {
                 player.classList.remove("crown");
@@ -64,6 +69,7 @@ var PlayersScore = /** @class */ (function () {
     };
     PlayersScore.quantityOfPlayersInGame = 0;
     PlayersScore.players = [];
+    PlayersScore.winner = "";
     return PlayersScore;
 }());
 new PlayersScore("😎");
@@ -257,11 +263,20 @@ var MainButton = /** @class */ (function () {
         MainButton.compareTexts(MainButton.getCorrectTextChars(), MainButton.getEditedTextChars());
         MainButton.setButtonListener("set-new-round");
         var decorativeEmojis = ["🚀", "🎠", "🎯", "🚴", "🚗"];
-        MainButton.BUTTON_ELEMENT.innerHTML =
-            "Proxima Rodada " +
-                decorativeEmojis[Math.floor(Math.random() * decorativeEmojis.length)];
+        if (GameRound.round === TargetText.TEXTS.length) {
+            MainButton.BUTTON_ELEMENT.innerHTML = "Espiar Resultados \uD83C\uDFC6";
+        }
+        else {
+            MainButton.BUTTON_ELEMENT.innerHTML =
+                "Proxima Rodada " +
+                    decorativeEmojis[Math.floor(Math.random() * decorativeEmojis.length)];
+        }
     };
     MainButton.setNewRound = function () {
+        if (GameRound.round === TargetText.TEXTS.length) {
+            open("/public/?winner=" + PlayersScore.winner, "_self");
+            return;
+        }
         new TargetText();
         new MainButton();
         GameRound.setRound();
@@ -290,7 +305,8 @@ var MainButton = /** @class */ (function () {
             }
         });
         if (TargetText.mutableWords) {
-            if (TargetText.mutableWords.length > 0 && errors >= TargetText.mutableWords.length) {
+            if (TargetText.mutableWords.length > 0 &&
+                errors >= TargetText.mutableWords.length) {
                 initalGain -= 25;
             }
             else if (errors > 0 && errors < TargetText.mutableWords.length) {
