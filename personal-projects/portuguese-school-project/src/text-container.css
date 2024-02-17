@@ -52,7 +52,7 @@
 .editable-char__edit-container:hover {
   cursor: default;
 }
-.editing-char .editable-char__edit-container,
+.editing-char:not(.off) .editable-char__edit-container,
 .full-word.error-word
   .editable-char.off.error-char
   .editable-char__edit-container {
