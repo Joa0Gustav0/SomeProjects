@@ -225,7 +225,7 @@ var TargetText = /** @class */ (function () {
             alreadyUsed: false,
         },
         {
-            text: "Quando lhe convêm, você se interessa por minhas histórias.",
+            text: "Quando lhe convêm, minhas histórias lhe interessam.",
             multableKeywords: ["convêm,"],
             alreadyUsed: false,
         },
@@ -306,12 +306,20 @@ var MainButton = /** @class */ (function () {
             }
         });
         if (TargetText.mutableWords) {
-            if ((TargetText.mutableWords.length > 0 &&
-                errors >= TargetText.mutableWords.length) || errors > TargetText.mutableWords.length) {
+            if (TargetText.mutableWords.length <= 0 && errors > 0) {
                 initalGain -= 25;
             }
-            else if (errors > 0 && errors < TargetText.mutableWords.length) {
+            if (TargetText.mutableWords.length > 0 &&
+                errors >= TargetText.mutableWords.length) {
+                initalGain -= 25;
+            }
+            else if (errors === 1 && TargetText.mutableWords.length > 1) {
                 initalGain -= 10;
+            }
+        }
+        else {
+            if (errors > 0) {
+                initalGain -= 25;
             }
         }
         PlayersScore.updateScore("increase", GameRound.playerInTurn, initalGain);
