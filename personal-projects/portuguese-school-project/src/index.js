@@ -57,10 +57,11 @@ var PlayersScore = /** @class */ (function () {
             }
         });
         var playersWithCrown = document.getElementsByClassName("crown");
-        Array.from(playersWithCrown).forEach(function (player) {
-            return PlayersScore.winner += (Array.from(player.textContent)[5]);
+        Array.from(playersWithCrown).forEach(function (player, index) {
+            var playerEmoji = (Array.from(player.textContent)[5]);
+            var emojiUnicode = playerEmoji.codePointAt(0).toString(16);
+            PlayersScore.winner += emojiUnicode + "".concat(index < Array.from(playersWithCrown).length - 1 ? "$" : "");
         });
-        console.log(PlayersScore.winner);
         if (playersWithCrown.length > 1) {
             Array.from(playersWithCrown).forEach(function (player) {
                 player.classList.remove("crown");
@@ -274,7 +275,7 @@ var MainButton = /** @class */ (function () {
     };
     MainButton.setNewRound = function () {
         if (GameRound.round === TargetText.TEXTS.length) {
-            open("/public/?winner=" + PlayersScore.winner, "_self");
+            open("/public/congratulations.html?winner=" + PlayersScore.winner, "_self");
             return;
         }
         new TargetText();
@@ -305,8 +306,8 @@ var MainButton = /** @class */ (function () {
             }
         });
         if (TargetText.mutableWords) {
-            if (TargetText.mutableWords.length > 0 &&
-                errors >= TargetText.mutableWords.length) {
+            if ((TargetText.mutableWords.length > 0 &&
+                errors >= TargetText.mutableWords.length) || errors > TargetText.mutableWords.length) {
                 initalGain -= 25;
             }
             else if (errors > 0 && errors < TargetText.mutableWords.length) {

@@ -103,11 +103,12 @@ class PlayersScore {
 
     let playersWithCrown = document.getElementsByClassName("crown");
 
-    Array.from(playersWithCrown).forEach((player) =>
-      PlayersScore.winner += (Array.from((player.textContent as "string"))[5])
-    );
+    Array.from(playersWithCrown).forEach((player, index) => {
+      let playerEmoji = (Array.from((player.textContent as "string"))[5]);
 
-    console.log(PlayersScore.winner);
+      let emojiUnicode = playerEmoji.codePointAt(0)!.toString(16);
+      PlayersScore.winner += emojiUnicode + `${index < Array.from(playersWithCrown).length - 1 ? "$" : ""}`; 
+    });
 
     if (playersWithCrown.length > 1) {
       Array.from(playersWithCrown).forEach((player) => {
@@ -379,7 +380,7 @@ class MainButton {
 
   static setNewRound() {
     if (GameRound.round === TargetText.TEXTS.length) {
-      open("/public/?winner=" + PlayersScore.winner, "_self");
+      open("/public/congratulations.html?winner=" + PlayersScore.winner, "_self");
       return;
     }
     new TargetText();
@@ -421,8 +422,8 @@ class MainButton {
 
     if (TargetText.mutableWords) {
       if (
-        TargetText.mutableWords.length > 0 &&
-        errors >= TargetText.mutableWords.length
+        (TargetText.mutableWords.length > 0 &&
+        errors >= TargetText.mutableWords.length) || errors > TargetText.mutableWords.length
       ) {
         initalGain -= 25;
       } else if (errors > 0 && errors < TargetText.mutableWords.length) {
