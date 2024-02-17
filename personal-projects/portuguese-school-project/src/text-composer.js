@@ -201,12 +201,21 @@ function compareTexts(modelText, analisedText) {
     });
 }
 function setWordStatus(index, status) {
-    var _a, _b, _c, _d;
+    var _a, _b;
     var allChars = document.getElementsByClassName("editable-char");
+    var targetChar = allChars[index];
+    var targetCharEditContainer = targetChar.childNodes[1];
     if (status === "correct") {
-        (_b = (_a = allChars[index]) === null || _a === void 0 ? void 0 : _a.parentElement) === null || _b === void 0 ? void 0 : _b.classList.add("correct-word");
+        (_a = targetChar === null || targetChar === void 0 ? void 0 : targetChar.parentElement) === null || _a === void 0 ? void 0 : _a.classList.add("correct-word");
     }
     else {
-        (_d = (_c = allChars[index]) === null || _c === void 0 ? void 0 : _c.parentElement) === null || _d === void 0 ? void 0 : _d.classList.add("error-word");
+        targetChar.classList.add("error-char");
+        setEditContainerCorrection(targetCharEditContainer, index);
+        (_b = targetChar === null || targetChar === void 0 ? void 0 : targetChar.parentElement) === null || _b === void 0 ? void 0 : _b.classList.add("error-word");
     }
+}
+function setEditContainerCorrection(charEditContainer, index) {
+    var correctChar = getCorrectTextChars()[index].toUpperCase();
+    charEditContainer.innerHTML =
+        "<p class=\"editable-char__edit-container__paragraph\">".concat(correctChar, " \uD83D\uDC48</p><div class=\"editable-char__edit-container__index\"></div>");
 }

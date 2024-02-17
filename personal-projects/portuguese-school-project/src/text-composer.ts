@@ -261,9 +261,22 @@ function compareTexts(modelText, analisedText) {
 function setWordStatus(index: number, status: "error" | "correct") {
   let allChars = document.getElementsByClassName("editable-char");
 
+  let targetChar = allChars[index]
+  let targetCharEditContainer = (targetChar.childNodes[1] as HTMLElement);
+
   if (status === "correct") {
-    allChars[index]?.parentElement?.classList.add("correct-word");
+    targetChar?.parentElement?.classList.add("correct-word");
   } else {
-    allChars[index]?.parentElement?.classList.add("error-word");
+    targetChar.classList.add("error-char");
+    setEditContainerCorrection(targetCharEditContainer, index);
+  
+    targetChar?.parentElement?.classList.add("error-word");
   }
+} 
+
+function setEditContainerCorrection(charEditContainer: HTMLElement, index: number) {
+  let correctChar = getCorrectTextChars()[index].toUpperCase();
+
+  charEditContainer.innerHTML = 
+  `<p class="editable-char__edit-container__paragraph">${correctChar} 👈</p><div class="editable-char__edit-container__index"></div>`
 }
