@@ -251,6 +251,7 @@ var MainButton = /** @class */ (function () {
     MainButton.setNewRound = function () {
         new TargetText();
         new MainButton();
+        GameRound.setRound();
     };
     MainButton.disableInteractableCharElements = function () {
         Array.from(document.getElementsByClassName("editable-char")).map(function (element) { return element.classList.add("off"); });
@@ -293,3 +294,39 @@ var MainButton = /** @class */ (function () {
     return MainButton;
 }());
 new MainButton();
+var ROUND_TEXT_ELEMENT = document.querySelector(".game-details-container__round-headline-text__number");
+var PLAYER_TURN_TEXT_ELEMENT = document.querySelector(".game-details-container__round-subheadline-text__emoji");
+var GameRound = /** @class */ (function () {
+    function GameRound() {
+        GameRound.setRound();
+    }
+    GameRound.setRound = function () {
+        this.round++;
+        render("modify", ROUND_TEXT_ELEMENT, this.round);
+        this.setPlayerTurn();
+    };
+    GameRound.setPlayerTurn = function () {
+        if (this.round % 2 !== 0) {
+            this.playerInTurn = PlayersScore.players[0].emoji;
+        }
+        else {
+            this.playerInTurn = PlayersScore.players[1].emoji;
+        }
+        render("modify", PLAYER_TURN_TEXT_ELEMENT, this.playerInTurn);
+        this.setPlayerTurnIndexStyle(this.playerInTurn);
+    };
+    GameRound.setPlayerTurnIndexStyle = function (targetPlayer) {
+        var allPlayersScoresContainer = document.getElementsByClassName("pontuations-container__player-pontuation");
+        Array.from(allPlayersScoresContainer).forEach(function (playerScoreContainer) {
+            if (playerScoreContainer.innerHTML.includes(targetPlayer)) {
+                playerScoreContainer.classList.add("player-has-turn");
+            }
+            else {
+                playerScoreContainer.classList.remove("player-has-turn");
+            }
+        });
+    };
+    GameRound.round = 0;
+    return GameRound;
+}());
+new GameRound();

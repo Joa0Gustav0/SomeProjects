@@ -40,9 +40,26 @@ body {
   color: var(--primary-color);
 }
 .game-details-container__round-subheadline-text {
+  font-size: 1em;
   color: #636363;
   font-weight: 500;
-  font-size: 1em;
+  text-align: center;
+}
+
+@keyframes pulse-animation {
+  0% {
+    box-shadow: 0px 0px 5px #9274fd
+  }
+  100% {
+    box-shadow: 0px 0px 30px #a58cff;
+  }
+}
+.pontuations-container__player-pontuation.player-has-turn {
+  background-color: #ded5ff;
+  animation: pulse-animation infinite .5s alternate linear;
+}
+.game-details-container__round-subheadline-text__emoji {
+  font-size: 1.25em;
 }
 .game-details-container__player-on-play-text {
   font-weight: 500;
@@ -61,6 +78,7 @@ main {
   justify-content: space-around;
 }
 .pontuations-container__player-pontuation {
+  transition: all .5s;
   position: relative;
 
   font-weight: 500;

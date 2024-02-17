@@ -33,6 +33,7 @@ class PlayersScore {
       PLAYERS_SCORES_TXTS[index],
       score < 10 ? "0" + score.toString() : score
     );
+
     PlayersScore.players.push(this);
     PlayersScore.quantityOfPlayersInGame++;
   }
@@ -351,6 +352,7 @@ class MainButton {
   static setNewRound() {
     new TargetText();
     new MainButton();
+    GameRound.setRound();
   }
 
   static disableInteractableCharElements() {
@@ -405,3 +407,51 @@ class MainButton {
   }
 }
 new MainButton();
+
+const ROUND_TEXT_ELEMENT = document.querySelector(
+  ".game-details-container__round-headline-text__number"
+)!;
+
+const PLAYER_TURN_TEXT_ELEMENT = document.querySelector(
+  ".game-details-container__round-subheadline-text__emoji"
+)!;
+
+class GameRound {
+  static round = 0;
+  static playerInTurn: string;
+
+  constructor() {
+    GameRound.setRound();
+  }
+
+  static setRound() {
+    this.round++;
+    render("modify", ROUND_TEXT_ELEMENT, this.round);
+
+    this.setPlayerTurn();
+  }
+
+  static setPlayerTurn() {
+    if (this.round % 2 !== 0) {
+      this.playerInTurn = PlayersScore.players[0].emoji;
+    } else {
+      this.playerInTurn = PlayersScore.players[1].emoji;
+    }
+
+    render("modify", PLAYER_TURN_TEXT_ELEMENT, this.playerInTurn)
+    this.setPlayerTurnIndexStyle(this.playerInTurn)
+  }
+
+  static setPlayerTurnIndexStyle(targetPlayer: string) {
+    let allPlayersScoresContainer = document.getElementsByClassName("pontuations-container__player-pontuation")!;
+
+    Array.from(allPlayersScoresContainer).forEach((playerScoreContainer) => {
+      if (playerScoreContainer.innerHTML.includes(targetPlayer)) {
+        playerScoreContainer.classList.add("player-has-turn");
+      } else {
+        playerScoreContainer.classList.remove("player-has-turn");
+      }
+    })
+  }
+}
+new GameRound();
