@@ -1,0 +1,126 @@
+body {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+
+  gap: 50px;
+}
+
+.congratulations-texts-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  gap: 10px;
+  width: 100%;
+  max-width: 350px;
+  text-align: center;
+}
+
+.congratulations-texts-container__headline,
+.winners-list-container__headline {
+  font-size: 1.5em;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--primary-color);
+}
+.congratulations-texts-container__subheadline {
+  font-weight: 500;
+  font-size: 1.125em;
+}
+
+.winners-list-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  gap: 50px;
+}
+
+.winners-list-container__list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 25px;
+  list-style: none;
+}
+
+.winners-list-container__list__winner-container {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 100px;
+  min-height: 100px;
+  font-size: 1.5em;
+  font-weight: 700;
+  border-radius: 10px;
+  background-color: var(--crown-color);
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.15);
+}
+
+.crown {
+  position: absolute;
+  top: -25px;
+  right: -17.5px;
+
+  width: 100%;
+  max-width: 30px;
+  transform: rotateZ(30deg);
+  animation: crown-floating-animation 1s linear alternate infinite;
+}
+
+.play-again-button {
+  transition: all 0.25s;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 0;
+  color: white;
+  font-weight: 500;
+  font-size: 1.25em;
+  margin-top: 25px;
+  border-radius: 10px;
+  padding: 7.5px 10px;
+  background-color: var(--primary-color);
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.15);
+}
+@keyframes button_pop_animation {
+  0% {
+    transform: scale(100%, 100%);
+  }
+  25% {
+    transform: scale(90%, 90%);
+  }
+  75% {
+    transform: scale(115%, 115%);
+  }
+  100% {
+    transform: scale(110%, 110%);
+  }
+}
+.play-again-button:hover {
+  cursor: pointer;
+  transform: scale(110%, 110%);
+  animation: button_pop_animation 0.25s linear normal;
+}
+.play-again-button:active {
+  transform: scale(90%, 90%);
+}
+
+.play-again-button:disabled {
+  color: #636363;
+  background-color: #cfcfcf;
+}
+.play-again-button:disabled:hover,
+.play-again-button:disabled:active {
+  animation: none;
+  cursor: not-allowed;
+  transform: scale(100%, 100%);
+}
