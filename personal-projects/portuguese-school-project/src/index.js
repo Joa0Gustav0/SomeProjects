@@ -36,17 +36,6 @@ var PlayersScore = /** @class */ (function () {
     PlayersScore.createPlayerScoreContainer = function (targetPlayerEmoji, targetPlayerScore) {
         render("keep", CONTAINER_FOR_ALL_PLAYERS_SCORES, "\n    <h1 class=\"pontuations-container__player-pontuation\">\n    ".concat(targetPlayerEmoji, "\n    <span class=\"pontuations-container__player-pontuation__text\"\n      >").concat(targetPlayerScore, "</span\n    >\n    <img src=\"../public/media/crown-icon.png\" alt=\"\u00EDcone de coroa\">\n  </h1>\n    "));
     };
-    PlayersScore.getMajorScore = function (entryScore1, entryScore2) {
-        if (entryScore1 === entryScore2) {
-            return null;
-        }
-        if (entryScore1 > entryScore2) {
-            return entryScore1;
-        }
-        else {
-            return entryScore2;
-        }
-    };
     PlayersScore.setMajorScorePlayerCrown = function () {
         var lastMajorScorePlayer = {
             emoji: "",
@@ -68,6 +57,8 @@ var PlayersScore = /** @class */ (function () {
     PlayersScore.players = [];
     return PlayersScore;
 }());
+new PlayersScore("😎");
+new PlayersScore("🤩");
 var CONTAINER_FOR_TARGET_TEXT = document.querySelector(".game-target-text-container__target-text");
 var EDITABLE_WORDS_ELEMENTS = document.getElementsByClassName("editable-char");
 var TargetText = /** @class */ (function () {
@@ -78,6 +69,7 @@ var TargetText = /** @class */ (function () {
         this.displayText();
     }
     TargetText.prototype.getNewText = function () {
+        TargetText.content = "";
         var availableTexts = TargetText.TEXTS.filter(function (text) { return !text.alreadyUsed; });
         var reachedText = availableTexts[Math.floor(Math.random() * availableTexts.length)];
         this.mutableWords = reachedText.multableKeywords;
@@ -91,6 +83,7 @@ var TargetText = /** @class */ (function () {
     TargetText.prototype.unaccentuateText = function () {
         var _this = this;
         var TEXT_WORDS = TargetText.content.split(" ");
+        TargetText.formatedContent = "";
         TEXT_WORDS.forEach(function (word) {
             var _a;
             if ((_a = _this.mutableWords) === null || _a === void 0 ? void 0 : _a.includes(word)) {
@@ -238,18 +231,29 @@ var TargetText = /** @class */ (function () {
 new TargetText();
 var MainButton = /** @class */ (function () {
     function MainButton() {
-        MainButton.setButtonListener();
+        MainButton.setButtonListener("check");
     }
-    MainButton.setButtonListener = function () {
-        this.BUTTON_ELEMENT.addEventListener("click", function () {
-            MainButton.disableInteractableCharElements();
-            MainButton.compareTexts(MainButton.getCorrectTextChars(), MainButton.getEditedTextChars());
-        });
+    MainButton.setButtonListener = function (action) {
+        this.BUTTON_ELEMENT.removeEventListener("click", this.check);
+        this.BUTTON_ELEMENT.removeEventListener("click", this.setNewRound);
+        if (action === "check") {
+            this.BUTTON_ELEMENT.addEventListener("click", this.check);
+        }
+        else {
+            this.BUTTON_ELEMENT.addEventListener("click", this.setNewRound);
+        }
+    };
+    MainButton.check = function () {
+        MainButton.disableInteractableCharElements();
+        MainButton.compareTexts(MainButton.getCorrectTextChars(), MainButton.getEditedTextChars());
+        MainButton.setButtonListener("set-new-round");
+    };
+    MainButton.setNewRound = function () {
+        new TargetText();
+        new MainButton();
     };
     MainButton.disableInteractableCharElements = function () {
-        Array.from(document.getElementsByClassName("editable-char")).map(function (element) {
-            return element.classList.add("off");
-        });
+        Array.from(document.getElementsByClassName("editable-char")).map(function (element) { return element.classList.add("off"); });
     };
     MainButton.getCorrectTextChars = function () {
         return Array.from(TargetText.content.toLowerCase()).filter(function (char) { return !" .,!".includes(char); });
@@ -283,8 +287,7 @@ var MainButton = /** @class */ (function () {
     };
     MainButton.setEditContainerCorrection = function (charEditContainer, index) {
         var correctChar = MainButton.getCorrectTextChars()[index].toUpperCase();
-        charEditContainer.innerHTML =
-            "<p class=\"editable-char__edit-container__paragraph\">".concat(correctChar, " \uD83D\uDC48</p><div class=\"editable-char__edit-container__index\"></div>");
+        charEditContainer.innerHTML = "<p class=\"editable-char__edit-container__paragraph\">".concat(correctChar, " \uD83D\uDC48</p><div class=\"editable-char__edit-container__index\"></div>");
     };
     MainButton.BUTTON_ELEMENT = document.querySelector(".check-result-button");
     return MainButton;

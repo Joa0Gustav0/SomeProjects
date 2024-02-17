@@ -14,7 +14,9 @@ const PLAYERS_SCORES_TXTS = document.getElementsByClassName(
   "pontuations-container__player-pontuation__text"
 );
 
-const CONTAINER_FOR_ALL_PLAYERS_SCORES = document.querySelector(".pontuations-container")!;
+const CONTAINER_FOR_ALL_PLAYERS_SCORES = document.querySelector(
+  ".pontuations-container"
+)!;
 
 class PlayersScore {
   static quantityOfPlayersInGame = 0;
@@ -47,7 +49,11 @@ class PlayersScore {
         } else {
           player.score += entryValue;
         }
-        render("modify", PLAYERS_SCORES_TXTS[player.index], player.score < 10 ? "0" + player.score : player.score);
+        render(
+          "modify",
+          PLAYERS_SCORES_TXTS[player.index],
+          player.score < 10 ? "0" + player.score : player.score
+        );
       }
     });
   }
@@ -71,18 +77,6 @@ class PlayersScore {
     );
   }
 
-  private static getMajorScore(entryScore1: number, entryScore2: number) {
-    if (entryScore1 === entryScore2) {
-      return null;
-    }
-
-    if (entryScore1 > entryScore2) {
-      return entryScore1;
-    } else {
-      return entryScore2;
-    }
-  }
-
   static setMajorScorePlayerCrown() {
     var lastMajorScorePlayer = {
       emoji: "",
@@ -104,6 +98,8 @@ class PlayersScore {
   }
 }
 
+new PlayersScore("😎");
+new PlayersScore("🤩");
 
 const CONTAINER_FOR_TARGET_TEXT = document.querySelector(
   ".game-target-text-container__target-text"
@@ -175,6 +171,7 @@ class TargetText {
   }
 
   private getNewText() {
+    TargetText.content = "";
     let availableTexts = TargetText.TEXTS.filter((text) => !text.alreadyUsed);
 
     let reachedText =
@@ -193,6 +190,7 @@ class TargetText {
   private unaccentuateText() {
     const TEXT_WORDS: string[] = TargetText.content.split(" ");
 
+    TargetText.formatedContent = "";
     TEXT_WORDS.forEach((word) => {
       if (this.mutableWords?.includes(word)) {
         word = this.unaccentuateWord(word);
@@ -220,6 +218,7 @@ class TargetText {
 
   private displayText() {
     render("modify", CONTAINER_FOR_TARGET_TEXT, "");
+
     const TEXT_WORDS = TargetText.formatedContent.split(" ");
 
     TEXT_WORDS.forEach((word) => {
@@ -307,11 +306,11 @@ class TargetText {
       targetWordElement.classList.remove("editing-char");
       return;
     }
-  
+
     Array.from(EDITABLE_WORDS_ELEMENTS).forEach((element) => {
       (element as HTMLSpanElement).classList.remove("editing-char");
     });
-  
+
     targetWordElement.classList.add("editing-char");
   }
 }
@@ -321,26 +320,45 @@ new TargetText();
 class MainButton {
   static readonly BUTTON_ELEMENT: HTMLElement = document.querySelector(
     ".check-result-button"
-  )!
+  )!;
 
   constructor() {
-    MainButton.setButtonListener()
+    MainButton.setButtonListener("check");
   }
 
-  static setButtonListener() {
-    this.BUTTON_ELEMENT.addEventListener("click", function () {
-      MainButton.disableInteractableCharElements();
-    
-      MainButton.compareTexts(MainButton.getCorrectTextChars(), MainButton.getEditedTextChars());
-    });
+  static setButtonListener(action: "check" | "set-new-round") {
+    this.BUTTON_ELEMENT.removeEventListener("click", this.check);
+    this.BUTTON_ELEMENT.removeEventListener("click", this.setNewRound);
+
+    if (action === "check") {
+      this.BUTTON_ELEMENT.addEventListener("click", this.check);
+    } else {
+      this.BUTTON_ELEMENT.addEventListener("click", this.setNewRound);
+    }
+  }
+
+  static check() {
+    MainButton.disableInteractableCharElements();
+
+    MainButton.compareTexts(
+      MainButton.getCorrectTextChars(),
+      MainButton.getEditedTextChars()
+    );
+
+    MainButton.setButtonListener("set-new-round");
+  }
+
+  static setNewRound() {
+    new TargetText();
+    new MainButton();
   }
 
   static disableInteractableCharElements() {
-    Array.from(document.getElementsByClassName("editable-char")).map((element) =>
-      element.classList.add("off")
+    Array.from(document.getElementsByClassName("editable-char")).map(
+      (element) => element.classList.add("off")
     );
   }
-  
+
   static getCorrectTextChars() {
     return Array.from(TargetText.content.toLowerCase()).filter(
       (char) => !" .,!".includes(char)
@@ -351,7 +369,7 @@ class MainButton {
       (element) => element.innerHTML[0].toLowerCase()
     );
   }
-  
+
   static compareTexts(modelText: string[], analisedText: string[]) {
     modelText.forEach((char: string, index: number) => {
       if (char !== analisedText[index]) {
@@ -363,28 +381,27 @@ class MainButton {
   }
   static setWordStatus(index: number, status: "error" | "correct") {
     let allChars = document.getElementsByClassName("editable-char");
-  
-    let targetChar = allChars[index]
-    let targetCharEditContainer = (targetChar.childNodes[1] as HTMLElement);
-  
+
+    let targetChar = allChars[index];
+    let targetCharEditContainer = targetChar.childNodes[1] as HTMLElement;
+
     if (status === "correct") {
       targetChar?.parentElement?.classList.add("correct-word");
     } else {
       targetChar.classList.add("error-char");
       MainButton.setEditContainerCorrection(targetCharEditContainer, index);
-    
+
       targetChar?.parentElement?.classList.add("error-word");
     }
-  } 
-  
-  static setEditContainerCorrection(charEditContainer: HTMLElement, index: number) {
+  }
+
+  static setEditContainerCorrection(
+    charEditContainer: HTMLElement,
+    index: number
+  ) {
     let correctChar = MainButton.getCorrectTextChars()[index].toUpperCase();
-  
-    charEditContainer.innerHTML = 
-    `<p class="editable-char__edit-container__paragraph">${correctChar} 👈</p><div class="editable-char__edit-container__index"></div>`
+
+    charEditContainer.innerHTML = `<p class="editable-char__edit-container__paragraph">${correctChar} 👈</p><div class="editable-char__edit-container__index"></div>`;
   }
 }
 new MainButton();
-
-
-
