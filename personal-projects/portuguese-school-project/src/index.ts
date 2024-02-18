@@ -388,7 +388,7 @@ class MainButton {
 
     if (GameRound.round === TargetText.TEXTS.length) {
       open(
-        "/public/congratulations.html?scores=" +
+        window.location.href + "/public/congratulations.html?scores=" +
           PLAYERS_SCORES +
           "winner=" +
           PlayersScore.winner,
