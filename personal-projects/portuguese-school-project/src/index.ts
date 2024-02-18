@@ -388,7 +388,7 @@ class MainButton {
 
     if (GameRound.round === TargetText.TEXTS.length) {
       open(
-        window.location.href + "/public/congratulations.html?scores=" +
+        "https://joa0gustav0.github.io/some-projects/personal-projects/portuguese-school-project/public/congratulations.html?scores=" +
           PLAYERS_SCORES +
           "winner=" +
           PlayersScore.winner,

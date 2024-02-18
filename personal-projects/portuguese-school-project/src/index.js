@@ -282,7 +282,7 @@ var MainButton = /** @class */ (function () {
                     "".concat(index < PlayersScore.players.length - 1 ? "$" : ""));
         });
         if (GameRound.round === TargetText.TEXTS.length) {
-            open("/public/congratulations.html?scores=" +
+            open("https://joa0gustav0.github.io/some-projects/personal-projects/portuguese-school-project/public/congratulations.html?scores=" +
                 PLAYERS_SCORES +
                 "winner=" +
                 PlayersScore.winner, "_self");

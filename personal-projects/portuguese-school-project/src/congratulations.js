@@ -7,7 +7,7 @@ function render(mode, target, innerValue) {
     }
 }
 var TRY_AGAIN_BUTTON = document.querySelector(".play-again-button");
-TRY_AGAIN_BUTTON.addEventListener("click", function () { return window.open("/public/", "_self"); });
+TRY_AGAIN_BUTTON.addEventListener("click", function () { return window.open("https://joa0gustav0.github.io/some-projects/personal-projects/portuguese-school-project/public/", "_self"); });
 var windowLocation = new URL(window.location.href);
 var CURRENT_URL = windowLocation.href;
 var PAGE_DATA = getWinnersInformation(CURRENT_URL);
