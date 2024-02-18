@@ -265,7 +265,20 @@ var MainButton = /** @class */ (function () {
         MainButton.setButtonListener("set-new-round");
         var decorativeEmojis = ["🚀", "🎠", "🎯", "🚴", "🚗"];
         if (GameRound.round === TargetText.TEXTS.length) {
+            PlayersScore.winnerScore = "";
+            var PLAYERS_SCORES_1 = "";
+            PlayersScore.players.map(function (player, index) {
+                return (PLAYERS_SCORES_1 +=
+                    player.score +
+                        "".concat(index < PlayersScore.players.length - 1 ? "$" : ""));
+            });
             MainButton.BUTTON_ELEMENT.innerHTML = "Espiar Resultados \uD83C\uDFC6";
+            setTimeout(function () {
+                MainButton.BUTTON_ELEMENT.setAttribute("href", "./congratulations.html?scores=" +
+                    PLAYERS_SCORES_1 +
+                    "winner=" +
+                    PlayersScore.winner);
+            }, 1000);
         }
         else {
             MainButton.BUTTON_ELEMENT.innerHTML =
@@ -274,25 +287,31 @@ var MainButton = /** @class */ (function () {
         }
     };
     MainButton.setNewRound = function () {
-        PlayersScore.winnerScore = "";
-        var PLAYERS_SCORES = "";
-        PlayersScore.players.map(function (player, index) {
-            return (PLAYERS_SCORES +=
-                player.score +
-                    "".concat(index < PlayersScore.players.length - 1 ? "$" : ""));
-        });
+        /* PlayersScore.winnerScore = "";
+        let PLAYERS_SCORES = "";
+        PlayersScore.players.map(
+          (player, index) =>
+            (PLAYERS_SCORES +=
+              player.score +
+              `${index < PlayersScore.players.length - 1 ? "$" : ""}`)
+        ); */
         if (GameRound.round === TargetText.TEXTS.length) {
-            open("https://joa0gustav0.github.io/some-projects/personal-projects/portuguese-school-project/public/congratulations.html?scores=" +
+            /* open(
+              "https://joa0gustav0.github.io/some-projects/personal-projects/portuguese-school-project/public/congratulations.html?scores=" +
                 PLAYERS_SCORES +
                 "winner=" +
-                PlayersScore.winner, "_self");
-            return;
+                PlayersScore.winner,
+              "_self"
+            );
+            return; */
         }
-        new TargetText();
-        new MainButton();
-        GameRound.setRound();
-        MainButton.setRoundResultText("clear", 0, 0);
-        MainButton.BUTTON_ELEMENT.innerHTML = "Conferir Acentuação 🔎";
+        if (GameRound.round < TargetText.TEXTS.length) {
+            new TargetText();
+            new MainButton();
+            GameRound.setRound();
+            MainButton.setRoundResultText("clear", 0, 0);
+            MainButton.BUTTON_ELEMENT.innerHTML = "Conferir Acentuação 🔎";
+        }
     };
     MainButton.disableInteractableCharElements = function () {
         Array.from(document.getElementsByClassName("editable-char")).map(function (element) { return element.classList.add("off"); });
@@ -416,7 +435,9 @@ function selectPlayer(player) {
     player.classList.toggle("selected");
 }
 var START_GAME_BUTTON = document.querySelector(".game-settings-container__button");
-START_GAME_BUTTON.addEventListener("click", function (event) { return startGame(event.target); });
+START_GAME_BUTTON.addEventListener("click", function (event) {
+    return startGame(event.target);
+});
 function startGame(buttonElement) {
     if (buttonElement.classList.contains("disabled")) {
         return;

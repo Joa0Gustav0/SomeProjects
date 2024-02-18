@@ -12,8 +12,6 @@ function render(
 
 const TRY_AGAIN_BUTTON = document.querySelector(".play-again-button")!;
 
-(TRY_AGAIN_BUTTON as HTMLElement).addEventListener("click", () => window.open("https://joa0gustav0.github.io/some-projects/personal-projects/portuguese-school-project/public/", "_self"));
-
 var windowLocation = new URL(window.location.href);
 const CURRENT_URL = windowLocation.href;
 
@@ -99,6 +97,4 @@ function renderPageData() {
   });
 }
 
-renderPageData()
-
-
+renderPageData();

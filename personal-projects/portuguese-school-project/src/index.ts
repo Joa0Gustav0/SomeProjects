@@ -368,7 +368,26 @@ class MainButton {
     let decorativeEmojis = ["🚀", "🎠", "🎯", "🚴", "🚗"];
 
     if (GameRound.round === TargetText.TEXTS.length) {
+      PlayersScore.winnerScore = "";
+      let PLAYERS_SCORES = "";
+      PlayersScore.players.map(
+        (player, index) =>
+          (PLAYERS_SCORES +=
+            player.score +
+            `${index < PlayersScore.players.length - 1 ? "$" : ""}`)
+      );
+
+      
       MainButton.BUTTON_ELEMENT.innerHTML = `Espiar Resultados 🏆`;
+      setTimeout(function() {
+        MainButton.BUTTON_ELEMENT.setAttribute(
+          "href",
+          "./congratulations.html?scores=" +
+            PLAYERS_SCORES +
+            "winner=" +
+            PlayersScore.winner
+        );
+      }, 1000)
     } else {
       MainButton.BUTTON_ELEMENT.innerHTML =
         "Proxima Rodada " +
@@ -377,30 +396,32 @@ class MainButton {
   }
 
   static setNewRound() {
-    PlayersScore.winnerScore = "";
+    /* PlayersScore.winnerScore = "";
     let PLAYERS_SCORES = "";
     PlayersScore.players.map(
       (player, index) =>
         (PLAYERS_SCORES +=
           player.score +
           `${index < PlayersScore.players.length - 1 ? "$" : ""}`)
-    );
+    ); */
 
     if (GameRound.round === TargetText.TEXTS.length) {
-      open(
+      /* open(
         "https://joa0gustav0.github.io/some-projects/personal-projects/portuguese-school-project/public/congratulations.html?scores=" +
           PLAYERS_SCORES +
           "winner=" +
           PlayersScore.winner,
         "_self"
       );
-      return;
+      return; */
     }
-    new TargetText();
-    new MainButton();
-    GameRound.setRound();
-    MainButton.setRoundResultText("clear", 0, 0);
-    MainButton.BUTTON_ELEMENT.innerHTML = "Conferir Acentuação 🔎";
+    if (GameRound.round < TargetText.TEXTS.length) {
+      new TargetText();
+      new MainButton();
+      GameRound.setRound();
+      MainButton.setRoundResultText("clear", 0, 0);
+      MainButton.BUTTON_ELEMENT.innerHTML = "Conferir Acentuação 🔎";
+    }
   }
 
   static disableInteractableCharElements() {
@@ -577,7 +598,9 @@ const START_GAME_BUTTON = document.querySelector(
   ".game-settings-container__button"
 )! as HTMLElement;
 
-START_GAME_BUTTON.addEventListener("click", (event) => startGame(event.target as HTMLElement));
+START_GAME_BUTTON.addEventListener("click", (event) =>
+  startGame(event.target as HTMLElement)
+);
 
 function startGame(buttonElement: HTMLElement) {
   if (buttonElement.classList.contains("disabled")) {
