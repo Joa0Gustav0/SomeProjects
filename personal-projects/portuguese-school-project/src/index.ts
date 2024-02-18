@@ -129,40 +129,40 @@ const EDITABLE_WORDS_ELEMENTS =
 
 class TargetText {
   static TEXTS = [
-    {
+    /* {
       text: "Alicia tem um tênis caríssimo!",
       alreadyUsed: false,
-    },
+    }, */
     {
       text: "Os Flintstones têm um carro de pedra.",
       multableKeywords: ["têm"],
       alreadyUsed: false,
     },
-    {
+   /*  {
       text: "A mensagem vem de muito longe...",
       multableKeywords: [],
       alreadyUsed: false,
-    },
+    }, */
     {
       text: "Os tripulantes vêm de lugares distantes!",
       multableKeywords: ["vêm"],
       alreadyUsed: false,
     },
-    {
+    /* {
       text: "Minha família me mantém até eu arranjar um emprego.",
       multableKeywords: ["mantém"],
       alreadyUsed: false,
-    },
+    }, */
     {
       text: "Aquelas senhoras mantêm segredos abomináveis!",
       multableKeywords: ["mantêm"],
       alreadyUsed: false,
     },
-    {
+    /* {
       text: "Ele só colabora quando o convém.",
       multableKeywords: ["convém."],
       alreadyUsed: false,
-    },
+    }, */
     {
       text: "Quando minhas histórias lhe convêm, elas lhe interessam.",
       multableKeywords: ["convêm,"],
